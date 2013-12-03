@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Used in setting activity -->
+    <string-array name="entries_list_disp_his">
+        <item>显示最近10期</item>
+        <item>显示最近20期</item>
+        <item>显示最近30期</item>  
+        <item>显示最近50期</item>
+        <item>显示最近100期</item>
+        <item>显示最近150期</item>
+    </string-array>
+    <string-array name="entryvalues_list_disp_his">
+        <item>10</item>
+        <item>20</item>
+        <item>30</item>
+        <item>50</item>
+        <item>100</item>
+        <item>150</item>    
+    </string-array>
+    
+    <string-array name="blue_value_list">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+    </string-array>
+    
+</resources>

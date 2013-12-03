@@ -1,0 +1,218 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/corner_view"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:id="@+id/titleLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/combine_itemid_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="期    号："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/combine_itemid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" 
+                android:layout_toRightOf="@id/combine_itemid_title"
+                style="@style/ButtonSmallText"
+                android:background="@drawable/small_red_btn"
+                android:gravity="center"/>
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/firstLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_below="@id/titleLine"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/combine_title1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第一步："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/combine_sel_red_btn"
+                style="@style/ButtonSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/combine_title1"
+                android:background="@drawable/small_red_btn"
+                android:gravity="center"
+                android:text="点击选择红球" />
+            
+            <Spinner
+                    android:id="@+id/recommend_red_model"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/combine_sel_red_btn"
+                    android:drawSelectorOnTop="false"
+                    android:gravity="center"
+                    style="@style/ButtonSmallText"
+                    android:background="@drawable/small_red_btn"
+                    android:textSize="18sp" />
+            
+            </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/secondLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/firstLine"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/combine_selred_str"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:text=""
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            
+            <Button
+                android:id="@+id/combine_verify_red_btn"
+                style="@style/ButtonMiniText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/combine_selred_str"
+                android:background="@drawable/mini_dark_btn"
+                android:layout_alignParentRight="true"
+                android:text="查询该组红球历史出号情况" />
+            
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/thirdLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/secondLine"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/combine_title2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第二步："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/combine_sel_blue_btn"
+                style="@style/ButtonSmallText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/combine_title2"
+                android:background="@drawable/small_blue_btn"
+                android:gravity="center"
+                android:text="点击选择蓝球" />
+            
+             <Spinner
+                    android:id="@+id/recommend_blue_spin"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/combine_sel_blue_btn"
+                    android:drawSelectorOnTop="false"
+                    android:gravity="center"
+                    style="@style/ButtonSmallText"
+                    android:background="@drawable/small_blue_btn"
+                    android:textSize="18sp" />
+             
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fourthLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/thirdLine"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/combine_selblue_str"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text=""
+                android:textColor="#0000FF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/fifthLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/fourthLine"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/combine_title3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="第三步："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            
+            <Spinner
+                    android:id="@+id/combine_model"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_toRightOf="@id/combine_title3"
+                    android:drawSelectorOnTop="false"
+                    android:gravity="center"
+                    style="@style/ButtonSmallText"
+                    android:background="@drawable/small_red_btn"
+                    android:textSize="18sp" />
+            
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:id="@+id/sixthLine"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical" >
+
+            <Button
+                android:id="@+id/combine_start_btn"
+                style="@style/ButtonText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/big_red_btn"
+                android:text="开始组号" />
+        </RelativeLayout>
+    </RelativeLayout>

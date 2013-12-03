@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="短信内容:"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+    
+    <EditText android:id="@+id/smsText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"
+        android:singleLine="false"
+        android:maxLines="5"
+        android:minLines="3"
+        android:gravity="top"
+        android:inputType="textMultiLine"
+        android:textColor="#000000">
+    </EditText>
+    
+     <Button android:text="发给作者" 
+        android:id="@+id/sendsms_btn" 
+        android:background="@drawable/big_red_btn"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        style="@style/ButtonText"></Button>
+     
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="提示：发送短信会产生常规的短信费（由运营商向您收取）."
+            android:textColor="#808080"
+            android:textSize="14dp" />
+         
+</LinearLayout>

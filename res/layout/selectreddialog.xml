@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selredcontainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/selRedTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#000000"
+        android:text="请在下面窗口中点击选择："
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <com.shuangse.ui.LineBreakLayout
+        android:id="@+id/blankrImgLine"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_below="@id/selRedTitle"
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:paddingTop="0dp" >
+
+        <ImageButton
+            android:id="@+id/blankrbtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr1" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr2" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr3" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr4" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr5" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr6" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr7" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr8" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr9" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr10" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr11" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr12" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr13" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr14" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr15" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr16" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn17"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr17" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr18" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn19"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr19" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr20" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn21"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr21" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn22"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr22" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn23"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr23" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr24" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn25"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr25" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr26" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn27"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr27" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn28"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr28" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn29"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr29" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr30" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn31"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr31" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn32"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr32" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn33"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankr33" />
+    </com.shuangse.ui.LineBreakLayout>
+
+    <Button
+        android:id="@+id/returnbtn"
+        style="@style/ButtonSmallText"
+        android:layout_below="@id/blankrImgLine"
+        android:background="@drawable/big_red_btn"
+        android:gravity="center"
+        android:text="确定" >
+    </Button>
+
+</RelativeLayout>

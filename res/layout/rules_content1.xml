@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/top_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="距离本期投注截止还有"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/time_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="1天14小时24分56秒"
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view" >
+
+            <TextView
+                android:id="@+id/remind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="提示1"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/remindstr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/remind"
+                android:layout_marginRight="4dp"
+                android:layout_toRightOf="@id/remind"
+                android:text="福彩双色球每周开奖三次， 每周二、四、日晚20点整为截止销售时间。而有些售彩网站有自己规定的截止时间，如果你网络购彩，请注意该网站的规定，以免错过。"
+                android:textColor="#FF0000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view" >
+
+            <TextView
+                android:id="@+id/remind2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="提示2"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/remindstr2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/remind2"
+                android:layout_marginRight="4dp"
+                android:layout_toRightOf="@id/remind2"
+                android:text="每周二、四、日晚21：30为福彩双色球彩票开奖时间，在中国教育电视台-1直播。开奖后，再次进入本软件时会自动更新最新的开奖号码。"
+                android:textColor="#FF0000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+        
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view" >
+
+            <TextView
+                android:id="@+id/remind3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:text="提示3"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/remindstr3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/remind3"
+                android:layout_marginRight="4dp"
+                android:layout_toRightOf="@id/remind3"
+                android:text="本软件为您提供购买福彩双色球所需要的常见工具以帮助你购买彩票，安装和使用本软件即表示您已经完全了解购买彩票的规则和风险，同时了解购买彩票导致的一切后果由您自己承担。未成年人请勿购买彩票。"
+                android:textColor="#FF0000"
+                android:textSize="18sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</ScrollView>
