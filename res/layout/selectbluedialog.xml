@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/selbluecontainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#000000"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/selBlueTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="#000000"
+        android:text="请在下面窗口中点击选择："
+        android:textColor="#FFFFFF"
+        android:textSize="20sp" />
+
+    <com.shuangse.ui.LineBreakLayout
+        android:id="@+id/blankblueImgLine"
+        android:layout_width="match_parent"
+        android:layout_height="170dp"
+        android:layout_below="@id/selBlueTitle"
+        android:background="#000000"
+        android:orientation="horizontal"
+        android:paddingTop="0dp" >
+
+        <ImageButton
+            android:id="@+id/blankblue1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue1" />
+
+        <ImageButton
+            android:id="@+id/blankblue2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue2" />
+
+        <ImageButton
+            android:id="@+id/blankblue3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue3" />
+
+        <ImageButton
+            android:id="@+id/blankblue4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue4" />
+
+        <ImageButton
+            android:id="@+id/blankblue5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue5" />
+
+        <ImageButton
+            android:id="@+id/blankblue6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue6" />
+
+        <ImageButton
+            android:id="@+id/blankblue7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue7" />
+
+        <ImageButton
+            android:id="@+id/blankblue8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue8" />
+
+        <ImageButton
+            android:id="@+id/blankblue9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue9" />
+
+        <ImageButton
+            android:id="@+id/blankblue10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue10" />
+
+        <ImageButton
+            android:id="@+id/blankblue11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue11" />
+
+        <ImageButton
+            android:id="@+id/blankblue12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue12" />
+
+        <ImageButton
+            android:id="@+id/blankblue13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue13" />
+
+        <ImageButton
+            android:id="@+id/blankblue14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue14" />
+
+        <ImageButton
+            android:id="@+id/blankblue15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue15" />
+
+        <ImageButton
+            android:id="@+id/blankblue16"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:padding="3dp"
+            android:src="@drawable/blankblue16" />
+    </com.shuangse.ui.LineBreakLayout>
+
+    <Button
+        android:id="@+id/returnbtn"
+        style="@style/ButtonSmallText"
+        android:layout_below="@id/blankblueImgLine"
+        android:background="@drawable/big_blue_btn"
+        android:gravity="center"
+        android:text="确定" >
+    </Button>
+
+</RelativeLayout>

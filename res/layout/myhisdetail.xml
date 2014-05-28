@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/detailcontainer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/corner_view"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/itemidcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/itemidtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="期号："
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/itemidstr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/redstrcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/itemidcontainer"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/redstrtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="红球："
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/redstr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bluestrcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/redstrcontainer"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/bluestrtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="蓝球："
+            android:textColor="#0000FF"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/bluestr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#0000FF"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/modelcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/bluestrcontainer"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/modeltitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="模式："
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/modelstr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/occurcontainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/modelcontainer"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/occurtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开奖："
+            android:textColor="#FF0000"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/occurstr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="未开奖"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:textSize="18sp" />
+    </LinearLayout>    
+    
+    <LinearLayout
+        android:id="@+id/resultcntcontainer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/occurcontainer"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/result_detail_title"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="2013126期共130注."
+            android:textColor="#FF0000"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/resultcontainter"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/resultcntcontainer"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/result_list_view"
+            android:layout_width="fill_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:drawSelectorOnTop="false"
+            android:fastScrollEnabled="true" />
+
+        <TextView
+            android:id="@id/android:empty"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:text="" />
+    </LinearLayout>
+    
+</RelativeLayout>

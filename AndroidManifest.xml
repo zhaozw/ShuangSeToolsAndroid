@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- 1.02: 增加在功能大厅的标题上显示版本信息功能 -->
+<!-- 1.03:修复提醒时间，增加新功能ICON，修改细节如appname，去掉下部广告条 -->
+<!-- 1.04修复onStart()累计更新loginCnt问题；增加旋转组号功能等 -->
+<!-- 1.05 增加我的记录，条件查找-->
+<!-- 1.06 完成我的记录，条件查找 -->
+<!-- 1.07 整体优化如中奖查询采用选择，增加软件推荐红球，组号记录删除，条件查询改变，组号历史查询等，遗留胆拖及复式组号功能 -->
+<!-- 1.08胆拖和复式组号功能 -->
+<!-- 1.09冷热走势 -->
+<!--  1.10 - 紧急修复历史数据重复显示问题 -->
+<!-- 1.11 增加我的守号，软件推荐6,11,17红中4，5，6码 功能、增加帮助和返回按钮、
+        增加软件退出时仍然保村当前选号、优化启动速度，增加在3.0以上OS上缩放 走势图 
+        增加组号结果拷贝功能，增加数据库保存详细的组号结果等 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.shuangse.ui"
+    android:versionCode="11"
+    android:versionName="1.11">
+
+    <uses-sdk
+        android:minSdkVersion="4"
+        android:targetSdkVersion="17" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+    
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <application
+        android:name="com.shuangse.base.ShuangSeToolsSetApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo_72x72"
+        android:label="@string/app_name">
+        
+        <activity
+            android:name="com.shuangse.ui.EntryActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.MainViewActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.ContactAuthorActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustPan" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.RedMissingDataActivity"
+            android:configChanges="orientation|keyboardHidden"
+            android:launchMode="singleTask"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.BlueMissingDataActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.ShuangseRulesActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.SettingActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.ShuangseHitSearchActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle"
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.google.ads.AdActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
+
+        <meta-data
+            android:name="ADMOB_PUBLISHER_ID"
+            android:value="a14f7309b326aec" />
+
+        <activity
+            android:name="com.shuangse.ui.ExperienceActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.ExperienceListActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.SmartCombineActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.SmartCombineResultActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.MyHisActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.ConditionSearchActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.MyHisDetailActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.RecommandHisActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        <activity
+            android:name="com.shuangse.ui.DantuoCombineActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.DantuoCombineResultActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.RedMissingTrendActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+    </application>
+
+</manifest>

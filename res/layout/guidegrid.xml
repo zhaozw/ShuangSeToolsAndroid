@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/gridcontainer"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+    <LinearLayout
+        android:id="@+id/ad_container"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="horizontal" >
+
+        <com.google.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+            android:id="@+id/adView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="a14f7309b326aec"
+            ads:loadAdOnCreate="true"
+            ads:refreshInterval="30"
+            ads:testing="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ad_container_bottom"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+        
+        <com.google.ads.AdView
+            xmlns:ads="http://schemas.android.com/apk/lib/com.google.ads"
+            android:id="@+id/adViewBottom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="a14f7309b326aec"
+            ads:loadAdOnCreate="true"
+            ads:refreshInterval="20"
+            ads:testing="false" />
+    </LinearLayout>
+ 
+    <GridView android:id="@+id/guidegrid"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_below="@id/ad_container"
+        android:layout_above="@id/ad_container_bottom"
+        android:fastScrollEnabled="true"
+        android:gravity="center"
+        android:horizontalSpacing="10dp"
+        android:isScrollContainer="true"
+        android:numColumns="3"
+        android:smoothScrollbar="true"
+        android:scrollbarAlwaysDrawVerticalTrack="true" 
+        android:stretchMode="columnWidth"
+        android:verticalSpacing="10dp" >
+    </GridView>
+</RelativeLayout>

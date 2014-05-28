@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#000000" >
+
+    <ListPreference
+        android:defaultValue="20"
+        android:dialogTitle="@string/history_choose_dialog_title"
+        android:entries="@array/entries_list_disp_his"
+        android:entryValues="@array/entryvalues_list_disp_his"
+        android:key="shuangse_display_red_history_cnt"
+        android:summary="@string/shuangse_display_red_history_desc"
+        android:title="@string/shuangse_display_red_history_title" />
+    <ListPreference
+        android:defaultValue="20"
+        android:dialogTitle="@string/history_choose_dialog_title"
+        android:entries="@array/entries_list_disp_his"
+        android:entryValues="@array/entryvalues_list_disp_his"
+        android:key="shuangse_display_blue_history_cnt"
+        android:summary="@string/shuangse_display_blue_history_desc"
+        android:title="@string/shuangse_display_blue_history_title" />
+
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="auto_update_data"
+        android:summary="@string/shuangse_update_data_desc"
+        android:title="@string/shuangse_update_data_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="getout_his_item"
+        android:summary="@string/getout_his_item_desc"
+        android:title="@string/getout_his_item_title" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="check_sum_combine"
+        android:summary="@string/check_sum_combine_desc"
+        android:title="@string/check_sum_combine_title" />
+    
+        <Preference
+            android:key="mykeepred"
+            android:summary=""
+            android:title="红球守号设置" />
+        
+        <Preference
+            android:key="usercounter"
+            android:summary=""
+            android:title="用户数信息" />
+
+</PreferenceScreen>

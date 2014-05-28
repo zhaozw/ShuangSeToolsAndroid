@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">双色球彩票工具箱</string>
+    <string name="logo"></string>
+    <string name="entering_sys">请稍等，正在进入......</string>
+    <string name="initialize_sys">请稍等，正在初始化系统</string>
+    <string name="copyright">Copyright: 2012-2016 「ChaiZheng」</string>
+    <string name="menu_text1">软件设置</string>
+
+    <!-- 按钮文字 -->
+    <string name="OK">确定</string>
+    <string name="cancle">取消</string>
+    <string name="how_to_play">双色球玩法介绍</string>
+    <string name="red_missing_graph">红球遗漏走势图</string>
+    <string name="blue_missing_graph">蓝球遗漏走势图</string>
+    <string name="contact_author">联系作者</string>
+
+    <!-- 标题 -->
+    <string name="custom_title_function_sel_shuangse">双色球工具箱</string>
+    <string name="custom_title_function_sel_contact">功能大厅 - 联系作者</string>
+    <string name="history_choose_dialog_title">请选择</string>
+    <string name="custom_title_sys_enter">进入系统</string>
+    <string name="custom_title_experience">中奖经验及使用方法</string>
+    <string name="custom_title_experience_detail">中奖方法详细内容</string>
+    <string name="custom_title_hit_search">中奖查询</string>
+    <string name="custom_title_right_redmissing">红球遗漏走势图</string>
+    <string name="custom_title_right_bluemissing">蓝球遗漏走势图</string>
+    <string name="custom_title_rules_reminder">双色球玩法与提示</string>
+    <string name="custom_title_contact_author">联系软件作者</string>
+    <string name="custom_title_settings">软件设置</string>
+    <string name="ad_tips_text">提示：本软件完全免费，为了支持作者开发出更多、更好的免费功能，请点击广告条以表支持。点击不会收取您的任何费用，谢谢。</string>
+    <string name="title_activity_smart_combine">旋转矩阵组号</string>
+    <string name="title_activity_result_smart_combine">旋转组号结果</string>
+    <string name="title_activity_result_dantuo_combine">胆拖组号结果</string>
+    <string name="custom_title_myhis">组号历史记录</string>
+    <string name="custom_title_conditionsearch">条件查询</string>
+    <string name="custom_title_myhisdetail">当期详细情况</string>
+    <string name="custom_title_recommendhis">软件推荐记录</string>
+    <string name="custom_title_dantuo_combine">胆拖组号</string>
+    <string name="custom_title_hot_cool_trend">红球冷热走势</string>
+
+    <!-- 设置 -->
+    <string name="shuangse_update_data_title">自动更新数据</string>
+    <string name="shuangse_update_data_desc">勾选表示在软件启动的时候会自动联网并更新双色球历史开奖数据，不勾选则在软件启动时不做更新操作（需要手动点击[数据更新]按钮来更新数据）。</string>
+    <string name="shuangse_display_red_history_title">红球走势显示期数</string>
+    <string name="shuangse_display_red_history_desc">选择双色球红球走势分析时默认的显示期数</string>
+    <string name="shuangse_display_blue_history_title">蓝球走势显示期数</string>
+    <string name="shuangse_display_blue_history_desc">选择双色球蓝球走势分析时默认的显示期数</string>
+    <string name="getout_his_item_title">过滤历史中奖号码</string>
+    <string name="getout_his_item_desc">勾选表示在旋转组号时会自动去除掉历史已经中出过的重复的（6个红球完全相同）中奖号码，不勾选则不去除。</string>
+    <string name="check_sum_combine_title">检查中奖模式</string>
+    <string name="check_sum_combine_desc">勾选表示在旋转组号时会检查所选的红球集合是否符合统计经验中奖模式，不勾选则不检查。</string>
+
+    <!-- version -->
+    <string name="default_version_number">1.02</string>
+    <string name="title_activity_experience">ExperienceActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    
+    <!-- 其他 -->
+    <string name ="click_return">点击返回</string>
+    <string name ="help_info">帮助信息</string>
+    <string name ="querying_usercounter_fail">查询失败，请检查网络.</string>
+
+</resources>
