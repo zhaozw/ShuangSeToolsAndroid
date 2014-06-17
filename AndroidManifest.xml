@@ -11,14 +11,17 @@
 <!-- 1.11 增加我的守号，软件推荐6,11,17红中4，5，6码 功能、增加帮助和返回按钮、
         增加软件退出时仍然保村当前选号、优化启动速度，增加在3.0以上OS上缩放 走势图 
         增加组号结果拷贝功能，增加数据库保存详细的组号结果等 -->
+<!-- 1.12 去掉广告 为商业使用做准备 -->        
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shuangse.ui"
-    android:versionCode="11"
-    android:versionName="1.11">
+    android:versionCode="12"
+    android:versionName="1.12">
 
+    <!-- minSdkVersion: 10 - Android 2.3 -->
+    <!-- targetSdkVersion: 16 - Android 4.1 -->
     <uses-sdk
-        android:minSdkVersion="4"
-        android:targetSdkVersion="17" />
+        android:minSdkVersion="7"  
+        android:targetSdkVersion="16" />
 
     <supports-screens
         android:anyDensity="true"
@@ -98,14 +101,7 @@
             android:theme="@style/CustomWindowTitleStyle"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
-        <activity
-            android:name="com.google.ads.AdActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-
-        <meta-data
-            android:name="ADMOB_PUBLISHER_ID"
-            android:value="a14f7309b326aec" />
-
+        
         <activity
             android:name="com.shuangse.ui.ExperienceActivity"
             android:launchMode="singleTask"

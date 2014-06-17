@@ -79,7 +79,7 @@ public class MainViewActivity extends Activity {
     // 设置窗口标题 - 显示版本号
     titleTextView = (TextView) findViewById(R.id.title_text);
     String title = getResources().getString(R.string.custom_title_function_sel_shuangse) + 
-            "v" + appContext.getVersion();
+            appContext.getVersion() + "版";
     titleTextView.setText(title);
     
     GridView gridview = (GridView) findViewById(R.id.guidegrid);

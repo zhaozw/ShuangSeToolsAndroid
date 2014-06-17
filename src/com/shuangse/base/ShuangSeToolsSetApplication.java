@@ -111,8 +111,7 @@ public class ShuangSeToolsSetApplication extends Application {
   private DataBaseHelper dbHelper = null;
  
   //private static final String serverAddress = "http://23.21.160.245:8080/ShuangSeToolsSimpleServer/";
-  private static final String serverAddress = "http://54.225.127.77:8080/ShuangSeToolsSimpleServer/";
-  //private static final String serverAddress = "http://192.168.1.101:8080/ShuangSeToolsSimpleServer/";
+  private static final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
 
   // 30s time out
   public HttpClient getHttpClient() {

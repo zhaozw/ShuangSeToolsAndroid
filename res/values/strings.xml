@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">双色球彩票工具箱</string>
+    <string name="app_name">双色球工具箱</string>
     <string name="logo"></string>
     <string name="entering_sys">请稍等，正在进入......</string>
     <string name="initialize_sys">请稍等，正在初始化系统</string>
-    <string name="copyright">Copyright: 2012-2016 「ChaiZheng」</string>
+    <string name="copyright">版权所有- 南京千江水网络科技有限公司</string>
     <string name="menu_text1">软件设置</string>
 
     <!-- 按钮文字 -->
