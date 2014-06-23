@@ -34,7 +34,6 @@ public class SettingActivity extends PreferenceActivity implements SelectRedDial
   private String myKeepRedStr;
   ShuangSeToolsSetApplication appContext;
   
-  @SuppressWarnings("deprecation")
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     // 此句必须在第一行避免 appname作为标题闪现问题
@@ -84,7 +83,6 @@ public class SettingActivity extends PreferenceActivity implements SelectRedDial
     titleTextView.setText(R.string.custom_title_settings);
   }
 
-  @SuppressWarnings("deprecation")
   public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen, Preference preference) {  
           if(preference == keepRedPreference) {
               Log.i(TAG, "keepRedPreference clicked.");

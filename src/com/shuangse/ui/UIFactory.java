@@ -109,7 +109,6 @@ public class UIFactory {
         return imgView;        
     }
     
-    @SuppressWarnings("deprecation")
     public static View makeButton(Drawable btnImg, OnClickListener listener, Context ctx) {
         LinearLayout container = new LinearLayout(ctx);
         container.setBackgroundColor(Color.BLACK);
@@ -155,7 +154,7 @@ public class UIFactory {
         final TextView blankView = new TextView(ctx);        
         blankView.setFocusable(true);
         blankView.setBackgroundColor(Color.YELLOW);
-        @SuppressWarnings("deprecation")
+        
         TableRow.LayoutParams params = new TableRow.LayoutParams(2,TableRow.LayoutParams.FILL_PARENT);
         blankView.setLayoutParams(params); // causes layout update
         return blankView;

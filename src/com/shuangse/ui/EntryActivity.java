@@ -44,25 +44,25 @@ public class EntryActivity extends Activity {
         ifAutoUpdateData = sharedPreferences.getBoolean("auto_update_data", true);
         
         //读入已经选择的号码        
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedNumbers(
+        appContext.getCurrentSelection().setSelectedRedNumbers(
             MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(ShuangSeToolsSetApplication.My_Selection_Red_String, "")));
+                sharedPreferences.getString(appContext.My_Selection_Red_String, "")));
 
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedBlueNumbers(
+        appContext.getCurrentSelection().setSelectedBlueNumbers(
             MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(ShuangSeToolsSetApplication.My_Selection_Blue_String, "")));
+                sharedPreferences.getString(appContext.My_Selection_Blue_String, "")));
         
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedDanNumbers(
+        appContext.getCurrentSelection().setSelectedRedDanNumbers(
             MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(ShuangSeToolsSetApplication.My_Selection_Red_Dan_Str, "")));
+                sharedPreferences.getString(appContext.My_Selection_Red_Dan_Str, "")));
         
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedTuoNumbers(
+        appContext.getCurrentSelection().setSelectedRedTuoNumbers(
             MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(ShuangSeToolsSetApplication.My_Selection_Red_Tuo_Str, "")));
+                sharedPreferences.getString(appContext.My_Selection_Red_Tuo_Str, "")));
         
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedBlueNumbersForDanTuo(
+        appContext.getCurrentSelection().setSelectedBlueNumbersForDanTuo(
             MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(ShuangSeToolsSetApplication.My_Selection_BlueForDanTuo_String, "")));
+                sharedPreferences.getString(appContext.My_Selection_BlueForDanTuo_String, "")));
         
         //启动自定义窗口标题
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
@@ -201,17 +201,18 @@ public class EntryActivity extends Activity {
             
             //把当前本地数据库中的所有数据load进入本地cache中来
             publishProgress(".");
-            new Thread(new Runnable() {
-              @Override
-              public void run() {
+//            new Thread(new Runnable() {
+//              @Override
+//              public void run() {
                 appContext.loadLocalHisDataIntoCache();
-              }
-            }).start();
+//              }
+//            }).start();
             
             publishProgress(".");
             
             //统计数据
             appContext.statHistoryData();
+            
             publishProgress("StartMainActivity");
             return "Success";
         }

@@ -126,7 +126,7 @@ public class DantuoCombineActivity extends Activity {
     ifGetOutOfHistoryitem = sharedPreferences.getBoolean("getout_his_item", true);
     
     //Ñ¡ÔñÄÄÒ»ÆÚ
-    this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId(); 
+    this.currentCombineItemId = appContext.getCurrentSelection().getItemId(); 
     currentCombineItemIdTextView.setText(String.valueOf(this.currentCombineItemId));
     
     selRedButton.setOnClickListener(new View.OnClickListener () {
@@ -248,10 +248,10 @@ public class DantuoCombineActivity extends Activity {
     super.onResume();
     Log.i(TAG, "onResume()");
     StringBuffer redSb = new StringBuffer("ºìÇòµ¨Âë£º");
-    currentSelRedDanList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers();
-    currentSelRedTuoList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers();
+    currentSelRedDanList = appContext.getCurrentSelection().getSelectedRedDanNumbers();
+    currentSelRedTuoList = appContext.getCurrentSelection().getSelectedRedTuoNumbers();
     currentSelTotalRedList = MagicTool.join(currentSelRedDanList, currentSelRedTuoList);
-    ShuangSeToolsSetApplication.getCurrentSelection().setSelectedModelId(SmartCombineActivity.M_DAN_TUO_COMBINE);
+    appContext.getCurrentSelection().setSelectedModelId(SmartCombineActivity.M_DAN_TUO_COMBINE);
     
     //Collections.sort(currentSelRedDanList);
     for(Integer item : currentSelRedDanList) {
@@ -292,7 +292,7 @@ public class DantuoCombineActivity extends Activity {
     }
 
     StringBuffer blueSb = new StringBuffer();
-    currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo();
+    currentSelBlueList = appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo();
     //Collections.sort(currentSelBlueList);
     for(Integer item : currentSelBlueList) {
       if(item < 10) {

@@ -22,10 +22,23 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.apache.http.HttpVersion;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.params.HttpClientParams;
+import org.apache.http.conn.ClientConnectionManager;
+import org.apache.http.conn.params.ConnManagerParams;
+import org.apache.http.conn.params.ConnPerRouteBean;
+import org.apache.http.conn.scheme.PlainSocketFactory;
+import org.apache.http.conn.scheme.Scheme;
+import org.apache.http.conn.scheme.SchemeRegistry;
+import org.apache.http.conn.ssl.SSLSocketFactory;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.impl.conn.tsccm.ThreadSafeClientConnManager;
 import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.CoreConnectionPNames;
+import org.apache.http.params.HttpConnectionParams;
+import org.apache.http.params.HttpParams;
+import org.apache.http.params.HttpProtocolParams;
+import org.apache.http.protocol.HTTP;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -62,18 +75,19 @@ import android.util.SparseIntArray;
 import android.widget.TableRow;
 
 public class ShuangSeToolsSetApplication extends Application {
-  private final static String TAG = "ShuangSeToolsSetApplication";
+  private final String TAG = "ShuangSeToolsSetApplication";
+  
   public final static int HOT_MISS_START = 0;
   public final static int HOT_MISS_END = 2;
   public final static int WARM_MISS_START = 3;
   public final static int WARM_MISS_END = 6;
   public final static int COOL_MISS_START = 7;
   
-  public final static String My_Selection_Red_String = "My_Selection_Red_String";
-  public final static String My_Selection_Red_Dan_Str = "My_Selection_Red_Dan_Str";
-  public final static String My_Selection_Red_Tuo_Str = "My_Selection_Red_Tuo_Str";
-  public final static String My_Selection_Blue_String = "My_Selection_Blue_String";
-  public final static String My_Selection_BlueForDanTuo_String = "My_Selection_BlueForDanTuo_String";
+  public final String My_Selection_Red_String = "My_Selection_Red_String";
+  public final String My_Selection_Red_Dan_Str = "My_Selection_Red_Dan_Str";
+  public final String My_Selection_Red_Tuo_Str = "My_Selection_Red_Tuo_Str";
+  public final String My_Selection_Blue_String = "My_Selection_Blue_String";
+  public final String My_Selection_BlueForDanTuo_String = "My_Selection_BlueForDanTuo_String";
   
   //return the versionName in the AndroidManfienst.xml file
   public String getVersion() {
@@ -88,7 +102,8 @@ public class ShuangSeToolsSetApplication extends Application {
     }
   }
   
-  private static volatile String smsText = "[双色球工具箱]是安卓(Android)平台上最好的双色球彩票工具，它采用遗漏走势图帮您选号，运用数学界最新的组合覆盖策略帮您实现中大奖的梦想，不妨一试，下载地址:http://23.21.160.245/a.apk";
+  public final String APKURL = "http://www.cloudtools.com.cn/ShuangSeToolsServer/apk/a.apk";
+  private String smsText = "[双色球工具箱]是安卓(Android)平台上最好的双色球彩票工具，它采用遗漏走势图帮您选号，运用数学界最新的组合覆盖策略帮您实现中大奖的梦想，不妨一试，下载地址: " + APKURL;
   public String getSmsText() {
     return smsText;
   }
@@ -96,50 +111,102 @@ public class ShuangSeToolsSetApplication extends Application {
     smsText = text;
   }
   
-  private volatile static ArrayList<ShuangseCodeItem> allHisData;
+  private volatile ArrayList<ShuangseCodeItem> allHisData;
   public ArrayList<ShuangseCodeItem> getAllHisData() {
     return allHisData;
   }
 
-  private SQLiteDatabase sqliteDB;
-  private String DBPath = "/data/data/com.shuangse.ui/databases/";
-  private String DBName = "historydata.db";
-  private String neverOutDB = "neveroutdb.db";
-  private SQLiteDatabase neverOutSqliteDB; //从未出号吗数据库
+  private SQLiteDatabase hisDataSqliteDB;
+  private final String DBPath = "/data/data/com.shuangse.ui/databases/";
+  private final String DBName = "historydata.db";
+  private final String neverOutDB = "neveroutdb.db";
+  private SQLiteDatabase neverOutSqliteDB; //从未出号码数据库
   //DB localsave is another DB that stores the local history data etc
   //see DataBaseHelper.java
   private DataBaseHelper dbHelper = null;
  
   //private static final String serverAddress = "http://23.21.160.245:8080/ShuangSeToolsSimpleServer/";
-  private static final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
+  private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
 
-  // 30s time out
-  public HttpClient getHttpClient() {
-        // 初始化一个全局的HttpClient
-        BasicHttpParams httpParams = new BasicHttpParams();
-        httpParams.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 30000);
-        httpParams.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 30000);
-        return new DefaultHttpClient(httpParams);
+  private HttpClient httpClient = null;
+  private final int DEFAULT_MAX_CONNECTIONS = 30; 
+  private final int DEFAULT_SOCKET_TIMEOUT = 20 * 1000;
+  private final int DEFAULT_SOCKET_BUFFER_SIZE = 8192;
+  private final int DEFAULT_HOST_CONNECTIONS = 10;
+  public synchronized HttpClient getHttpClient() {
+    if(httpClient == null) {  
+        final HttpParams httpParams = new BasicHttpParams();
+        
+        // timeout: get connections from connection pool  
+        ConnManagerParams.setTimeout(httpParams, 1000);    
+        // timeout: connect to the server  
+        HttpConnectionParams.setConnectionTimeout(httpParams, DEFAULT_SOCKET_TIMEOUT);
+        // timeout: transfer data from server
+        HttpConnectionParams.setSoTimeout(httpParams, DEFAULT_SOCKET_TIMEOUT);
+          
+        // set max connections per host  
+        ConnManagerParams.setMaxConnectionsPerRoute(httpParams, new ConnPerRouteBean(DEFAULT_HOST_CONNECTIONS));    
+        // set max total connections
+        ConnManagerParams.setMaxTotalConnections(httpParams, DEFAULT_MAX_CONNECTIONS);  
+          
+        // use expect-continue handshake  
+        HttpProtocolParams.setUseExpectContinue(httpParams, true);  
+        // disable stale check  
+        HttpConnectionParams.setStaleCheckingEnabled(httpParams, false);  
+          
+        HttpProtocolParams.setVersion(httpParams, HttpVersion.HTTP_1_1);    
+        HttpProtocolParams.setContentCharset(httpParams, HTTP.UTF_8);   
+            
+        HttpClientParams.setRedirecting(httpParams, false);  
+          
+        // set user agent  
+        String userAgent = "Mozilla/5.0 (Windows; U; Windows NT 5.1; zh-CN; rv:1.9.2) Gecko/20100115 Firefox/3.6";  
+        HttpProtocolParams.setUserAgent(httpParams, userAgent);       
+          
+        // disable Nagle algorithm  
+        HttpConnectionParams.setTcpNoDelay(httpParams, true);   
+          
+        HttpConnectionParams.setSocketBufferSize(httpParams, DEFAULT_SOCKET_BUFFER_SIZE);
+          
+        // scheme: http and https  
+        SchemeRegistry schemeRegistry = new SchemeRegistry();    
+        schemeRegistry.register(new Scheme("http", PlainSocketFactory.getSocketFactory(), 80));
+        schemeRegistry.register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
+          
+        ClientConnectionManager manager = new ThreadSafeClientConnManager(httpParams, schemeRegistry);    
+        httpClient = new DefaultHttpClient(manager, httpParams);
+    }
+    
+    return httpClient;
   }
+  
+  // 30s time out
+//  public HttpClient getHttpClient() {
+//        // 初始化一个HttpClient
+//        BasicHttpParams httpParams = new BasicHttpParams();
+//        httpParams.setIntParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 30000);
+//        httpParams.setIntParameter(CoreConnectionPNames.SO_TIMEOUT, 30000);
+//        return new DefaultHttpClient(httpParams);
+//  }
   
   public String getServerAddr() {
     return serverAddress;
   }
   
   /**
-   * 判断数据库是否存在 
+   * 判断历史号码数据库是否存在 
    * @return false or true
    */
-  public boolean checkDataBase() {
-    Log.i(TAG, "checkDataBase entered");
+  public boolean checkHisDataDB() {
+    Log.i(TAG, "checkHisDataDB entered");
     try {
-      sqliteDB = SQLiteDatabase.openDatabase((DBPath + DBName), null, SQLiteDatabase.OPEN_READWRITE);
-      Log.i(TAG, "checkDataBase open database successfully.database:" + (DBPath + DBName));
+      hisDataSqliteDB = SQLiteDatabase.openDatabase((DBPath + DBName), null, SQLiteDatabase.OPEN_READWRITE);
+      Log.i(TAG, "checkHisDataDB open database successfully.database:" + (DBPath + DBName));
     } catch (SQLiteException e) {
-      Log.i(TAG, "checkDataBase get exception:" + e.toString());
+      Log.i(TAG, "checkHisDataDB get exception:" + e.toString());
     }
-    Log.i(TAG, "checkDataBase returned");
-    return sqliteDB != null ? true : false;
+    Log.i(TAG, "checkHisDataDB returned");
+    return hisDataSqliteDB != null ? true : false;
   }
   
   /** 判断未出号码数据库是否存在 */
@@ -198,8 +265,8 @@ public class ShuangSeToolsSetApplication extends Application {
   public void onCreate() {
     super.onCreate();
 
-    // 判断数据库是否存在
-    if (!checkDataBase()) {
+    // 判断历史数据的数据库是否存在
+    if (!checkHisDataDB()) {
       // DB不存在就把raw里的数据库写入手机
         copyDataBase(DBName);
     }
@@ -210,11 +277,11 @@ public class ShuangSeToolsSetApplication extends Application {
     }
     
     //打开历史数据库
-    if (sqliteDB == null) {
-      Log.i(TAG, "onCreate is going to open database.");
+    if (hisDataSqliteDB == null) {
+      Log.i(TAG, "onCreate is going to open the hisdata database.");
       // open the database
       try {
-        sqliteDB = SQLiteDatabase.openDatabase((DBPath + DBName), null, SQLiteDatabase.OPEN_READWRITE);
+        hisDataSqliteDB = SQLiteDatabase.openDatabase((DBPath + DBName), null, SQLiteDatabase.OPEN_READWRITE);
       } catch (SQLiteException e) {
         throw new Error("open database failed, " + e.toString());
       }
@@ -234,6 +301,8 @@ public class ShuangSeToolsSetApplication extends Application {
       
       Log.i(TAG, "neverOutSqliteDB is opened.");
     }
+    
+    //本地数据保存的数据库
     this.dbHelper = new DataBaseHelper(this);
   }
 
@@ -241,22 +310,19 @@ public class ShuangSeToolsSetApplication extends Application {
   public void loadLocalHisDataIntoCache() {
     String querySQL = "select * from hisitems order by itemid desc";
 
-    Cursor cursor = sqliteDB.rawQuery(querySQL, null);
+    Cursor cursor = hisDataSqliteDB.rawQuery(querySQL, null);
     int cnt = cursor.getCount();
 
     //clear it if it is not null to ensure the reload works fine 
     if(allHisData != null) {
-      synchronized(allHisData) {
-        allHisData.clear(); 
-      }
+        allHisData.clear();
     }
     
     if (cnt > 0) {
         allHisData = new ArrayList<ShuangseCodeItem>(cnt + 1);
         
-      synchronized (allHisData) {
-        while (cursor.moveToNext()) {
-          allHisData.add(new ShuangseCodeItem(cursor.getInt(cursor
+      while (cursor.moveToNext()) {
+        allHisData.add(new ShuangseCodeItem(cursor.getInt(cursor
               .getColumnIndex("itemid")), cursor.getInt(cursor
               .getColumnIndex("red1")), cursor.getInt(cursor
               .getColumnIndex("red2")), cursor.getInt(cursor
@@ -265,7 +331,6 @@ public class ShuangSeToolsSetApplication extends Application {
               .getColumnIndex("red5")), cursor.getInt(cursor
               .getColumnIndex("red6")), cursor.getInt(cursor
               .getColumnIndex("blue"))));
-        }
       }
 
       this.sortLoadedHisData();
@@ -280,13 +345,13 @@ public class ShuangSeToolsSetApplication extends Application {
     //设置选号为下一期选号的号码
     currentSelection.setItemId(getLoalLatestItemIDFromCache() + 1);
     
-    //后台删除数据库中6码出4，5，6个的记录
-    Thread tx = new Thread()  {
+    //后台删除数据库中6码出4，5，6个, 17码出6，11码出5，6的记录
+    Thread tx = new Thread() {
       public void run() {
         int cnt = allHisData.size();
-        //这些6码(共556组)中4，5，6的是基于2013086期计算出来的
-        //这些6码在2013086期及以前的号码中从未中过4，5，6码
-        int startIndex = getIndexByItemIDInLocalCache(2013086);
+        //这些6码中4，5，6的是基于2014070期计算出来的
+        //这些6码在2014070期及以前的号码中从未中过4，5，6码
+        int startIndex = getIndexByItemIDInLocalCache(2014070);
         Log.w(TAG, "Cnt:"+cnt + "startIndex:" + startIndex);
         
         //针对新开出的红球码，看看这些6码组是否在近期的出号中中出4，5，6，如果中出，则删除
@@ -618,8 +683,8 @@ public class ShuangSeToolsSetApplication extends Application {
   public static int getOccursCntOfWarm(int[] missValue) {
     int valCnt = 0;
     for(int i=0; i<missValue.length; i++) {
-      if(missValue[i] >= ShuangSeToolsSetApplication.WARM_MISS_START && 
-          missValue[i] <= ShuangSeToolsSetApplication.WARM_MISS_END) {
+      if(missValue[i] >= WARM_MISS_START && 
+          missValue[i] <= WARM_MISS_END) {
         valCnt++;
       }
     }
@@ -1533,7 +1598,7 @@ public class ShuangSeToolsSetApplication extends Application {
   //在本地数据库中查找是否给定的红球是数据库中的号码
   public boolean checkIfRedNumbersinLocalDB(int r1,int r2,int r3, int r4, int r5, int r6) {
     String querySQL = "select count(*) from hisitems where red1=? and red2=? and red3=? and red4=? and red5=? and red6=?";
-    Cursor cursor = sqliteDB.rawQuery(querySQL, new String[] { String.valueOf(r1), String.valueOf(r2), String.valueOf(r3), 
+    Cursor cursor = hisDataSqliteDB.rawQuery(querySQL, new String[] { String.valueOf(r1), String.valueOf(r2), String.valueOf(r3), 
         String.valueOf(r4),String.valueOf(r5),String.valueOf(r6)});
     
     int total = 0;
@@ -1573,7 +1638,7 @@ public class ShuangSeToolsSetApplication extends Application {
   // return false -- 不存在
   public boolean checkIfItemInLocalDB(ShuangseCodeItem item) {
     String querySQL = "select count(*) from hisitems where itemid = ?";
-    Cursor cursor = sqliteDB.rawQuery(querySQL,
+    Cursor cursor = hisDataSqliteDB.rawQuery(querySQL,
         new String[] { String.valueOf(item.id) });
 
     int total = 0;
@@ -1591,7 +1656,7 @@ public class ShuangSeToolsSetApplication extends Application {
 
   public int getTotalLocalDBHisDataCnt() {
     String querySQL = "select count(*) from hisitems";
-    Cursor cursor = sqliteDB.rawQuery(querySQL, null);
+    Cursor cursor = hisDataSqliteDB.rawQuery(querySQL, null);
 
     int total = 0;
     if (cursor.moveToNext()) {
@@ -1617,9 +1682,9 @@ public class ShuangSeToolsSetApplication extends Application {
       return 2003001;
     } else {
       String querySQL = "select max(itemid) from hisitems";
-      Cursor cursor = sqliteDB.rawQuery(querySQL, null);
+      Cursor cursor = hisDataSqliteDB.rawQuery(querySQL, null);
 
-      int maxItemID = 2003001;
+      int maxItemID = 2013001;
       if (cursor.moveToNext()) {
         maxItemID = cursor.getInt(0);
       }
@@ -1728,7 +1793,7 @@ public class ShuangSeToolsSetApplication extends Application {
 
     try {
 
-      sqliteDB.insertOrThrow("hisitems", null, newEntry);
+      hisDataSqliteDB.insertOrThrow("hisitems", null, newEntry);
 
     } catch (SQLException e) {
 
@@ -1743,7 +1808,6 @@ public class ShuangSeToolsSetApplication extends Application {
   }
 
   private void sortLoadedHisData() {
-    synchronized (allHisData) {
       Collections.sort(allHisData, new Comparator<ShuangseCodeItem>() {
         public int compare(ShuangseCodeItem o1, ShuangseCodeItem o2) {
           int itemID1 = ((ShuangseCodeItem) o1).id;
@@ -1751,17 +1815,14 @@ public class ShuangSeToolsSetApplication extends Application {
           return (itemID1 - itemID2);
         }
       });
-    }
   }
 
   // 创建全局变量
-  public static TableRow.LayoutParams rowPara;
-  public static TableRow.LayoutParams headLeftCellPara;
-  public static TableRow.LayoutParams headRightCellPara;
-  public static TableRow.LayoutParams leftCellPara;
-  public static TableRow.LayoutParams rightCellPara;
-  
-  @SuppressWarnings("deprecation")
+  public TableRow.LayoutParams rowPara;
+  public TableRow.LayoutParams headLeftCellPara;
+  public TableRow.LayoutParams headRightCellPara;
+  public TableRow.LayoutParams leftCellPara;
+  public TableRow.LayoutParams rightCellPara;
   public void createGlobalDatas() {
     rowPara = new TableRow.LayoutParams(TableRow.LayoutParams.FILL_PARENT,
         TableRow.LayoutParams.FILL_PARENT);
@@ -1877,14 +1938,14 @@ public class ShuangSeToolsSetApplication extends Application {
     return info;
   }
   
-  public static SelectedItem getCurrentSelection() {
+  public SelectedItem getCurrentSelection() {
     return currentSelection;
   }
-  public static void setCurrentSelection(SelectedItem currentSelection) {
-    ShuangSeToolsSetApplication.currentSelection = currentSelection;
+  public void setCurrentSelection(SelectedItem currentSelection) {
+    this.currentSelection = currentSelection;
   }
   //当前选择的号码
-  private static volatile SelectedItem currentSelection = new SelectedItem();
+  private volatile SelectedItem currentSelection = new SelectedItem();
   
   /**旋转组号码
    * 
@@ -3802,10 +3863,12 @@ public ValueObj[] countRedNumberOccuresCount(int size) {
   return redOccur;
 }
 
-/**Hook to do various stat 在EntryActivity 的InitialLoadingTask.doInbackground()中调用，只做Debug用*/
+/**Hook to do various stat 在EntryActivity 的
+ * InitialLoadingTask.doInbackground()中调用，
+ * 只做Debug用*/
 public void statHistoryData() {
    //statHotAndWarmSetOccursData();
-  //statJiangEnSetOccursData();
+   //statJiangEnSetOccursData();
 }
 
 /**胆拖组号*/
@@ -3897,6 +3960,9 @@ public HashSet<Integer> getRecommendBlueNumbers(int itemIndex) {
     } else if(targetVal == 0) {
       blueSet.add(11);blueSet.add(15);
       blueSet.add(5);blueSet.add(2);
+    } else if(targetVal > 16) {
+      targetVal = targetVal / 2;
+      blueSet.add(targetVal);
     } else {
       blueSet.add(targetVal);
     }
@@ -3928,6 +3994,12 @@ public HashSet<Integer> getRecommendBlueNumbers(int itemIndex) {
       blueSet.add(6);
     }
     
+    for(Iterator<Integer> iter = blueSet.iterator();iter.hasNext();) {
+        Integer blue = (Integer)iter.next(); 
+        if(blue > 16) {
+            iter.remove();
+        }
+    }
     return blueSet;
 }
 

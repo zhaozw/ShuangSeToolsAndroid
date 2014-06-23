@@ -594,16 +594,16 @@ public class MainViewActivity extends Activity {
                   
                   //退出之前保存当前的选号
                   SharedPreferences.Editor editor = sharedPreferences.edit();
-                  editor.putString(ShuangSeToolsSetApplication.My_Selection_Red_String, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers()));
-                  editor.putString(ShuangSeToolsSetApplication.My_Selection_Blue_String, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers()));
-                  editor.putString(ShuangSeToolsSetApplication.My_Selection_Red_Dan_Str, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers()));
-                  editor.putString(ShuangSeToolsSetApplication.My_Selection_Red_Tuo_Str, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers()));
-                  editor.putString(ShuangSeToolsSetApplication.My_Selection_BlueForDanTuo_String, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo()));
+                  editor.putString(appContext.My_Selection_Red_String, 
+                      MagicTool.getDispArrangedStr(appContext.getCurrentSelection().getSelectedRedNumbers()));
+                  editor.putString(appContext.My_Selection_Blue_String, 
+                      MagicTool.getDispArrangedStr(appContext.getCurrentSelection().getSelectedBlueNumbers()));
+                  editor.putString(appContext.My_Selection_Red_Dan_Str, 
+                      MagicTool.getDispArrangedStr(appContext.getCurrentSelection().getSelectedRedDanNumbers()));
+                  editor.putString(appContext.My_Selection_Red_Tuo_Str, 
+                      MagicTool.getDispArrangedStr(appContext.getCurrentSelection().getSelectedRedTuoNumbers()));
+                  editor.putString(appContext.My_Selection_BlueForDanTuo_String, 
+                      MagicTool.getDispArrangedStr(appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo()));
                   editor.commit();
                   
                   MainViewActivity.this.finish();

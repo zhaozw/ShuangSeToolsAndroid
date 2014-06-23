@@ -196,7 +196,7 @@ public class BlueMissingDataActivity extends Activity {
             //0列
             row.addView(UIFactory.makeTextCell(Integer.toString(itemId), Color.WHITE, 
                     BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.leftCellPara);// 期号
+                    appContext.leftCellPara);// 期号
             //1-19列
             for (int m = 1; m <= 19; m++) {
                 int blueNum = 0;
@@ -206,7 +206,7 @@ public class BlueMissingDataActivity extends Activity {
                 case 15:
                     //分割符号
                     row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                            ShuangSeToolsSetApplication.rightCellPara);
+                            appContext.rightCellPara);
                     continue;//continue the for loop
                 case 1:
                 case 2:
@@ -241,138 +241,138 @@ public class BlueMissingDataActivity extends Activity {
                     row.addView(UIFactory.makeImageCell(
                         getResources().getDrawable(MagicTool.getResIDbyBluenum(blueNum)),
                             BlueMissingDataActivity.this),
-                            ShuangSeToolsSetApplication.rightCellPara);
+                            appContext.rightCellPara);
 
                 } else {
                     row.addView(UIFactory.makeTextCell(Integer.toString(missCnt),
                             Color.GRAY, 
                             BlueMissingDataActivity.this),
-                            ShuangSeToolsSetApplication.rightCellPara);
+                            appContext.rightCellPara);
                 }
             }//end for
             
             //20列 - 分割符号
             row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.rightCellPara);
+                    appContext.rightCellPara);
             
             //大小（2列）+ 分割符号
             int bigSmall = appContext.getBlueNumAttrValue(0, blueVal);    
             if(bigSmall == 1) {//大
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(17)),
-                        BlueMissingDataActivity.this), ShuangSeToolsSetApplication.rightCellPara);
+                        BlueMissingDataActivity.this), appContext.rightCellPara);
                 //获取篮球小(0)遗漏几次
                 int missVal = appContext.getBlueNumAttrMissTimes(0, 0, itemId);                
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal), Color.GRAY, 
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             } else if(bigSmall == 0){//小
                 //获取篮球大(1)遗漏几次
                 int missVal = appContext.getBlueNumAttrMissTimes(0, 1, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(18)),
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             }
             row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.rightCellPara);
+                    appContext.rightCellPara);
             
             //奇偶（2列）+分割符号
             int evenOdd = appContext.getBlueNumAttrValue(1, blueVal);    
             if(evenOdd == 1) {//奇
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(19)),
-                        BlueMissingDataActivity.this), ShuangSeToolsSetApplication.rightCellPara);
+                        BlueMissingDataActivity.this), appContext.rightCellPara);
                 //获取偶（0）遗漏几次
                 int missVal = appContext.getBlueNumAttrMissTimes(1, 0, itemId);                
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             } else if(evenOdd == 0){//偶
                 //获取奇（1）遗漏几次
                 int missVal = appContext.getBlueNumAttrMissTimes(1, 1, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(20)),
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             }
             row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.rightCellPara);
+                    appContext.rightCellPara);
             //除3余数（3）+分割符号
             int leftVal = appContext.getBlueNumAttrValue(2, blueVal);            
             if(leftVal == 0) {//余0
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(21)),
-                        BlueMissingDataActivity.this), ShuangSeToolsSetApplication.rightCellPara);
+                        BlueMissingDataActivity.this), appContext.rightCellPara);
                 int missVal = appContext.getBlueNumAttrMissTimes(2, 1, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal = appContext.getBlueNumAttrMissTimes(2, 2, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             } else if(leftVal == 1) {//余1
                 int missVal = appContext.getBlueNumAttrMissTimes(2, 0, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(22)),
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal = appContext.getBlueNumAttrMissTimes(2, 2, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal), 
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             } else if(leftVal == 2) {//余2
                 int missVal = appContext.getBlueNumAttrMissTimes(2, 0, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 
                 missVal = appContext.getBlueNumAttrMissTimes(2, 1, itemId);    
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(23)),
                         BlueMissingDataActivity.this),
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             }
             row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.rightCellPara);
+                    appContext.rightCellPara);
             
             //四区间（4列）+分割符号
             int disNum = appContext.getBlueNumAttrValue(3, blueVal);
             switch (disNum) {
             case 1: //1区间
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(22)),
-                        BlueMissingDataActivity.this), ShuangSeToolsSetApplication.rightCellPara);
+                        BlueMissingDataActivity.this), appContext.rightCellPara);
                 
                 int missVal = appContext.getBlueNumAttrMissTimes(3, 2, itemId);                
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal = appContext.getBlueNumAttrMissTimes(3, 3, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal = appContext.getBlueNumAttrMissTimes(3, 4, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 break;
                 
             case 2://2区间
@@ -380,73 +380,73 @@ public class BlueMissingDataActivity extends Activity {
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal2),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(23)),
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal2 = appContext.getBlueNumAttrMissTimes(3, 3, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal2),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal2 = appContext.getBlueNumAttrMissTimes(3, 4, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal2),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 break;
             case 3: //3区间
                 int missVal3 = appContext.getBlueNumAttrMissTimes(3, 1, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal3),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal3 = appContext.getBlueNumAttrMissTimes(3, 2, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal3),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(24)),
                         BlueMissingDataActivity.this),
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal3 = appContext.getBlueNumAttrMissTimes(3, 4, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal3),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 break;
             case 4://4区间
                 int missVal4 = appContext.getBlueNumAttrMissTimes(3, 1, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal4),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal4 = appContext.getBlueNumAttrMissTimes(3, 2, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal4),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 missVal4 = appContext.getBlueNumAttrMissTimes(3, 3, itemId);
                 row.addView(UIFactory.makeTextCell(Integer.toString(missVal4),
                         Color.GRAY,
                         BlueMissingDataActivity.this), 
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 row.addView(UIFactory.makeImageCell(getResources().getDrawable(MagicTool.getResIDbyBluenum(25)),
                         BlueMissingDataActivity.this),
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
                 break;
             default:
                 Log.e(TAG, "incorrect dis num");
                 break;
             }
             row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.rightCellPara);
+                    appContext.rightCellPara);
             
             //右边1列- 操作按钮
             row.addView(UIFactory.makeBlankCell(BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.rightCellPara);
+                    appContext.rightCellPara);
             
-            dataTable.addView(row, viewIndex++, ShuangSeToolsSetApplication.rowPara);
+            dataTable.addView(row, viewIndex++, appContext.rowPara);
             
             startIndex++;
         }//end while
@@ -465,7 +465,7 @@ public class BlueMissingDataActivity extends Activity {
             row.addView(UIFactory.makeTextCell(Integer.toString(latestId + 1), 
                     Color.WHITE,
                     BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.leftCellPara);// 期号
+                    appContext.leftCellPara);// 期号
             
             for (int m = 1; m <= (howManyColumns - 1); m++) {
                 int blueNum = 0;
@@ -482,7 +482,7 @@ public class BlueMissingDataActivity extends Activity {
                     // 分割符号
                     row.addView(UIFactory
                             .makeSeperator(BlueMissingDataActivity.this),
-                            ShuangSeToolsSetApplication.rightCellPara);
+                            appContext.rightCellPara);
                     continue; // continue for loop
                 case 1:case 2:case 3:case 4: 
                     blueNum = m;
@@ -528,20 +528,20 @@ public class BlueMissingDataActivity extends Activity {
                   if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
                       row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.smartcombinebtn), new BlueOPBtnListener(),
                           BlueMissingDataActivity.this),
-                          ShuangSeToolsSetApplication.rightCellPara);
+                          appContext.rightCellPara);
                   } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
                       row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.dantuocombine), new BlueOPBtnListenerForDanTuo(),
                           BlueMissingDataActivity.this),
-                          ShuangSeToolsSetApplication.rightCellPara);
+                          appContext.rightCellPara);
                   } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
                     if(cnt == 0) {
                       row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.smartcombinebtn), new BlueOPBtnListener(),
                           BlueMissingDataActivity.this),
-                          ShuangSeToolsSetApplication.rightCellPara);
+                          appContext.rightCellPara);
                     } else if(cnt == 1) {
                       row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.dantuocombine), new BlueOPBtnListenerForDanTuo(),
                           BlueMissingDataActivity.this),
-                          ShuangSeToolsSetApplication.rightCellPara);
+                          appContext.rightCellPara);
                     }
                   }
                   continue;//continue the for loop
@@ -555,44 +555,44 @@ public class BlueMissingDataActivity extends Activity {
                       blankCell = new CellData(blueNum, latestId + 1,
                               0, blueRes, null, false, //如果doubleclickDispImg 为null,则不允许选胆码
                               disp_his_num + 1, m, CellData.P_FOR_SEL_BLUE_SMART_COMBINE);
-                      if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers().contains(Integer.valueOf(blueNum))) {
+                      if(appContext.getCurrentSelection().getSelectedBlueNumbers().contains(Integer.valueOf(blueNum))) {
                         blankCell.setClicked(1);
                       } 
                       ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, BlueMissingDataActivity.this); 
-                      row.addView(cellImage, ShuangSeToolsSetApplication.rightCellPara);
+                      row.addView(cellImage, appContext.rightCellPara);
                 } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
                       blankCell = new CellData(blueNum, latestId + 1,
                           0, blueRes, null, false, //如果doubleclickDispImg 为null,则不允许选胆码
                           disp_his_num + 1, m, CellData.P_FOR_SEL_BLUE_DANTUO_COMBINE);
-                      if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo().contains(Integer.valueOf(blueNum))) {
+                      if(appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo().contains(Integer.valueOf(blueNum))) {
                         blankCell.setClicked(1);
                       } 
                       ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, BlueMissingDataActivity.this); 
-                      row.addView(cellImage, ShuangSeToolsSetApplication.rightCellPara);
+                      row.addView(cellImage, appContext.rightCellPara);
                 }else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
                   if(cnt == 0) {
                       blankCell = new CellData(blueNum, latestId + 1,
                           0, blueRes, null, false, //如果doubleclickDispImg 为null,则不允许选胆码
                           disp_his_num + 1, m, CellData.P_FOR_SEL_BLUE_SMART_COMBINE);
-                      if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers().contains(Integer.valueOf(blueNum))) {
+                      if(appContext.getCurrentSelection().getSelectedBlueNumbers().contains(Integer.valueOf(blueNum))) {
                         blankCell.setClicked(1);
                       } 
                       ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, BlueMissingDataActivity.this); 
-                      row.addView(cellImage, ShuangSeToolsSetApplication.rightCellPara);
+                      row.addView(cellImage, appContext.rightCellPara);
                   } else if(cnt == 1) {
                     blankCell = new CellData(blueNum, latestId + 1,
                         0, blueRes, null, false, //如果doubleclickDispImg 为null,则不允许选胆码
                         disp_his_num + 1, m, CellData.P_FOR_SEL_BLUE_DANTUO_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo().contains(Integer.valueOf(blueNum))) {
+                    if(appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo().contains(Integer.valueOf(blueNum))) {
                       blankCell.setClicked(1);
                     } 
                     ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, BlueMissingDataActivity.this); 
-                    row.addView(cellImage, ShuangSeToolsSetApplication.rightCellPara);
+                    row.addView(cellImage, appContext.rightCellPara);
                   }
                 }
                 
             }//end for
-            dataTable.addView(row, viewIndex++, ShuangSeToolsSetApplication.rowPara);
+            dataTable.addView(row, viewIndex++, appContext.rowPara);
         }
         
         //跳过提示行
@@ -619,7 +619,7 @@ public class BlueMissingDataActivity extends Activity {
             row.addView(UIFactory.makeTextCell(titleStr, 
                     Color.WHITE,
                     BlueMissingDataActivity.this), 
-                    ShuangSeToolsSetApplication.leftCellPara);
+                    appContext.leftCellPara);
             //1 到  最后一列
             String dispText;
             SummaryData summaryData;
@@ -646,7 +646,7 @@ public class BlueMissingDataActivity extends Activity {
                 case 5: case 10: case 15: case 20: case 23: case 26: case 30: case 35:
                     //分隔符
                     row.addView(UIFactory.makeSeperator(BlueMissingDataActivity.this), 
-                            ShuangSeToolsSetApplication.rightCellPara);
+                            appContext.rightCellPara);
                     continue; // continue the for loop
                 case 21:
                     summaryData = bigSmallSummaryData.get(1);
@@ -691,19 +691,21 @@ public class BlueMissingDataActivity extends Activity {
                 }
                 
                 row.addView(UIFactory.makeTextCell(dispText, Color.GRAY, BlueMissingDataActivity.this),
-                        ShuangSeToolsSetApplication.rightCellPara);
+                        appContext.rightCellPara);
             }//end for
             
-            dataTable.addView(row, viewIndex++, ShuangSeToolsSetApplication.rowPara);
+            dataTable.addView(row, viewIndex++, appContext.rowPara);
         }
         
     }
 
-    private OnClickListener cellClickListener = new CellOnClickListener(BlueMissingDataActivity.this);
+    private OnClickListener cellClickListener = new CellOnClickListener(BlueMissingDataActivity.this,appContext);
     static class CellOnClickListener implements OnClickListener {
-      private static BlueMissingDataActivity theActivity;
-      public CellOnClickListener(BlueMissingDataActivity theAct) {
+      private BlueMissingDataActivity theActivity;
+      private ShuangSeToolsSetApplication appContext;
+      public CellOnClickListener(BlueMissingDataActivity theAct, ShuangSeToolsSetApplication ctx) {
         theActivity = theAct;
+        appContext = ctx;
       }
       public void onClick(View v) {
         CellData cellData = (CellData) v.getTag();
@@ -717,11 +719,11 @@ public class BlueMissingDataActivity extends Activity {
               cellData.setClicked(1);
               if((cellData.getNum() > 0 ) && (cellData.getNum() < 17)) {
                 if(cellData.getCellFor() == CellData.P_FOR_SEL_BLUE_SMART_COMBINE) {
-                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers().add(Integer.valueOf(cellData.getNum()))) {
+                  if(!appContext.getCurrentSelection().getSelectedBlueNumbers().add(Integer.valueOf(cellData.getNum()))) {
                     theActivity.InfoMessageBox("提示", "选择蓝球出错，请联系作者。");
                   }
                 } else if(cellData.getCellFor() == CellData.P_FOR_SEL_BLUE_DANTUO_COMBINE) {
-                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo().add(Integer.valueOf(cellData.getNum()))) {
+                  if(!appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo().add(Integer.valueOf(cellData.getNum()))) {
                     theActivity.InfoMessageBox("提示", "选择胆拖蓝球出错，请联系作者。");
                   }
                 } else {
@@ -732,14 +734,14 @@ public class BlueMissingDataActivity extends Activity {
               imageView.setImageDrawable(null);
               cellData.setClicked(0);
               if(cellData.getCellFor() == CellData.P_FOR_SEL_BLUE_SMART_COMBINE) {
-                  if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers().contains(Integer.valueOf((cellData.getNum())))) {
-                    if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers().remove(Integer.valueOf((cellData.getNum())))) {
+                  if(appContext.getCurrentSelection().getSelectedBlueNumbers().contains(Integer.valueOf((cellData.getNum())))) {
+                    if(!appContext.getCurrentSelection().getSelectedBlueNumbers().remove(Integer.valueOf((cellData.getNum())))) {
                       theActivity.InfoMessageBox("提示", "去选择篮球球出错，请联系作者。");
                     }
                   }
               } else if(cellData.getCellFor() == CellData.P_FOR_SEL_BLUE_DANTUO_COMBINE) {
-                  if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo().contains(Integer.valueOf((cellData.getNum())))) {
-                    if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo().remove(Integer.valueOf((cellData.getNum())))) {
+                  if(appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo().contains(Integer.valueOf((cellData.getNum())))) {
+                    if(!appContext.getCurrentSelection().getSelectedBlueNumbersForDanTuo().remove(Integer.valueOf((cellData.getNum())))) {
                       theActivity.InfoMessageBox("提示", "去选择篮球球出错，请联系作者。");
                     }
                   }
