@@ -68,6 +68,8 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.util.SparseArray;
@@ -115,7 +117,12 @@ public class ShuangSeToolsSetApplication extends Application {
   public ArrayList<ShuangseCodeItem> getAllHisData() {
     return allHisData;
   }
-
+  private final int picCachedSize = 1000;
+  private LruCache<String, Drawable> pictureCache = new LruCache<String, Drawable>(picCachedSize);
+  public LruCache<String, Drawable> getPicCache() {
+      return pictureCache;
+  }
+  
   private SQLiteDatabase hisDataSqliteDB;
   private final String DBPath = "/data/data/com.shuangse.ui/databases/";
   private final String DBName = "historydata.db";
@@ -304,6 +311,17 @@ public class ShuangSeToolsSetApplication extends Application {
     
     //本地数据保存的数据库
     this.dbHelper = new DataBaseHelper(this);
+    
+    //Load Pictures
+    for(int blue=1;blue<=25;blue++) {
+      pictureCache.put("blue"+blue, getResources().getDrawable(MagicTool.getResIDbyBluenum(blue)));
+    }
+    for(int red=1;red<=33;red++) {
+        pictureCache.put("red"+red, getResources().getDrawable(MagicTool.getResIDbyRednum(red)));
+    }
+    for(int red=1;red<=33;red++) {
+        pictureCache.put("danRed"+red, getResources().getDrawable(MagicTool.getDanResIDbyRednum(red)));
+    }
   }
 
   /* 将本地数据库的数据全部读入到本地cache中 */
@@ -1938,14 +1956,14 @@ public class ShuangSeToolsSetApplication extends Application {
     return info;
   }
   
-  public SelectedItem getCurrentSelection() {
+  public static SelectedItem getCurrentSelection() {
     return currentSelection;
   }
-  public void setCurrentSelection(SelectedItem currentSelection) {
-    this.currentSelection = currentSelection;
+  public static void setCurrentSelection(SelectedItem currentSel) {
+      currentSelection = currentSel;
   }
   //当前选择的号码
-  private volatile SelectedItem currentSelection = new SelectedItem();
+  private static SelectedItem currentSelection = new SelectedItem();
   
   /**旋转组号码
    * 

@@ -17,7 +17,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -68,7 +67,7 @@ public class RedMissingTrendActivity extends Activity {
         appContext = (ShuangSeToolsSetApplication) getApplication();
         
         //更新标题
-        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);        
+        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         setContentView(R.layout.redhotcooltrend);
         getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
         
@@ -306,10 +305,12 @@ public class RedMissingTrendActivity extends Activity {
                         //获取基于那一期的该红球的遗漏值
                         int missCnt = appContext.getRedNumMissTimes(redNum, itemId);
                         if (missCnt == 0) {//当期出号了，显示球
-                            Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(redNum));
-                            row.addView(UIFactory.makeImageCellWithBackground(redRes, RedMissingTrendActivity.this, 
-                                                     getColorByMissValue(missValueOfThisRed)),
-                                                    appContext.rightCellPara);
+                            //Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(redNum));
+                            row.addView(UIFactory.makeImageCellWithBackground(
+                                    appContext.getPicCache().get("red"+redNum),
+                                    RedMissingTrendActivity.this, 
+                                    getColorByMissValue(missValueOfThisRed)),
+                                    appContext.rightCellPara);
                         } else {//显示遗漏值
                             row.addView(UIFactory.makeTextCellWithBackground(
                                     Integer.toString(missCnt), Color.GRAY,
@@ -333,8 +334,8 @@ public class RedMissingTrendActivity extends Activity {
                     case 35: case 36:case 37:case 38:case 39:case 40:case 41: //热码出0 - 6个 (35 - 41)
                         if(hotOccursCnt == ( m - 35)) {
                           //显示出几个的图片
-                          Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(hotOccursCnt));
-                          row.addView(UIFactory.makeImageCellWithBackground(redRes, 
+                          //Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(hotOccursCnt));
+                          row.addView(UIFactory.makeImageCellWithBackground(appContext.getPicCache().get("red" + hotOccursCnt), 
                               RedMissingTrendActivity.this, getColorByMissValue(ShuangSeToolsSetApplication.HOT_MISS_START)),
                                                   appContext.rightCellPara);
                         } else {//显示遗漏次数
@@ -346,8 +347,9 @@ public class RedMissingTrendActivity extends Activity {
                     case 43:case 44:case 45:case 46:case 47:case 48:case 49: //温码出0-6个（43-49)
                       if(warmOccursCnt == ( m - 43)) {
                         //显示出几个的图片
-                        Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(warmOccursCnt));
-                        row.addView(UIFactory.makeImageCellWithBackground(redRes, RedMissingTrendActivity.this, 
+                        //Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(warmOccursCnt));
+                        row.addView(UIFactory.makeImageCellWithBackground(appContext.getPicCache().get("red" + warmOccursCnt),
+                            RedMissingTrendActivity.this, 
                             getColorByMissValue(ShuangSeToolsSetApplication.WARM_MISS_START)),
                                                 appContext.rightCellPara);
                       } else {//显示遗漏次数
@@ -359,8 +361,9 @@ public class RedMissingTrendActivity extends Activity {
                     case 51:case 52:case 53:case 54:case 55:case 56:case 57://冷码出0-6个 （51-57)
                       if(coolOccursCnt == ( m - 51)) {
                         //显示出几个的图片
-                        Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(coolOccursCnt));
-                        row.addView(UIFactory.makeImageCellWithBackground(redRes, RedMissingTrendActivity.this,
+                        //Drawable redRes = getResources().getDrawable(MagicTool.getResIDbyRednum(coolOccursCnt));
+                        row.addView(UIFactory.makeImageCellWithBackground(appContext.getPicCache().get("red" + coolOccursCnt), 
+                            RedMissingTrendActivity.this,
                             getColorByMissValue(ShuangSeToolsSetApplication.COOL_MISS_START)),
                                                 appContext.rightCellPara);
                       } else {//显示遗漏次数
@@ -449,24 +452,28 @@ public class RedMissingTrendActivity extends Activity {
                 CellData blankCell = null;
                 if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
                     blankCell = new CellData(redNum, latestId + 1, 0, 
-                        getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
+                        appContext.getPicCache().get("red"+redNum),
+                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
+                        appContext.getPicCache().get("danRed"+redNum),
+                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
                         false, //不允许双击选择
                         disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_SMART_COMBINE);
-                    if(appContext.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
+                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
                       blankCell.setClicked(1);
                     }
                     ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
                     row.addView(cellImage, appContext.rightCellPara);
                 } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
                   blankCell = new CellData(redNum, latestId + 1, 0, 
-                      getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                      getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
+                      appContext.getPicCache().get("red"+redNum),
+                      appContext.getPicCache().get("danRed"+redNum),
+                      //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
+                      //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
                       true, //允许双击选择
                       disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_DANTUO_COMBINE);
-                  if(appContext.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
+                  if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
                     blankCell.setClicked(2);
-                  } else if(appContext.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
+                  } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
                     blankCell.setClicked(1);
                   }
                   ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
@@ -475,24 +482,28 @@ public class RedMissingTrendActivity extends Activity {
                 }else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
                   if(cnt == 0) {
                     blankCell = new CellData(redNum, latestId + 1, 0, 
-                        getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
+                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
+                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
+                        appContext.getPicCache().get("red" + redNum),
+                        appContext.getPicCache().get("danRed" + redNum),
                         false, //不允许双击选择
                         disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_SMART_COMBINE);
-                    if(appContext.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
+                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
                       blankCell.setClicked(1);
                     }
                     ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
                     row.addView(cellImage, appContext.rightCellPara);
                   } else if(cnt == 1) {
                     blankCell = new CellData(redNum, latestId + 1, 0, 
-                        getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
+                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
+                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
+                        appContext.getPicCache().get("red"+redNum),
+                        appContext.getPicCache().get("danRed"+redNum),
                         true, //允许双击选择
                         disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_DANTUO_COMBINE);
-                    if(appContext.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
+                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
                       blankCell.setClicked(2);
-                    } else if(appContext.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
+                    } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
                       blankCell.setClicked(1);
                     }
                     ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
@@ -648,13 +659,11 @@ public class RedMissingTrendActivity extends Activity {
         }
     }
     
-    private OnClickListener cellClickListener = new CellOnClickListener(this, appContext);
+    private OnClickListener cellClickListener = new CellOnClickListener(this);
     static class CellOnClickListener implements OnClickListener {
       private static RedMissingTrendActivity theActivity;
-      private ShuangSeToolsSetApplication appContext;
-      public CellOnClickListener(RedMissingTrendActivity theAct, ShuangSeToolsSetApplication ctx) {
+      public CellOnClickListener(RedMissingTrendActivity theAct) {
         theActivity = theAct;
-        appContext = ctx;
       }
       public void onClick(View v) {
         CellData cellData = (CellData) v.getTag();
@@ -667,7 +676,7 @@ public class RedMissingTrendActivity extends Activity {
                 imageView.setImageDrawable(cellData.getDispImg());
                 cellData.setClicked(1);
                 if((cellData.getNum() > 0 ) && (cellData.getNum() < 34)) {
-                  if(!appContext.getCurrentSelection().getSelectedRedNumbers().add(Integer.valueOf(cellData.getNum()))) {
+                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().add(Integer.valueOf(cellData.getNum()))) {
                     theActivity.InfoMessageBox("提示", "选择红球出错，请联系作者。");
                   }
                 }
@@ -676,7 +685,7 @@ public class RedMissingTrendActivity extends Activity {
               imageView.setImageDrawable(cellData.getDispImg());
               cellData.setClicked(1);
               if((cellData.getNum() > 0 ) && (cellData.getNum() < 34)) {
-                if(!appContext.getCurrentSelection().getSelectedRedTuoNumbers().add(Integer.valueOf(cellData.getNum()))) {
+                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().add(Integer.valueOf(cellData.getNum()))) {
                   theActivity.InfoMessageBox("提示", "选择红球出错，请联系作者。");
                 }
               }
@@ -685,23 +694,23 @@ public class RedMissingTrendActivity extends Activity {
               if(!cellData.isIfAllowDoubleClickSel()) {//不允许双击选择，选择去掉
                   imageView.setImageDrawable(null);
                   cellData.setClicked(0);
-                  if(!appContext.getCurrentSelection().getSelectedRedNumbers().remove(Integer.valueOf(cellData.getNum()))) {
+                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().remove(Integer.valueOf(cellData.getNum()))) {
                     theActivity.InfoMessageBox("提示", "去选择红球出错，请联系作者。");
                   }
               } else {//允许双击,选择为胆码,去掉拖，加入胆
                 imageView.setImageDrawable(cellData.getDoubleclickDispImg());
                 cellData.setClicked(2);
-                if(!appContext.getCurrentSelection().getSelectedRedTuoNumbers().remove(Integer.valueOf(cellData.getNum()))) {
+                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().remove(Integer.valueOf(cellData.getNum()))) {
                   theActivity.InfoMessageBox("提示", "去选择红球拖码时出错，请联系作者。");
                 } 
-                if(!appContext.getCurrentSelection().getSelectedRedDanNumbers().add(Integer.valueOf(cellData.getNum()))) {
+                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().add(Integer.valueOf(cellData.getNum()))) {
                   theActivity.InfoMessageBox("提示", "选择红球胆码时出错，请联系作者。");
                 }
               }
           } else if(cellData.isClicked() == 2){//点击了2次，现在又点击，去掉为胆码 
             imageView.setImageDrawable(null);
             cellData.setClicked(0);
-            if(!appContext.getCurrentSelection().getSelectedRedDanNumbers().remove(Integer.valueOf(cellData.getNum()))) {
+            if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().remove(Integer.valueOf(cellData.getNum()))) {
               theActivity.InfoMessageBox("提示", "去选择红球胆码出错，请联系作者。");
             }
          } else {

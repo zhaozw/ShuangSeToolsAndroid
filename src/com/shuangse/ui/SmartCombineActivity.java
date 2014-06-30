@@ -265,7 +265,7 @@ public class SmartCombineActivity extends Activity {
     ifCheckRedSum = sharedPreferences.getBoolean("check_sum_combine", true);
     
     //—°‘Òƒƒ“ª∆⁄
-    this.currentCombineItemId = appContext.getCurrentSelection().getItemId(); 
+    this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId(); 
     currentCombineItemIdTextView.setText(String.valueOf(this.currentCombineItemId));
     
     recommend_blue_spinner = (Spinner) findViewById(R.id.recommend_blue_spin);
@@ -292,7 +292,7 @@ public class SmartCombineActivity extends Activity {
                 HashSet<Integer> blueSet = appContext.getRecommendBlueNumbers(appContext.getAllHisData().size());
                 blueSet.addAll(blueSet);
                 
-                currentSelBlueList = appContext.getCurrentSelection().getSelectedBlueNumbers();
+                currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
                 currentSelBlueList.clear();
                 currentSelBlueList.addAll(blueSet);
                 StringBuffer blueSb = new StringBuffer();
@@ -344,7 +344,7 @@ public class SmartCombineActivity extends Activity {
              
                   HashSet<Integer> redSet = appContext.getRecommendRedNumber(appContext.getAllHisData().size() - 1);
                   
-                  currentSelRedList = appContext.getCurrentSelection().getSelectedRedNumbers();
+                  currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
                   currentSelRedList.clear();
                   currentSelRedList.addAll(redSet);
                   StringBuffer redSb = new StringBuffer();
@@ -363,7 +363,7 @@ public class SmartCombineActivity extends Activity {
                   });
            } else if(currentSelRecommendRedModelId == RECOMMEND6FOR456) {
              HashSet<Integer> redSet = appContext.getRecommend6Cover456Codes();
-             currentSelRedList = appContext.getCurrentSelection().getSelectedRedNumbers();
+             currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
              currentSelRedList.clear();
              currentSelRedList.addAll(redSet);
              //≈≈–Ú
@@ -385,7 +385,7 @@ public class SmartCombineActivity extends Activity {
              
            } else if(currentSelRecommendRedModelId == RECOMMEND17FOR6) {
              HashSet<Integer> redSet = appContext.getRecommend17Cover6Codes();
-             currentSelRedList = appContext.getCurrentSelection().getSelectedRedNumbers();
+             currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
              currentSelRedList.clear();
              currentSelRedList.addAll(redSet);
              //≈≈–Ú
@@ -406,7 +406,7 @@ public class SmartCombineActivity extends Activity {
              });
            } else if(currentSelRecommendRedModelId == RECOMMEND11FOR56) {
              HashSet<Integer> redSet = appContext.getRecommend11Cover56Codes();
-             currentSelRedList = appContext.getCurrentSelection().getSelectedRedNumbers();
+             currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
              currentSelRedList.clear();
              currentSelRedList.addAll(redSet);
              //≈≈–Ú
@@ -429,7 +429,7 @@ public class SmartCombineActivity extends Activity {
              String myKeepRedStr = sharedPreferences.getString("My_Keep_Red_Str", "");
              if(myKeepRedStr != null && myKeepRedStr.length() > 0) {
                HashSet<Integer> redSet = MagicTool.parsetRedSetByString(myKeepRedStr);
-               currentSelRedList = appContext.getCurrentSelection().getSelectedRedNumbers();
+               currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
                currentSelRedList.clear();
                currentSelRedList.addAll(redSet);
                //≈≈–Ú
@@ -484,7 +484,7 @@ public class SmartCombineActivity extends Activity {
             mSpinnerInitializedCount++;
           } else {//User click
             currentSelModelId = ((ItemPair)parent.getItemAtPosition(pos)).getItemVal();
-            appContext.getCurrentSelection().setSelectedModelId(currentSelModelId);
+            ShuangSeToolsSetApplication.getCurrentSelection().setSelectedModelId(currentSelModelId);
           }
       }
 
@@ -704,7 +704,7 @@ public class SmartCombineActivity extends Activity {
     super.onResume();
     Log.i(TAG, "onResume()");
     StringBuffer redSb = new StringBuffer();
-    currentSelRedList = appContext.getCurrentSelection().getSelectedRedNumbers();
+    currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
     //Collections.sort(currentSelRedList);
     for(Integer item : currentSelRedList) {
       if(item < 10) {
@@ -731,7 +731,7 @@ public class SmartCombineActivity extends Activity {
     }
 
     StringBuffer blueSb = new StringBuffer();
-    currentSelBlueList = appContext.getCurrentSelection().getSelectedBlueNumbers();
+    currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
     //Collections.sort(currentSelBlueList);
     for(Integer item : currentSelBlueList) {
       if(item < 10) {
@@ -744,7 +744,7 @@ public class SmartCombineActivity extends Activity {
     blueSb.append("π≤" + currentSelBlueList.size() + "¬Î");
     selBlueTextView.setText(blueSb.toString());
     
-    currentSelModelId =appContext.getCurrentSelection().getSelectedModelId();  
+    currentSelModelId =ShuangSeToolsSetApplication.getCurrentSelection().getSelectedModelId();  
     spinner_combine_model.setSelection(SmartCombineActivity.getPosIndexByModelID(currentSelModelId));
   }
 

@@ -44,23 +44,23 @@ public class EntryActivity extends Activity {
         ifAutoUpdateData = sharedPreferences.getBoolean("auto_update_data", true);
         
         //读入已经选择的号码        
-        appContext.getCurrentSelection().setSelectedRedNumbers(
+        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedNumbers(
             MagicTool.parsetRedArrayListByString(
                 sharedPreferences.getString(appContext.My_Selection_Red_String, "")));
 
-        appContext.getCurrentSelection().setSelectedBlueNumbers(
+        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedBlueNumbers(
             MagicTool.parsetRedArrayListByString(
                 sharedPreferences.getString(appContext.My_Selection_Blue_String, "")));
         
-        appContext.getCurrentSelection().setSelectedRedDanNumbers(
+        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedDanNumbers(
             MagicTool.parsetRedArrayListByString(
                 sharedPreferences.getString(appContext.My_Selection_Red_Dan_Str, "")));
         
-        appContext.getCurrentSelection().setSelectedRedTuoNumbers(
+        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedTuoNumbers(
             MagicTool.parsetRedArrayListByString(
                 sharedPreferences.getString(appContext.My_Selection_Red_Tuo_Str, "")));
         
-        appContext.getCurrentSelection().setSelectedBlueNumbersForDanTuo(
+        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedBlueNumbersForDanTuo(
             MagicTool.parsetRedArrayListByString(
                 sharedPreferences.getString(appContext.My_Selection_BlueForDanTuo_String, "")));
         
