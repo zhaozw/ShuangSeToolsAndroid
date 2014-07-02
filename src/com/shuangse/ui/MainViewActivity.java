@@ -87,7 +87,7 @@ public class MainViewActivity extends Activity {
 
     HashMap<String, Object> map1 = new HashMap<String, Object>();
     map1.put("ItemImage", R.drawable.info_reminder);
-    map1.put("ItemText", "玩法说明");
+    map1.put("ItemText", "用法说明");
     menuList.add(map1);
 
     HashMap<String, Object> map2 = new HashMap<String, Object>();
@@ -95,6 +95,11 @@ public class MainViewActivity extends Activity {
     map2.put("ItemText", "中奖经验");
     menuList.add(map2);
     
+    HashMap<String, Object> map10 = new HashMap<String, Object>();
+    map10.put("ItemImage", R.drawable.verify);
+    map10.put("ItemText", "开奖查询");
+    menuList.add(map10);
+
     HashMap<String, Object> map3 = new HashMap<String, Object>();
     map3.put("ItemImage", R.drawable.redmissing);
     map3.put("ItemText", "红球走势");
@@ -110,6 +115,21 @@ public class MainViewActivity extends Activity {
     map5.put("ItemText", "冷热走势");
     menuList.add(map5);
     
+    HashMap<String, Object> map51 = new HashMap<String, Object>();
+    map51.put("ItemImage", R.drawable.cond);
+    map51.put("ItemText", "条件走势");
+    menuList.add(map51);
+
+    HashMap<String, Object> map52 = new HashMap<String, Object>();
+    map52.put("ItemImage", R.drawable.linecol);
+    map52.put("ItemText", "行列走势");
+    menuList.add(map52);
+    
+    HashMap<String, Object> map53 = new HashMap<String, Object>();
+    map53.put("ItemImage", R.drawable.group);
+    map53.put("ItemText", "条件选号");
+    menuList.add(map53);
+    
     HashMap<String, Object> map6 = new HashMap<String, Object>();
     map6.put("ItemImage", R.drawable.dantuo);
     map6.put("ItemText", "胆拖组号");
@@ -122,19 +142,14 @@ public class MainViewActivity extends Activity {
 
     HashMap<String, Object> map8 = new HashMap<String, Object>();
     map8.put("ItemImage", R.drawable.recred);
-    map8.put("ItemText", "软件荐号");
+    map8.put("ItemText", "智能荐号");
     menuList.add(map8);
     
     HashMap<String, Object> map9 = new HashMap<String, Object>();
     map9.put("ItemImage", R.drawable.search);
     map9.put("ItemText", "条件查询");
-    menuList.add(map9);    
+    menuList.add(map9);
     
-    HashMap<String, Object> map10 = new HashMap<String, Object>();
-    map10.put("ItemImage", R.drawable.verify);
-    map10.put("ItemText", "中奖查询");
-    menuList.add(map10);
-
     HashMap<String, Object> map11 = new HashMap<String, Object>();
     map11.put("ItemImage", R.drawable.updatedata);
     map11.put("ItemText", "更新数据");
@@ -142,7 +157,7 @@ public class MainViewActivity extends Activity {
     
     HashMap<String, Object> map12 = new HashMap<String, Object>();
     map12.put("ItemImage", R.drawable.myhis);
-    map12.put("ItemText", "组号记录");
+    map12.put("ItemText", "个人记录");
     menuList.add(map12);
     
     HashMap<String, Object> map13 = new HashMap<String, Object>();
@@ -152,7 +167,7 @@ public class MainViewActivity extends Activity {
     
     HashMap<String, Object> map14 = new HashMap<String, Object>();
     map14.put("ItemImage", R.drawable.contactauthor);
-    map14.put("ItemText", "联系作者");
+    map14.put("ItemText", "联系建议");
     menuList.add(map14);
 
     HashMap<String, Object> map15 = new HashMap<String, Object>();
@@ -177,17 +192,28 @@ public class MainViewActivity extends Activity {
 
         switch (arg2) {
         case 0:
-          //规则说明
+          //用法说明
           Intent intent2 = new Intent(MainViewActivity.this,
               ShuangseRulesActivity.class);
           startActivity(intent2);
           break;
         case 1:
-          //经验分享
+          //中奖经验
           Intent intentx = new Intent(MainViewActivity.this, ExperienceListActivity.class);
           startActivity(intentx);
           break;
         case 2:
+          //中奖查询
+          if(appContext.getAllHisData().size() < 1) {
+            hideProgressBox();
+            InfoMessageBox("警告","无历史数据信息，请先点击<数据更新>更新历史数据.");
+          } else {
+            Intent intent6 = new Intent(MainViewActivity.this,
+                ShuangseHitSearchActivity.class);
+            startActivity(intent6);
+          }
+          break;
+        case 3:
           //红球走势
           if(appContext == null || appContext.getAllHisData().size() < 1) {
             hideProgressBox();
@@ -199,7 +225,7 @@ public class MainViewActivity extends Activity {
             startActivity(intent);
           }
           break;
-        case 3:
+        case 4:
           //篮球走势
           if(appContext == null || appContext.getAllHisData().size() < 1) {
             hideProgressBox();
@@ -211,7 +237,7 @@ public class MainViewActivity extends Activity {
             startActivity(intent3);
           }
           break;
-        case 4:
+        case 5:
           //冷热走势
           if(appContext == null || appContext.getAllHisData().size() < 1) {
             hideProgressBox();
@@ -222,19 +248,28 @@ public class MainViewActivity extends Activity {
             startActivity(intent);
           }
           break;
-        case 5:
+        case 6:
+            //条件走势
+            break;
+        case 7:
+            //行列走势
+            break;
+        case 8:
+            //条件选号
+            break;
+        case 9:
           //胆拖及复式组号
           hideProgressBox();
           Intent intent4x = new Intent(MainViewActivity.this, DantuoCombineActivity.class);
           startActivity(intent4x);
           break;
-        case 6:
+        case 10:
           //旋转组号
           hideProgressBox();
           Intent intent4 = new Intent(MainViewActivity.this, SmartCombineActivity.class);
           startActivity(intent4);
           break;
-        case 7:
+        case 11:
           //软件推荐红球
           hideProgressBox();
         //查看软件荐红历史记录
@@ -242,7 +277,7 @@ public class MainViewActivity extends Activity {
               RecommandHisActivity.class);
           startActivity(intent5x);
           break;
-        case 8:
+        case 12:
           //条件查询
           hideProgressBox();
           Intent intent5 = new Intent(MainViewActivity.this,
@@ -250,43 +285,32 @@ public class MainViewActivity extends Activity {
           startActivity(intent5);
           //InfoMessageBox("信息","火速开发中,将提供：\n1）查询某注号码是否中过奖；\n2）查询一组多个红球的历史中奖情况，例如查询某10红球组在历史上的是否中过奖等功能。\n请等待版本更新，谢谢支持.");
           break;
-        case 9:
-          //中奖查询
-          if(appContext.getAllHisData().size() < 1) {
-            hideProgressBox();
-            InfoMessageBox("警告","无历史数据信息，请先点击<数据更新>更新历史数据.");
-          } else {
-            Intent intent6 = new Intent(MainViewActivity.this,
-                ShuangseHitSearchActivity.class);
-            startActivity(intent6);
-          }
-          break;
-        case 10:
+        case 13:
           // 数据更新
           downloadHistoryData();
           break;
-        case 11:
+        case 14:
           //我的记录
-        //设置
+          //设置
           hideProgressBox();
           Intent myhislauncher = new Intent().setClass(MainViewActivity.this,
               MyHisActivity.class);
           startActivity(myhislauncher);
           break;
-        case 12:
+        case 15:
           //设置
           hideProgressBox();
           Intent launcher = new Intent().setClass(MainViewActivity.this,
               SettingActivity.class);
           startActivity(launcher);
           break;
-        case 13:
-          //联系作者
+        case 16:
+          //联系建议
           Intent intent6 = new Intent(MainViewActivity.this,
               ContactAuthorActivity.class);
           startActivity(intent6);
           break;
-        case 14:
+        case 17:
           //推荐给朋友，导向发送短信页面
           doRecommend();
           break;
