@@ -19,174 +19,11 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="玩法规则"
+                android:text="红号走势图的使用："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
             <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1. 双色球每注号码由红球区和蓝球区2部分组成, 其中红球区从1至33中选六个红球(不要求排列顺序)，蓝球区从1至16中选择一个篮球;"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="\n2. 双色球每注投注号码2元, 每周开奖3期, 投注按当期界定中奖与否."
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="投注方法"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1. 双色球投注方法有：自选号码投注 和 机选随机号码投注;"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="\n2. 根据美国彩票大师盖尔.霍华德研究建议：买彩要自选号码投注, 永远不要机选随机号码投注, 否则就是浪费金钱;"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="\n3. 自选号码投注: 就是根据特定的方法, 如号码走势图、条件值和组合覆盖方法等, 利用计算机或智能手机等现代化计算工具, 过滤选择出所要购买的号码进行投注;"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="\n4. 双色球自选号码投注方式有：单式投注、复式投注，胆拖投注 和 旋转组号（也叫聪明组合）等方法."
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="投注方式 - 单式投注"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="单式投注: 是指从1-33红球号码中任意选择六个不重复的号码(不要求排列顺序), 从1-16蓝球号码中选择一个蓝号, 组合为一注号码的投注; 一次可购买多注单式号码, 也可将一注单式号码重复购买多次(倍投)."
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="投注方式 - 复式投注"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="1. 红球复式: 从1-33红球号码中选择7至20个不重复的红球号码(不要求排列顺序), 从1-16蓝球号码中选择1个蓝球号码, 组合起来投注;"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="\n2. 蓝球复式：从1-33红球号码中选择6个不重复的红球号码(不要求排列顺序), 从1-16蓝球号码中选择2-16个蓝球号码(不要求排列顺序), 组合起来投注;"
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="\n3. 全复式：从红球中选择7至20个号码, 从蓝球中选择2至16个号码, 组合起来投注."
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="投注方式 - 胆拖式投注"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="胆拖式: 是一种红球投注方法, 指从1-33个红球中选1至5个认为必出的号码作为胆码, 然后从剩余的红球中再选1-20个看好的红球作为拖码, 组合起来进行投注. \n\n比如三胆五拖投注法: 某期看好三个红球6, 11, 26必出, 选为三个胆码, 然后再从剩下的红球中看好2, 7, 12, 25, 31共五个红球作为五个拖码, 组合为6, 11, 26 + 2, 7, 12, 15, 31的三胆五拖投注(组合起来共10注号码). 常见的胆拖法有1至5胆拖1-20红等."
-                android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view"
-            android:orientation="vertical" >
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="投注方式 - 旋转组号"
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" />
-
-            <TextView android:id="@+id/smartText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text=""
@@ -194,6 +31,99 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="篮号走势图的使用："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="冷热九层走势图的使用："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="条件走势图的使用："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="行列走势图的使用："
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textColor="#FF0000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+        
     </LinearLayout>
 
 </ScrollView>

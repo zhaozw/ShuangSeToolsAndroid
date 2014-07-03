@@ -9,9 +9,6 @@ import java.util.List;
 import java.util.TimeZone;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-
-import com.shuangse.util.MagicTool;
-
 import android.app.Activity;
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -21,8 +18,6 @@ import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,9 +41,11 @@ public class ShuangseRulesActivity extends Activity {
   private View contentLayout1 = null;
   private View contentLayout2 = null;
   private View contentLayout3 = null;
+  private View contentLayout4 = null;
   private Button btn1;
   private Button btn2;
   private Button btn3;
+  private Button btn4;
   private Handler msgHandler = new MHandler(this);
 
   static class MHandler extends Handler {
@@ -69,14 +66,23 @@ public class ShuangseRulesActivity extends Activity {
           theActivity.btn1.setBackgroundResource(R.drawable.rectbg);
           theActivity.btn2.setBackgroundResource(R.color.transparent);
           theActivity.btn3.setBackgroundResource(R.color.transparent);
+          theActivity.btn4.setBackgroundResource(R.color.transparent);
           break;
         case 1:
           theActivity.btn2.setBackgroundResource(R.drawable.rectbg);
           theActivity.btn1.setBackgroundResource(R.color.transparent);
           theActivity.btn3.setBackgroundResource(R.color.transparent);
+          theActivity.btn4.setBackgroundResource(R.color.transparent);
           break;
         case 2:
           theActivity.btn3.setBackgroundResource(R.drawable.rectbg);
+          theActivity.btn2.setBackgroundResource(R.color.transparent);
+          theActivity.btn1.setBackgroundResource(R.color.transparent);
+          theActivity.btn4.setBackgroundResource(R.color.transparent);
+          break;
+        case 3:
+          theActivity.btn4.setBackgroundResource(R.drawable.rectbg);
+          theActivity.btn3.setBackgroundResource(R.color.transparent);
           theActivity.btn2.setBackgroundResource(R.color.transparent);
           theActivity.btn1.setBackgroundResource(R.color.transparent);
           break;
@@ -113,23 +119,23 @@ public class ShuangseRulesActivity extends Activity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_rules_reminder);
     
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "在本页中点击对应的栏目，仔细阅读栏目内容，尤其应认真阅读《玩法简介》中的旋转组号 比 复式组号的优势。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ShuangseRulesActivity.this).show();
-      }
-    });    
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "在本页中点击对应的栏目，仔细阅读栏目内容，尤其应认真阅读《玩法简介》中的旋转组号 比 复式组号的优势。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ShuangseRulesActivity.this).show();
+//      }
+//    });    
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
 
     localAdapter = new PrivatePagerAdapter();
@@ -139,9 +145,13 @@ public class ShuangseRulesActivity extends Activity {
     btn1 = (Button) findViewById(R.id.btn1);
     btn2 = (Button) findViewById(R.id.btn2);
     btn3 = (Button) findViewById(R.id.btn3);
+    btn4 = (Button) findViewById(R.id.btn4);
+    
     btn1.setBackgroundResource(R.drawable.rectbg);
     btn2.setBackgroundResource(R.color.transparent);
     btn3.setBackgroundResource(R.color.transparent);
+    btn4.setBackgroundResource(R.color.transparent);
+    
     btn1.setOnClickListener(new View.OnClickListener() {
       @Override
       public void onClick(View v) {
@@ -160,16 +170,24 @@ public class ShuangseRulesActivity extends Activity {
         localViewPager.setCurrentItem(2);
       }
     });
+    btn4.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          localViewPager.setCurrentItem(3);
+        }
+      });
 
     mListViews = new ArrayList<View>();
     mInflater = getLayoutInflater();
     contentLayout1 = mInflater.inflate(R.layout.rules_content1, null);
     contentLayout2 = mInflater.inflate(R.layout.rules_content2, null);
     contentLayout3 = mInflater.inflate(R.layout.rules_content3, null);
+    contentLayout4 = mInflater.inflate(R.layout.rules_content4, null);
 
     mListViews.add(contentLayout1);
     mListViews.add(contentLayout2);
     mListViews.add(contentLayout3);
+    mListViews.add(contentLayout4);
 
     // 初始化当前显示的第一个view
     localViewPager.setCurrentItem(0);
@@ -207,7 +225,7 @@ public class ShuangseRulesActivity extends Activity {
       @Override
       public void onPageSelected(int viewIndex) {
         // activity从n到n+1滑动，n+1被加载后掉用此方法
-        View v = mListViews.get(viewIndex);
+        //View v = mListViews.get(viewIndex);
         Log.i(TAG, "viewIndex:" + viewIndex);
         switch (viewIndex) {
         case 0:
@@ -216,17 +234,6 @@ public class ShuangseRulesActivity extends Activity {
           msg0.sendToTarget();
           break;
         case 1:
-          TextView smartText = (TextView) v.findViewById(R.id.smartText);
-          smartText.setText(Html
-              .fromHtml("旋转组号：也叫聪明组合, 是一种由美国彩票大师盖尔.霍华德发明的投注方法, 它利用现代数学的组合覆盖计算方法搜寻最优化组合, "
-                  + "用最少的投注数达到同等中奖概率下的最大覆盖, 比复式投注法的全覆盖更节省, 如中6保5, 中6保4等旋转组号模式是常"
-                  + "用的组合方式. <br><br>比如选好10个红球和1个篮球号码, 全复式需购买210注号码, 而采用旋转组号只需要"
-                  + "16注号码就能做到中6保5(也即: 如果选择的10个号码包含该期的6个红球, 运用聪明组合法只需购买16注号码就能做"
-                  + "到保证中5个红球的奖项, 而且有机会中6个红球奖项). 其它类似的旋转组号模式有如11个数字中6保5需26注等."
-                  + "<br><br>目前全球最新的“旋转组号/聪明组合模式”研究成果是由Iliya Bluskow博士在2010年"
-                  + "出版的<a href=\"http://www.amazon.ca/Combinatorial-lottery-systems-wheels-guaranteed/dp/0968950205\">《Combinatorial Lottery Systems (Wheels) with Guaranteed Wins》</a>"
-                  + "一书中描述."));
-          smartText.setMovementMethod(LinkMovementMethod.getInstance());
           Message msg1 = msgHandler.obtainMessage(ViewSwitchCompletedMsg);
           msg1.arg1 = 1;
           msg1.sendToTarget();
@@ -236,6 +243,13 @@ public class ShuangseRulesActivity extends Activity {
           msg2.arg1 = 2;
           msg2.sendToTarget();
           break;
+          
+        case 3:
+          Message msg3 = msgHandler.obtainMessage(ViewSwitchCompletedMsg);
+          msg3.arg1 = 3;
+          msg3.sendToTarget();
+          break;
+            
         default:
           break;
         }

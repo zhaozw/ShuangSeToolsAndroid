@@ -8,7 +8,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="购彩原则:"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. 理性购彩，娱乐玩彩，非成年人请勿使用本软件；"
+                android:textColor="#FF0000"
+                android:textSize="18sp"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="2. 选定方法，技术选号，彩票大师盖尔.霍华德研究建议：永远不要随机选号！"
+                android:textColor="#FF0000"
+                android:textSize="18sp"/>
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="3. 坚持就是胜利！"
+                android:textColor="#FF0000"
+                android:textSize="18sp"/>
+        </LinearLayout>
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -19,7 +54,7 @@
                 android:id="@+id/top_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="距离本期投注截止还有"
+                android:text="投注截止:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -30,23 +65,48 @@
                 android:gravity="center"
                 android:text="1天14小时24分56秒"
                 android:textColor="#FF0000"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textSize="18sp"/>
         </LinearLayout>
-
-        <RelativeLayout
+        
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view" >
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="玩法规则:"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="1. 双色球单注号码含6个红号和1个蓝号, 红号从1至33中任选六个（不要求排列顺序），蓝号从1至16中任选一个，每注2元."
+                android:textColor="#FF0000"
+                android:textSize="18sp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="\n2. 双色球每周二，四，日晚21：30开奖,销售截止时间为开奖当天晚20：00点."
+                android:textColor="#FF0000"
+                android:textSize="18sp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/corner_view" 
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/remind"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="提示1"
+                android:text="单式投注法："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -54,27 +114,22 @@
                 android:id="@+id/remindstr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/remind"
-                android:layout_marginRight="4dp"
-                android:layout_toRightOf="@id/remind"
-                android:text="福彩双色球每周开奖三次， 每周二、四、日晚20点整为截止销售时间。而有些售彩网站有自己规定的截止时间，如果你网络购彩，请注意该网站的规定，以免错过。"
+                android:text="从1-33中选择6个不重复的红号(无顺序要求), 从1-16中选择一个蓝号, 组合为一注; 一次可购买多注单式号码, 也可将该单式重复购买多次(倍投法)."
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
-        </RelativeLayout>
+        </LinearLayout>
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view" >
+            android:background="@drawable/corner_view" 
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/remind2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="提示2"
+                android:text="复式投注法："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -82,27 +137,22 @@
                 android:id="@+id/remindstr2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/remind2"
-                android:layout_marginRight="4dp"
-                android:layout_toRightOf="@id/remind2"
-                android:text="每周二、四、日晚21：30为福彩双色球彩票开奖时间，在中国教育电视台-1直播。开奖后，再次进入本软件时会自动更新最新的开奖号码。"
+                android:text="从1-33中选择7至20个不重复的红号(无顺序要求), 从1-16中选择1到多个蓝号, 组合起来投注;"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
-        </RelativeLayout>
+        </LinearLayout>
         
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="1dp"
-            android:background="@drawable/corner_view" >
+            android:background="@drawable/corner_view"
+            android:orientation="vertical" >
 
             <TextView
                 android:id="@+id/remind3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"
-                android:text="提示3"
+                android:text="胆拖投注法："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -110,13 +160,10 @@
                 android:id="@+id/remindstr3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/remind3"
-                android:layout_marginRight="4dp"
-                android:layout_toRightOf="@id/remind3"
-                android:text="本软件为您提供购买福彩双色球所需要的常见工具以帮助你购买彩票，安装和使用本软件即表示您已经完全了解购买彩票的规则和风险，同时了解购买彩票导致的一切后果由您自己承担。未成年人请勿购买彩票。"
+                android:text="从1-33中选1至5个红号作为必出胆码, 从剩余的红号中再选1-20个红号作为拖码, 组合起来投注. \n\n比如3胆5拖: 看好红号6, 11, 26必出, 选为3个胆码, 然后从剩下的红号中看好2, 7, 12, 25, 31五个红号作为拖码, 组合为6, 11, 26 + 2, 7, 12, 15, 31的三胆五拖投注."
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
-        </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
