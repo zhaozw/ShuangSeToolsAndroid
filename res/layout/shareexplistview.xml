@@ -23,4 +23,10 @@
         android:textSize="16sp"
         android:text=""/>
     
+    <Button android:text="我要分享" 
+        android:id="@+id/shareMyExpBtn" 
+        android:background="@drawable/big_red_btn"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        style="@style/ButtonSmallText"></Button>
 </LinearLayout>

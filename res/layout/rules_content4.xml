@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/titlenote"
-                android:text="双色球红球选中只要数字选中即可，不要求排列顺序一致。"
+                android:text="双色球红号只要数字选中即可，不要求排列顺序一致。"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
         </RelativeLayout>
@@ -37,6 +37,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
             android:background="@drawable/corner_view" >
 
             <TextView
@@ -65,7 +66,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/level1"
                 android:layout_toRightOf="@id/level1condtitle"
-                android:text="选对全部6个红球和1个篮球"
+                android:text="选对全部6个红号和1个篮号"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 
@@ -122,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/level2"
                 android:layout_toRightOf="@id/level2condtitle"
-                android:text="选对6个红球"
+                android:text="选对6个红号"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 
@@ -179,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/level3"
                 android:layout_toRightOf="@id/level3condtitle"
-                android:text="选对5个红球和1个篮球"
+                android:text="选对5个红号和1个篮号"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 
@@ -236,7 +237,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/level4"
                 android:layout_toRightOf="@id/level4condtitle"
-                android:text="选对5个红球   或者  \n选对4个红球和1个篮球"
+                android:text="选对5个红号   或者  \n选对4个红号和1个篮号"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 
@@ -293,7 +294,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/level5"
                 android:layout_toRightOf="@id/level5condtitle"
-                android:text="选对4个红球   或者  \n选对3个红球和1个篮球"
+                android:text="选对4个红号   或者  \n选对3个红号和1个篮号"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 
@@ -350,7 +351,7 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@id/level6"
                 android:layout_toRightOf="@id/level6condtitle"
-                android:text="只要选对1个篮球即可"
+                android:text="只要选对1个篮号即可"
                 android:textColor="#FF0000"
                 android:textSize="18sp" />
 

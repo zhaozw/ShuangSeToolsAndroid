@@ -14,7 +14,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="电话作者"
+                android:text="短信建议"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -23,7 +23,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="短信联系"
+                android:text="网络建议"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
 
@@ -32,7 +32,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="网络建议"
+                android:text="中奖经验"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />
         </LinearLayout>
@@ -44,7 +44,7 @@
         </View>
 
         <android.support.v4.view.ViewPager
-            android:id="@+id/contactviewpager"
+            android:id="@+id/expshareviewpager"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1" />

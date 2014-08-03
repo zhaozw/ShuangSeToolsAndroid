@@ -13,7 +13,6 @@ import org.json.JSONObject;
 
 import com.shuangse.base.ShuangSeToolsSetApplication;
 import com.shuangse.meta.ExperienceItem;
-import com.shuangse.util.MagicTool;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
@@ -33,7 +32,6 @@ import android.view.Window;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -111,23 +109,23 @@ public class ExperienceListActivity extends ListActivity {
         
         final TextView titleTextView = (TextView) findViewById(R.id.title_text);
         titleTextView.setText(R.string.custom_title_experience);
-        Button returnBtn = (Button)findViewById(R.id.returnbtn);
-        returnBtn.setVisibility(View.VISIBLE);
-        Button helpBtn = (Button)findViewById(R.id.helpbtn);
-        helpBtn.setVisibility(View.VISIBLE);
-        helpBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            String htmlMsg = "本页列出了经典，靠谱的购买彩票的一些方法、经验和总结，点击对应的行标题，即可阅读详细内容；本页会定期更新，请持续关注。";
-            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ExperienceListActivity.this).show();
-          }
-        }); 
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            onBackPressed();
-          }
-        });
+//        Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//        returnBtn.setVisibility(View.VISIBLE);
+//        Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//        helpBtn.setVisibility(View.VISIBLE);
+//        helpBtn.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//            String htmlMsg = "本页列出了经典，靠谱的购买彩票的一些方法、经验和总结，点击对应的行标题，即可阅读详细内容；本页会定期更新，请持续关注。";
+//            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ExperienceListActivity.this).show();
+//          }
+//        }); 
+//        returnBtn.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//            onBackPressed();
+//          }
+//        });
         
         // 获取全局数据
         appContext = (ShuangSeToolsSetApplication) getApplication();

@@ -48,7 +48,7 @@
         
     <Button
         android:id="@+id/sendmail_btn"
-        style="@style/ButtonText"
+        style="@style/ButtonSmallText"
         android:background="@drawable/big_red_btn"
         android:gravity="center"
         android:text="发送建议" >

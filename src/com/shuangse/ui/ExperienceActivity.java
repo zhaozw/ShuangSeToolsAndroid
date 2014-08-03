@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import com.shuangse.base.ShuangSeToolsSetApplication;
 import com.shuangse.meta.ExperienceItem;
-import com.shuangse.util.MagicTool;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,9 +17,7 @@ import android.os.Message;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -79,7 +76,8 @@ public class ExperienceActivity extends Activity {
         expTextView.setText(Html.fromHtml(text));
       } else {
         expTitleView.setText(Html.fromHtml(this.expRecord.getTitle()));
-        expTextView.setText(Html.fromHtml(this.expRecord.getHtmlText()));
+        String endLine = "<br><br>作者：" + expRecord.getAuthor() + " 时间: " + expRecord.getAddTime() + " 联系: " + expRecord.getContact();
+        expTextView.setText(Html.fromHtml(this.expRecord.getHtmlText() + endLine));
       }
       expTextView.setMovementMethod(LinkMovementMethod.getInstance());
     }
@@ -96,24 +94,6 @@ public class ExperienceActivity extends Activity {
     
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_experience_detail);
-  
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页列出文章的详细内容，可上下滚动阅读";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ExperienceActivity.this).show();
-      }
-    }); 
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
     
     appContext = (ShuangSeToolsSetApplication) getApplication();
     
@@ -153,11 +133,17 @@ public class ExperienceActivity extends Activity {
               int id = item.getInt("id"); // 获取对象对应的值
               String title = item.getString("title");
               String textHtml = item.getString("htmlText");
+              String author = item.getString("author");
+              String contact = item.getString("contact");
+              String addTime = item.getString("addTime");
               
               expRecord = new ExperienceItem();
               expRecord.setId(id);
               expRecord.setTitle(title);
               expRecord.setHtmlText(textHtml);
+              expRecord.setAuthor(author);
+              expRecord.setContact(contact);
+              expRecord.setAddTime(addTime);
               
               Message msg = new Message();
               msg.what = ExperienceActivity.DATALOADEDMSG;

@@ -22,12 +22,12 @@
     <string name="history_choose_dialog_title">请选择</string>
     <string name="custom_title_sys_enter">进入系统</string>
     <string name="custom_title_experience">中奖经验及使用方法</string>
-    <string name="custom_title_experience_detail">中奖方法详细内容</string>
+    <string name="custom_title_experience_detail">中奖经验详细内容</string>
     <string name="custom_title_hit_search">中奖查询</string>
     <string name="custom_title_right_redmissing">红球遗漏走势图</string>
     <string name="custom_title_right_bluemissing">蓝球遗漏走势图</string>
     <string name="custom_title_rules_reminder">软件用法说明</string>
-    <string name="custom_title_contact_author">联系软件作者</string>
+    <string name="custom_title_expr_share">经验交流</string>
     <string name="custom_title_settings">软件设置</string>
     <string name="ad_tips_text">提示：本软件完全免费，为了支持作者开发出更多、更好的免费功能，请点击广告条以表支持。点击不会收取您的任何费用，谢谢。</string>
     <string name="title_activity_smart_combine">旋转矩阵组号</string>
@@ -39,6 +39,7 @@
     <string name="custom_title_recommendhis">软件推荐记录</string>
     <string name="custom_title_dantuo_combine">胆拖组号</string>
     <string name="custom_title_hot_cool_trend">红球冷热走势</string>
+    <string name="custom_title_share_my_experience">分享我的中奖经验</string>
 
     <!-- 设置 -->
     <string name="shuangse_update_data_title">自动更新数据</string>
@@ -57,6 +58,91 @@
     <string name="title_activity_experience">ExperienceActivity</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    
+    <!-- 帮助和使用说明 -->
+    <string name="red_trend_details_text">"在主界面点《红号走势》进入,从上往下看为红号出号历史,\
+最近一期排在最下面,默认显示20期,可在《软件设置》->《红号走势显示期数》设置显示更\
+多的期数.\n\n从左往右看依次为红号1-33的出号和遗漏值,如果当期该红号出号,则用红色球状\
+图形表示当期该红号中出;否则,用灰色数字表示该红号遗漏多少期未中出,这个数字称为:遗漏\
+值。\n\n根据历史概率验证,选号时可遵循以下法则选号:\n左右看：上期中出号码的\
+左右相邻码可以选3-5个;上期中出的号码也可再选1-2个;而且1-16直接的小号和16-33之间的大号都要\
+有;\n上下看：从上往下最近相隔1-4期内的热号可以选3-5个;相隔5-10期的温号可以2-3个;相隔10期\
+以上的冷号可选1-2个.\n\n走势图表最下方空白行方格是操作区域,点击该空白方格\
+即可选择该红号,再次点击去掉选择;在第二行胆拖组号对应行的空白方格中,点击两次可选为胆\
+码(不同色彩显示);\n\n在表格的右下角,拖动到右下角,有《旋转组号》或《胆拖组号》按钮,点击\
+即可用该行选好的号码进行组号."</string>
+    <string name="blue_trend_details_text">"在主界面点《蓝号走势》进入,从上往下看为蓝号出号历史,\
+最近一期排在最下面,默认显示20期,可在《软件设置》->《蓝号走势显示期数》设置显示更\
+多的期数.\n\n从左往右看依次为蓝号1-16的出号和遗漏值,紧接其后从左往右分别是当期蓝号的大-小、\
+奇-偶、除3余数、区间分布等4项条件值。如果当期该蓝号和对应的条件值出现,则用蓝色球状\
+图形表示;否则,用灰色数字表示该蓝号和其条件值遗漏多少期未中出,这个数字称为:遗漏\
+值。\n\n根据历史概率验证,选蓝号时要遵循以下法则：\n从上往下看其四个条件值的出现规律,
+分别判定是出大,还是出小;出奇还是出偶;判定其除3余0,1或余2;以及判定篮号落入哪个区间.当4个
+条件值选定后，篮号也就判定了.\n\n走势图表最下方空白行方格是操作区域,点击该空白方格\
+即可选择该蓝号,再次点击去掉选择;在4项条件下，选择对应的条件值后，相应的蓝号就会被计算选出并自
+动显示在对应的蓝号下面;\n\n拖动到表格的右下角,有《旋转组号》和《胆拖组号》按钮,点击\
+后即可将选好的蓝号传入到对应的组号方式中组号."</string>
+    <string name="cond_trend_details_text">"按照条件出值的历史规律，把条件值选好，然后根据条件值过滤"</string>
+    <string name="xuanzhuan_zuhao_title">旋转矩阵组号方法</string>
+    <string name="conditions_zuhao_title">条件值组号方法</string>
+    <string name="dantuo_zuhao_title">胆拖组号方法</string>
+    <string name="xuanzhuan_zuhao_details_text">旋转矩阵组号方法详细说明</string>
+    <string name="conditions_zuhao_details_text">根据条件值组号方法详细说明</string>
+    <string name="dantuo_zuhao_details_text">选定胆和拖组号方法详细说明</string>
+    <string name="detail_description_common">详细说明</string>
+    <string name="detail_description_select_num">选号方法详细说明</string>
+    <string name="detail_description_zu_hao">组号方法详细说明</string>
+    <string name = "redTrend">如何根据红球走势图选号</string>
+    <string name = "blueTrend">如何根据蓝球走势图选号</string>
+    <string name = "condTrend">如何根据条件走势图选号</string>
+    <string name="software_intro_title">软件用法说明</string>
+    <string name = "software_intro">软件简介</string>
+    <string name = "shuangse_intro">双色球玩法规则</string>
+    <string name = "xuanzhuan_intro">什么是旋转组号法</string>
+    <string name = "dantuo_intro">什么是胆拖组号法</string>
+    <string name = "cond_intro">什么是条件组号法</string>
+    <string name = "software_intro_text">\n《彩票工具箱》为广大彩民朋友提供玩彩所需的号码走势图、组\
+号工具、旋转矩阵、个人买彩历史记录保存、技术条件查询等工具，立志打造彩民社区最受欢迎玩彩工具。\n\n本软件研发过程中，我\
+们研究了国内外数字彩票领域各类专业书籍、最新科研成果，本着《科学玩彩、理性玩彩、技术玩彩》的理念，基于美国彩票大师《绝对不\
+要随机选号》的建议，本软件引入了《全球目前最新的旋转矩阵组号工具》和《精心选择的条件组》等选号方法为彩民朋友提供最好的技术玩彩工具，\
+减少和避免浪费金钱。\n\n本软件的使用方法十分简单，可以概括为两步：\n\n一、查看号码走势图，或条件走势图，并选择号码或条件值;\n\n二、选\
+择一种《组号方法》并选择《旋转模式》，进行组号，保存结果或够买。\n\n第一步：如何查看走势图并结合走势图选号和选条件值，请参见【用法说\
+明】里【选号】一栏;\n\n第二步：如何选择组\
+号方法和《旋转模式》请参见【用法说明】里【组号】一栏。\n\n组合号码后，点击《保存》到《个人记录》中，方便查询和回顾，更方便直接购\
+买。\n\n双色球玩法规则和常见组号方\
+法的介绍请参见【用法说明】里【简介】一栏。\n\n中奖规则和奖金额度请参见【用法说明】里【中奖】一栏。\n\n免责声明：\n\n【本软件限成年人使用，\
+软件提供辅助玩彩工具，引起的后果本软件概不负责。】\n\n【版权所有：南京千江水网络科技有限公司】</string>
+
+    <string name = "shuangse_intro_text">1. 双色球【单注号码】包含：6个红号和1个蓝号两部分, 红号从1至33中任选6个不重复数字（不要求排列顺序），蓝号\
+从1至16中任选一个数字，二者放在一起组合为一注号码进行投注，双色球每注2元。\n\n2. 双色球有四种投注方法：\n\n【单式投注】：一次购买一组\
+或多组分别由6个红号和1个蓝号组成的号码，《旋转组号》组合出来的号码全部为单式投注号码;\n\n【倍式投注】：简称倍投，即将同一组号码在同一期购买多次，若中奖后\
+奖金也相应翻倍;\n\n【复式投注】：从1-33中选择7至20个不重复的红号(无顺序要求), 从1-16中选择1到多个蓝号, 组合起来投注; 如8个红号复式需56元，10个红号复式\
+需420元，购买16个红号需1万6千多元。复式投注是全组合购买，投资较大，易造成不必要浪费。\n\n《旋转组号》可解决复式投注的问题，保证一定的中奖概率前提下，将多个\
+红号码《旋转组号》为少量单式号\
+码进行购买 ，可以大大减少投注所需资金，详见【什么是旋转组号法】;\n\n【胆拖投注】：针对红号，选择认为必出的红号作为【胆码】，\
+选择认为可能出现的红号做为【托码】，二者组合进行投注，详见【什么是胆拖组号法】；\n\n3. 双色球全部红号组合数为：1107568组，算上蓝号共有1107568 x 16 = 17721088\
+注组合，数量巨大；\n\n4. 双色球每周二，四，日晚21：30开奖,销售截止时间为开奖当天晚20：00点。</string>
+    <string name = "xuanzhuan_intro_text">【旋转组号】是美国彩票大师盖尔.霍华德发明的\
+投注方法, 是目前全球数字彩票界最科学，尖端的彩票玩法。旋转组号基\
+于现代组合数学覆盖计算理论，利用并行计算机搜索出最优化的组号模式 - 即【旋转模式】。\n\n旋\
+转组号相比复式全组合方法可以【用最少的钱达到几乎相等\
+的中奖概率】。比如：购买10个红号，用旋转组号《中6保5模式》只需28元，用\
+《中6保4模式》只需6元，而复式法购买10个红号需420元；又如：购买16个红\
+号，用旋转组号《中6保5模式》只需224元，用《中6保4模式》只需50元，而\
+复式购买10个红号需420元。\n\n本软件包含了Iliya Bluskow博士2010年发表的\
+全球最新的超级计算机计算出的旋转组号模式，供彩友使用。\n\n本软件各种《旋转模式》的使用说明详见【用法说明】里【组号】栏目下的【旋转矩阵组号方法】里详细说明。</string>
+    <string name = "dantuo_intro_text">从1-33中选1至5个红号作为必出【胆码】, 从剩余的红号中再选1-20个红号作为【拖码】, 组合起来\
+投注。 \n\n比如3胆5拖: 看好红号6, 11, 26必出, 选为3个【胆码】, 然后从剩下的红号中看好2, 7, 12, 25, 31五个红号作为【拖码】, 组合\
+为6, 11, 26 + 2, 7, 12, 15, 31的三胆五拖投注。\n\n胆拖购买法要求【胆码】必需准确，否则全盘皆失。</string>
+    <string name = "cond_intro_text">条件组号：条件值组号或称为条件选号法，它是技术派玩彩常用的手段。\n\n它的基本思路是：针对每一注开奖号码\
+比如2014082期2，4，20，25，26，29 + 11的开奖数字，采用基本的数学统计方法统计这注号码《各种条件》的值，并基于此期的条件值推断下一期的\
+条件值。\n\n比如2014082期，红球《连号个数》值为1、《红球和值》为106、《偶数个数》值为4、《大数(1-16)个数》为4、《一分区数字(1-11)个\
+数》值为2、《二分区数字(12-22)个数》值为1、《三分区数字(23-33)个数》值为3，等等都是常见的条件；在购买2014082期彩票时，只要将这几个条件值选对，利用软件就可以\
+将2014082期的中奖号码过滤出来。经过多年的发展，彩民们发明了许多\
+种条件，比如《AC值》、《尾数个数》等等，只要将这些条件值选对，利用软件过滤计算，就可以将对应符合条件的号码组选出来。\n\n本软件精选了经过\
+计算机数理统计所得的七个最精简条件，并给出了这些条件值的历史走势图，只要将这七个条件值选对，利用《条件组号》即可过\
+滤出对应的号码组来。</string>
+    
     
     <!-- 其他 -->
     <string name ="click_return">点击返回</string>

@@ -59,7 +59,6 @@ import com.shuangse.meta.ValueObj;
 import com.shuangse.ui.R;
 import com.shuangse.ui.SmartCombineActivity;
 import com.shuangse.util.MagicTool;
-import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.ContentValues;
 import android.content.pm.PackageInfo;
@@ -133,7 +132,8 @@ public class ShuangSeToolsSetApplication extends Application {
   private DataBaseHelper dbHelper = null;
  
   //private static final String serverAddress = "http://23.21.160.245:8080/ShuangSeToolsSimpleServer/";
-  private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
+  //private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
+  private final String serverAddress = "http://192.168.1.101/ShuangSeToolsServer/";
 
   private HttpClient httpClient = null;
   private final int DEFAULT_MAX_CONNECTIONS = 30; 
@@ -794,9 +794,8 @@ public class ShuangSeToolsSetApplication extends Application {
     return missCnt;
   }
   
-  /**返回根据 冷热 号码 推荐的红球号码集合*/
-  @SuppressLint("UseSparseArrays")
-  public HashSet<Integer> getRecommendRedNumber(int index) {
+    /**返回根据 冷热 号码 推荐的红球号码集合*/
+    public HashSet<Integer> getRecommendRedNumber(int index) {
     HashSet<Integer> redSet = new HashSet<Integer>();
     
     //missValue (0, 1, 2, |  3, 4, 5, 6, | >=7)

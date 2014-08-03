@@ -15,8 +15,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="玩法"
-            android:textSize="16sp"
+            android:text="简介"
+            android:textSize="18sp"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -24,8 +24,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="走势图"
-            android:textSize="16sp"
+            android:text="选号"
+            android:textSize="18sp"
             android:textColor="#FFFFFF" />
 
         <Button
@@ -33,8 +33,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="组号工具"
-            android:textSize="16sp"
+            android:text="组号"
+            android:textSize="18sp"
             android:textColor="#FFFFFF" />
         
         <Button
@@ -42,8 +42,8 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="中奖规则"
-            android:textSize="16sp"
+            android:text="中奖"
+            android:textSize="18sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>
 
