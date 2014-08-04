@@ -11,6 +11,15 @@
         android:orientation="horizontal" >
 
         <Button
+            android:id="@+id/btn0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="开奖"
+            android:textSize="18sp"
+            android:textColor="#FFFFFF" />
+        
+        <Button
             android:id="@+id/btn1"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -33,7 +42,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="胆拖式"
+            android:text="胆拖"
             android:textSize="18sp"
             android:textColor="#FFFFFF" />
     </LinearLayout>

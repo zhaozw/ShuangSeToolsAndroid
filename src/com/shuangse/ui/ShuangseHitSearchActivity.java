@@ -43,9 +43,11 @@ public class ShuangseHitSearchActivity extends Activity implements SelectRedDial
     private PrivatePagerAdapter localAdapter;    
     private LayoutInflater mInflater;
     private List<View> mListViews;
+    private View contentLayout0 = null;
     private View contentLayout1 = null;
     private View contentLayout2 = null;
     private View contentLayout3 = null;
+    private Button btn0;
     private Button btn1;
     private Button btn2;
     private Button btn3;
@@ -55,7 +57,7 @@ public class ShuangseHitSearchActivity extends Activity implements SelectRedDial
     private ArrayAdapter<CharSequence> blueValAdapter;
     private List<ShuangseCodeItem> allHisData;
     
-    private int currentInWhichPagerFlag = 1; //1, 2, 3
+    private int currentInWhichPagerFlag = 1; //0, 1, 2, 3
     //单式
     private int singleSelItemId;
     private ShuangseCodeItem currentSelItem;
@@ -110,23 +112,33 @@ public class ShuangseHitSearchActivity extends Activity implements SelectRedDial
             case ViewSwitchCompletedMsg:
                 switch(msg.arg1) {
                 case 0:
+                  theActivity.btn0.setBackgroundResource(R.drawable.rectbg);
+                  theActivity.btn1.setBackgroundResource(R.color.transparent);
+                  theActivity.btn2.setBackgroundResource(R.color.transparent);
+                  theActivity.btn3.setBackgroundResource(R.color.transparent);
+                  theActivity.currentInWhichPagerFlag = 0;
+                    break;
+                case 1:
+                  theActivity.btn0.setBackgroundResource(R.color.transparent);
                   theActivity.btn1.setBackgroundResource(R.drawable.rectbg);
                   theActivity.btn2.setBackgroundResource(R.color.transparent);
                   theActivity.btn3.setBackgroundResource(R.color.transparent);
                   theActivity.currentInWhichPagerFlag = 1;
                     break;
-                case 1:
-                  theActivity.btn2.setBackgroundResource(R.drawable.rectbg);
+                case 2:
+                  theActivity.btn0.setBackgroundResource(R.color.transparent);
                   theActivity.btn1.setBackgroundResource(R.color.transparent);
+                  theActivity.btn2.setBackgroundResource(R.drawable.rectbg);
                   theActivity.btn3.setBackgroundResource(R.color.transparent);
                   theActivity.currentInWhichPagerFlag = 2;
                     break;
-                case 2:
-                  theActivity.btn3.setBackgroundResource(R.drawable.rectbg);
-                  theActivity.btn2.setBackgroundResource(R.color.transparent);
-                  theActivity.btn1.setBackgroundResource(R.color.transparent);
-                  theActivity.currentInWhichPagerFlag = 3;
-                    break;
+                case 3:
+                    theActivity.btn0.setBackgroundResource(R.color.transparent);
+                    theActivity.btn1.setBackgroundResource(R.color.transparent);
+                    theActivity.btn2.setBackgroundResource(R.color.transparent);
+                    theActivity.btn3.setBackgroundResource(R.drawable.rectbg);
+                    theActivity.currentInWhichPagerFlag = 3;
+                      break;
                 default:
                     break;
                 }
@@ -160,68 +172,61 @@ public class ShuangseHitSearchActivity extends Activity implements SelectRedDial
 
         final TextView titleTextView = (TextView) findViewById(R.id.title_text);
         titleTextView.setText(R.string.custom_title_hit_search);
-                
-        Button returnBtn = (Button)findViewById(R.id.returnbtn);
-        returnBtn.setVisibility(View.VISIBLE);
-        Button helpBtn = (Button)findViewById(R.id.helpbtn);
-        helpBtn.setVisibility(View.VISIBLE);
-        helpBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            String htmlMsg = "本页为您提供查询您购买彩票的中奖信息，请按提示输入对应的购买号码，即可查询您中奖的奖金情况。";
-            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ShuangseHitSearchActivity.this).show();
-          }
-        });
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            onBackPressed();
-          }
-        });
-        
+
         localAdapter = new PrivatePagerAdapter();
         localViewPager = (ViewPager) findViewById(R.id.viewpagerLayout);
         localViewPager.setAdapter(localAdapter);
         
+        btn0 = (Button) findViewById(R.id.btn0);
         btn1 = (Button) findViewById(R.id.btn1);
         btn2 = (Button) findViewById(R.id.btn2);
         btn3 = (Button) findViewById(R.id.btn3);
-        btn1.setBackgroundResource(R.drawable.rectbg);
-        btn2.setBackgroundResource(R.color.transparent);        
+        
+        btn0.setBackgroundResource(R.drawable.rectbg);
+        btn1.setBackgroundResource(R.color.transparent);
+        btn2.setBackgroundResource(R.color.transparent);
         btn3.setBackgroundResource(R.color.transparent);
         
-        btn1.setOnClickListener(new View.OnClickListener() {
+        btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 localViewPager.setCurrentItem(0);                
             }
         });
-        btn2.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 localViewPager.setCurrentItem(1);                
             }
         });
-        btn3.setOnClickListener(new View.OnClickListener() {
+        btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 localViewPager.setCurrentItem(2);                
             }
         });
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                localViewPager.setCurrentItem(3);                
+            }
+        });
         
         mListViews = new ArrayList<View>();
         mInflater = getLayoutInflater();
+        contentLayout0 = mInflater.inflate(R.layout.singlesearch, null);
         contentLayout1 = mInflater.inflate(R.layout.singlesearch, null);
         contentLayout2 = mInflater.inflate(R.layout.fushisearch, null);
         contentLayout3 = mInflater.inflate(R.layout.dantuosearch, null);
 
+        mListViews.add(contentLayout0);
         mListViews.add(contentLayout1);
         mListViews.add(contentLayout2);
         mListViews.add(contentLayout3);
         
         //初始第一页
         localViewPager.setCurrentItem(0);
-        currentInWhichPagerFlag = 1;
+        currentInWhichPagerFlag = 0;
         
         localViewPager.setOnPageChangeListener(new OnPageChangeListener() {
             @Override
@@ -244,6 +249,11 @@ public class ShuangseHitSearchActivity extends Activity implements SelectRedDial
                     Message msg2 = msgHandler.obtainMessage(ViewSwitchCompletedMsg);
                     msg2.arg1 = 2;
                     msg2.sendToTarget();
+                    break;
+                case 3:
+                    Message msg3 = msgHandler.obtainMessage(ViewSwitchCompletedMsg);
+                    msg3.arg1 = 3;
+                    msg3.sendToTarget();
                     break;
                 default:
                     break;

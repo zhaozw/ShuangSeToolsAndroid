@@ -46,6 +46,11 @@ public class RulesContent3Fragment extends ListFragment {
         map3.put("ItemTitleText",mContext.getResources().getString(R.string.dantuo_zuhao_title));
         mlistItems.add(map3);
         
+        Map<String, Object> map4 = new HashMap<String, Object>();
+        map4.put("ItemID", "fushiZuHao");
+        map4.put("ItemTitleText",mContext.getResources().getString(R.string.fushi_zuhao_title));
+        mlistItems.add(map4);
+        
         return mlistItems;
     }
     

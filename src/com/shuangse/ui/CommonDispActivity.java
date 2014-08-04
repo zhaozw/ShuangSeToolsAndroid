@@ -61,7 +61,11 @@ public class CommonDispActivity extends Activity {
         titleTextView.setText(R.string.detail_description_zu_hao);
         dispItemTitle.setText(R.string.dantuo_zuhao_title);
         dispItemBody.setText(R.string.dantuo_zuhao_details_text);
-    }  else if(dispItemId != null && dispItemId.equals("softwareIntro")) {
+    }  else if(dispItemId != null && dispItemId.equals("fushiZuHao")) {
+        titleTextView.setText(R.string.detail_description_zu_hao);
+        dispItemTitle.setText(R.string.fushi_zuhao_title);
+        dispItemBody.setText(R.string.fushi_zuhao_details_text);
+    } else if(dispItemId != null && dispItemId.equals("softwareIntro")) {
         titleTextView.setText(R.string.software_intro_title);
         dispItemTitle.setText(R.string.software_intro);
         dispItemBody.setText(R.string.software_intro_text);
