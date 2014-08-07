@@ -131,9 +131,8 @@ public class ShuangSeToolsSetApplication extends Application {
   //see DataBaseHelper.java
   private DataBaseHelper dbHelper = null;
  
-  //private static final String serverAddress = "http://23.21.160.245:8080/ShuangSeToolsSimpleServer/";
-  //private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
-  private final String serverAddress = "http://192.168.1.101/ShuangSeToolsServer/";
+  private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
+  //private final String serverAddress = "http://192.168.1.101/ShuangSeToolsServer/";
 
   private HttpClient httpClient = null;
   private final int DEFAULT_MAX_CONNECTIONS = 30; 
@@ -1752,9 +1751,18 @@ public class ShuangSeToolsSetApplication extends Application {
 
     Log.i(TAG, "items.size:" + howManyItems);
     /**
-     * each item has following structure <ITEM> <ID>2003001</ID> <RED>10</RED>
-     * <RED>11</RED> <RED>12</RED> <RED>13</RED> <RED>26</RED> <RED>28</RED>
-     * <BLUE>11</BLUE> </ITEM>
+     * each item has following structure 
+     * <ITEM> 
+     * <ID>2003001</ID>
+     * <OPENDATE>2012-01-14</OPENDATE>
+     * <RED>10</RED>
+     * <RED>11</RED>
+     * <RED>12</RED>
+     * <RED>13</RED>
+     * <RED>26</RED>
+     * <RED>28</RED>
+     * <BLUE>11</BLUE>
+     * </ITEM>
      */
     if (howManyItems > 0) {
       for (int i = 0; i < howManyItems; i++) {
@@ -1764,12 +1772,17 @@ public class ShuangSeToolsSetApplication extends Application {
         Node idNode = itemContent.item(0);
         String idStr = idNode.getTextContent();
         String[] redStr = new String[6];
+        
+        Node openDateNode = itemContent.item(1);
+        //暂时为了内存和效率，日期字符串不在本地保存
+        @SuppressWarnings("unused")
+        String dateStr = openDateNode.getTextContent();
 
         for (int redIndex = 0; redIndex < 6; redIndex++) {
-          Node redNode = itemContent.item(redIndex + 1);
+          Node redNode = itemContent.item(redIndex + 2);
           redStr[redIndex] = redNode.getTextContent();
         }
-        Node blueNode = itemContent.item(7);
+        Node blueNode = itemContent.item(8);
         String blueStr = blueNode.getTextContent();
 
         ShuangseCodeItem tmpItem = new ShuangseCodeItem(

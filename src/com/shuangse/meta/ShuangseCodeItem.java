@@ -42,7 +42,7 @@ public final class ShuangseCodeItem implements Parcelable {
         red[5] = r6;
         
         Arrays.sort(red);
-        blue = b;        
+        blue = b;
     }
     
     public ShuangseCodeItem(int _id, int r[], int b) {
@@ -53,7 +53,6 @@ public final class ShuangseCodeItem implements Parcelable {
         System.arraycopy(r, 0, red, 0, 6);
         
         blue = b;
-        
     }
     //覆盖equals 方法，这样可以用Vector.contains()方法
     public final boolean equals(Object obj) {
