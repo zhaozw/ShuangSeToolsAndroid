@@ -110,10 +110,10 @@ public class MainViewActivity extends Activity {
     map4.put("ItemText", "蓝号走势");
     menuList.add(map4);
 
-//    HashMap<String, Object> map5 = new HashMap<String, Object>();
-//    map5.put("ItemImage", R.drawable.hotcool);
-//    map5.put("ItemText", "冷热九层");
-//    menuList.add(map5);
+    HashMap<String, Object> map5 = new HashMap<String, Object>();
+    map5.put("ItemImage", R.drawable.hotcool);
+    map5.put("ItemText", "冷热走势");
+    menuList.add(map5);
     
     HashMap<String, Object> map51 = new HashMap<String, Object>();
     map51.put("ItemImage", R.drawable.cond);
@@ -238,18 +238,18 @@ public class MainViewActivity extends Activity {
             startActivity(intent3);
           }
           break;
-//        case 5:
-//          //冷热走势
-//          if(appContext == null || appContext.getAllHisData().size() < 1) {
-//            hideProgressBox();
-//            InfoMessageBox("警告","无历史数据信息，请先点击<数据更新>更新历史数据.");
-//          } else {
-//            Intent intent = new Intent(MainViewActivity.this, RedMissingTrendActivity.class);
-//            intent.putExtra("FROM", "MainViewActivity");
-//            startActivity(intent);
-//          }
-//          break;
         case 5:
+          //冷热走势
+          if(appContext == null || appContext.getAllHisData().size() < 1) {
+            hideProgressBox();
+            InfoMessageBox("警告","无历史数据信息，请先点击<数据更新>更新历史数据.");
+          } else {
+            Intent intent = new Intent(MainViewActivity.this, RedMissingTrendActivity.class);
+            intent.putExtra("FROM", "MainViewActivity");
+            startActivity(intent);
+          }
+          break;
+        case 6:
             //条件走势
             hideProgressBox();
             InfoMessageBox("信息","火速开发中,敬请期待，谢谢支持!");
@@ -257,7 +257,7 @@ public class MainViewActivity extends Activity {
 //        case 7:
 //            //行列走势
 //            break;
-        case 6:
+        case 7:
           //旋转组号
           hideProgressBox();
           Intent intent4 = new Intent(MainViewActivity.this, SmartCombineActivity.class);
@@ -266,19 +266,19 @@ public class MainViewActivity extends Activity {
 //        case 9:
 //            //行列选号
 //            break;
-        case 7:
+        case 8:
             //条件选号
             hideProgressBox();
             InfoMessageBox("信息","火速开发中,敬请期待，谢谢支持!");
             break;
-        case 8:
+        case 9:
           //胆拖及复式组号
           hideProgressBox();
           Intent intent4x = new Intent(MainViewActivity.this, DantuoCombineActivity.class);
           startActivity(intent4x);
           break;
           
-        case 9:
+        case 10:
           //软件推荐红球
           hideProgressBox();
         //查看软件荐红历史记录
@@ -286,7 +286,7 @@ public class MainViewActivity extends Activity {
               RecommandHisActivity.class);
           startActivity(intent5x);
           break;
-        case 10:
+        case 11:
           //条件查询
           hideProgressBox();
           Intent intent5 = new Intent(MainViewActivity.this,
@@ -294,11 +294,11 @@ public class MainViewActivity extends Activity {
           startActivity(intent5);
           //InfoMessageBox("信息","火速开发中,将提供：\n1）查询某注号码是否中过奖；\n2）查询一组多个红球的历史中奖情况，例如查询某10红球组在历史上的是否中过奖等功能。\n请等待版本更新，谢谢支持.");
           break;
-        case 11:
+        case 12:
           // 数据更新
           downloadHistoryData();
           break;
-        case 12:
+        case 13:
           //我的记录
           //设置
           hideProgressBox();
@@ -306,14 +306,14 @@ public class MainViewActivity extends Activity {
               MyHisActivity.class);
           startActivity(myhislauncher);
           break;
-        case 13:
+        case 14:
           //设置
           hideProgressBox();
           Intent launcher = new Intent().setClass(MainViewActivity.this,
               SettingActivity.class);
           startActivity(launcher);
           break;
-        case 14:
+        case 15:
           //推荐给朋友，导向发送短信页面
           doRecommend();
           break;
@@ -627,10 +627,6 @@ public class MainViewActivity extends Activity {
                       MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers()));
                   editor.putString(appContext.My_Selection_Red_Dan_Str, 
                       MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers()));
-                  editor.putString(appContext.My_Selection_Red_Tuo_Str, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers()));
-                  editor.putString(appContext.My_Selection_BlueForDanTuo_String, 
-                      MagicTool.getDispArrangedStr(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo()));
                   editor.commit();
                   
                   MainViewActivity.this.finish();

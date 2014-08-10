@@ -36,5 +36,9 @@
         <item>15</item>
         <item>16</item>
     </string-array>
-    
+    <string-array name="entries_select_combine_method">
+        <item>用【旋转组号法】组合这些号码</item>
+        <item>用【胆拖组号法】组合这些号码</item>
+        <item>用【条件选号法】过滤这些号码</item>
+    </string-array>
 </resources>

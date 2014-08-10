@@ -87,9 +87,7 @@ public class ShuangSeToolsSetApplication extends Application {
   
   public final String My_Selection_Red_String = "My_Selection_Red_String";
   public final String My_Selection_Red_Dan_Str = "My_Selection_Red_Dan_Str";
-  public final String My_Selection_Red_Tuo_Str = "My_Selection_Red_Tuo_Str";
   public final String My_Selection_Blue_String = "My_Selection_Blue_String";
-  public final String My_Selection_BlueForDanTuo_String = "My_Selection_BlueForDanTuo_String";
   
   //return the versionName in the AndroidManfienst.xml file
   public String getVersion() {

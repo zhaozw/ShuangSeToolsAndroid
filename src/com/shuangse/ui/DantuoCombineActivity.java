@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.ItemPair;
 import com.shuangse.meta.ShuangseCodeItem;
 import com.shuangse.util.MagicTool;
 
@@ -49,38 +50,7 @@ public class DantuoCombineActivity extends Activity {
   private Button selBlueButton;
   private Button startCombineButton;
   private Button verifyRedButton;
-  
-  public static class ItemPair {
-    private String dispText;
-    private int itemVal;
     
-    @Override
-    public String toString() {
-      return dispText;
-    }
-    
-    public ItemPair(int itemVal, String dispText) {
-      this.setDispText(dispText);
-      this.setItemVal(itemVal);
-    }
-
-    public String getDispText() {
-      return dispText;
-    }
-
-    public void setDispText(String dispText) {
-      this.dispText = dispText;
-    }
-
-    public int getItemVal() {
-      return itemVal;
-    }
-
-    public void setItemVal(int itemVal) {
-      this.itemVal = itemVal;
-    }  
-  }
-  
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -250,7 +220,7 @@ public class DantuoCombineActivity extends Activity {
     Log.i(TAG, "onResume()");
     StringBuffer redSb = new StringBuffer("ºìÇòµ¨Âë£º");
     currentSelRedDanList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers();
-    currentSelRedTuoList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers();
+    currentSelRedTuoList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
     currentSelTotalRedList = MagicTool.join(currentSelRedDanList, currentSelRedTuoList);
     ShuangSeToolsSetApplication.getCurrentSelection().setSelectedModelId(SmartCombineActivity.M_DAN_TUO_COMBINE);
     
@@ -293,7 +263,7 @@ public class DantuoCombineActivity extends Activity {
     }
 
     StringBuffer blueSb = new StringBuffer();
-    currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbersForDanTuo();
+    currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
     //Collections.sort(currentSelBlueList);
     for(Integer item : currentSelBlueList) {
       if(item < 10) {

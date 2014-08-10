@@ -60,24 +60,24 @@ public class SmartCombineResultActivity extends Activity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.title_activity_result_smart_combine);
     
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页操作提示：<br>\t 一、本页显示当前旋转组号结果，一行一注号码，按序号显示，可上下滚动查看；" + 
-                                      "<br><br>\t 二、最下方《保存结果》按钮可将组号结果保存至历史记录中方便回顾和查看，每期可以保存多个记录。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SmartCombineResultActivity.this).show();
-      }
-    });
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页操作提示：<br>\t 一、本页显示当前旋转组号结果，一行一注号码，按序号显示，可上下滚动查看；" + 
+//                                      "<br><br>\t 二、最下方《保存结果》按钮可将组号结果保存至历史记录中方便回顾和查看，每期可以保存多个记录。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SmartCombineResultActivity.this).show();
+//      }
+//    });
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
     appContext = (ShuangSeToolsSetApplication)getApplication();
     

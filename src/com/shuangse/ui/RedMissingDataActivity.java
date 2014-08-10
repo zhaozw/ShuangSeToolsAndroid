@@ -103,11 +103,11 @@ public class RedMissingDataActivity extends Activity {
         fromActivity = getIntent().getExtras().getString("FROM");
         operationTextView = (TextView)findViewById(R.id.operationText);
         if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-          operationTextView.setText("点击空白方格选号，然后点击最右侧【旋转组号】按钮组号.");
+          operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】");
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
-          operationTextView.setText("双击（点击2次）空白方格选为胆码，点击一次选为拖码)，然后点击最右侧【胆拖组号】按钮组号.");
+          operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】");
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
-          operationTextView.setText("点击空白方格选号(第二行点击两次选为胆码，点击一次选为拖码)，然后点击最右侧【对应行的组号按钮】组号.");
+          operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】");
         }
         
         progDialog = new ProgressDialog(RedMissingDataActivity.this);
@@ -235,125 +235,56 @@ public class RedMissingDataActivity extends Activity {
             startIndex++;
         }
         
-        //加2行空 - 2个操作行
-        int operaLine = 1;
-        if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")){
-          operaLine = 2;
-        }
+        //加1行空 - 1个操作行 -- 单行操作，内部区分
         latestId = appContext.getLoalLatestItemIDFromCache();
-        for(int lineNum = 0; lineNum < operaLine; lineNum++) {
-            row = null;
-            row = new TableRow(RedMissingDataActivity.this);
-            //第0列
-            row.addView(UIFactory.makeTextCell(Integer.toString(latestId + 1), 
+        row = null;
+        row = new TableRow(RedMissingDataActivity.this);
+        //第0列
+        row.addView(UIFactory.makeTextCell(Integer.toString(latestId + 1), 
                     Color.WHITE,
                     RedMissingDataActivity.this), 
                     appContext.leftCellPara);// 期号        
-            //第1-33列
-            for (int m = 1; m < howManyColumns; m++) {
-                switch (m) {
-                    case 1:case 2:case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: 
-                        redNum = m; break;
-                    case 13:case 14:case 15:case 16:case 17: case 18: case 19: case 20: case 21: case 22:case 23:
-                        redNum = m - 1; break;
-                    case 25:case 26:case 27:case 28:case 29: case 30: case 31: case 32: case 33: case 34:case 35:
-                        redNum = m - 2; break;
-                    case 12:case 24:case 36:
-                        //分割符号
-                        row.addView(UIFactory.makeSeperator(RedMissingDataActivity.this), 
+        //第1-33列
+        for (int m = 1; m < howManyColumns; m++) {
+            switch (m) {
+                case 1:case 2:case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: 
+                    redNum = m; break;
+                case 13:case 14:case 15:case 16:case 17: case 18: case 19: case 20: case 21: case 22:case 23:
+                    redNum = m - 1; break;
+                case 25:case 26:case 27:case 28:case 29: case 30: case 31: case 32: case 33: case 34:case 35:
+                    redNum = m - 2; break;
+                case 12:case 24:case 36:
+                    //分割符号
+                    row.addView(UIFactory.makeSeperator(RedMissingDataActivity.this), 
+                            appContext.rightCellPara);
+                    continue;//continue the for loop
+                case 37:
+                    //全都显示为"开始组号，内部区分是胆拖还是旋转组号"
+                    row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.combinebtn), new RedOPChooseCombineBtnListener(),
+                                RedMissingDataActivity.this),
                                 appContext.rightCellPara);
-                        continue;//continue the for loop
-                    case 37:
-                        {
-                          if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-                              row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.smartcombinebtn), new RedOPSmartCombineBtnListener(),
-                                                      RedMissingDataActivity.this),
-                                                      appContext.rightCellPara);
-                          } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
-                              row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.dantuocombine), new RedOPDanTuoBtnListener(),
-                                                      RedMissingDataActivity.this),
-                                                      appContext.rightCellPara);
-                          } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
-                             if(lineNum == 0) {
-                               row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.smartcombinebtn), new RedOPSmartCombineBtnListener(),
-                                   RedMissingDataActivity.this),
-                                   appContext.rightCellPara);
-                             } else if(lineNum == 1) {
-                               row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.dantuocombine), new RedOPDanTuoBtnListener(),
-                                   RedMissingDataActivity.this),
-                                   appContext.rightCellPara);
-                             }
-                          }
-                          continue;//continue the for loop
-                        }
-                    default:
+                    continue;//continue the for loop
+                default:
                         break;
-                }//end switch
+            }//end switch
                 
-                CellData blankCell = null;
-                if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-                    blankCell = new CellData(redNum, latestId + 1, 0, 
-                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                        appContext.getPicCache().get("red"+redNum),
-                        appContext.getPicCache().get("danRed"+redNum),
-                        false, //不允许双击选择
-                        disp_his_num + lineNum + 1, m, CellData.P_FOR_SEL_RED_SMART_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(1);
-                    }
-                    ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingDataActivity.this);
-                    row.addView(cellImage, appContext.rightCellPara);
-                } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
-                   blankCell = new CellData(redNum, latestId + 1, 0, 
-                      //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                      //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                      appContext.getPicCache().get("red"+redNum),
-                      appContext.getPicCache().get("danRed"+redNum),
-                      true, //允许双击选择
-                      disp_his_num + lineNum + 1, m, CellData.P_FOR_SEL_RED_DANTUO_COMBINE);
-                  if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
-                    blankCell.setClicked(2);
-                  } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
-                    blankCell.setClicked(1);
-                  }
-                  ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingDataActivity.this);
-                  row.addView(cellImage, appContext.rightCellPara);
-                  
-                }else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
-                  if(lineNum == 0) {
-                    blankCell = new CellData(redNum, latestId + 1, 0, 
-                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                        appContext.getPicCache().get("red"+redNum),
-                        appContext.getPicCache().get("danRed"+redNum),
-                        false, //不允许双击选择
-                        disp_his_num + lineNum + 1, m, CellData.P_FOR_SEL_RED_SMART_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(1);
-                    }
-                    ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingDataActivity.this);
-                    row.addView(cellImage, appContext.rightCellPara);
-                  } else if(lineNum == 1) {
-                    blankCell = new CellData(redNum, latestId + 1, 0, 
-                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                        appContext.getPicCache().get("red"+redNum),
-                        appContext.getPicCache().get("danRed"+redNum),
-                        true, //允许双击选择
-                        disp_his_num + lineNum + 1, m, CellData.P_FOR_SEL_RED_DANTUO_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(2);
-                    } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(1);
-                    }
-                    ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingDataActivity.this);
-                    row.addView(cellImage, appContext.rightCellPara);
-                  }
-                }
-            }//end for 
-            dataTable.addView(row, viewIndex++, appContext.rowPara);
-        }
+            CellData blankCell = null;
+            blankCell = new CellData(redNum, latestId + 1, 0, 
+                    appContext.getPicCache().get("red"+redNum),
+                    appContext.getPicCache().get("danRed"+redNum),
+                    true, //允许双击选择
+                    disp_his_num + 1, m, CellData.P_FOR_SEL_RED_COMBINE);
+            //填充已经选择的号码
+            if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
+                blankCell.setClicked(2);
+            } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
+                blankCell.setClicked(1);
+            }
+            ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingDataActivity.this);
+            row.addView(cellImage, appContext.rightCellPara);
+        }//end for 
+        dataTable.addView(row, viewIndex++, appContext.rowPara);
+        
         ///跳过提示行
         viewIndex++;
         
@@ -425,99 +356,88 @@ public class RedMissingDataActivity extends Activity {
     }
     
     private OnClickListener cellClickListener = new CellOnClickListener(this);
+
     static class CellOnClickListener implements OnClickListener {
-      private static RedMissingDataActivity theActivity;
-      public CellOnClickListener(RedMissingDataActivity theAct) {
-        theActivity = theAct;
-      }
-      public void onClick(View v) {
-        CellData cellData = (CellData) v.getTag();
-        //Log.i("makeClickableBlankCell", cellData.toString());
-        if(v instanceof ImageView) {
-          ImageView imageView = (ImageView)v;
-          if(cellData.isClicked() == 0) {//未点击，现在点击
-            if(!cellData.isIfAllowDoubleClickSel() && (cellData.getCellFor() == CellData.P_FOR_SEL_RED_SMART_COMBINE)) {
-                //不允许双击选择,选择旋转组号的红球
-                imageView.setImageDrawable(cellData.getDispImg());
-                cellData.setClicked(1);
-                if((cellData.getNum() > 0 ) && (cellData.getNum() < 34)) {
-                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().add(Integer.valueOf(cellData.getNum()))) {
-                    theActivity.InfoMessageBox("提示", "选择红球出错，请联系作者。");
-                  }
-                }
-            } else if(cellData.isIfAllowDoubleClickSel() && (cellData.getCellFor() == CellData.P_FOR_SEL_RED_DANTUO_COMBINE)){
-              //允许双击选择，选择为拖码 
-              imageView.setImageDrawable(cellData.getDispImg());
-              cellData.setClicked(1);
-              if((cellData.getNum() > 0 ) && (cellData.getNum() < 34)) {
-                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().add(Integer.valueOf(cellData.getNum()))) {
-                  theActivity.InfoMessageBox("提示", "选择红球出错，请联系作者。");
-                }
-              }
-            }
-          } else if(cellData.isClicked() == 1){//点击了1次，现在又点击
-              if(!cellData.isIfAllowDoubleClickSel()) {//不允许双击选择，选择去掉
-                  imageView.setImageDrawable(null);
-                  cellData.setClicked(0);
-                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().remove(Integer.valueOf(cellData.getNum()))) {
-                    theActivity.InfoMessageBox("提示", "去选择红球出错，请联系作者。");
-                  }
-              } else {//允许双击,选择为胆码,去掉拖，加入胆
-                imageView.setImageDrawable(cellData.getDoubleclickDispImg());
-                cellData.setClicked(2);
-                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().remove(Integer.valueOf(cellData.getNum()))) {
-                  theActivity.InfoMessageBox("提示", "去选择红球拖码时出错，请联系作者。");
-                } 
-                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().add(Integer.valueOf(cellData.getNum()))) {
-                  theActivity.InfoMessageBox("提示", "选择红球胆码时出错，请联系作者。");
-                }
-              }
-          } else if(cellData.isClicked() == 2){//点击了2次，现在又点击，去掉为胆码 
-            imageView.setImageDrawable(null);
-            cellData.setClicked(0);
-            if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().remove(Integer.valueOf(cellData.getNum()))) {
-              theActivity.InfoMessageBox("提示", "去选择红球胆码出错，请联系作者。");
-            }
-         } else {
-            theActivity.InfoMessageBox("提示", "旋转组号时选择红球胆码表格状态出错，请联系作者2。");
+        private static RedMissingDataActivity theActivity;
+
+        public CellOnClickListener(RedMissingDataActivity theAct) {
+            theActivity = theAct;
         }
+
+        public void onClick(View v) {
+            CellData cellData = (CellData) v.getTag();
+            // Log.i("makeClickableBlankCell", cellData.toString());
+            if (v instanceof ImageView) {
+                ImageView imageView = (ImageView) v;
+                if (cellData.isClicked() == 0) {// 未点击，现在点击，选为红号
+                    if (cellData.isIfAllowDoubleClickSel()
+                            && (cellData.getCellFor() == CellData.P_FOR_SEL_RED_COMBINE)) {
+                        imageView.setImageDrawable(cellData.getDispImg());
+                        cellData.setClicked(1);
+                        if ((cellData.getNum() > 0) && (cellData.getNum() < 34)) {
+                            //加入红号组
+                            try {
+                                ShuangSeToolsSetApplication
+                                    .getCurrentSelection()
+                                    .getSelectedRedNumbers()
+                                    .add(Integer.valueOf(cellData.getNum()));
+                            } catch (Exception e) {
+                                theActivity.InfoMessageBox("提示","选择红球出错，请联系作者0。");
+                            }
+                        }
+                    }
+                } else if (cellData.isClicked() == 1) {// 点击了1次，现在又点击
+                    if (cellData.isIfAllowDoubleClickSel()) {
+                        // 默认都允许双击,选择为胆码,去掉拖，加入胆
+                        imageView.setImageDrawable(cellData
+                                .getDoubleclickDispImg());
+                        cellData.setClicked(2);
+                        try {
+                            ShuangSeToolsSetApplication.getCurrentSelection()
+                                .getSelectedRedNumbers()
+                                .remove(Integer.valueOf(cellData.getNum()));
+                            ShuangSeToolsSetApplication.getCurrentSelection()
+                                .getSelectedRedDanNumbers()
+                                .add(Integer.valueOf(cellData.getNum()));
+                        }catch (Exception e) {
+                            theActivity.InfoMessageBox("提示", "选择红号码时出错，请联系作者1。");
+                        }
+                    }
+                } else if (cellData.isClicked() == 2) {// 点击了2次，现在又点击，去掉号码
+                    imageView.setImageDrawable(null);
+                    cellData.setClicked(0);
+                    try {
+                        ShuangSeToolsSetApplication.getCurrentSelection()
+                            .getSelectedRedDanNumbers()
+                            .remove(Integer.valueOf(cellData.getNum()));
+                        ShuangSeToolsSetApplication.getCurrentSelection()
+                            .getSelectedRedNumbers()
+                            .remove(Integer.valueOf(cellData.getNum()));
+                    }catch (Exception e) {
+                        theActivity.InfoMessageBox("提示", "选择红号码时出错，请联系作者2。");
+                    }
+                } else {
+                    theActivity.InfoMessageBox("提示","旋转组号时选择红球胆码表格状态出错，请联系作者3。");
+                }
+            }
         }
-      }
     };
     
     private interface DataLoadCompletedListener {
         public void loadComplete();
     }
     
-  // 操作按钮响应函数
-   class RedOPSmartCombineBtnListener implements OnClickListener {
-    public RedOPSmartCombineBtnListener() {
-    }
+    // 操作按钮响应函数
+    class RedOPChooseCombineBtnListener implements OnClickListener {
+        public RedOPChooseCombineBtnListener() {
+        }
 
-    public void onClick(View v) {
-      showProgressDialog("提示", "请稍等...");
-      Log.i("RedOPBtnListener", "Button is clicked");
+        public void onClick(View v) {
+            final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(RedMissingDataActivity.this);
+            dialog.setTitle("已保存，请选择下一步：");
+        }
+    };
 
-      Intent intent = new Intent(RedMissingDataActivity.this, SmartCombineActivity.class);
-      intent.putExtra("FROM", "RedMissingActivity");
-      startActivity(intent);
-   }
-  }
-
-   // 操作按钮响应函数
-   class RedOPDanTuoBtnListener implements OnClickListener {
-    public RedOPDanTuoBtnListener() {
-    }
-
-    public void onClick(View v) {
-      showProgressDialog("提示", "请稍等...");
-      Log.i("RedOPBtnListener", "Button is clicked");
-
-      Intent intent = new Intent(RedMissingDataActivity.this, DantuoCombineActivity.class);
-      intent.putExtra("FROM", "RedMissingActivity");
-      startActivity(intent);
-   }
-  }
    
     class LoadDataAsyncTask extends AsyncTask<String, String, String> {
         
@@ -561,13 +481,13 @@ public class RedMissingDataActivity extends Activity {
     }
 
     private ProgressDialog progressDialog;
-    private void showProgressDialog(String title, String msg) {
-      progressDialog = new ProgressDialog(RedMissingDataActivity.this);
-      progressDialog.setTitle(title);
-      progressDialog.setMessage(msg);
-      progressDialog.setCancelable(false);
-      progressDialog.show();
-    }
+//    private void showProgressDialog(String title, String msg) {
+//      progressDialog = new ProgressDialog(RedMissingDataActivity.this);
+//      progressDialog.setTitle(title);
+//      progressDialog.setMessage(msg);
+//      progressDialog.setCancelable(false);
+//      progressDialog.show();
+//    }
 
     private void hideProgressBox() {
       if (progressDialog != null) {
@@ -584,14 +504,16 @@ public class RedMissingDataActivity extends Activity {
     public boolean onKeyDown(int keyCode, KeyEvent event) {
       // 是否触发按键为back键
       if (keyCode == KeyEvent.KEYCODE_BACK) {
+        Log.d(TAG, "onKeyDown clicked");
         if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-          Intent intent = new Intent(RedMissingDataActivity.this,
+          Intent intent = new Intent(this.appContext,
               SmartCombineActivity.class);
+          this.finish();
           startActivity(intent);
           return true;
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) { 
-          Intent intent = new Intent(RedMissingDataActivity.this,
-              DantuoCombineActivity.class);
+          Intent intent = new Intent(this.appContext, DantuoCombineActivity.class);
+          this.finish();
           startActivity(intent);
           return true;
         } else {

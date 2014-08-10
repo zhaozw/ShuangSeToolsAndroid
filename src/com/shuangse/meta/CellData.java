@@ -3,10 +3,8 @@ package com.shuangse.meta;
 import android.graphics.drawable.Drawable;
 
 public final class CellData {
-    public static final int P_FOR_SEL_RED_SMART_COMBINE=1;
-    public static final int P_FOR_SEL_RED_DANTUO_COMBINE=2;
-    public static final int P_FOR_SEL_BLUE_SMART_COMBINE=3;
-    public static final int P_FOR_SEL_BLUE_DANTUO_COMBINE=4;
+    public static final int P_FOR_SEL_RED_COMBINE=2;
+    public static final int P_FOR_SEL_BLUE_COMBINE=3;
     private int cellFor;
     private int num; // 代表的真实的红或蓝号码
     private int item_id; // 该号码/cell所在期号
@@ -19,7 +17,7 @@ public final class CellData {
     private int row; // 在表格中的行号
     private int col; // 在表格中的列号
     //点击状态转换 0 -> 1 - >2->0
-    private int clicked; // 是否已经点击过的状态 1 = 点击一次，2=点击2次，0=未点击
+    private int clicked = 0; // 是否已经点击过的状态 1 = 点击一次，2=点击2次，0=未点击
 
     public CellData(int _num, int _item_id, int disp_num, Drawable disp_img, 
             Drawable doubleclickDispImg,boolean ifAllowDoubleClickSel,

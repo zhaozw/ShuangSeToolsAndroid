@@ -56,9 +56,17 @@
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
     </style>
-     <style name="SelectBlueDialog" parent="@android:Theme.Dialog">
+    <style name="SelectBlueDialog" parent="@android:Theme.Dialog">
         <item name="android:windowFrame">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowIsFloating">true</item>
     </style>
+    <style name="CustDefineAlterDialog" parent="@android:Theme.Dialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:windowBackground">@drawable/cornerwin</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+     
 </resources>

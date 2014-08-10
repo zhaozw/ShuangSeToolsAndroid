@@ -30,7 +30,7 @@
     <string name="custom_title_expr_share">经验交流</string>
     <string name="custom_title_settings">软件设置</string>
     <string name="ad_tips_text">提示：本软件完全免费，为了支持作者开发出更多、更好的免费功能，请点击广告条以表支持。点击不会收取您的任何费用，谢谢。</string>
-    <string name="title_activity_smart_combine">旋转矩阵组号</string>
+    <string name="title_activity_smart_combine">旋转模式组号</string>
     <string name="title_activity_result_smart_combine">旋转组号结果</string>
     <string name="title_activity_result_dantuo_combine">胆拖组号结果</string>
     <string name="custom_title_myhis">组号历史记录</string>
@@ -228,6 +228,10 @@
 种条件，比如《AC值》、《尾数个数》等等，只要将这些条件值选对，利用软件过滤计算，就可以将对应符合条件的号码组计算出来。\n\n本软件精选了经过\
 计算机数理统计所得的七个最精简条件，并给出了这些条件值的历史走势图，只要将这七个条件值选对，利用《条件组号》即可过\
 滤出对应的号码组来。</string>
+
+    <string name="XuanZhuanCombine">用【旋转组号】组合所选号码</string>
+    <string name="DanTuoCombine">用【胆拖组号】组合所选号码</string>
+    <string name="ConditionsCombine">用【条件选号】过滤所选号码</string>
     
     
     <!-- 其他 -->

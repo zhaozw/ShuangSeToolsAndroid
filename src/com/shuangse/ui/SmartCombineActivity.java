@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 
 import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.ItemPair;
 import com.shuangse.meta.ShuangseCodeItem;
 import com.shuangse.util.MagicTool;
 
@@ -34,13 +35,15 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class SmartCombineActivity extends Activity {
   private final static String TAG = "SmartCombineActivity";
   
-  public final static int RECOMMENDREDMODELHOTWARM = 1;
-  public final static int VIEWRECOMMENDREDHIS = 2;
-  public final static int RECOMMENDBLUEOP = 3;
-  public final static int RECOMMEND6FOR456 = 4;
-  public final static int USEMYKEEPRED = 5;
-  public final static int RECOMMEND17FOR6 = 6;
-  public final static int RECOMMEND11FOR56 = 7;
+  public final static int SELFSELECTION1 = 1;
+  public final static int SELFSELECTION2 = 2;
+  public final static int RECOMMENDREDMODELHOTWARM = 3;
+  public final static int RECOMMENDBLUEOP = 4;
+  public final static int RECOMMEND6FOR456 = 5;
+  public final static int USEMYKEEPRED = 6;
+  public final static int RECOMMEND17FOR6 = 7;
+  public final static int RECOMMEND11FOR56 = 8;
+  public final static int SELFSELECTIONBLUE = 9;
   
   public final static int INVALID_MODEL_ID = 0;
   public final static int MIN_SEL_RED_NUMBERS = 8;
@@ -130,7 +133,7 @@ public class SmartCombineActivity extends Activity {
   public static int getPosIndexByModelID(int modelID) {
     int pos = 0;
     for(ItemPair item : allModels) {
-      if (item.itemVal == modelID) {
+      if (item.getItemVal() == modelID) {
         break;
       }
       pos++;
@@ -147,8 +150,8 @@ public class SmartCombineActivity extends Activity {
       return "胆拖组合号码";
     }
     for(ItemPair item : allModels) {
-      if (item.itemVal == model) {
-        return item.dispText;
+      if (item.getItemVal() == model) {
+        return item.getDispText();
       }
     }
     return "";
@@ -157,12 +160,19 @@ public class SmartCombineActivity extends Activity {
   private ArrayAdapter<ItemPair> allModelsAdaptor;
   private ArrayAdapter<ItemPair> recommendRedModelAdaptor;
   private ArrayAdapter<ItemPair> recommendBlueAdaptor;
+  private ArrayAdapter<String> allitemIDAdaptor;
   
   //3个spinner
   private Spinner spinner_combine_model;
   private Spinner spinner_recommend_red_model;
   private Spinner recommend_blue_spinner;
-  private int mSpinnerCount = 3;
+  private Spinner item_id_spinner;
+  private List<String> itemIDs;
+  private List<ShuangseCodeItem> allHisData;
+  private int currentSelItemId;
+  
+  //本页一共4个Spinner
+  private int mSpinnerCount = 4;
   private int mSpinnerInitializedCount = 0;
   
   private int currentCombineItemId;
@@ -177,49 +187,15 @@ public class SmartCombineActivity extends Activity {
   private TextView selBlueTextView;
   private ArrayList<Integer> currentSelBlueList;
   
-  private Button selRedButton;
-  private Button selBlueButton;
   private Button startCombineButton;
   private Button verifyRedButton;
   
-  public static class ItemPair {
-    private String dispText;
-    private int itemVal;
-    
-    @Override
-    public String toString() {
-      return dispText;
-    }
-    
-    public ItemPair(int itemVal, String dispText) {
-      this.setDispText(dispText);
-      this.setItemVal(itemVal);
-    }
-
-    public String getDispText() {
-      return dispText;
-    }
-
-    public void setDispText(String dispText) {
-      this.dispText = dispText;
-    }
-
-    public int getItemVal() {
-      return itemVal;
-    }
-
-    public void setItemVal(int itemVal) {
-      this.itemVal = itemVal;
-    }
-    
-    
-  }
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     appContext = (ShuangSeToolsSetApplication)getApplication();
     //更新标题
-    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);        
+    requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
     setContentView(R.layout.activity_smart_combine);
     getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
     
@@ -253,27 +229,66 @@ public class SmartCombineActivity extends Activity {
 //      }
 //    });
     
-    final TextView currentCombineItemIdTextView = (TextView) findViewById(R.id.combine_itemid);
+    //选择哪一期 (下一期）
+    this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId();
+    
+    //先把下期号加入
+    itemIDs = new ArrayList<String>();
+    itemIDs.add(Integer.toString(this.currentCombineItemId));
+    
+    allHisData = appContext.getAllHisData();
+    if (allHisData != null && allHisData.size() > 1) {
+        int maxSize = (allHisData.size() - 1);
+        int endSize = (maxSize - 50); // 默认只可以回退验证50期
+        for (int i = maxSize; i >= endSize; i--) {
+            itemIDs.add(Integer.toString(allHisData.get(i).id));
+        }
+        allitemIDAdaptor = new ArrayAdapter<String>(this,
+                R.layout.spinnerformat, itemIDs);
+        allitemIDAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    }
+
+    item_id_spinner = (Spinner)findViewById(R.id.combine_itemid);
+    item_id_spinner.setAdapter(allitemIDAdaptor);
+    //默认选择第一个下期
+    item_id_spinner.setSelection(0);
+    this.currentSelItemId = this.currentCombineItemId;
+    item_id_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> parent,
+                View view, int pos, long id) {
+            if(mSpinnerInitializedCount < mSpinnerCount) {
+                //this is triggered by onCreate;
+                mSpinnerInitializedCount++;
+            } else {
+                Log.i(TAG, "OnItemSelectedListener : "
+                        + parent.getItemAtPosition(pos).toString());
+                currentSelItemId = Integer.parseInt(parent.getItemAtPosition(pos).toString());
+                currentCombineItemId = currentSelItemId;
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> arg0) {
+            Log.i(TAG, "spinner_itemid_single:: onNothingSelected()");
+        }
+
+    });
+    
     selRedTextView = (TextView)findViewById(R.id.combine_selred_str);
     
     selBlueTextView = (TextView)findViewById(R.id.combine_selblue_str);    
-    selRedButton = (Button)findViewById(R.id.combine_sel_red_btn);
     verifyRedButton = (Button)findViewById(R.id.combine_verify_red_btn);
     
     sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SmartCombineActivity.this);
     ifGetOutOfHistoryitem = sharedPreferences.getBoolean("getout_his_item", true);
     ifCheckRedSum = sharedPreferences.getBoolean("check_sum_combine", true);
-    
-    //选择哪一期
-    this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId(); 
-    currentCombineItemIdTextView.setText(String.valueOf(this.currentCombineItemId));
-    
+        
     recommend_blue_spinner = (Spinner) findViewById(R.id.recommend_blue_spin);
     recommendBlueAdaptor = new ArrayAdapter<ItemPair>(this, R.layout.spinnerformat, allRecommendBlueItems);
     recommendBlueAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
     recommend_blue_spinner.setAdapter(recommendBlueAdaptor);
     recommend_blue_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
-
       @Override
       public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
         
@@ -288,6 +303,12 @@ public class SmartCombineActivity extends Activity {
          if(currentSelBlueRecommendId == INVALID_MODEL_ID) {
                 currentSelBlueList.clear();
                 selBlueTextView.setText("");
+         } else if(currentSelBlueRecommendId == SELFSELECTIONBLUE) {
+             showProgressDialog("提示", "请稍等...");
+             Intent intent = new Intent(SmartCombineActivity.this,
+                 BlueMissingDataActivity.class);
+             intent.putExtra("FROM", "SmartCombineActivity");
+             startActivity(intent);
          } else if(currentSelBlueRecommendId == RECOMMENDBLUEOP) {
                 HashSet<Integer> blueSet = appContext.getRecommendBlueNumbers(appContext.getAllHisData().size());
                 blueSet.addAll(blueSet);
@@ -306,11 +327,6 @@ public class SmartCombineActivity extends Activity {
                 
                 blueSb.append("共" + currentSelBlueList.size() + "码");
                 selBlueTextView.setText(blueSb.toString());
-         }else if(currentSelBlueRecommendId == VIEWRECOMMENDREDHIS) {
-           //查看软件推荐历史记录
-           Intent intent = new Intent(SmartCombineActivity.this,
-               RecommandHisActivity.class);
-           startActivity(intent);
          }
         }
         
@@ -340,6 +356,18 @@ public class SmartCombineActivity extends Activity {
                   currentSelRedList.clear();
                   selRedTextView.setText("");
                   verifyRedButton.setVisibility(View.INVISIBLE);
+           } else if(currentSelRecommendRedModelId == SELFSELECTION1) {
+               showProgressDialog("提示", "请稍等...");
+               Intent intent = new Intent(appContext,
+                   RedMissingDataActivity.class);
+               intent.putExtra("FROM", "SmartCombineActivity");
+               startActivity(intent);
+           } else if(currentSelRecommendRedModelId == SELFSELECTION2) {
+               showProgressDialog("提示", "请稍等...");
+               Intent intent = new Intent(appContext,
+                   RedMissingTrendActivity.class);
+               intent.putExtra("FROM", "SmartCombineActivity");
+               startActivity(intent);
            } else if(currentSelRecommendRedModelId == RECOMMENDREDMODELHOTWARM) { 
              
                   HashSet<Integer> redSet = appContext.getRecommendRedNumber(appContext.getAllHisData().size() - 1);
@@ -454,12 +482,7 @@ public class SmartCombineActivity extends Activity {
                InfoMessageBox("提示", "请先在 软件设置 》 里设置你的长期守的红球号码！");
              }
            
-           } else if(currentSelRecommendRedModelId == VIEWRECOMMENDREDHIS) {
-             //查看软件荐红历史记录
-             Intent intent = new Intent(SmartCombineActivity.this,
-                 RecommandHisActivity.class);
-             startActivity(intent);
-           }
+           } 
           }
       }
 
@@ -493,30 +516,6 @@ public class SmartCombineActivity extends Activity {
           Log.i(TAG, "spinner_itemid_single:: onNothingSelected()");
       }
   });
-
-    selRedButton.setOnClickListener(new View.OnClickListener () {
-      @Override
-      public void onClick(View v) {
-        showProgressDialog("提示", "请稍等...");
-        Intent intent = new Intent(SmartCombineActivity.this,
-            RedMissingDataActivity.class);
-        intent.putExtra("FROM", "SmartCombineActivity");
-        startActivity(intent);
-      }
-    });
-    
-    selBlueButton = (Button)findViewById(R.id.combine_sel_blue_btn);
-    selBlueButton.setOnClickListener(new View.OnClickListener () {
-      @Override
-      public void onClick(View v) {
-        showProgressDialog("提示", "请稍等...");
-        Intent intent = new Intent(SmartCombineActivity.this,
-            BlueMissingDataActivity.class);
-        intent.putExtra("FROM", "SmartCombineActivity");
-        startActivity(intent);
-      }
-    });
-    
     
     startCombineButton = (Button)findViewById(R.id.combine_start_btn);
     startCombineButton.setOnClickListener(new View.OnClickListener () {
@@ -681,7 +680,6 @@ public class SmartCombineActivity extends Activity {
         
         bundle.putParcelableArrayList("ResultCodes", allCombinedCodes);
         intent.putExtras(bundle);
-        
         startActivity(intent);
       }
     });
@@ -802,20 +800,21 @@ public class SmartCombineActivity extends Activity {
   
   private static void initializeRecommendBlueModels(List<ItemPair> allRecommendBlueList) {
     allRecommendBlueList.clear();
-    allRecommendBlueList.add(new ItemPair(INVALID_MODEL_ID, "软件荐蓝"));
-    allRecommendBlueList.add(new ItemPair(RECOMMENDBLUEOP, "智能推荐蓝码"));
-    allRecommendBlueList.add(new ItemPair(VIEWRECOMMENDREDHIS, "查看历史推荐记录")); 
+    allRecommendBlueList.add(new ItemPair(INVALID_MODEL_ID, "点击选择蓝号"));
+    allRecommendBlueList.add(new ItemPair(SELFSELECTIONBLUE, "蓝号走势图选蓝"));
+    allRecommendBlueList.add(new ItemPair(RECOMMENDBLUEOP, "软件推荐蓝码"));
   }
   
   private static void initializeRecommendRedModels(List<ItemPair> allRecommendRedModels) {
     allRecommendRedModels.clear();
-    allRecommendRedModels.add(new ItemPair(INVALID_MODEL_ID, "软件荐红"));
-    allRecommendRedModels.add(new ItemPair(RECOMMENDREDMODELHOTWARM, "智能推荐红码组(91%中4-6红)"));
-    allRecommendRedModels.add(new ItemPair(RECOMMEND6FOR456, "智能推荐6码"));
-    allRecommendRedModels.add(new ItemPair(RECOMMEND11FOR56, "智能推荐11码"));
-    allRecommendRedModels.add(new ItemPair(RECOMMEND17FOR6, "智能推荐17码"));
+    allRecommendRedModels.add(new ItemPair(INVALID_MODEL_ID, "点击选择红号"));
+    allRecommendRedModels.add(new ItemPair(SELFSELECTION1, "红号走势图选红"));
+    allRecommendRedModels.add(new ItemPair(SELFSELECTION2, "冷热走势图选红"));
+    allRecommendRedModels.add(new ItemPair(RECOMMENDREDMODELHOTWARM, "软件推荐红号"));
+    allRecommendRedModels.add(new ItemPair(RECOMMEND6FOR456, "软件推荐6红"));
+    allRecommendRedModels.add(new ItemPair(RECOMMEND11FOR56, "软件推荐11红"));
+    allRecommendRedModels.add(new ItemPair(RECOMMEND17FOR6, "软件推荐17红"));
     allRecommendRedModels.add(new ItemPair(USEMYKEEPRED, "使用我的守号"));
-    allRecommendRedModels.add(new ItemPair(VIEWRECOMMENDREDHIS, "查看历史推荐记录")); 
   }
 
   private ProgressDialog progressDialog;

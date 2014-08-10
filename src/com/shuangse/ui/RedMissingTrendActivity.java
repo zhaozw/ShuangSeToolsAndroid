@@ -106,11 +106,11 @@ public class RedMissingTrendActivity extends Activity {
         fromActivity = getIntent().getExtras().getString("FROM");
         operationTextView = (TextView)findViewById(R.id.operationText);
         if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-          operationTextView.setText("点击空白方格进行选号，然后点击最右侧【旋转组号】按钮组号.");
+          operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】.");
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
-          operationTextView.setText("双击(点击2次)空白方格选为胆码(点击一次选为拖码)，然后点击最右侧【胆拖组号】按钮组号.");
+          operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】.");
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
-          operationTextView.setText("点击空白方格选号(第二行点击两次选为胆码，点击一次选为拖码)，然后点击最右侧【对应行的组号按钮】组号.");
+          operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】.");
         }
         
         progDialog = new ProgressDialog(RedMissingTrendActivity.this);
@@ -384,135 +384,64 @@ public class RedMissingTrendActivity extends Activity {
             startIndex++;
         }//end while
         
-        //加2行空 - 2个操作行
-        int operaLine = 1;//有几行操作行
-        if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")){
-          operaLine = 2;
-        }
+        //加1行空 - 1个操作行
         latestId = appContext.getLoalLatestItemIDFromCache();
-        for(int cnt = 0; cnt < operaLine; cnt++) {//针对每一行空白操作行，设置点击行为
-            row = null;
-            row = new TableRow(RedMissingTrendActivity.this);
-            //第0列  期号
-            row.addView(UIFactory.makeTextCell(Integer.toString(latestId + 1), 
-                    Color.WHITE,
-                    RedMissingTrendActivity.this), 
-                    appContext.leftCellPara);// 期号
-            //第1-68列
-            for (int m = 1; m < howManyColumns; m++) {
-                switch (m) {//m表示列号
-                    case 1:case 2:case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: 
-                    case 12:case 13:case 14:case 15:case 16: case 17: case 18: case 19: case 20: case 21:case 22:
-                    case 23:case 24:case 25:case 26:case 27: case 28: case 29: case 30: case 31: case 32:case 33:
-                        redNum = redListOrderedByMissingTimes[m-1].val; break;
-                    case 34:case 42:case 50:case 58:case 67:
-                        //分割符号
-                        row.addView(UIFactory.makeSeperator(RedMissingTrendActivity.this), 
-                                appContext.rightCellPara);
-                        continue;//continue the for loop
-                        
-                    case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66:
-                      //遗漏0，1，2，3，4，5，6，>=7 的遗漏值 missCntOfMissValues[0-7]
-                    case 35: case 36:case 37:case 38:case 39:case 40:case 41: //热码出0 - 6个 (35 - 41)
-                    case 43:case 44:case 45:case 46:case 47:case 48:case 49: //温码出0-6个（43-49)
-                    case 51:case 52:case 53:case 54:case 55:case 56:case 57://冷码出0-6个 （51-57)
-                      row.addView(UIFactory.makeBlankCell(RedMissingTrendActivity.this), 
-                          appContext.rightCellPara);
-                      continue;
-                      
-                    case 68://操作按钮
-                        {
-                          if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-                              row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.smartcombinebtn), new RedOPSmartCombineBtnListener(),
-                                                      RedMissingTrendActivity.this),
-                                                      appContext.rightCellPara);
-                          } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
-                              row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.dantuocombine), new RedOPDanTuoBtnListener(),
-                                                      RedMissingTrendActivity.this),
-                                                      appContext.rightCellPara);
-                          } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
-                             if(cnt == 0) {
-                               row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.smartcombinebtn), new RedOPSmartCombineBtnListener(),
+
+        row = null;
+        row = new TableRow(RedMissingTrendActivity.this);
+        //第0列  期号
+        row.addView(UIFactory.makeTextCell(Integer.toString(latestId + 1), 
+                Color.WHITE,
+                RedMissingTrendActivity.this), 
+                appContext.leftCellPara);// 期号
+        //第1-68列
+        for (int m = 1; m < howManyColumns; m++) {
+            switch (m) {//m表示列号
+                case 1:case 2:case 3: case 4: case 5: case 6: case 7: case 8: case 9: case 10: case 11: 
+                case 12:case 13:case 14:case 15:case 16: case 17: case 18: case 19: case 20: case 21:case 22:
+                case 23:case 24:case 25:case 26:case 27: case 28: case 29: case 30: case 31: case 32:case 33:
+                    redNum = redListOrderedByMissingTimes[m-1].val; break;
+                case 34:case 42:case 50:case 58:case 67:
+                    //分割符号
+                    row.addView(UIFactory.makeSeperator(RedMissingTrendActivity.this), 
+                              appContext.rightCellPara);
+                    continue;//continue the for loop
+                                
+                case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66:
+                //遗漏0，1，2，3，4，5，6，>=7 的遗漏值 missCntOfMissValues[0-7]
+                case 35: case 36:case 37:case 38:case 39:case 40:case 41: //热码出0 - 6个 (35 - 41)
+                case 43:case 44:case 45:case 46:case 47:case 48:case 49: //温码出0-6个（43-49)
+                case 51:case 52:case 53:case 54:case 55:case 56:case 57://冷码出0-6个 （51-57)
+                    row.addView(UIFactory.makeBlankCell(RedMissingTrendActivity.this), appContext.rightCellPara);
+                    continue;
+                case 68://操作按钮
+                    row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.combinebtn),
+                                   new RedOPCommonCombineBtnListener(),
                                    RedMissingTrendActivity.this),
                                    appContext.rightCellPara);
-                             } else if(cnt == 1) {
-                               row.addView(UIFactory.makeButton(getResources().getDrawable(R.drawable.dantuocombine), new RedOPDanTuoBtnListener(),
-                                   RedMissingTrendActivity.this),
-                                   appContext.rightCellPara);
-                             }
-                          }
-                          continue;//continue the for loop
-                        }
-                    default:
-                        break;
-                }//end switch
-                
-                CellData blankCell = null;
-                if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("SmartCombineActivity")) {
-                    blankCell = new CellData(redNum, latestId + 1, 0, 
-                        appContext.getPicCache().get("red"+redNum),
-                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        appContext.getPicCache().get("danRed"+redNum),
-                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                        false, //不允许双击选择
-                        disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_SMART_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(1);
-                    }
-                    ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
-                    row.addView(cellImage, appContext.rightCellPara);
-                } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) {
-                  blankCell = new CellData(redNum, latestId + 1, 0, 
-                      appContext.getPicCache().get("red"+redNum),
-                      appContext.getPicCache().get("danRed"+redNum),
-                      //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                      //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                      true, //允许双击选择
-                      disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_DANTUO_COMBINE);
-                  if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
-                    blankCell.setClicked(2);
-                  } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
-                    blankCell.setClicked(1);
-                  }
-                  ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
-                  row.addView(cellImage, appContext.rightCellPara);
-                  
-                }else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
-                  if(cnt == 0) {
-                    blankCell = new CellData(redNum, latestId + 1, 0, 
-                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                        appContext.getPicCache().get("red" + redNum),
-                        appContext.getPicCache().get("danRed" + redNum),
-                        false, //不允许双击选择
-                        disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_SMART_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(1);
-                    }
-                    ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
-                    row.addView(cellImage, appContext.rightCellPara);
-                  } else if(cnt == 1) {
-                    blankCell = new CellData(redNum, latestId + 1, 0, 
-                        //getResources().getDrawable(MagicTool.getResIDbyRednum(redNum)),
-                        //getResources().getDrawable(MagicTool.getDanResIDbyRednum(redNum)),
-                        appContext.getPicCache().get("red"+redNum),
-                        appContext.getPicCache().get("danRed"+redNum),
-                        true, //允许双击选择
-                        disp_his_num + cnt + 1, m, CellData.P_FOR_SEL_RED_DANTUO_COMBINE);
-                    if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(2);
-                    } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().contains(Integer.valueOf(redNum))) {
-                      blankCell.setClicked(1);
-                    }
-                    ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
-                    row.addView(cellImage, appContext.rightCellPara);
-                  }
-                }
-            }//end for 
-            
-            dataTable.addView(row, viewIndex++, appContext.rowPara);
-        }
-        ///跳过提示行
+                    continue;//continue the for loop
+                default:
+                    break;
+            }//end switch
+    
+            CellData blankCell = null;
+            blankCell = new CellData(redNum, latestId + 1, 0, 
+                  appContext.getPicCache().get("red"+redNum),
+                  appContext.getPicCache().get("danRed"+redNum),
+                  true, //允许双击选择
+                  disp_his_num + 1, m, CellData.P_FOR_SEL_RED_COMBINE);
+            if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().contains(Integer.valueOf(redNum))) {
+                blankCell.setClicked(2);
+            } else if(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().contains(Integer.valueOf(redNum))) {
+                blankCell.setClicked(1);
+            }
+            ImageView cellImage = UIFactory.makeClickableBlankCell("", blankCell, cellClickListener, RedMissingTrendActivity.this);
+            row.addView(cellImage, appContext.rightCellPara);
+        }//End for
+        
+        dataTable.addView(row, viewIndex++, appContext.rowPara);
+        
+        //跳过提示行
         viewIndex++;
         
         //增加三行(出现次数,最大遗漏，最大连出）
@@ -669,47 +598,35 @@ public class RedMissingTrendActivity extends Activity {
         if(v instanceof ImageView) {
           ImageView imageView = (ImageView)v;
           if(cellData.isClicked() == 0) {//未点击，现在点击
-            if(!cellData.isIfAllowDoubleClickSel() && (cellData.getCellFor() == CellData.P_FOR_SEL_RED_SMART_COMBINE)) {
-                //不允许双击选择,选择旋转组号的红球
+            if(cellData.isIfAllowDoubleClickSel() && (cellData.getCellFor() == CellData.P_FOR_SEL_RED_COMBINE)) {
                 imageView.setImageDrawable(cellData.getDispImg());
                 cellData.setClicked(1);
                 if((cellData.getNum() > 0 ) && (cellData.getNum() < 34)) {
-                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().add(Integer.valueOf(cellData.getNum()))) {
+                  try{
+                    ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().add(Integer.valueOf(cellData.getNum()));
+                  }catch (Exception e) {
                     theActivity.InfoMessageBox("提示", "选择红球出错，请联系作者。");
                   }
                 }
-            } else if(cellData.isIfAllowDoubleClickSel() && (cellData.getCellFor() == CellData.P_FOR_SEL_RED_DANTUO_COMBINE)){
-              //允许双击选择，选择为拖码 
-              imageView.setImageDrawable(cellData.getDispImg());
-              cellData.setClicked(1);
-              if((cellData.getNum() > 0 ) && (cellData.getNum() < 34)) {
-                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().add(Integer.valueOf(cellData.getNum()))) {
-                  theActivity.InfoMessageBox("提示", "选择红球出错，请联系作者。");
-                }
-              }
-            }
+            } 
           } else if(cellData.isClicked() == 1){//点击了1次，现在又点击
-              if(!cellData.isIfAllowDoubleClickSel()) {//不允许双击选择，选择去掉
-                  imageView.setImageDrawable(null);
-                  cellData.setClicked(0);
-                  if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().remove(Integer.valueOf(cellData.getNum()))) {
-                    theActivity.InfoMessageBox("提示", "去选择红球出错，请联系作者。");
-                  }
-              } else {//允许双击,选择为胆码,去掉拖，加入胆
+                //允许双击,选择为胆码,去掉拖，加入胆
                 imageView.setImageDrawable(cellData.getDoubleclickDispImg());
                 cellData.setClicked(2);
-                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedTuoNumbers().remove(Integer.valueOf(cellData.getNum()))) {
-                  theActivity.InfoMessageBox("提示", "去选择红球拖码时出错，请联系作者。");
-                } 
-                if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().add(Integer.valueOf(cellData.getNum()))) {
+                try {
+                    ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().remove(Integer.valueOf(cellData.getNum()));
+                    ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().add(Integer.valueOf(cellData.getNum()));
+                }catch (Exception e) {
                   theActivity.InfoMessageBox("提示", "选择红球胆码时出错，请联系作者。");
                 }
-              }
           } else if(cellData.isClicked() == 2){//点击了2次，现在又点击，去掉为胆码 
             imageView.setImageDrawable(null);
             cellData.setClicked(0);
-            if(!ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().remove(Integer.valueOf(cellData.getNum()))) {
-              theActivity.InfoMessageBox("提示", "去选择红球胆码出错，请联系作者。");
+            try {
+                ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers().remove(Integer.valueOf(cellData.getNum()));
+                ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers().remove(Integer.valueOf(cellData.getNum()));
+            }catch (Exception e) {
+              theActivity.InfoMessageBox("提示", "选择红球胆码时出错，请联系作者。");
             }
          } else {
             theActivity.InfoMessageBox("提示", "旋转组号时选择红球胆码表格状态出错，请联系作者2。");
@@ -722,36 +639,17 @@ public class RedMissingTrendActivity extends Activity {
         public void loadComplete();
     }
     
-  // 操作按钮响应函数
-   class RedOPSmartCombineBtnListener implements OnClickListener {
-    public RedOPSmartCombineBtnListener() {
-    }
+    // 操作按钮响应函数
+    class RedOPCommonCombineBtnListener implements OnClickListener {
+        public RedOPCommonCombineBtnListener() {
+        }
 
-    public void onClick(View v) {
-      showProgressDialog("提示", "请稍等...");
-      Log.i("RedOPBtnListener", "Button is clicked");
+        public void onClick(View v) {
+            final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(RedMissingTrendActivity.this);
+            dialog.setTitle("请选择:");
+        }
+    };
 
-      Intent intent = new Intent(RedMissingTrendActivity.this, SmartCombineActivity.class);
-      intent.putExtra("FROM", "RedMissingTrendActivity");
-      startActivity(intent);
-   }
-  }
-
-   // 操作按钮响应函数
-   class RedOPDanTuoBtnListener implements OnClickListener {
-    public RedOPDanTuoBtnListener() {
-    }
-
-    public void onClick(View v) {
-      showProgressDialog("提示", "请稍等...");
-      Log.i("RedOPBtnListener", "Button is clicked");
-
-      Intent intent = new Intent(RedMissingTrendActivity.this, DantuoCombineActivity.class);
-      intent.putExtra("FROM", "RedMissingTrendActivity");
-      startActivity(intent);
-   }
-  }
-   
     class LoadDataAsyncTask extends AsyncTask<String, String, String> {
         
         @Override
@@ -794,13 +692,13 @@ public class RedMissingTrendActivity extends Activity {
     }
 
     private ProgressDialog progressDialog;
-    private void showProgressDialog(String title, String msg) {
-      progressDialog = new ProgressDialog(RedMissingTrendActivity.this);
-      progressDialog.setTitle(title);
-      progressDialog.setMessage(msg);
-      progressDialog.setCancelable(false);
-      progressDialog.show();
-    }
+//    private void showProgressDialog(String title, String msg) {
+//      progressDialog = new ProgressDialog(RedMissingTrendActivity.this);
+//      progressDialog.setTitle(title);
+//      progressDialog.setMessage(msg);
+//      progressDialog.setCancelable(false);
+//      progressDialog.show();
+//    }
 
     private void hideProgressBox() {
       if (progressDialog != null) {
@@ -821,11 +719,13 @@ public class RedMissingTrendActivity extends Activity {
           Intent intent = new Intent(RedMissingTrendActivity.this,
               SmartCombineActivity.class);
           startActivity(intent);
+          this.finish();
           return true;
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("DantuoCombineActivity")) { 
           Intent intent = new Intent(RedMissingTrendActivity.this,
               DantuoCombineActivity.class);
           startActivity(intent);
+          this.finish();
           return true;
         } else {
             return super.onKeyDown(keyCode, event);

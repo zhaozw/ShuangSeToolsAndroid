@@ -55,15 +55,7 @@ public class EntryActivity extends Activity {
         ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedDanNumbers(
             MagicTool.parsetRedArrayListByString(
                 sharedPreferences.getString(appContext.My_Selection_Red_Dan_Str, "")));
-        
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedRedTuoNumbers(
-            MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(appContext.My_Selection_Red_Tuo_Str, "")));
-        
-        ShuangSeToolsSetApplication.getCurrentSelection().setSelectedBlueNumbersForDanTuo(
-            MagicTool.parsetRedArrayListByString(
-                sharedPreferences.getString(appContext.My_Selection_BlueForDanTuo_String, "")));
-        
+
         //启动自定义窗口标题
         requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         

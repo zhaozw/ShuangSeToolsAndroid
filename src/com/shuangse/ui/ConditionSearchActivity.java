@@ -29,8 +29,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.ItemPair;
 import com.shuangse.meta.ValueObj;
-import com.shuangse.ui.SmartCombineActivity.ItemPair;
 
 public class ConditionSearchActivity extends Activity {
   private final String TAG = "ConditionSearchActivity";

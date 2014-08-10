@@ -16,22 +16,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="期    号："
+                android:text="选期号："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-            <TextView
+            <Spinner
                 android:id="@+id/combine_itemid"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text=""
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" 
+                android:drawSelectorOnTop="false"
                 android:layout_toRightOf="@id/combine_itemid_title"
                 style="@style/ButtonSmallText"
                 android:background="@drawable/small_red_btn"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textSize="18sp" />
         </RelativeLayout>
         
         <RelativeLayout
@@ -47,28 +46,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="第一步："
+                android:text="选红号："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/combine_sel_red_btn"
-                style="@style/ButtonSmallText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/combine_title1"
-                android:background="@drawable/small_red_btn"
-                android:gravity="center"
-                android:text="点击选择红球" />
             
             <Spinner
                     android:id="@+id/recommend_red_model"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/combine_sel_red_btn"
+                    android:layout_toRightOf="@id/combine_title1"
                     android:drawSelectorOnTop="false"
                     android:gravity="center"
                     style="@style/ButtonSmallText"
@@ -119,28 +107,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="第二步："
+                android:text="选蓝号："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-
-            <Button
-                android:id="@+id/combine_sel_blue_btn"
-                style="@style/ButtonSmallText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toRightOf="@id/combine_title2"
-                android:background="@drawable/small_blue_btn"
-                android:gravity="center"
-                android:text="点击选择蓝球" />
             
              <Spinner
                     android:id="@+id/recommend_blue_spin"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_toRightOf="@id/combine_sel_blue_btn"
+                    android:layout_toRightOf="@id/combine_title2"
                     android:drawSelectorOnTop="false"
                     android:gravity="center"
                     style="@style/ButtonSmallText"
@@ -180,7 +157,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="第三步："
+                android:text="选模式："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />

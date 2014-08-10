@@ -16,11 +16,11 @@ public class SelectedItem {
   private int itemId;
   //组号的模式号
   private int selectedModelId;
-  //旋转矩阵选号时的红号
+  //红号
   private ArrayList<Integer> selectedRedNumbers = new ArrayList<Integer>();
-  //胆拖组号时选择的红号
+  //胆红号
   private ArrayList<Integer> selectedRedDanNumbers = new ArrayList<Integer>();
-  private ArrayList<Integer> selectedRedTuoNumbers = new ArrayList<Integer>();
+
   
   public ArrayList<Integer> getSelectedRedNumbers() {
     return selectedRedNumbers;
@@ -37,9 +37,6 @@ public class SelectedItem {
   public void setSelectedBlueNumbers(ArrayList<Integer> selectedBlueNumbers) {
     this.selectedBlueNumbers = selectedBlueNumbers;
   }
-  //胆拖组号时选择的篮球
-  private ArrayList<Integer> selectedBlueNumbersForDanTuo = new ArrayList<Integer>();
-  
 
   public int getItemId() {
     return itemId;
@@ -64,22 +61,4 @@ public class SelectedItem {
   public void setSelectedRedDanNumbers(ArrayList<Integer> selectedRedDanNumbers) {
     this.selectedRedDanNumbers = selectedRedDanNumbers;
   }
-
-  public ArrayList<Integer> getSelectedRedTuoNumbers() {
-    return selectedRedTuoNumbers;
-  }
-
-  public void setSelectedRedTuoNumbers(ArrayList<Integer> selectedRedTuoNumbers) {
-    this.selectedRedTuoNumbers = selectedRedTuoNumbers;
-  }
-
-  public ArrayList<Integer> getSelectedBlueNumbersForDanTuo() {
-    return selectedBlueNumbersForDanTuo;
-  }
-
-  public void setSelectedBlueNumbersForDanTuo(
-      ArrayList<Integer> selectedBlueNumbersForDanTuo) {
-    this.selectedBlueNumbersForDanTuo = selectedBlueNumbersForDanTuo;
-  }
-  
 }
