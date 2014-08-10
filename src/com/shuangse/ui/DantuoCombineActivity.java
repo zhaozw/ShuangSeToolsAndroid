@@ -93,27 +93,28 @@ public class DantuoCombineActivity extends Activity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_dantuo_combine);
     final TextView currentCombineItemIdTextView = (TextView) findViewById(R.id.combine_itemid);
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页操作提示：<br>\t 一、期号 显示的是下一期即将购买的期，不可改变，软件自动算出；" + 
-                                      "<br>\t 二、点击 第一步 对应按钮，即进入红球遗漏走势图进行选号，选号完成后，本页会显示所选号码，并可 查询该组号吗 的历史出号情况；" + 
-                                      "<br>\t三、点击 第二步 对应按钮，即进入篮球遗漏势图进行选号（可选多个篮球）；" +
-                                      "<br>\t四、本页也可通过遗漏走势图 或 冷热走势图中 点击《胆拖组号》按钮进入；" +
-                                      "<br>\t五、选好红球胆、拖码，和篮球后，点击最下方《胆拖组号》按钮即可组合号码。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, DantuoCombineActivity.this).show();
-      }
-    });
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+    
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页操作提示：<br>\t 一、期号 显示的是下一期即将购买的期，不可改变，软件自动算出；" + 
+//                                      "<br>\t 二、点击 第一步 对应按钮，即进入红球遗漏走势图进行选号，选号完成后，本页会显示所选号码，并可 查询该组号吗 的历史出号情况；" + 
+//                                      "<br>\t三、点击 第二步 对应按钮，即进入篮球遗漏势图进行选号（可选多个篮球）；" +
+//                                      "<br>\t四、本页也可通过遗漏走势图 或 冷热走势图中 点击《胆拖组号》按钮进入；" +
+//                                      "<br>\t五、选好红球胆、拖码，和篮球后，点击最下方《胆拖组号》按钮即可组合号码。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, DantuoCombineActivity.this).show();
+//      }
+//    });
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
     selRedDanTextView = (TextView)findViewById(R.id.combine_selred_dan);
     selRedTuoTextView = (TextView)findViewById(R.id.combine_selred_tuo);

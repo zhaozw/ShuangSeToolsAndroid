@@ -3,16 +3,6 @@ package com.shuangse.ui;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.protocol.HTTP;
-import org.apache.http.util.EntityUtils;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.meta.ExperienceItem;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
@@ -26,29 +16,33 @@ import android.support.v4.app.ListFragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-public class ShareExpFragment extends ListFragment {
-    private static final String TAG = "ShareExpFragment";
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.ExtShuangseCodeItem;
+import com.shuangse.util.MagicTool;
+
+public class HisDataListFragment extends ListFragment {
+    private static final String TAG = "HisDataListFragment";
     protected boolean isInit; // 是否可以开始加载数据
     protected ShuangSeToolsSetApplication mContext;
     protected Activity activity;
     
-    private final static int itemsPerPage = 10;
-    private final static int titleLength = 16;
+    private final static int itemsPerPage = 20;
     private ProgressDialog progDialog;
     
-    private ArrayList<ExperienceItem> expListItems = new ArrayList<ExperienceItem>();
+    private ArrayList<ExtShuangseCodeItem> hisDataListItems = new ArrayList<ExtShuangseCodeItem>();
     private ListViewAdapter adapter = new ListViewAdapter();
-    private ListView expListView;
+    private ListView hisDataListView;
     private View footerView;
     private ProgressBar footerProgressBar;
     private TextView footerTextView;
@@ -66,24 +60,24 @@ public class ShareExpFragment extends ListFragment {
 
     private Handler msgHandler = new MHandler(this);
     static class MHandler extends Handler {
-      WeakReference<ShareExpFragment> mActivity;
+      WeakReference<HisDataListFragment> mActivity;
 
-      MHandler(ShareExpFragment mAct) {
-        this.mActivity = new WeakReference<ShareExpFragment>(mAct);
+      MHandler(HisDataListFragment mAct) {
+        this.mActivity = new WeakReference<HisDataListFragment>(mAct);
       }
 
       @Override
       public void handleMessage(Message msg) {
-        ShareExpFragment theActivity = mActivity.get();
+        HisDataListFragment theActivity = mActivity.get();
         theActivity.hideProgressBox();
         switch (msg.what) {
         //列表下载数据返回的消息
         case STARTDOWNLOADEDMSG:
-            theActivity.showProgressDialog("信息", "请稍等，正在查询中奖经验列表...");
+            theActivity.showProgressDialog("信息", "请稍等，正在下载开奖历史数据...");
             break;
         case QUERYERRMSG:
             theActivity.mThread = null;
-            //theActivity.InfoMessageBox("信息", "查询中奖经验出错，请检查您的网络并稍候重试.");
+            //theActivity.InfoMessageBox("信息", "查询开奖数据出错，请检查您的网络并稍候重试.");
             theActivity.updateFooterViewToDownloadErr();
             break;
         case NODATAMSG:
@@ -120,25 +114,47 @@ public class ShareExpFragment extends ListFragment {
         super.onCreateView(inflater, container, savedInstanceState);
         isInit = true;
         mInflater = inflater;
-        return inflater.inflate(R.layout.shareexplistview, container, false);
+        return inflater.inflate(R.layout.hisdatalistview, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        expListView = getListView();
+        hisDataListView = getListView();
         
         TextView emptyView = (TextView) view.findViewById(android.R.id.empty);
-        expListView.setEmptyView(emptyView);
+        hisDataListView.setEmptyView(emptyView);
         //add the footer before adding the adapter, otherwise the footer will not load!
         footerView = mInflater.inflate(R.layout.listfooter, null, false);
-        expListView.addFooterView(footerView);
+        hisDataListView.addFooterView(footerView);
         footerProgressBar = (ProgressBar) footerView.findViewById(R.id.progressBar1);
         footerTextView = (TextView) footerView.findViewById(R.id.inprogressText);
 
         //要在footer 和 Empty 之后设置adapter
         setListAdapter(adapter);
 
-        expListView.setOnScrollListener(new OnScrollListener() {
+        hisDataListView.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+                    long arg3) {
+                        Log.d(TAG, "ItemClicked");
+                        ExtShuangseCodeItem itm = hisDataListItems.get(arg2);
+                        Intent intent = new Intent(HisDataListFragment.this.getActivity(), DispItemOpenDataDetailsActivity.class);
+                        intent.putExtra("ItemId", itm.id);
+                        intent.putExtra("RED1", itm.red[0]);
+                        intent.putExtra("RED2", itm.red[1]);
+                        intent.putExtra("RED3", itm.red[2]);
+                        intent.putExtra("RED4", itm.red[3]);
+                        intent.putExtra("RED5", itm.red[4]);
+                        intent.putExtra("RED6", itm.red[5]);
+                        intent.putExtra("BLUE", itm.blue);
+                        intent.putExtra("OPENDATE", itm.openDate);
+                        
+                        startActivity(intent);
+            }
+            
+        });
+        
+        hisDataListView.setOnScrollListener(new OnScrollListener() {
             /**
              * onScroll在每次ListView被刷新时都会被调用
              */
@@ -146,17 +162,17 @@ public class ShareExpFragment extends ListFragment {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
               //what is the bottom item that is visible
                 int lastInScreen = firstVisibleItem + visibleItemCount;
-                Log.i(TAG, "lastInScreen:" + lastInScreen 
-                      + " firstVisibleItem:" + firstVisibleItem 
-                      + " visibleItemCount:" + visibleItemCount
-                      + " totalItemCount:" + totalItemCount
-                      + " loadingMore:" + loadingMore
-                      + " noMoreData:" + noMoreData);
+//                Log.i(TAG, "lastInScreen:" + lastInScreen 
+//                      + " firstVisibleItem:" + firstVisibleItem 
+//                      + " visibleItemCount:" + visibleItemCount
+//                      + " totalItemCount:" + totalItemCount
+//                      + " loadingMore:" + loadingMore
+//                      + " noMoreData:" + noMoreData);
                 
                 //is the bottom item visible & not loading more already ? Load more !
                 if((lastInScreen == totalItemCount) && !(loadingMore) && !(noMoreData)) {
                     if(mThread == null || (!mThread.isAlive())) {
-                       mThread =  new LoadListItemsThread();
+                       mThread =  new LoadHisDataListItemsThread();
                        Log.i("onScroll", "LoadListItemsThread started");
                        mThread.start();
                     }
@@ -170,15 +186,6 @@ public class ShareExpFragment extends ListFragment {
             
         });
         
-        Button shareMyExpBtn = (Button) view.findViewById(R.id.shareMyExpBtn);
-        shareMyExpBtn.setOnClickListener(new OnClickListener() {
-            
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ShareExpFragment.this.getActivity(), ShareMyExperienceActivity.class);
-                startActivity(intent);
-            }
-        });
     }
     
     @Override
@@ -201,7 +208,7 @@ public class ShareExpFragment extends ListFragment {
     
     protected void showData() {
         if(mThread == null || (!mThread.isAlive())) {
-            mThread =  new LoadListItemsThread();
+            mThread =  new LoadHisDataListItemsThread();
             Log.i("onScroll", "LoadListItemsThread started");
             mThread.start();
         }
@@ -222,9 +229,9 @@ public class ShareExpFragment extends ListFragment {
         notifyDialog.show();
     }
     
-    static class ExprShareViewHolder {
+    static class HisDataListViewHolder {
         View itemView;
-        ExperienceItem item;
+        ExtShuangseCodeItem item;
     }
     
     class ListViewAdapter extends BaseAdapter {
@@ -232,70 +239,70 @@ public class ShareExpFragment extends ListFragment {
         }
         
         @Override
-        public ExperienceItem getItem(int position) {
-          if (!expListItems.isEmpty()) {
+        public ExtShuangseCodeItem getItem(int position) {
+          if (!hisDataListItems.isEmpty()) {
                 Log.v(TAG, "getItem");
-                return expListItems.get(position);
+                return hisDataListItems.get(position);
           }
           return null;
         }
 
         @Override
         public long getItemId(int position) {
-          if (!expListItems.isEmpty()) {
+          if (!hisDataListItems.isEmpty()) {
               Log.v(TAG, "getItemId");
-              return expListItems.get(position).getId();
+              return hisDataListItems.get(position).id;
           }
           return position;
         }
         
         public int getCount() {
-          if(expListItems == null) return 0;
-          return expListItems.size();
+          if(hisDataListItems == null) return 0;
+          return hisDataListItems.size();
         }
         
         public View getView(final int position, View convertView, ViewGroup parent) {
-          ExprShareViewHolder holder;
-          ExperienceItem item = getItem(position);
+          HisDataListViewHolder holder;
+          ExtShuangseCodeItem item = getItem(position);
           if(item == null) return null;
           Log.v(TAG, "getView");
                  
           if (convertView == null) {
-            holder = new ExprShareViewHolder();
+            holder = new HisDataListViewHolder();
             
-            convertView = mInflater.inflate(R.layout.listviewitem, null);
+            convertView = mInflater.inflate(R.layout.hisdatalistviewitem, null);
             holder.itemView = convertView;
             convertView.setTag(holder);
           } else {
-            holder = (ExprShareViewHolder) convertView.getTag();
+            holder = (HisDataListViewHolder) convertView.getTag();
           }
           
           holder.item = item;
-          TextView titleTextView = (TextView) holder.itemView.findViewById(R.id.ItemTitleText);
-          String titleTxt = item.getTitle();
-          if(titleTxt.length() <= titleLength) {
-            titleTextView.setText(titleTxt);
-          } else {
-            titleTextView.setText(titleTxt.substring(0, titleLength) + "...");
-          }
-          
-          convertView.setOnClickListener(new OnClickListener() {  
-              @Override  
-              public void onClick(View v) { // 加载详细  
-                  ExperienceItem itm = expListItems.get(position);
-                  Intent intent = new Intent(ShareExpFragment.this.getActivity(), ExperienceActivity.class);
-                  intent.putExtra("ItemId", itm.getId());
-                  startActivity(intent);
-              }  
-          });
-          
+          TextView titleTextView = (TextView) holder.itemView.findViewById(R.id.ItemID);
+          titleTextView.setText("第"+String.valueOf(item.id)+"期");
+          TextView dateTextView = (TextView) holder.itemView.findViewById(R.id.ItemDate);
+          dateTextView.setText("开奖日期:" + item.openDate);
+          ImageButton red1 = (ImageButton) holder.itemView.findViewById(R.id.blankrbtn1);
+          ImageButton red2 = (ImageButton) holder.itemView.findViewById(R.id.blankrbtn2);
+          ImageButton red3 = (ImageButton) holder.itemView.findViewById(R.id.blankrbtn3);
+          ImageButton red4 = (ImageButton) holder.itemView.findViewById(R.id.blankrbtn4);
+          ImageButton red5 = (ImageButton) holder.itemView.findViewById(R.id.blankrbtn5);
+          ImageButton red6 = (ImageButton) holder.itemView.findViewById(R.id.blankrbtn6);
+          ImageButton blue = (ImageButton) holder.itemView.findViewById(R.id.blankbluebtn);
+          red1.setImageResource(MagicTool.getResIDbyRednum(item.red[0]));
+          red2.setImageResource(MagicTool.getResIDbyRednum(item.red[1]));
+          red3.setImageResource(MagicTool.getResIDbyRednum(item.red[2]));
+          red4.setImageResource(MagicTool.getResIDbyRednum(item.red[3]));
+          red5.setImageResource(MagicTool.getResIDbyRednum(item.red[4]));
+          red6.setImageResource(MagicTool.getResIDbyRednum(item.red[5]));
+          blue.setImageResource(MagicTool.getResIDbyBluenum(item.blue));
           return convertView;
         }
     };
     
     
     //Runnable to load the items 
-    class LoadListItemsThread extends Thread {
+    class LoadHisDataListItemsThread extends Thread {
         @Override
         public void run() {
           try{
@@ -308,49 +315,22 @@ public class ShareExpFragment extends ListFragment {
             
             //Reset the array that holds the new items
             //expListItems = new ArrayList<ExperienceItem>();
+            ArrayList<ExtShuangseCodeItem> pageHisData = mContext.queryExtHisDataFromLocalDB(itemsPerPage, currentPageNumber);
             
-            String reqURL = mContext.getServerAddr() + "GetSharedExperienceAction.do?pageSize=" + itemsPerPage + "&pageNum=" + currentPageNumber;
-            Log.v(TAG, reqURL);
-            HttpGet httpGet = new HttpGet(reqURL);
-            
-            HttpResponse response = mContext.getHttpClient().execute(httpGet);
-            if (response != null && response.getStatusLine().getStatusCode() == 200) {
-              String responseContent = EntityUtils.toString(response.getEntity(),  HTTP.UTF_8).trim();
-              Log.v(TAG, "responseContent: " + responseContent);
-              JSONArray jsonArray = new JSONArray(responseContent); 
-              
-              for (int i = 0; i < jsonArray.length(); i++) {
-                JSONObject item = jsonArray.getJSONObject(i); //每条记录又由几个Object对象组成     
-                int id = item.getInt("id"); // 获取对象对应的值
-                String title = item.getString("title");
-                                
-                ExperienceItem record = new ExperienceItem();
-                record.setId(id);
-                record.setTitle(title);
-                expListItems.add(record);
+            if(pageHisData != null) {
+              for(int i=0;i<pageHisData.size(); i++){
+                ExtShuangseCodeItem record = pageHisData.get(i);
+                hisDataListItems.add(record);
               }
               currentPageNumber++;
               
               Message msg = new Message();
               msg.what = NEWITEMSLOADEDMSG;
               msgHandler.sendMessage(msg);
-              
-            } else if(response != null && response.getStatusLine().getStatusCode() == 204) {
+            } else {
               //No Content
-              if(response != null && response.getEntity() != null) {
-                response.getEntity().consumeContent();
-              }
               Message msg = new Message();
               msg.what = NODATAMSG;
-              msgHandler.sendMessage(msg);
-              
-            } else {//Various Error
-              Log.e(TAG, "Server returns error.");
-              if(response != null && response.getEntity() != null) {
-                response.getEntity().consumeContent();
-              }
-              Message msg = new Message();
-              msg.what = QUERYERRMSG;
               msgHandler.sendMessage(msg);
             }
           }catch (Exception e) {
@@ -372,14 +352,14 @@ public class ShareExpFragment extends ListFragment {
     private void updateFooterViewToNoMoredata() {
         //footerProgressBar.setVisibility(View.GONE);
         //footerTextView.setText("没有更多数据...");
-        expListView.removeFooterView(this.footerView);
+        hisDataListView.removeFooterView(this.footerView);
         this.loadingMore = false;
         this.noMoreData = true;
         Log.v(TAG, "updateFooterViewToNoMoredata entered");
     }
     
     private void refleshAdaptorData() {
-        Log.v(TAG, "refleshAdaptorData entered, expListItems.size:" + expListItems.size());
+        Log.v(TAG, "refleshAdaptorData entered, expListItems.size:" + hisDataListItems.size());
         // Tell to the adapter that changes have been made, this will cause the list
         // to refresh
         adapter.notifyDataSetChanged();

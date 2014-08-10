@@ -1,0 +1,586 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listviewitemcontainer"
+    android:layout_width="wrap_content"
+    android:layout_height="fill_parent"
+    android:background="#000000"
+    android:clickable="false"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical" >
+
+<RelativeLayout
+        android:id="@+id/ItemTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_horizontal"
+        android:background="#000000"
+        android:clickable="false"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/ItemID"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:gravity="left"
+            android:paddingBottom="10dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="10dp"
+            android:clickable="false"
+            android:background="#000000"
+            android:text="第2014090期"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" >
+        </TextView>
+
+        <TextView
+            android:id="@+id/ItemDate"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/ItemID"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:background="#000000"
+            android:paddingBottom="10dp"
+            android:paddingRight="8dp"
+            android:paddingTop="10dp"
+            android:clickable="false"
+            android:textColor="#FFFFFF"
+            android:text="开奖日期:2014-08-31"
+            android:textSize="18sp" >
+        </TextView>
+    </RelativeLayout>
+    
+
+    <LinearLayout
+        android:id="@+id/ItemContent"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemTitle"
+        android:layout_centerInParent="true"
+        android:background="#000000"
+        android:clickable="false"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingLeft="10dp" >
+
+        <ImageButton
+            android:id="@+id/blankrbtn1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankr1" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankr2" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankr3" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankr4" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankr5" />
+
+        <ImageButton
+            android:id="@+id/blankrbtn6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankr6" />
+
+        <TextView
+            android:id="@+id/ItemIDSeparator"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:background="#000000"
+            android:clickable="false"
+            android:gravity="center_vertical"
+            android:text=" + "
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" >
+        </TextView>
+
+        <ImageButton
+            android:id="@+id/blankbluebtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:clickable="false"
+            android:padding="3dp"
+            android:src="@drawable/blankblue" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ItemDetailMiddleTitle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ItemContent"
+        android:layout_centerInParent="true"
+        android:background="#000000"
+        android:clickable="false"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <TextView
+            android:id="@+id/ItemTitleText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#000000"
+            android:clickable="false"
+            android:gravity="center"
+            android:paddingBottom="10dp"
+            android:paddingLeft="8dp"
+            android:paddingTop="10dp"
+            android:text="开奖详细情况"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp" >
+        </TextView>
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_below="@id/ItemDetailMiddleTitle"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TableLayout
+            android:id="@+id/itemTable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/ItemDetailMiddleTitle"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
+            android:background="#FF0000"
+            android:clickable="false"
+            android:collapseColumns="4"
+            android:stretchColumns="0,1,2,3"
+            android:textSize="16sp" >
+
+            <TableRow android:background="#FF0000" >
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="奖项"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中奖条件"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中奖注数"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="单注奖金(元)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="一等奖"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中6+1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/itemFirstPrizeCnt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/itemFirstPrizeValue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="二等奖"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中6+0"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/itemSecondPrizeCnt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/itemSecondPrizeValue"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="三等奖"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中5+1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="几千注"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="3000"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="四等奖"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中5+0/4+1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="几万注"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="200"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="五等奖"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中4+0/3+1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="一百多万注"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="10"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="1dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="六等奖"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="中2+1/1+1/0+1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="一千多万注"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="1dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="1dp"
+                    android:layout_marginTop="0dp"
+                    android:background="#000000"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+            </TableRow>
+        </TableLayout>
+    </HorizontalScrollView>
+
+</RelativeLayout>

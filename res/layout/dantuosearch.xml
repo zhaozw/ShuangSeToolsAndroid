@@ -41,7 +41,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_alignParentTop="true"
-                    android:text="选择您要查询的期号："
+                    android:text="选择期号："
                     android:textSize="18dp" />
 
                 <Spinner
@@ -59,7 +59,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_below="@id/spinner_itemid_dantuo"
-                    android:text="请选择您购买的胆拖式号码："
+                    android:text="选择当期购买的胆码和托码："
                     android:textSize="18dp" />
 
                 <RelativeLayout

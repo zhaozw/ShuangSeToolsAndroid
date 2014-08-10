@@ -3,10 +3,6 @@ package com.shuangse.ui;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.meta.MyHisRecord;
-import com.shuangse.util.MagicTool;
-
 import android.app.AlertDialog;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
@@ -27,11 +23,13 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.MyHisRecord;
 
 public class MyHisActivity extends ListActivity {
   private final static String TAG = "MyHisActivity";
@@ -61,23 +59,23 @@ public class MyHisActivity extends ListActivity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_myhis);
   
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页为您提供您个人购买号码的记录保存，供您回顾与查看，每行一个记录，点击对应的行可以 查看详细中奖情况 或 删除该记录。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, MyHisActivity.this).show();
-      }
-    });
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页为您提供您个人购买号码的记录保存，供您回顾与查看，每行一个记录，点击对应的行可以 查看详细中奖情况 或 删除该记录。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, MyHisActivity.this).show();
+//      }
+//    });
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
     appContext = (ShuangSeToolsSetApplication) getApplication();
     

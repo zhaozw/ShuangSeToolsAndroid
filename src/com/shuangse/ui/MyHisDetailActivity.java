@@ -2,12 +2,6 @@ package com.shuangse.ui;
 
 import java.util.ArrayList;
 
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.meta.MyHisRecord;
-import com.shuangse.meta.ShuangseCodeItem;
-import com.shuangse.ui.SmartCombineResultActivity.ViewHolder;
-import com.shuangse.util.MagicTool;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
@@ -20,10 +14,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.MyHisRecord;
+import com.shuangse.meta.ShuangseCodeItem;
+import com.shuangse.ui.SmartCombineResultActivity.ViewHolder;
+import com.shuangse.util.MagicTool;
 
 public class MyHisDetailActivity extends Activity {
   //private final String TAG = "MyHisDetailActivity";
@@ -54,23 +53,23 @@ public class MyHisDetailActivity extends Activity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_myhisdetail);
   
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页为您提供您个人购买号码的详细中奖情况。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, MyHisDetailActivity.this).show();
-      }
-    });
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页为您提供您个人购买号码的详细中奖情况。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, MyHisDetailActivity.this).show();
+//      }
+//    });
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
     appContext = (ShuangSeToolsSetApplication) getApplication();
  

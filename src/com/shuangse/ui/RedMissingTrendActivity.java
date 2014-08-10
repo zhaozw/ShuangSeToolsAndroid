@@ -7,7 +7,6 @@ import com.shuangse.meta.CellData;
 import com.shuangse.meta.ShuangseCodeItem;
 import com.shuangse.meta.SummaryData;
 import com.shuangse.meta.ValueObj;
-import com.shuangse.util.MagicTool;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,7 +25,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -74,33 +72,33 @@ public class RedMissingTrendActivity extends Activity {
         final TextView titleTextView = (TextView) findViewById(R.id.title_text);
         titleTextView.setText(R.string.custom_title_hot_cool_trend);
         
-        Button returnBtn = (Button)findViewById(R.id.returnbtn);
-        returnBtn.setVisibility(View.VISIBLE);
-        Button helpBtn = (Button)findViewById(R.id.helpbtn);
-        helpBtn.setVisibility(View.VISIBLE);
-        helpBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            String htmlMsg = "本页操作提示：<br>\t 一、红球冷热走势图和遗漏走势图基本相同，只是显示方式改变，有以下区别；" + 
-                                          "<br>\t 二、本冷热走势图将红球1-33动态的划分为三个区间（热码-温码-冷码），依次用不同背景色区分显示。" + 
-                                          "<br>\t三、从左往右看，可见红球呈现阶梯状排列，这是动态的按红球热-温-冷（遗漏值）码排列的结果，遗漏0也即上期中出号码" + 
-                                          "在最左方，遗漏1（间隔1期未出号码）依次排列等等，其中背景色为黑色的热码是指遗漏值为0，1，2的红球，背景色为浅紫色" +
-                                          "的温码是指遗漏值为3，4，5，6的红球，背景色为亮紫色的冷码指遗漏值大于等于7的所有红球；" +
-                                          "<br>\t四、最右方部分从上往下看，依次为对应的热码-温码和冷码历史出号走势；" +
-                                          "<br>\t 五、选号操作及显示期数设置同红球走势遗漏图一样；" + 
-                                          "<br>\t 六、根据右方热-温-冷码出号个数走势可以看出，热码出2-3个较多；温码出1-2个较多；冷码出0-1-2较多，因此基于此图选号时，" +
-                                          "可根据该规律选号(多选热-温码)。" +
-                                          "<br>\t 七、本冷热走势图可以和遗漏走势图结合使用，在此图中选择的号码，也会在遗漏图中显示，反之亦然，二者结合使用，可" +
-                                          "大大提高选号的覆盖概率。";
-            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, RedMissingTrendActivity.this).show();
-          }
-        });
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            onBackPressed();
-          }
-        });
+//        Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//        returnBtn.setVisibility(View.VISIBLE);
+//        Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//        helpBtn.setVisibility(View.VISIBLE);
+//        helpBtn.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//            String htmlMsg = "本页操作提示：<br>\t 一、红球冷热走势图和遗漏走势图基本相同，只是显示方式改变，有以下区别；" + 
+//                                          "<br>\t 二、本冷热走势图将红球1-33动态的划分为三个区间（热码-温码-冷码），依次用不同背景色区分显示。" + 
+//                                          "<br>\t三、从左往右看，可见红球呈现阶梯状排列，这是动态的按红球热-温-冷（遗漏值）码排列的结果，遗漏0也即上期中出号码" + 
+//                                          "在最左方，遗漏1（间隔1期未出号码）依次排列等等，其中背景色为黑色的热码是指遗漏值为0，1，2的红球，背景色为浅紫色" +
+//                                          "的温码是指遗漏值为3，4，5，6的红球，背景色为亮紫色的冷码指遗漏值大于等于7的所有红球；" +
+//                                          "<br>\t四、最右方部分从上往下看，依次为对应的热码-温码和冷码历史出号走势；" +
+//                                          "<br>\t 五、选号操作及显示期数设置同红球走势遗漏图一样；" + 
+//                                          "<br>\t 六、根据右方热-温-冷码出号个数走势可以看出，热码出2-3个较多；温码出1-2个较多；冷码出0-1-2较多，因此基于此图选号时，" +
+//                                          "可根据该规律选号(多选热-温码)。" +
+//                                          "<br>\t 七、本冷热走势图可以和遗漏走势图结合使用，在此图中选择的号码，也会在遗漏图中显示，反之亦然，二者结合使用，可" +
+//                                          "大大提高选号的覆盖概率。";
+//            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, RedMissingTrendActivity.this).show();
+//          }
+//        });
+//        returnBtn.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//            onBackPressed();
+//          }
+//        });
         
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(RedMissingTrendActivity.this);
         disp_his_num = Integer.parseInt(sharedPreferences.getString("shuangse_display_red_history_cnt", "20"));

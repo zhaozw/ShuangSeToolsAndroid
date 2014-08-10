@@ -5,11 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.meta.ValueObj;
-import com.shuangse.ui.SmartCombineActivity.ItemPair;
-import com.shuangse.util.MagicTool;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -25,13 +20,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemSelectedListener;
+
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.ValueObj;
+import com.shuangse.ui.SmartCombineActivity.ItemPair;
 
 public class ConditionSearchActivity extends Activity {
   private final String TAG = "ConditionSearchActivity";
@@ -190,27 +189,27 @@ public class ConditionSearchActivity extends Activity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_conditionsearch);
   
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页为您提供选号常用的技术工具，大大提高您选择的号码的有效性（号码的有效性非常重要，" +
-            "比如你选择的单注号码是历史上开过奖的，而你不知道，那么无疑是浪费你的投资；再比如，你选择的一组红球" +
-            "号码比如8或10个红球，而此组红球历史上或近期已经开出过6红，那么再次开出6红的可能行较低；避免这样的选号" +
-            "失误，会大大提高你中奖的概率；" +" <br>\t 一、请首先选择对应的条件类型，然后点击最下方的《查询》按钮即可，注意：" +
-            "其中统计红球三码同出功能需要相对稍长时间计算，请耐心等待一下。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ConditionSearchActivity.this).show();
-      }
-    });
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });    
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页为您提供选号常用的技术工具，大大提高您选择的号码的有效性（号码的有效性非常重要，" +
+//            "比如你选择的单注号码是历史上开过奖的，而你不知道，那么无疑是浪费你的投资；再比如，你选择的一组红球" +
+//            "号码比如8或10个红球，而此组红球历史上或近期已经开出过6红，那么再次开出6红的可能行较低；避免这样的选号" +
+//            "失误，会大大提高你中奖的概率；" +" <br>\t 一、请首先选择对应的条件类型，然后点击最下方的《查询》按钮即可，注意：" +
+//            "其中统计红球三码同出功能需要相对稍长时间计算，请耐心等待一下。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, ConditionSearchActivity.this).show();
+//      }
+//    });
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });    
     
     appContext = (ShuangSeToolsSetApplication) getApplication();
     bodyContainer = (LinearLayout)findViewById(R.id.bodyContainer);

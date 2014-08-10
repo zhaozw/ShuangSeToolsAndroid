@@ -226,32 +226,32 @@ public class SmartCombineActivity extends Activity {
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.title_activity_smart_combine);
     
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页操作提示：<br>\t 一、旋转矩阵组号是目前世界上基于可靠数学理论最优化组号方法，" +
-                                      " 相比其他组号方法（复式、胆拖等），它可以实现 购买/操作 同样多个 红球号码的情况下，" +
-                                      "大大节省投资资金（购买/操作红球个数越多，中奖概率越大，但投资也大），且有中奖保证；" + 
-                                      "<br>\t 二、红球可以在遗漏走势图中选择，也可以在冷热走势图中选择好，此处会自动保存；" +
-                                      "<br>\t 三、红球也可以采用软件推荐按钮生成，其中软件推荐按钮点击后，会有对应的选项，会把" +
-                                      "对应的红球显示在这里，同时也会在遗漏走势图 或 冷热走势图中 显示；" +
-                                      "<br>\t 四、例如典型的操作如下：点击 软件荐红-> 智能推荐 或 使用守号，生成红球后，再点" +
-                                      "击选择红球按钮将 智能推荐 号码 结合遗漏走势图 或 冷热走势图进行二次 选号，最后返回此处进行组号；" +
-                                      "<br>\t 五、 选择模式时请根据您选择的 红球个数 选择对应的模式，最多可支持8-27个红球 (定期更新中);";
-        
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SmartCombineActivity.this).show();
-      }
-    });
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页操作提示：<br>\t 一、旋转矩阵组号是目前世界上基于可靠数学理论最优化组号方法，" +
+//                                      " 相比其他组号方法（复式、胆拖等），它可以实现 购买/操作 同样多个 红球号码的情况下，" +
+//                                      "大大节省投资资金（购买/操作红球个数越多，中奖概率越大，但投资也大），且有中奖保证；" + 
+//                                      "<br>\t 二、红球可以在遗漏走势图中选择，也可以在冷热走势图中选择好，此处会自动保存；" +
+//                                      "<br>\t 三、红球也可以采用软件推荐按钮生成，其中软件推荐按钮点击后，会有对应的选项，会把" +
+//                                      "对应的红球显示在这里，同时也会在遗漏走势图 或 冷热走势图中 显示；" +
+//                                      "<br>\t 四、例如典型的操作如下：点击 软件荐红-> 智能推荐 或 使用守号，生成红球后，再点" +
+//                                      "击选择红球按钮将 智能推荐 号码 结合遗漏走势图 或 冷热走势图进行二次 选号，最后返回此处进行组号；" +
+//                                      "<br>\t 五、 选择模式时请根据您选择的 红球个数 选择对应的模式，最多可支持8-27个红球 (定期更新中);";
+//        
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SmartCombineActivity.this).show();
+//      }
+//    });
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
     final TextView currentCombineItemIdTextView = (TextView) findViewById(R.id.combine_itemid);
     selRedTextView = (TextView)findViewById(R.id.combine_selred_str);

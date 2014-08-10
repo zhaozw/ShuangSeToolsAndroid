@@ -8,7 +8,7 @@ import java.util.Set;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public final class ShuangseCodeItem implements Parcelable {
+public class ShuangseCodeItem implements Parcelable {
     public int[] red;
     public int blue;
     public int id;

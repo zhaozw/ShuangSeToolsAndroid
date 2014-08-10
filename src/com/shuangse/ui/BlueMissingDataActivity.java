@@ -6,7 +6,6 @@ import com.shuangse.base.ShuangSeToolsSetApplication;
 import com.shuangse.meta.ShuangseCodeItem;
 import com.shuangse.meta.CellData;
 import com.shuangse.meta.SummaryData;
-import com.shuangse.util.MagicTool;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -27,7 +26,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -71,34 +69,34 @@ public class BlueMissingDataActivity extends Activity {
         final TextView titleTextView = (TextView) findViewById(R.id.title_text);
         titleTextView.setText(R.string.custom_title_right_bluemissing);
         
-        Button returnBtn = (Button)findViewById(R.id.returnbtn);
-        returnBtn.setVisibility(View.VISIBLE);
-        Button helpBtn = (Button)findViewById(R.id.helpbtn);
-        helpBtn.setVisibility(View.VISIBLE);
-        helpBtn.setOnClickListener(new View.OnClickListener() {
-          public void onClick(View v) {
-            String htmlMsg = "本页操作提示：<br>\t 一、本页可上下左右拖动，拖动到右边下方有操作按钮；" + 
-                                          "<br>\t 二、从上往下看为蓝球近期出号历史，最左边一列表示期号，" + 
-                                          "从第二列开始往后列依次为蓝球1，2...到16的出号和遗漏情况：" + 
-                                          "其中用蓝色球状图形表示当期该蓝球中出，用灰色数字表示该蓝球遗漏多" + 
-                                          "少期未中出,也即篮球遗漏值；16个篮球用黄色竖线分割为四个区间，最右方大-小、" +
-                                          "奇偶、除3余数 和 区间分布 分别统计显示了对应的篮球条件走势，可根据此4个条件" + 
-                                          "走势预测篮球.比如条件(大)表示篮球在9-16中出，条件(偶)表示篮球在(2,4,6,8,10,12,14,16)中出，" +
-                                          "条件(除3余1)表示篮球在4,7,10,13,16中出，条件(2区间)表示在5，6，7，8中出，依次类推；" + 
-                                          "<br>\t 三、该图默认显示期数20期，您可在《软件设置->篮球走势显示期数》" + 
-                                          "里设置更多的显示期数以方便您查看更多期;" + "<br>\t四、遗漏数据下方空白行方格是选择蓝球的操作区域，根据走势" + 
-                                          "看好某个蓝球后，在该方格中轻轻点击，该方格会出现一个球状号码，表示选中该蓝球，再次点击去掉选择（可选多个篮球）;" +
-                                          "<br>\t 五、选择完后，拖动到最右侧，点击《旋转组号》或《胆拖组号》按钮即可和所选红球一起组号;" + 
-                                          "<br>\t 六、最下方标题行上出现次数，最大遗漏和最大连续出号行分别为对应蓝球在所有双色球开奖历史数据中统计的历史数据，共选号参考;";
-            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, BlueMissingDataActivity.this).show();
-          }
-        }); 
-        returnBtn.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-            onBackPressed();
-          }
-        });
+//        Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//        returnBtn.setVisibility(View.VISIBLE);
+//        Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//        helpBtn.setVisibility(View.VISIBLE);
+//        helpBtn.setOnClickListener(new View.OnClickListener() {
+//          public void onClick(View v) {
+//            String htmlMsg = "本页操作提示：<br>\t 一、本页可上下左右拖动，拖动到右边下方有操作按钮；" + 
+//                                          "<br>\t 二、从上往下看为蓝球近期出号历史，最左边一列表示期号，" + 
+//                                          "从第二列开始往后列依次为蓝球1，2...到16的出号和遗漏情况：" + 
+//                                          "其中用蓝色球状图形表示当期该蓝球中出，用灰色数字表示该蓝球遗漏多" + 
+//                                          "少期未中出,也即篮球遗漏值；16个篮球用黄色竖线分割为四个区间，最右方大-小、" +
+//                                          "奇偶、除3余数 和 区间分布 分别统计显示了对应的篮球条件走势，可根据此4个条件" + 
+//                                          "走势预测篮球.比如条件(大)表示篮球在9-16中出，条件(偶)表示篮球在(2,4,6,8,10,12,14,16)中出，" +
+//                                          "条件(除3余1)表示篮球在4,7,10,13,16中出，条件(2区间)表示在5，6，7，8中出，依次类推；" + 
+//                                          "<br>\t 三、该图默认显示期数20期，您可在《软件设置->篮球走势显示期数》" + 
+//                                          "里设置更多的显示期数以方便您查看更多期;" + "<br>\t四、遗漏数据下方空白行方格是选择蓝球的操作区域，根据走势" + 
+//                                          "看好某个蓝球后，在该方格中轻轻点击，该方格会出现一个球状号码，表示选中该蓝球，再次点击去掉选择（可选多个篮球）;" +
+//                                          "<br>\t 五、选择完后，拖动到最右侧，点击《旋转组号》或《胆拖组号》按钮即可和所选红球一起组号;" + 
+//                                          "<br>\t 六、最下方标题行上出现次数，最大遗漏和最大连续出号行分别为对应蓝球在所有双色球开奖历史数据中统计的历史数据，共选号参考;";
+//            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, BlueMissingDataActivity.this).show();
+//          }
+//        }); 
+//        returnBtn.setOnClickListener(new View.OnClickListener() {
+//          @Override
+//          public void onClick(View v) {
+//            onBackPressed();
+//          }
+//        });
                 
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(BlueMissingDataActivity.this);
         disp_his_num = Integer.parseInt(sharedPreferences.getString("shuangse_display_blue_history_cnt", "20"));

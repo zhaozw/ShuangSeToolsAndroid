@@ -14,6 +14,7 @@
                 android:id="@+id/time_info_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="4dp"
                 android:text="投注截止:"
                 android:textColor="#FFFFFF"
                 android:textSize="18sp" />

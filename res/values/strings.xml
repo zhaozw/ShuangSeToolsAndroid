@@ -23,10 +23,10 @@
     <string name="custom_title_sys_enter">进入系统</string>
     <string name="custom_title_experience">中奖经验及使用方法</string>
     <string name="custom_title_experience_detail">中奖经验详细内容</string>
-    <string name="custom_title_hit_search">开奖查询</string>
+    <string name="custom_title_hit_search">中奖查询</string>
     <string name="custom_title_right_redmissing">红球遗漏走势图</string>
     <string name="custom_title_right_bluemissing">蓝球遗漏走势图</string>
-    <string name="custom_title_rules_reminder">软件用法说明</string>
+    <string name="custom_title_rules_reminder">软件使用帮助</string>
     <string name="custom_title_expr_share">经验交流</string>
     <string name="custom_title_settings">软件设置</string>
     <string name="ad_tips_text">提示：本软件完全免费，为了支持作者开发出更多、更好的免费功能，请点击广告条以表支持。点击不会收取您的任何费用，谢谢。</string>
@@ -40,6 +40,7 @@
     <string name="custom_title_dantuo_combine">胆拖组号</string>
     <string name="custom_title_hot_cool_trend">红球冷热走势</string>
     <string name="custom_title_share_my_experience">分享我的中奖经验</string>
+    <string name="his_data_detail_title">开奖详细情况</string>
 
     <!-- 设置 -->
     <string name="shuangse_update_data_title">自动更新数据</string>

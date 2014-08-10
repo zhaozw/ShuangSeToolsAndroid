@@ -9,9 +9,6 @@ import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 import org.json.JSONObject;
 
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.meta.UserCounterObj;
-import com.shuangse.util.MagicTool;
 import android.app.Dialog;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
@@ -21,10 +18,12 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.preference.PreferenceScreen;
 import android.util.Log;
-import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.TextView;
+
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.UserCounterObj;
+import com.shuangse.util.MagicTool;
 
 public class SettingActivity extends PreferenceActivity implements SelectRedDialogCallback {
   private final static String TAG = "SettingActivity";
@@ -48,23 +47,23 @@ public class SettingActivity extends PreferenceActivity implements SelectRedDial
 
     appContext = (ShuangSeToolsSetApplication)getApplication();
     
-    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-    returnBtn.setVisibility(View.VISIBLE);
-    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-    helpBtn.setVisibility(View.VISIBLE);
-    helpBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        String htmlMsg = "本页提供本软件常用功能的设置，请仔细阅读每项下面的说明，确保理解后再更改。";
-        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SettingActivity.this).show();
-      }
-    }); 
-    returnBtn.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        onBackPressed();
-      }
-    });
+//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
+//    returnBtn.setVisibility(View.VISIBLE);
+//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
+//    helpBtn.setVisibility(View.VISIBLE);
+//    helpBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        String htmlMsg = "本页提供本软件常用功能的设置，请仔细阅读每项下面的说明，确保理解后再更改。";
+//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SettingActivity.this).show();
+//      }
+//    }); 
+//    returnBtn.setOnClickListener(new View.OnClickListener() {
+//      @Override
+//      public void onClick(View v) {
+//        onBackPressed();
+//      }
+//    });
     
     sharedPreferences = PreferenceManager.getDefaultSharedPreferences(SettingActivity.this);
     myKeepRedStr = sharedPreferences.getString("My_Keep_Red_Str", "");

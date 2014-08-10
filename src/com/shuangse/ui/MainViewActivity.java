@@ -87,7 +87,7 @@ public class MainViewActivity extends Activity {
 
     HashMap<String, Object> map1 = new HashMap<String, Object>();
     map1.put("ItemImage", R.drawable.info_reminder);
-    map1.put("ItemText", "用法说明");
+    map1.put("ItemText", "使用帮助");
     menuList.add(map1);
     
     HashMap<String, Object> map2 = new HashMap<String, Object>();
@@ -97,7 +97,7 @@ public class MainViewActivity extends Activity {
     
     HashMap<String, Object> map10 = new HashMap<String, Object>();
     map10.put("ItemImage", R.drawable.verify);
-    map10.put("ItemText", "开奖查询");
+    map10.put("ItemText", "中奖查询");
     menuList.add(map10);
 
     HashMap<String, Object> map3 = new HashMap<String, Object>();
@@ -137,7 +137,7 @@ public class MainViewActivity extends Activity {
 
     HashMap<String, Object> map53 = new HashMap<String, Object>();
     map53.put("ItemImage", R.drawable.group);
-    map53.put("ItemText", "条件组号");
+    map53.put("ItemText", "条件选号");
     menuList.add(map53);
     
     HashMap<String, Object> map6 = new HashMap<String, Object>();
@@ -147,7 +147,7 @@ public class MainViewActivity extends Activity {
 
     HashMap<String, Object> map8 = new HashMap<String, Object>();
     map8.put("ItemImage", R.drawable.recred);
-    map8.put("ItemText", "智能荐号");
+    map8.put("ItemText", "软件荐号");
     menuList.add(map8);
     
     HashMap<String, Object> map9 = new HashMap<String, Object>();
@@ -251,6 +251,8 @@ public class MainViewActivity extends Activity {
 //          break;
         case 5:
             //条件走势
+            hideProgressBox();
+            InfoMessageBox("信息","火速开发中,敬请期待，谢谢支持!");
             break;
 //        case 7:
 //            //行列走势
@@ -266,6 +268,9 @@ public class MainViewActivity extends Activity {
 //            break;
         case 7:
             //条件选号
+            hideProgressBox();
+            InfoMessageBox("信息","火速开发中,敬请期待，谢谢支持!");
+            break;
         case 8:
           //胆拖及复式组号
           hideProgressBox();

@@ -49,6 +49,7 @@ import org.xml.sax.SAXException;
 import com.shuangse.db.DataBaseHelper;
 import com.shuangse.meta.AndroidPhoneInfo;
 import com.shuangse.meta.BaseCodeItem;
+import com.shuangse.meta.ExtShuangseCodeItem;
 import com.shuangse.meta.MyHisRecord;
 import com.shuangse.meta.RecommandHisRecord;
 import com.shuangse.meta.SelectedItem;
@@ -131,8 +132,8 @@ public class ShuangSeToolsSetApplication extends Application {
   //see DataBaseHelper.java
   private DataBaseHelper dbHelper = null;
  
-  private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
-  //private final String serverAddress = "http://192.168.1.101/ShuangSeToolsServer/";
+  //private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
+  private final String serverAddress = "http://192.168.1.100/ShuangSeToolsServer/";
 
   private HttpClient httpClient = null;
   private final int DEFAULT_MAX_CONNECTIONS = 30; 
@@ -323,6 +324,34 @@ public class ShuangSeToolsSetApplication extends Application {
     }
   }
 
+  /*读本地数据库的数据 - 分页读入*/
+  public ArrayList<ExtShuangseCodeItem> queryExtHisDataFromLocalDB(int pageSize, int pageNum) {
+      int offset = pageSize * (pageNum - 1);
+    
+      String querySQL = "select * from hisitems order by itemid desc limit " + offset + "," + pageSize;
+      ArrayList<ExtShuangseCodeItem> recent20HisData = null;
+      
+      Cursor cursor = hisDataSqliteDB.rawQuery(querySQL, null);
+      int cnt = cursor.getCount();
+      if (cnt > 0) {
+          recent20HisData = new ArrayList<ExtShuangseCodeItem>(cnt + 1);
+          
+        while (cursor != null && cursor.moveToNext()) {
+            recent20HisData.add(new ExtShuangseCodeItem(
+                 cursor.getInt(cursor.getColumnIndex("itemid")),
+                 cursor.getInt(cursor.getColumnIndex("red1")),
+                 cursor.getInt(cursor.getColumnIndex("red2")),
+                 cursor.getInt(cursor.getColumnIndex("red3")),
+                 cursor.getInt(cursor.getColumnIndex("red4")),
+                 cursor.getInt(cursor.getColumnIndex("red5")),
+                 cursor.getInt(cursor.getColumnIndex("red6")),
+                 cursor.getInt(cursor.getColumnIndex("blue")),
+                 cursor.getString(cursor.getColumnIndex("opendate"))));
+        }
+      }
+      
+      return recent20HisData;
+  }
   /* 将本地数据库的数据全部读入到本地cache中 */
   public void loadLocalHisDataIntoCache() {
     String querySQL = "select * from hisitems order by itemid desc";
@@ -338,7 +367,7 @@ public class ShuangSeToolsSetApplication extends Application {
     if (cnt > 0) {
         allHisData = new ArrayList<ShuangseCodeItem>(cnt + 1);
         
-      while (cursor.moveToNext()) {
+      while (cursor != null && cursor.moveToNext()) {
         allHisData.add(new ShuangseCodeItem(cursor.getInt(cursor
               .getColumnIndex("itemid")), cursor.getInt(cursor
               .getColumnIndex("red1")), cursor.getInt(cursor
@@ -798,7 +827,7 @@ public class ShuangSeToolsSetApplication extends Application {
     HashSet<Integer> redSet = new HashSet<Integer>();
     
     //missValue (0, 1, 2, |  3, 4, 5, 6, | >=7)
-    HashMap<Integer, HashSet<Integer>> missValRed = new HashMap<Integer, HashSet<Integer>>();
+    SparseArray<HashSet<Integer>> missValRed = new SparseArray<HashSet<Integer>>();
     
     for(int red=1; red<=33; red++) {
       int missValue = this.getRedNumMissTimesByIndex(red, index);
@@ -808,14 +837,15 @@ public class ShuangSeToolsSetApplication extends Application {
       if(redNumSet == null) {
         HashSet<Integer> tmpRedNumSet = new HashSet<Integer>();
         tmpRedNumSet.add(red);
-        missValRed.put(Integer.valueOf(missValue), tmpRedNumSet);
+        missValRed.put(missValue, tmpRedNumSet);
       } else {
         redNumSet.add(Integer.valueOf(red));
       }
     }
+    
     //只加入热码和温码
     for(int redMissValue=0; redMissValue<7; redMissValue++) {
-      HashSet<Integer> redNumSet = missValRed.get(Integer.valueOf(redMissValue));
+      HashSet<Integer> redNumSet = missValRed.get(redMissValue);
       if(redNumSet == null || redNumSet.size() < 2) continue; //独号多可抛弃
       redSet.addAll(redNumSet);//其他都加入
     }
@@ -1774,8 +1804,6 @@ public class ShuangSeToolsSetApplication extends Application {
         String[] redStr = new String[6];
         
         Node openDateNode = itemContent.item(1);
-        //暂时为了内存和效率，日期字符串不在本地保存
-        @SuppressWarnings("unused")
         String dateStr = openDateNode.getTextContent();
 
         for (int redIndex = 0; redIndex < 6; redIndex++) {
@@ -1785,11 +1813,11 @@ public class ShuangSeToolsSetApplication extends Application {
         Node blueNode = itemContent.item(8);
         String blueStr = blueNode.getTextContent();
 
-        ShuangseCodeItem tmpItem = new ShuangseCodeItem(
+        ExtShuangseCodeItem tmpItem = new ExtShuangseCodeItem(
             Integer.parseInt(idStr), Integer.parseInt(redStr[0]),
             Integer.parseInt(redStr[1]), Integer.parseInt(redStr[2]),
             Integer.parseInt(redStr[3]), Integer.parseInt(redStr[4]),
-            Integer.parseInt(redStr[5]), Integer.parseInt(blueStr));
+            Integer.parseInt(redStr[5]), Integer.parseInt(blueStr),dateStr);
 
         if (!storeItemData(tmpItem)) {
           Log.e(TAG, "failed to store the item: " + tmpItem.toString() + " into local DB.");
@@ -1809,7 +1837,7 @@ public class ShuangSeToolsSetApplication extends Application {
    * 
    * @param hisDataList
    */
-  private boolean storeItemData(ShuangseCodeItem codeItem) {
+  private boolean storeItemData(ExtShuangseCodeItem codeItem) {
     ContentValues newEntry = new ContentValues();
 
     newEntry.put("itemid", codeItem.id);
@@ -1820,6 +1848,7 @@ public class ShuangSeToolsSetApplication extends Application {
     newEntry.put("red5", codeItem.red[4]);
     newEntry.put("red6", codeItem.red[5]);
     newEntry.put("blue", codeItem.blue);
+    newEntry.put("blue", codeItem.openDate);
 
     try {
 

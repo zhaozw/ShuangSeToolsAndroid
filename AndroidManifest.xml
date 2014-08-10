@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- 1.02: 增加在功能大厅的标题上显示版本信息功能 -->
 <!-- 1.03:修复提醒时间，增加新功能ICON，修改细节如appname，去掉下部广告条 -->
 <!-- 1.04修复onStart()累计更新loginCnt问题；增加旋转组号功能等 -->
@@ -18,10 +18,10 @@
     android:versionName="1.12">
 
     <!-- minSdkVersion: 10 - Android 2.3 -->
-    <!-- targetSdkVersion: 16 - Android 4.1 -->
+    <!-- targetSdkVersion: 19 - Android 4.4 -->
     <uses-sdk
-        android:minSdkVersion="7"  
-        android:targetSdkVersion="16" />
+        android:minSdkVersion="7"
+        android:targetSdkVersion="19" />
 
     <supports-screens
         android:anyDensity="true"
@@ -33,7 +33,7 @@
     
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.SEND_SMS" />
+ <!-- <uses-permission android:name="android.permission.SEND_SMS" />  -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
@@ -94,6 +94,14 @@
             android:windowSoftInputMode="stateVisible|adjustResize"
             android:theme="@style/CustomWindowTitleStyle">
         </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.DispItemOpenDataDetailsActivity" 
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle">
+        </activity>
+        
         <activity
             android:name="com.shuangse.ui.SettingActivity"
             android:launchMode="singleTask"

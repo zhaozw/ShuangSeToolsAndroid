@@ -12,11 +12,11 @@ import android.util.Log;
 public class DataBaseHelper extends SQLiteOpenHelper {
   private final static String TAG = "DatabaseHelper";
   private final static String dbName="localsave.db";
-  //dbVersion = 1 -- only has mycombinehis table
+  //dbVersion = 1
   public final static int FIRSTVERSION = 1;
   public final static int SECONDVERSION = 2;
   
-  private static int currentDBVersion = 2;
+  private static int currentDBVersion = 1;
   private ArrayList<CombineRecord> dbRecords;
 
   public DataBaseHelper(Context context) { 
@@ -27,37 +27,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   @Override
   public void onCreate(SQLiteDatabase db) {
     if(currentDBVersion == FIRSTVERSION) {
-        String createtableSQL = "CREATE TABLE mycombinehis (" +  
-            "itemId INTEGER," +
-            "selectRed varchar(100)," +
-            "selectBlue varchar(50)," + 
-            "model INTEGER," + 
-            "getoutHisFlag INTEGER)";
-        db.execSQL(createtableSQL);
-        Log.i(TAG, "onCreate(): SQL:" + createtableSQL);
-    } else if(currentDBVersion == SECONDVERSION) {
         String createtableSQL = "CREATE TABLE mycombinehis (" + 
-              "recordIndex INTEGER PRIMARY KEY AUTOINCREMENT," + 
-              "itemId INTEGER," +
-              "selectRed varchar(100)," +
-              "selectBlue varchar(50)," + 
-              "model INTEGER," + 
-              "getoutHisFlag INTEGER)";
-        
-        String createTableSql2 = "CREATE TABLE combineitems (" + 
-              "red1 INTEGER," +
-              "red2 INTEGER," + 
-              "red3 INTEGER," +
-              "red4 INTEGER," +
-              "red5 INTEGER," +
-              "red6 INTEGER," +
-              "blue INTEGER," +
-              "recordIndex INTEGER)";
-        
-        db.execSQL(createtableSQL);
-        Log.i(TAG, "onCreate(): SQL 1:" + createtableSQL);
-        db.execSQL(createTableSql2);
-        Log.i(TAG, "onCreate(): SQL 2:" + createTableSql2);
+                "recordIndex INTEGER PRIMARY KEY AUTOINCREMENT," + 
+                "itemId INTEGER," +
+                "selectRed varchar(100)," +
+                "selectBlue varchar(50)," + 
+                "model INTEGER," + 
+                "getoutHisFlag INTEGER)";
+          
+          String createTableSql2 = "CREATE TABLE combineitems (" + 
+                "red1 INTEGER," +
+                "red2 INTEGER," + 
+                "red3 INTEGER," +
+                "red4 INTEGER," +
+                "red5 INTEGER," +
+                "red6 INTEGER," +
+                "blue INTEGER," +
+                "recordIndex INTEGER)";
+          
+          db.execSQL(createtableSQL);
+          Log.i(TAG, "onCreate(): SQL 1:" + createtableSQL);
+          db.execSQL(createTableSql2);
+          Log.i(TAG, "onCreate(): SQL 2:" + createTableSql2);
+    } else if(currentDBVersion == SECONDVERSION) {
+        //DB 
     }
     
   }
