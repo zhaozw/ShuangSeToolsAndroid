@@ -170,6 +170,7 @@ public class FuShiSearchFragment extends BaseFragment implements
           //初始化一个自定义的Dialog
           Dialog dialog = new SelectRedDialog(activity, R.style.SelectRedDialog, FuShiSearchFragment.this);
           dialog.show();
+          dialog.setCanceledOnTouchOutside(false);
         }
       });
       //篮球
@@ -180,6 +181,7 @@ public class FuShiSearchFragment extends BaseFragment implements
         //初始化一个自定义的Dialog
           Dialog dialog = new SelectBlueDialog(activity, R.style.SelectBlueDialog, FuShiSearchFragment.this);
           dialog.show();
+          dialog.setCanceledOnTouchOutside(false);
         }
       });
       

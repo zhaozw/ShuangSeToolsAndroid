@@ -18,5 +18,16 @@ public class ExtShuangseCodeItem extends ShuangseCodeItem {
     public void setOpenDate(String openDate) {
         this.openDate = openDate;
     }
+    
+    public String toLineString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append(id).append(" ");
+        for(int i=0;i<6;i++) {
+            sb.append(red[i]).append(" ");
+        }
+        sb.append(blue).append(" ");
+        sb.append(openDate);
+        return sb.toString();
+    }
 
 }

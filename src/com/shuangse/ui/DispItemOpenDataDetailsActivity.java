@@ -38,6 +38,7 @@ public class DispItemOpenDataDetailsActivity extends Activity {
   private TextView itemFirstPrizeValueTextView;
   private TextView itemFirstSecondCntTextView;
   private TextView itemFirstSecondValueTextView;
+  private TextView itemLeftValueTextView;
   
   private ProgressDialog progressDialog;
   private ShuangSeToolsSetApplication application;
@@ -77,6 +78,7 @@ public class DispItemOpenDataDetailsActivity extends Activity {
     itemFirstPrizeValueTextView.setText(String.valueOf(codeItem.firstPrizeValue));
     itemFirstSecondCntTextView.setText(String.valueOf(codeItem.secondPrizeCnt));
     itemFirstSecondValueTextView.setText(String.valueOf(codeItem.secondPrizeValue));
+    itemLeftValueTextView.setText("½±³Ø½ð¶î£º" + String.valueOf(codeItem.poolTotal) + "Ôª");
   }
   
   @Override
@@ -108,6 +110,7 @@ public class DispItemOpenDataDetailsActivity extends Activity {
     itemFirstPrizeValueTextView = (TextView)findViewById(R.id.itemFirstPrizeValue);
     itemFirstSecondCntTextView = (TextView)findViewById(R.id.itemSecondPrizeCnt);
     itemFirstSecondValueTextView = (TextView)findViewById(R.id.itemSecondPrizeValue);
+    itemLeftValueTextView = (TextView)findViewById(R.id.item_left_value);
     
     Bundle bundle = this.getIntent().getExtras();
     int dispItemId = bundle.getInt("ItemId",0);

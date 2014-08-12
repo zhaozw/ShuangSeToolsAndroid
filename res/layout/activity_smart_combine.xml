@@ -20,6 +20,11 @@
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            
+            
+            <!--For Spinner style="@style/ButtonSmallText"
+                android:background="@drawable/small_red_btn"
+                -->
             <Spinner
                 android:id="@+id/combine_itemid"
                 android:layout_width="fill_parent"
@@ -27,8 +32,6 @@
                 android:layout_centerVertical="true"
                 android:drawSelectorOnTop="false"
                 android:layout_toRightOf="@id/combine_itemid_title"
-                style="@style/ButtonSmallText"
-                android:background="@drawable/small_red_btn"
                 android:gravity="center"
                 android:textSize="18sp" />
         </RelativeLayout>
@@ -51,7 +54,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
             
-            <Spinner
+            <Button
                     android:id="@+id/recommend_red_model"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -59,6 +62,7 @@
                     android:layout_toRightOf="@id/combine_title1"
                     android:drawSelectorOnTop="false"
                     android:gravity="center"
+                    android:text="点击选择如何选红号"
                     style="@style/ButtonSmallText"
                     android:background="@drawable/small_red_btn"
                     android:textSize="18sp" />
@@ -112,7 +116,7 @@
                 android:textSize="18sp"
                 android:textStyle="bold" />
             
-             <Spinner
+             <Button
                     android:id="@+id/recommend_blue_spin"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
@@ -120,6 +124,7 @@
                     android:layout_toRightOf="@id/combine_title2"
                     android:drawSelectorOnTop="false"
                     android:gravity="center"
+                    android:text="点击选择如何选蓝号"
                     style="@style/ButtonSmallText"
                     android:background="@drawable/small_blue_btn"
                     android:textSize="18sp" />
@@ -170,8 +175,6 @@
                     android:layout_toRightOf="@id/combine_title3"
                     android:drawSelectorOnTop="false"
                     android:gravity="center"
-                    style="@style/ButtonSmallText"
-                    android:background="@drawable/small_red_btn"
                     android:textSize="18sp" />
             
         </RelativeLayout>

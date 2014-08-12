@@ -37,6 +37,12 @@ public class DantuoCombineActivity extends Activity {
   private SharedPreferences sharedPreferences;
   private boolean ifGetOutOfHistoryitem = true; 
   private int currentCombineItemId;
+  private Spinner item_id_spinner;
+  private int currentSelItemId;
+  private List<String> itemIDs;
+  private List<ShuangseCodeItem> allHisData;
+  private boolean ifItemIDSpinnerInitilized = false;
+  private ArrayAdapter<String> allitemIDAdaptor;
 
   private TextView selRedDanTextView;
   private TextView selRedTuoTextView;
@@ -62,7 +68,6 @@ public class DantuoCombineActivity extends Activity {
     
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.custom_title_dantuo_combine);
-    final TextView currentCombineItemIdTextView = (TextView) findViewById(R.id.combine_itemid);
     
 //    Button returnBtn = (Button)findViewById(R.id.returnbtn);
 //    returnBtn.setVisibility(View.VISIBLE);
@@ -96,9 +101,31 @@ public class DantuoCombineActivity extends Activity {
     sharedPreferences = PreferenceManager.getDefaultSharedPreferences(DantuoCombineActivity.this);
     ifGetOutOfHistoryitem = sharedPreferences.getBoolean("getout_his_item", true);
     
-    //选择哪一期
-    this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId(); 
-    currentCombineItemIdTextView.setText(String.valueOf(this.currentCombineItemId));
+  //选择哪一期 (下一期）
+    this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId();
+    
+    //先把下期号加入
+    itemIDs = new ArrayList<String>();
+    itemIDs.add(Integer.toString(this.currentCombineItemId));
+    
+    allHisData = appContext.getAllHisData();
+    if (allHisData != null && allHisData.size() > 1) {
+        int maxSize = (allHisData.size() - 1);
+        int endSize = (maxSize - 50); // 默认只可以回退验证50期
+        for (int i = maxSize; i >= endSize; i--) {
+            itemIDs.add(Integer.toString(allHisData.get(i).id));
+        }
+        allitemIDAdaptor = new ArrayAdapter<String>(this,
+                R.layout.spinnerformat, itemIDs);
+        allitemIDAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+    }
+
+    item_id_spinner = (Spinner)findViewById(R.id.combine_itemid);
+    item_id_spinner.setAdapter(allitemIDAdaptor);
+    //默认选择第一个下期
+    item_id_spinner.setSelection(0);
+    this.currentSelItemId = this.currentCombineItemId;
+    item_id_spinner.setOnItemSelectedListener(new ItemIDSpinnerOnSelectedListener());
     
     selRedButton.setOnClickListener(new View.OnClickListener () {
       @Override
@@ -134,22 +161,22 @@ public class DantuoCombineActivity extends Activity {
         Log.i(TAG, "Total Red:" + currentSelTotalRedList);
 
         if(currentSelRedDanList.size() < 1 || currentSelRedDanList.size() > 6) {
-          InfoMessageBox("错误", "红球胆码个数不对，请选择红球胆码为1-6个.");
+          InfoMessageBox("错误", "红号胆码个数不对，请选择红号胆码为1-6个.");
           return;
         }
         
         if(currentSelRedTuoList.size() > 20) {
-          InfoMessageBox("错误", "红球拖码个数不对，请选择托码1-20个.");
+          InfoMessageBox("错误", "红号拖码个数不对，请选择托码1-20个.");
           return;
         }
         
         if(currentSelTotalRedList.size() < 6 || currentSelTotalRedList.size() > 20) {
-          InfoMessageBox("错误", "红球个数不对，胆码 加 拖码一共允许6-20个.");
+          InfoMessageBox("错误", "红号个数不对，胆码 加 拖码一共允许6-20个.");
           return;
         }
         
         if(currentSelBlueList.size() < 1) {
-          InfoMessageBox("提示", "请选择至少1个篮球.");
+          InfoMessageBox("提示", "请选择至少1个篮号.");
           return;
         }
                 
@@ -218,7 +245,7 @@ public class DantuoCombineActivity extends Activity {
   protected void onResume() {
     super.onResume();
     Log.i(TAG, "onResume()");
-    StringBuffer redSb = new StringBuffer("红球胆码：");
+    StringBuffer redSb = new StringBuffer("红号胆码：");
     currentSelRedDanList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers();
     currentSelRedTuoList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
     currentSelTotalRedList = MagicTool.join(currentSelRedDanList, currentSelRedTuoList);
@@ -235,7 +262,7 @@ public class DantuoCombineActivity extends Activity {
     redSb.append("共" + currentSelRedDanList.size() + "个胆码");
     selRedDanTextView.setText(redSb.toString());
 
-    redSb = new StringBuffer("红球托码：");
+    redSb = new StringBuffer("红号托码：");
     //Collections.sort(currentSelRedTuoList);
     for(Integer item : currentSelRedTuoList) {
       if(item < 10) {
@@ -254,7 +281,7 @@ public class DantuoCombineActivity extends Activity {
         @Override
         public void onClick(View v) {
          // String resultText = appContext.countHistoryOutDetailsForRedset(currentSelRedList);          
-          custDialog = customInfoMsgBox("胆码+托码红球组历史出号情况统计如下：");
+          custDialog = customInfoMsgBox("胆码+托码红号组历史出号情况统计如下：");
           custDialog.show();
         }
       });
@@ -273,7 +300,7 @@ public class DantuoCombineActivity extends Activity {
       blueSb.append(" ");
     }
     
-    blueSb.append("共" + currentSelBlueList.size() + "个篮球");
+    blueSb.append("共" + currentSelBlueList.size() + "个篮号");
     selBlueTextView.setText(blueSb.toString());
   }
 
@@ -371,4 +398,29 @@ public class DantuoCombineActivity extends Activity {
         // port
     }
   }
+  
+  private class ItemIDSpinnerOnSelectedListener implements OnItemSelectedListener {
+      public ItemIDSpinnerOnSelectedListener() {
+          super();
+          ifItemIDSpinnerInitilized = false;
+      }
+      @Override
+      public void onItemSelected(AdapterView<?> parent,
+              View view, int pos, long id) {
+          if(!ifItemIDSpinnerInitilized) {
+              //this is triggered by onCreate;
+              ifItemIDSpinnerInitilized = true;
+          } else {
+              Log.i(TAG, "OnItemSelectedListener : "
+                      + parent.getItemAtPosition(pos).toString());
+              currentSelItemId = Integer.parseInt(parent.getItemAtPosition(pos).toString());
+              currentCombineItemId = currentSelItemId;
+          }
+      }
+
+      @Override
+      public void onNothingSelected(AdapterView<?> arg0) {
+          Log.i(TAG, "spinner_itemid_single:: onNothingSelected()");
+      }
+  };
 }

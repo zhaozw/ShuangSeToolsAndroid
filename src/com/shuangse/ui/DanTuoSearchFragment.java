@@ -130,6 +130,7 @@ public class DanTuoSearchFragment extends BaseFragment implements
                         R.style.SelectRedDialog, DanTuoSearchFragment.this);
                 currentInWhichPagerFlag = DANCODE;
                 dialog.show();
+                dialog.setCanceledOnTouchOutside(false);
             }
         });
 
@@ -143,6 +144,7 @@ public class DanTuoSearchFragment extends BaseFragment implements
                         R.style.SelectRedDialog, DanTuoSearchFragment.this);
                 currentInWhichPagerFlag = TUOCODE;
                 dialog.show();
+                dialog.setCanceledOnTouchOutside(false);
             }
         });
         /* ÀºÇò */
@@ -154,6 +156,7 @@ public class DanTuoSearchFragment extends BaseFragment implements
                 Dialog dialog = new SelectBlueDialog(activity,
                         R.style.SelectBlueDialog, DanTuoSearchFragment.this);
                 dialog.show();
+                dialog.setCanceledOnTouchOutside(false);
             }
         });
 

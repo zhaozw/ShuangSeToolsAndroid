@@ -11,11 +11,12 @@
 <!-- 1.11 增加我的守号，软件推荐6,11,17红中4，5，6码 功能、增加帮助和返回按钮、
         增加软件退出时仍然保村当前选号、优化启动速度，增加在3.0以上OS上缩放 走势图 
         增加组号结果拷贝功能，增加数据库保存详细的组号结果等 -->
-<!-- 1.12 去掉广告 为商业使用做准备 -->        
+<!-- 1.12 去掉广告 为商业使用做准备，重新发布解决无法数据更新问题 ,数据库版本归1-->
+<!-- 1.13 在1.12基础上重新更新，准备正式发布 -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shuangse.ui"
-    android:versionCode="12"
-    android:versionName="1.12">
+    android:versionCode="13"
+    android:versionName="1.13">
 
     <!-- minSdkVersion: 10 - Android 2.3 -->
     <!-- targetSdkVersion: 19 - Android 4.4 -->

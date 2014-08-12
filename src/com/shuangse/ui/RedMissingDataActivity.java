@@ -433,7 +433,7 @@ public class RedMissingDataActivity extends Activity {
         }
 
         public void onClick(View v) {
-            final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(RedMissingDataActivity.this);
+            final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(RedMissingDataActivity.this, "ForChooseCombineMethod");
             dialog.setTitle("已保存，请选择下一步：");
         }
     };

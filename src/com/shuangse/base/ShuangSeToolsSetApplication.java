@@ -1,6 +1,7 @@
 package com.shuangse.base;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -130,8 +131,8 @@ public class ShuangSeToolsSetApplication extends Application {
   //see DataBaseHelper.java
   private DataBaseHelper dbHelper = null;
  
-  //private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
-  private final String serverAddress = "http://192.168.1.100/ShuangSeToolsServer/";
+  private final String serverAddress = "http://www.cloudtools.com.cn/ShuangSeToolsServer/";
+  //private final String serverAddress = "http://192.168.1.100/ShuangSeToolsServer/";
 
   private HttpClient httpClient = null;
   private final int DEFAULT_MAX_CONNECTIONS = 30; 
@@ -139,7 +140,7 @@ public class ShuangSeToolsSetApplication extends Application {
   private final int DEFAULT_SOCKET_BUFFER_SIZE = 8192;
   private final int DEFAULT_HOST_CONNECTIONS = 10;
   public synchronized HttpClient getHttpClient() {
-    if(httpClient == null) {  
+    //if(httpClient == null) {  
         final HttpParams httpParams = new BasicHttpParams();
         
         // timeout: get connections from connection pool  
@@ -180,7 +181,7 @@ public class ShuangSeToolsSetApplication extends Application {
           
         ClientConnectionManager manager = new ThreadSafeClientConnManager(httpParams, schemeRegistry);    
         httpClient = new DefaultHttpClient(manager, httpParams);
-    }
+    //}
     
     return httpClient;
   }
@@ -248,6 +249,47 @@ public class ShuangSeToolsSetApplication extends Application {
     
     try {
       InputStream is = getResources().getAssets().open(databaseName);
+      byte[] buffer = new byte[8192];
+      int count = 0;
+      
+      while ((count = is.read(buffer)) > 0) {
+        os.write(buffer, 0, count);
+        os.flush();
+      }
+      
+      is.close();
+      os.close();
+      
+    } catch (IOException e) {
+      Log.w(TAG, "open database failed." + e.toString());
+    }
+    
+    Log.i(TAG, "copyDataBase() database file successfully.");
+  }
+
+  /**
+   * 复制数据库到手机指定文件夹下
+   * 
+   * @throws IOException
+   */
+  public void copyDataBase(String dbName, String targetPath) {
+    String srcDatabaseFilename = (DBPath + dbName);
+    String targetDBFileName = (targetPath + dbName);
+    Log.i(TAG, "copyDataBase() src database file name:" + srcDatabaseFilename);
+    File dir = new File(targetPath);
+    if (!dir.exists()) {// 判断文件夹是否存在，不存在就新建一个
+      dir.mkdir();
+    }
+    
+    FileOutputStream os = null;
+    try {
+      os = new FileOutputStream(srcDatabaseFilename); //得到数据库文件的写入流
+    } catch (FileNotFoundException e) {
+      Log.w(TAG, "can not find the database file: " + e.toString());
+    }
+    
+    try {
+      InputStream is = new FileInputStream(targetDBFileName);
       byte[] buffer = new byte[8192];
       int count = 0;
       
@@ -366,15 +408,17 @@ public class ShuangSeToolsSetApplication extends Application {
         allHisData = new ArrayList<ShuangseCodeItem>(cnt + 1);
         
       while (cursor != null && cursor.moveToNext()) {
+          
         allHisData.add(new ShuangseCodeItem(cursor.getInt(cursor
-              .getColumnIndex("itemid")), cursor.getInt(cursor
-              .getColumnIndex("red1")), cursor.getInt(cursor
-              .getColumnIndex("red2")), cursor.getInt(cursor
-              .getColumnIndex("red3")), cursor.getInt(cursor
-              .getColumnIndex("red4")), cursor.getInt(cursor
-              .getColumnIndex("red5")), cursor.getInt(cursor
-              .getColumnIndex("red6")), cursor.getInt(cursor
-              .getColumnIndex("blue"))));
+                .getColumnIndex("itemid")), cursor.getInt(cursor
+                        .getColumnIndex("red1")), cursor.getInt(cursor
+                        .getColumnIndex("red2")), cursor.getInt(cursor
+                        .getColumnIndex("red3")), cursor.getInt(cursor
+                        .getColumnIndex("red4")), cursor.getInt(cursor
+                        .getColumnIndex("red5")), cursor.getInt(cursor
+                        .getColumnIndex("red6")), cursor.getInt(cursor
+                        .getColumnIndex("blue"))));
+        
       }
 
       this.sortLoadedHisData();
@@ -1777,7 +1821,7 @@ public class ShuangSeToolsSetApplication extends Application {
     NodeList items = root.getChildNodes();
     int howManyItems = items.getLength();
 
-    Log.i(TAG, "items.size:" + howManyItems);
+    Log.i(TAG, "items.size:" + howManyItems + "ResponseContent:" + responseContent);
     /**
      * each item has following structure 
      * <ITEM> 
@@ -1816,6 +1860,8 @@ public class ShuangSeToolsSetApplication extends Application {
             Integer.parseInt(redStr[1]), Integer.parseInt(redStr[2]),
             Integer.parseInt(redStr[3]), Integer.parseInt(redStr[4]),
             Integer.parseInt(redStr[5]), Integer.parseInt(blueStr),dateStr);
+        
+        //Log.e(TAG, tmpItem.toLineString());
 
         if (!storeItemData(tmpItem)) {
           Log.e(TAG, "failed to store the item: " + tmpItem.toString() + " into local DB.");
@@ -1846,7 +1892,7 @@ public class ShuangSeToolsSetApplication extends Application {
     newEntry.put("red5", codeItem.red[4]);
     newEntry.put("red6", codeItem.red[5]);
     newEntry.put("blue", codeItem.blue);
-    newEntry.put("blue", codeItem.openDate);
+    newEntry.put("opendate", codeItem.openDate);
 
     try {
 
@@ -3926,6 +3972,8 @@ public ValueObj[] countRedNumberOccuresCount(int size) {
 public void statHistoryData() {
    //statHotAndWarmSetOccursData();
    //statJiangEnSetOccursData();
+   //copyDataBase(this.DBName, "/sdcard/");
+   //copyDataBase(this.neverOutDB, "/sdcard/");
 }
 
 /**胆拖组号*/

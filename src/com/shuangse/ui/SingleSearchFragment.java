@@ -112,6 +112,7 @@ public class SingleSearchFragment extends BaseFragment implements SelectRedDialo
                 Dialog dialog = new SelectRedDialog(activity,
                         R.style.SelectRedDialog, SingleSearchFragment.this);
                 dialog.show();
+                dialog.setCanceledOnTouchOutside(false);
             }
         });
 

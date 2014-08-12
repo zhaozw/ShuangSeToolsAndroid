@@ -16,7 +16,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
   public final static int FIRSTVERSION = 1;
   public final static int SECONDVERSION = 2;
   
-  private static int currentDBVersion = 1;
+  private static int currentDBVersion = 1; //1.12°æ±¾¹éÎª1
   private ArrayList<CombineRecord> dbRecords;
 
   public DataBaseHelper(Context context) { 

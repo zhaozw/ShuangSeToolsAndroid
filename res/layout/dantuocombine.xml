@@ -16,22 +16,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="期    号："
+                android:text="选期号："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
-            <TextView
+            <Spinner
                 android:id="@+id/combine_itemid"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text=""
-                android:textColor="#FFFFFF"
-                android:textSize="18sp" 
+                android:drawSelectorOnTop="false"
                 android:layout_toRightOf="@id/combine_itemid_title"
                 style="@style/ButtonSmallText"
                 android:background="@drawable/small_red_btn"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textSize="18sp" />
         </RelativeLayout>
         
         <RelativeLayout
@@ -47,7 +46,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="第一步："
+                android:text="选红号："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -61,7 +60,7 @@
                 android:layout_toRightOf="@id/combine_title1"
                 android:background="@drawable/small_red_btn"
                 android:gravity="center"
-                android:text="点击选择红球胆码和拖码" />
+                android:text="点击选择红号胆码和拖码" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -116,7 +115,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:text="第二步："
+                android:text="选蓝号："
                 android:textColor="#FFFFFF"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -130,7 +129,7 @@
                 android:layout_toRightOf="@id/combine_title2"
                 android:background="@drawable/small_blue_btn"
                 android:gravity="center"
-                android:text="点击选择蓝球" />
+                android:text="点击选择蓝号" />
         </RelativeLayout>
 
         <RelativeLayout

@@ -1,0 +1,3315 @@
+android.support.v4.app.BackStackRecord -> android.support.v4.app.a:
+    android.support.v4.app.FragmentManagerImpl mManager -> a
+    android.support.v4.app.BackStackRecord$Op mHead -> b
+    android.support.v4.app.BackStackRecord$Op mTail -> c
+    int mNumOp -> d
+    int mEnterAnim -> e
+    int mExitAnim -> f
+    int mPopEnterAnim -> g
+    int mPopExitAnim -> h
+    int mTransition -> i
+    int mTransitionStyle -> j
+    boolean mAddToBackStack -> k
+    boolean mAllowAddToBackStack -> l
+    java.lang.String mName -> m
+    boolean mCommitted -> n
+    int mIndex -> o
+    int mBreadCrumbTitleRes -> p
+    java.lang.CharSequence mBreadCrumbTitleText -> q
+    int mBreadCrumbShortTitleRes -> r
+    java.lang.CharSequence mBreadCrumbShortTitleText -> s
+    java.lang.String toString() -> toString
+    void dump$ec96877(java.lang.String,java.io.PrintWriter) -> a
+    void dump(java.lang.String,java.io.PrintWriter,boolean) -> a
+    void addOp(android.support.v4.app.BackStackRecord$Op) -> a
+    android.support.v4.app.FragmentTransaction add(int,android.support.v4.app.Fragment,java.lang.String) -> a
+    android.support.v4.app.FragmentTransaction remove(android.support.v4.app.Fragment) -> a
+    android.support.v4.app.FragmentTransaction detach(android.support.v4.app.Fragment) -> b
+    android.support.v4.app.FragmentTransaction attach(android.support.v4.app.Fragment) -> c
+    void bumpBackStackNesting(int) -> a
+    int commit() -> a
+    int commitAllowingStateLoss() -> b
+    int commitInternal(boolean) -> a
+    void run() -> run
+    void popFromBackStack$1385ff() -> c
+android.support.v4.app.BackStackRecord$Op -> android.support.v4.app.b:
+    android.support.v4.app.BackStackRecord$Op next -> a
+    android.support.v4.app.BackStackRecord$Op prev -> b
+    int cmd -> c
+    android.support.v4.app.Fragment fragment -> d
+    int enterAnim -> e
+    int exitAnim -> f
+    int popEnterAnim -> g
+    int popExitAnim -> h
+    java.util.ArrayList removed -> i
+android.support.v4.app.BackStackState -> android.support.v4.app.BackStackState:
+    int[] mOps -> a
+    int mTransition -> b
+    int mTransitionStyle -> c
+    java.lang.String mName -> d
+    int mIndex -> e
+    int mBreadCrumbTitleRes -> f
+    java.lang.CharSequence mBreadCrumbTitleText -> g
+    int mBreadCrumbShortTitleRes -> h
+    java.lang.CharSequence mBreadCrumbShortTitleText -> i
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    android.support.v4.app.BackStackRecord instantiate(android.support.v4.app.FragmentManagerImpl) -> a
+    int describeContents() -> describeContents
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+android.support.v4.app.BackStackState$1 -> android.support.v4.app.c:
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.v4.app.Fragment -> android.support.v4.app.Fragment:
+    java.util.HashMap sClassMap -> P
+    int mState -> a
+    android.view.View mAnimatingAway -> b
+    int mStateAfterAnimating -> c
+    android.os.Bundle mSavedFragmentState -> d
+    android.util.SparseArray mSavedViewState -> e
+    int mIndex -> f
+    java.lang.String mWho -> g
+    android.os.Bundle mArguments -> h
+    android.support.v4.app.Fragment mTarget -> i
+    int mTargetIndex -> j
+    int mTargetRequestCode -> k
+    boolean mAdded -> l
+    boolean mRemoving -> m
+    boolean mResumed -> n
+    boolean mFromLayout -> o
+    boolean mInLayout -> p
+    boolean mRestored -> q
+    int mBackStackNesting -> r
+    android.support.v4.app.FragmentManagerImpl mFragmentManager -> s
+    android.support.v4.app.FragmentActivity mActivity -> t
+    android.support.v4.app.FragmentManagerImpl mChildFragmentManager -> u
+    android.support.v4.app.Fragment mParentFragment -> v
+    int mFragmentId -> w
+    int mContainerId -> x
+    java.lang.String mTag -> y
+    boolean mHidden -> z
+    boolean mDetached -> A
+    boolean mRetainInstance -> B
+    boolean mRetaining -> C
+    boolean mHasMenu -> D
+    boolean mMenuVisible -> E
+    boolean mCalled -> F
+    int mNextAnim -> G
+    android.view.ViewGroup mContainer -> H
+    android.view.View mView -> I
+    android.view.View mInnerView -> J
+    boolean mDeferStart -> K
+    boolean mUserVisibleHint -> L
+    android.support.v4.app.LoaderManagerImpl mLoaderManager -> M
+    boolean mLoadersStarted -> N
+    boolean mCheckedForLoaderManager -> O
+    android.support.v4.app.Fragment instantiate(android.content.Context,java.lang.String) -> a
+    android.support.v4.app.Fragment instantiate(android.content.Context,java.lang.String,android.os.Bundle) -> a
+    void restoreViewState$79e5e33f() -> a
+    void setIndex(int,android.support.v4.app.Fragment) -> a
+    boolean isInBackStack() -> b
+    boolean equals(java.lang.Object) -> equals
+    int hashCode() -> hashCode
+    java.lang.String toString() -> toString
+    android.support.v4.app.FragmentActivity getActivity() -> c
+    android.content.res.Resources getResources() -> d
+    boolean isDetached() -> e
+    void onHiddenChanged$1385ff() -> f
+    void setMenuVisibility(boolean) -> a
+    void setUserVisibleHint(boolean) -> b
+    boolean getUserVisibleHint() -> g
+    void startActivity(android.content.Intent) -> a
+    void onActivityResult$6eb84b52() -> h
+    android.view.LayoutInflater getLayoutInflater$2ee30c11() -> i
+    void onInflate$423a76cd() -> j
+    void onAttach(android.app.Activity) -> a
+    android.view.animation.Animation onCreateAnimation$24236ca7() -> k
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    android.view.View getView() -> l
+    void onActivityCreated(android.os.Bundle) -> b
+    void onResume() -> m
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onPause() -> n
+    void onLowMemory() -> onLowMemory
+    void onDestroyView() -> o
+    void initState() -> p
+    void onDetach() -> q
+    void onDestroyOptionsMenu() -> r
+    void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo) -> onCreateContextMenu
+    void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> a
+    void performCreate(android.os.Bundle) -> c
+    android.view.View performCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> b
+    void performActivityCreated(android.os.Bundle) -> d
+    void performStart() -> s
+    void performResume() -> t
+    void performConfigurationChanged(android.content.res.Configuration) -> a
+    void performLowMemory() -> u
+    boolean performCreateOptionsMenu(android.view.Menu,android.view.MenuInflater) -> a
+    boolean performPrepareOptionsMenu(android.view.Menu) -> a
+    boolean performOptionsItemSelected(android.view.MenuItem) -> a
+    boolean performContextItemSelected(android.view.MenuItem) -> b
+    void performOptionsMenuClosed(android.view.Menu) -> b
+    void performSaveInstanceState(android.os.Bundle) -> e
+    void performPause() -> v
+    void performStop() -> w
+    void performReallyStop() -> x
+    void performDestroyView() -> y
+    void performDestroy() -> z
+android.support.v4.app.Fragment$1 -> android.support.v4.app.d:
+    android.support.v4.app.Fragment this$0 -> a
+    android.view.View findViewById(int) -> a
+android.support.v4.app.Fragment$InstantiationException -> android.support.v4.app.e:
+android.support.v4.app.Fragment$SavedState -> android.support.v4.app.Fragment$SavedState:
+    android.os.Bundle mState -> a
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    int describeContents() -> describeContents
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+android.support.v4.app.Fragment$SavedState$1 -> android.support.v4.app.f:
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.v4.app.FragmentActivity -> android.support.v4.app.FragmentActivity:
+    android.os.Handler mHandler -> a
+    android.support.v4.app.FragmentManagerImpl mFragments -> b
+    android.support.v4.app.FragmentContainer mContainer -> c
+    boolean mCreated -> d
+    boolean mResumed -> e
+    boolean mStopped -> f
+    boolean mReallyStopped -> g
+    boolean mRetaining -> h
+    boolean mOptionsMenuInvalidated -> i
+    boolean mCheckedForLoaderManager -> j
+    boolean mLoadersStarted -> k
+    java.util.HashMap mAllLoaderManagers -> l
+    android.support.v4.app.LoaderManagerImpl mLoaderManager -> m
+    void onActivityResult(int,int,android.content.Intent) -> onActivityResult
+    void onBackPressed() -> onBackPressed
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onCreatePanelMenu(int,android.view.Menu) -> onCreatePanelMenu
+    android.view.View onCreateView(java.lang.String,android.content.Context,android.util.AttributeSet) -> onCreateView
+    void onDestroy() -> onDestroy
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onLowMemory() -> onLowMemory
+    boolean onMenuItemSelected(int,android.view.MenuItem) -> onMenuItemSelected
+    void onPanelClosed(int,android.view.Menu) -> onPanelClosed
+    void onPause() -> onPause
+    void onNewIntent(android.content.Intent) -> onNewIntent
+    void onResume() -> onResume
+    void onPostResume() -> onPostResume
+    void onResumeFragments() -> a
+    boolean onPreparePanel(int,android.view.View,android.view.Menu) -> onPreparePanel
+    java.lang.Object onRetainNonConfigurationInstance() -> onRetainNonConfigurationInstance
+    void onSaveInstanceState(android.os.Bundle) -> onSaveInstanceState
+    void onStart() -> onStart
+    void onStop() -> onStop
+    void supportInvalidateOptionsMenu() -> b
+    void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> dump
+    java.lang.String viewToString(android.view.View) -> a
+    void dumpViewHierarchy(java.lang.String,java.io.PrintWriter,android.view.View) -> a
+    void doReallyStop(boolean) -> a
+    void onAttachFragment$65850823() -> c
+    android.support.v4.app.FragmentManager getSupportFragmentManager() -> d
+    void startActivityForResult(android.content.Intent,int) -> startActivityForResult
+    void startActivityFromFragment$68747257(android.content.Intent) -> a
+    void invalidateSupportFragment(java.lang.String) -> a
+    android.support.v4.app.LoaderManagerImpl getLoaderManager$2cd5ab55(java.lang.String) -> b
+android.support.v4.app.FragmentActivity$1 -> android.support.v4.app.g:
+    android.support.v4.app.FragmentActivity this$0 -> a
+    void handleMessage(android.os.Message) -> handleMessage
+android.support.v4.app.FragmentActivity$2 -> android.support.v4.app.h:
+    android.support.v4.app.FragmentActivity this$0 -> a
+    android.view.View findViewById(int) -> a
+android.support.v4.app.FragmentActivity$FragmentTag -> android.support.v4.app.i:
+    int[] Fragment -> a
+android.support.v4.app.FragmentActivity$NonConfigurationInstances -> android.support.v4.app.j:
+    java.lang.Object activity -> a
+    java.lang.Object custom -> b
+    java.util.HashMap children -> c
+    java.util.ArrayList fragments -> d
+    java.util.HashMap loaders -> e
+android.support.v4.app.FragmentContainer -> android.support.v4.app.k:
+    android.view.View findViewById(int) -> a
+android.support.v4.app.FragmentManager -> android.support.v4.app.l:
+    android.support.v4.app.FragmentTransaction beginTransaction() -> a
+    boolean executePendingTransactions() -> b
+    android.support.v4.app.Fragment findFragmentByTag(java.lang.String) -> a
+android.support.v4.app.FragmentManagerImpl -> android.support.v4.app.m:
+    boolean DEBUG -> a
+    boolean HONEYCOMB -> b
+    java.util.ArrayList mPendingActions -> c
+    java.lang.Runnable[] mTmpActions -> d
+    boolean mExecutingActions -> e
+    java.util.ArrayList mActive -> f
+    java.util.ArrayList mAdded -> g
+    java.util.ArrayList mAvailIndices -> h
+    java.util.ArrayList mBackStack -> i
+    java.util.ArrayList mCreatedMenus -> j
+    java.util.ArrayList mBackStackIndices -> k
+    java.util.ArrayList mAvailBackStackIndices -> l
+    java.util.ArrayList mBackStackChangeListeners -> m
+    int mCurState -> n
+    android.support.v4.app.FragmentActivity mActivity -> o
+    android.support.v4.app.FragmentContainer mContainer -> p
+    android.support.v4.app.Fragment mParent -> q
+    boolean mNeedMenuInvalidate -> r
+    boolean mStateSaved -> s
+    boolean mDestroyed -> t
+    java.lang.String mNoTransactionsBecause -> u
+    boolean mHavePendingDeferredStart -> v
+    android.os.Bundle mStateBundle -> w
+    android.util.SparseArray mStateArray -> x
+    java.lang.Runnable mExecCommit -> y
+    android.view.animation.Interpolator DECELERATE_QUINT -> z
+    android.view.animation.Interpolator DECELERATE_CUBIC -> A
+    android.view.animation.Interpolator ACCELERATE_QUINT -> B
+    android.view.animation.Interpolator ACCELERATE_CUBIC -> C
+    void throwException(java.lang.RuntimeException) -> a
+    android.support.v4.app.FragmentTransaction beginTransaction() -> a
+    boolean executePendingTransactions() -> b
+    boolean popBackStackImmediate() -> c
+    android.support.v4.app.Fragment getFragment(android.os.Bundle,java.lang.String) -> a
+    java.lang.String toString() -> toString
+    void dump(java.lang.String,java.io.FileDescriptor,java.io.PrintWriter,java.lang.String[]) -> a
+    android.view.animation.Animation makeOpenCloseAnimation$376f30fd(float,float,float,float) -> a
+    android.view.animation.Animation makeFadeAnimation$424ea1bd(float,float) -> a
+    android.view.animation.Animation loadAnimation(android.support.v4.app.Fragment,int,boolean,int) -> a
+    void performPendingDeferredStart(android.support.v4.app.Fragment) -> a
+    void moveToState(android.support.v4.app.Fragment,int,int,int,boolean) -> a
+    void moveToState(android.support.v4.app.Fragment) -> b
+    void moveToState$2563266(int) -> d
+    void moveToState(int,int,int,boolean) -> a
+    void startPendingDeferredFragments() -> r
+    void addFragment(android.support.v4.app.Fragment,boolean) -> a
+    void removeFragment(android.support.v4.app.Fragment,int,int) -> a
+    void hideFragment(android.support.v4.app.Fragment,int,int) -> b
+    void showFragment(android.support.v4.app.Fragment,int,int) -> c
+    void detachFragment(android.support.v4.app.Fragment,int,int) -> d
+    void attachFragment(android.support.v4.app.Fragment,int,int) -> e
+    android.support.v4.app.Fragment findFragmentById(int) -> a
+    android.support.v4.app.Fragment findFragmentByTag(java.lang.String) -> a
+    void checkStateLoss() -> s
+    void enqueueAction(java.lang.Runnable,boolean) -> a
+    int allocBackStackIndex(android.support.v4.app.BackStackRecord) -> a
+    void setBackStackIndex(int,android.support.v4.app.BackStackRecord) -> a
+    void freeBackStackIndex(int) -> b
+    boolean execPendingActions() -> d
+    void reportBackStackChanged() -> t
+    void addBackStackState(android.support.v4.app.BackStackRecord) -> b
+    java.util.ArrayList retainNonConfig() -> e
+    void saveFragmentViewState(android.support.v4.app.Fragment) -> c
+    android.os.Parcelable saveAllState() -> f
+    void restoreAllState(android.os.Parcelable,java.util.ArrayList) -> a
+    void attachActivity(android.support.v4.app.FragmentActivity,android.support.v4.app.FragmentContainer,android.support.v4.app.Fragment) -> a
+    void noteStateNotSaved() -> g
+    void dispatchCreate() -> h
+    void dispatchActivityCreated() -> i
+    void dispatchStart() -> j
+    void dispatchResume() -> k
+    void dispatchPause() -> l
+    void dispatchStop() -> m
+    void dispatchReallyStop() -> n
+    void dispatchDestroyView() -> o
+    void dispatchDestroy() -> p
+    void dispatchConfigurationChanged(android.content.res.Configuration) -> a
+    void dispatchLowMemory() -> q
+    boolean dispatchCreateOptionsMenu(android.view.Menu,android.view.MenuInflater) -> a
+    boolean dispatchPrepareOptionsMenu(android.view.Menu) -> a
+    boolean dispatchOptionsItemSelected(android.view.MenuItem) -> a
+    boolean dispatchContextItemSelected(android.view.MenuItem) -> b
+    void dispatchOptionsMenuClosed(android.view.Menu) -> b
+    int reverseTransit(int) -> c
+android.support.v4.app.FragmentManagerImpl$1 -> android.support.v4.app.n:
+    android.support.v4.app.FragmentManagerImpl this$0 -> a
+    void run() -> run
+android.support.v4.app.FragmentManagerImpl$5 -> android.support.v4.app.o:
+    android.support.v4.app.Fragment val$fragment -> a
+    android.support.v4.app.FragmentManagerImpl this$0 -> b
+    void onAnimationEnd(android.view.animation.Animation) -> onAnimationEnd
+    void onAnimationRepeat(android.view.animation.Animation) -> onAnimationRepeat
+    void onAnimationStart(android.view.animation.Animation) -> onAnimationStart
+android.support.v4.app.FragmentManagerState -> android.support.v4.app.FragmentManagerState:
+    android.support.v4.app.FragmentState[] mActive -> a
+    int[] mAdded -> b
+    android.support.v4.app.BackStackState[] mBackStack -> c
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    int describeContents() -> describeContents
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+android.support.v4.app.FragmentManagerState$1 -> android.support.v4.app.p:
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.v4.app.FragmentPagerAdapter -> android.support.v4.app.q:
+    android.support.v4.app.FragmentManager mFragmentManager -> a
+    android.support.v4.app.FragmentTransaction mCurTransaction -> b
+    android.support.v4.app.Fragment mCurrentPrimaryItem -> c
+    android.support.v4.app.Fragment getItem(int) -> a
+    java.lang.Object instantiateItem(android.view.ViewGroup,int) -> a
+    void destroyItem$30510aeb(java.lang.Object) -> a
+    void setPrimaryItem$30510aeb(java.lang.Object) -> b
+    void finishUpdate$52bc874c() -> a
+    boolean isViewFromObject(android.view.View,java.lang.Object) -> a
+    java.lang.String makeFragmentName(int,long) -> a
+android.support.v4.app.FragmentState -> android.support.v4.app.FragmentState:
+    java.lang.String mClassName -> a
+    int mIndex -> b
+    boolean mFromLayout -> c
+    int mFragmentId -> d
+    int mContainerId -> e
+    java.lang.String mTag -> f
+    boolean mRetainInstance -> g
+    boolean mDetached -> h
+    android.os.Bundle mArguments -> i
+    android.os.Bundle mSavedFragmentState -> j
+    android.support.v4.app.Fragment mInstance -> k
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    android.support.v4.app.Fragment instantiate(android.support.v4.app.FragmentActivity,android.support.v4.app.Fragment) -> a
+    int describeContents() -> describeContents
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+android.support.v4.app.FragmentState$1 -> android.support.v4.app.r:
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.v4.app.FragmentTabHost -> android.support.v4.app.FragmentTabHost:
+    java.util.ArrayList mTabs -> a
+    android.widget.FrameLayout mRealTabContent -> b
+    android.content.Context mContext -> c
+    android.support.v4.app.FragmentManager mFragmentManager -> d
+    int mContainerId -> e
+    android.widget.TabHost$OnTabChangeListener mOnTabChangeListener -> f
+    android.support.v4.app.FragmentTabHost$TabInfo mLastTab -> g
+    boolean mAttached -> h
+    void setup() -> setup
+    void setOnTabChangedListener(android.widget.TabHost$OnTabChangeListener) -> setOnTabChangedListener
+    void onAttachedToWindow() -> onAttachedToWindow
+    void onDetachedFromWindow() -> onDetachedFromWindow
+    android.os.Parcelable onSaveInstanceState() -> onSaveInstanceState
+    void onRestoreInstanceState(android.os.Parcelable) -> onRestoreInstanceState
+    void onTabChanged(java.lang.String) -> onTabChanged
+    android.support.v4.app.FragmentTransaction doTabChanged(java.lang.String,android.support.v4.app.FragmentTransaction) -> a
+android.support.v4.app.FragmentTabHost$SavedState -> android.support.v4.app.FragmentTabHost$SavedState:
+    java.lang.String curTab -> a
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    java.lang.String toString() -> toString
+android.support.v4.app.FragmentTabHost$SavedState$1 -> android.support.v4.app.s:
+    java.lang.Object[] newArray(int) -> newArray
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+android.support.v4.app.FragmentTabHost$TabInfo -> android.support.v4.app.t:
+    java.lang.String tag -> a
+    java.lang.Class clss -> b
+    android.os.Bundle args -> c
+    android.support.v4.app.Fragment fragment -> d
+    android.support.v4.app.Fragment access$102(android.support.v4.app.FragmentTabHost$TabInfo,android.support.v4.app.Fragment) -> a
+    android.support.v4.app.Fragment access$100(android.support.v4.app.FragmentTabHost$TabInfo) -> a
+    java.lang.String access$200(android.support.v4.app.FragmentTabHost$TabInfo) -> b
+    java.lang.Class access$300(android.support.v4.app.FragmentTabHost$TabInfo) -> c
+    android.os.Bundle access$400(android.support.v4.app.FragmentTabHost$TabInfo) -> d
+android.support.v4.app.FragmentTransaction -> android.support.v4.app.u:
+    android.support.v4.app.FragmentTransaction add(int,android.support.v4.app.Fragment,java.lang.String) -> a
+    android.support.v4.app.FragmentTransaction remove(android.support.v4.app.Fragment) -> a
+    android.support.v4.app.FragmentTransaction detach(android.support.v4.app.Fragment) -> b
+    android.support.v4.app.FragmentTransaction attach(android.support.v4.app.Fragment) -> c
+    int commit() -> a
+    int commitAllowingStateLoss() -> b
+android.support.v4.app.ListFragment -> android.support.v4.app.v:
+    android.os.Handler mHandler -> X
+    java.lang.Runnable mRequestFocus -> Y
+    android.widget.AdapterView$OnItemClickListener mOnClickListener -> Z
+    android.widget.ListAdapter mAdapter -> P
+    android.widget.ListView mList -> Q
+    android.view.View mEmptyView -> R
+    android.widget.TextView mStandardEmptyView -> S
+    android.view.View mProgressContainer -> T
+    android.view.View mListContainer -> U
+    java.lang.CharSequence mEmptyText -> V
+    boolean mListShown -> W
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void onDestroyView() -> o
+    void onListItemClick$42a3bb55() -> A
+    void setListAdapter(android.widget.ListAdapter) -> a
+    android.widget.ListView getListView() -> B
+    void setListShown(boolean,boolean) -> a
+    void ensureList() -> C
+android.support.v4.app.ListFragment$1 -> android.support.v4.app.w:
+    android.support.v4.app.ListFragment this$0 -> a
+    void run() -> run
+android.support.v4.app.ListFragment$2 -> android.support.v4.app.x:
+    android.support.v4.app.ListFragment this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+android.support.v4.app.LoaderManager -> android.support.v4.app.y:
+    boolean hasRunningLoaders() -> a
+android.support.v4.app.LoaderManager$LoaderCallbacks -> android.support.v4.app.z:
+    android.support.v4.content.Loader onCreateLoader$e57f803() -> a
+android.support.v4.app.LoaderManagerImpl -> android.support.v4.app.aa:
+    boolean DEBUG -> a
+    android.support.v4.util.SparseArrayCompat mLoaders -> b
+    android.support.v4.util.SparseArrayCompat mInactiveLoaders -> c
+    java.lang.String mWho -> d
+    android.support.v4.app.FragmentActivity mActivity -> e
+    boolean mStarted -> f
+    boolean mRetaining -> g
+    void updateActivity(android.support.v4.app.FragmentActivity) -> a
+    void doStart() -> b
+    void doStop() -> c
+    void doRetain() -> d
+    void finishRetain() -> e
+    void doReportNextStart() -> f
+    void doReportStart() -> g
+    void doDestroy() -> h
+    java.lang.String toString() -> toString
+    void dump$ec96877$79f041d6(java.lang.String,java.io.PrintWriter) -> a
+    boolean hasRunningLoaders() -> a
+android.support.v4.app.LoaderManagerImpl$LoaderInfo -> android.support.v4.app.ab:
+    int mId -> a
+    android.os.Bundle mArgs -> b
+    android.support.v4.app.LoaderManager$LoaderCallbacks mCallbacks -> c
+    android.support.v4.content.Loader mLoader -> d
+    boolean mHaveData -> e
+    boolean mDeliveredData -> f
+    java.lang.Object mData -> g
+    boolean mStarted -> h
+    boolean mRetaining -> i
+    boolean mRetainingStarted -> j
+    boolean mReportNextStart -> k
+    boolean mDestroyed -> l
+    boolean mListenerRegistered -> m
+    android.support.v4.app.LoaderManagerImpl$LoaderInfo mPendingLoader -> n
+    android.support.v4.app.LoaderManagerImpl this$0 -> o
+    void stop() -> a
+    void destroy() -> b
+    void callOnLoadFinished(android.support.v4.content.Loader,java.lang.Object) -> a
+    java.lang.String toString() -> toString
+    void dump$ec96877$79f041d6(java.lang.String,java.io.PrintWriter) -> a
+android.support.v4.app.NoSaveStateFrameLayout -> android.support.v4.app.ac:
+    android.view.ViewGroup wrap(android.view.View) -> a
+    void dispatchSaveInstanceState(android.util.SparseArray) -> dispatchSaveInstanceState
+    void dispatchRestoreInstanceState(android.util.SparseArray) -> dispatchRestoreInstanceState
+android.support.v4.app.SuperNotCalledException -> android.support.v4.app.ad:
+android.support.v4.content.Loader -> android.support.v4.a.a:
+    int mId -> a
+    android.support.v4.content.Loader$OnLoadCompleteListener mListener -> b
+    boolean mStarted -> c
+    boolean mAbandoned -> d
+    boolean mReset -> e
+    boolean mContentChanged -> f
+    void registerListener(int,android.support.v4.content.Loader$OnLoadCompleteListener) -> a
+    void unregisterListener(android.support.v4.content.Loader$OnLoadCompleteListener) -> a
+    void startLoading() -> a
+    void stopLoading() -> b
+    void reset() -> c
+    java.lang.String toString() -> toString
+    void dump$ec96877(java.lang.String,java.io.PrintWriter) -> a
+android.support.v4.content.Loader$OnLoadCompleteListener -> android.support.v4.a.b:
+android.support.v4.os.ParcelableCompat -> android.support.v4.b.a:
+    android.os.Parcelable$Creator newCreator(android.support.v4.os.ParcelableCompatCreatorCallbacks) -> a
+android.support.v4.os.ParcelableCompat$CompatCreator -> android.support.v4.b.b:
+    android.support.v4.os.ParcelableCompatCreatorCallbacks mCallbacks -> a
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+    java.lang.Object[] newArray(int) -> newArray
+android.support.v4.os.ParcelableCompatCreatorCallbacks -> android.support.v4.b.c:
+    java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> a
+    java.lang.Object[] newArray(int) -> a
+android.support.v4.os.ParcelableCompatCreatorHoneycombMR2 -> android.support.v4.b.d:
+    android.support.v4.os.ParcelableCompatCreatorCallbacks mCallbacks -> a
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+    java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> createFromParcel
+    java.lang.Object[] newArray(int) -> newArray
+android.support.v4.util.DebugUtils -> android.support.v4.c.a:
+    void buildShortClassTag(java.lang.Object,java.lang.StringBuilder) -> a
+android.support.v4.util.LogWriter -> android.support.v4.c.b:
+    java.lang.String mTag -> a
+    java.lang.StringBuilder mBuilder -> b
+    void close() -> close
+    void flush() -> flush
+    void write(char[],int,int) -> write
+    void flushBuilder() -> a
+android.support.v4.util.LruCache -> android.support.v4.c.c:
+    java.util.LinkedHashMap map -> a
+    int size -> b
+    int maxSize -> c
+    int putCount -> d
+    int evictionCount -> e
+    int hitCount -> f
+    int missCount -> g
+    java.lang.Object get(java.lang.Object) -> a
+    java.lang.Object put(java.lang.Object,java.lang.Object) -> a
+    void trimToSize(int) -> a
+    java.lang.String toString() -> toString
+android.support.v4.util.SparseArrayCompat -> android.support.v4.c.d:
+    java.lang.Object DELETED -> a
+    boolean mGarbage -> b
+    int[] mKeys -> c
+    java.lang.Object[] mValues -> d
+    int mSize -> e
+    void gc() -> c
+    int size() -> a
+    int keyAt(int) -> a
+    java.lang.Object valueAt(int) -> b
+    void clear() -> b
+android.support.v4.view.AccessibilityDelegateCompat -> android.support.v4.view.a:
+    android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl IMPL -> b
+    java.lang.Object DEFAULT_DELEGATE -> c
+    java.lang.Object mBridge -> a
+    java.lang.Object getBridge() -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl -> android.support.v4.view.b:
+    java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl$1 -> android.support.v4.view.c:
+    android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
+    android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateIcsImpl this$0 -> b
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateImpl -> android.support.v4.view.d:
+    java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl -> android.support.v4.view.e:
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl$1 -> android.support.v4.view.f:
+    android.support.v4.view.AccessibilityDelegateCompat val$compat -> a
+    android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateJellyBeanImpl this$0 -> b
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompat$AccessibilityDelegateStubImpl -> android.support.v4.view.g:
+    java.lang.Object newAccessiblityDelegateDefaultImpl() -> a
+    java.lang.Object newAccessiblityDelegateBridge(android.support.v4.view.AccessibilityDelegateCompat) -> a
+    boolean dispatchPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(java.lang.Object,android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+    void onPopulateAccessibilityEvent(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(java.lang.Object,android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(java.lang.Object,android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(java.lang.Object,android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompatIcs -> android.support.v4.view.h:
+android.support.v4.view.AccessibilityDelegateCompatIcs$1 -> android.support.v4.view.i:
+    android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge val$bridge -> a
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onInitializeAccessibilityEvent
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo) -> onInitializeAccessibilityNodeInfo
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onPopulateAccessibilityEvent
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
+    void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
+android.support.v4.view.AccessibilityDelegateCompatIcs$AccessibilityDelegateBridge -> android.support.v4.view.j:
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.AccessibilityDelegateCompatJellyBean -> android.support.v4.view.k:
+android.support.v4.view.AccessibilityDelegateCompatJellyBean$1 -> android.support.v4.view.l:
+    android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean val$bridge -> a
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onInitializeAccessibilityEvent
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.view.accessibility.AccessibilityNodeInfo) -> onInitializeAccessibilityNodeInfo
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> onPopulateAccessibilityEvent
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> onRequestSendAccessibilityEvent
+    void sendAccessibilityEvent(android.view.View,int) -> sendAccessibilityEvent
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> sendAccessibilityEventUnchecked
+android.support.v4.view.AccessibilityDelegateCompatJellyBean$AccessibilityDelegateBridgeJellyBean -> android.support.v4.view.m:
+    boolean dispatchPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> b
+    void onInitializeAccessibilityNodeInfo(android.view.View,java.lang.Object) -> a
+    void onPopulateAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> c
+    boolean onRequestSendAccessibilityEvent(android.view.ViewGroup,android.view.View,android.view.accessibility.AccessibilityEvent) -> a
+    void sendAccessibilityEvent(android.view.View,int) -> a
+    void sendAccessibilityEventUnchecked(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+android.support.v4.view.KeyEventCompat -> android.support.v4.view.n:
+    android.support.v4.view.KeyEventCompat$KeyEventVersionImpl IMPL -> a
+    boolean hasModifiers$79c6ddc0(android.view.KeyEvent) -> a
+    boolean hasNoModifiers(android.view.KeyEvent) -> b
+android.support.v4.view.KeyEventCompat$BaseKeyEventVersionImpl -> android.support.v4.view.o:
+    int metaStateFilterDirectionalModifiers$2e71581f(int,int,int,int) -> a
+    int normalizeMetaState(int) -> c
+    boolean metaStateHasModifiers$255f299(int) -> a
+    boolean metaStateHasNoModifiers(int) -> b
+android.support.v4.view.KeyEventCompat$HoneycombKeyEventVersionImpl -> android.support.v4.view.p:
+    boolean metaStateHasModifiers$255f299(int) -> a
+    boolean metaStateHasNoModifiers(int) -> b
+android.support.v4.view.KeyEventCompat$KeyEventVersionImpl -> android.support.v4.view.q:
+    boolean metaStateHasModifiers$255f299(int) -> a
+    boolean metaStateHasNoModifiers(int) -> b
+android.support.v4.view.MotionEventCompat -> android.support.v4.view.r:
+    android.support.v4.view.MotionEventCompat$MotionEventVersionImpl IMPL -> a
+    int getActionIndex(android.view.MotionEvent) -> a
+    int findPointerIndex(android.view.MotionEvent,int) -> a
+    int getPointerId(android.view.MotionEvent,int) -> b
+    float getX(android.view.MotionEvent,int) -> c
+    float getY(android.view.MotionEvent,int) -> d
+android.support.v4.view.MotionEventCompat$BaseMotionEventVersionImpl -> android.support.v4.view.s:
+    int findPointerIndex(android.view.MotionEvent,int) -> a
+    int getPointerId(android.view.MotionEvent,int) -> b
+    float getX(android.view.MotionEvent,int) -> c
+    float getY(android.view.MotionEvent,int) -> d
+android.support.v4.view.MotionEventCompat$EclairMotionEventVersionImpl -> android.support.v4.view.t:
+    int findPointerIndex(android.view.MotionEvent,int) -> a
+    int getPointerId(android.view.MotionEvent,int) -> b
+    float getX(android.view.MotionEvent,int) -> c
+    float getY(android.view.MotionEvent,int) -> d
+android.support.v4.view.MotionEventCompat$MotionEventVersionImpl -> android.support.v4.view.u:
+    int findPointerIndex(android.view.MotionEvent,int) -> a
+    int getPointerId(android.view.MotionEvent,int) -> b
+    float getX(android.view.MotionEvent,int) -> c
+    float getY(android.view.MotionEvent,int) -> d
+android.support.v4.view.PagerAdapter -> android.support.v4.view.v:
+    android.database.DataSetObservable mObservable -> a
+    int getCount() -> b
+    java.lang.Object instantiateItem(android.view.ViewGroup,int) -> a
+    void destroyItem$30510aeb(java.lang.Object) -> a
+    void setPrimaryItem$30510aeb(java.lang.Object) -> b
+    void finishUpdate$52bc874c() -> a
+    void destroyItem$7e55ba3e() -> c
+    boolean isViewFromObject(android.view.View,java.lang.Object) -> a
+    int getItemPosition$5d527804() -> d
+    void notifyDataSetChanged() -> e
+    void registerDataSetObserver(android.database.DataSetObserver) -> a
+    void unregisterDataSetObserver(android.database.DataSetObserver) -> b
+android.support.v4.view.PagerTabStrip -> android.support.v4.view.PagerTabStrip:
+    int mIndicatorColor -> f
+    int mIndicatorHeight -> g
+    int mMinPaddingBottom -> h
+    int mMinTextSpacing -> i
+    int mMinStripHeight -> j
+    int mTabPadding -> k
+    android.graphics.Paint mTabPaint -> l
+    android.graphics.Rect mTempRect -> m
+    int mTabAlpha -> n
+    boolean mDrawFullUnderline -> o
+    boolean mDrawFullUnderlineSet -> p
+    int mFullUnderlineHeight -> q
+    boolean mIgnoreTap -> r
+    float mInitialMotionX -> s
+    float mInitialMotionY -> t
+    int mTouchSlop -> u
+    void setPadding(int,int,int,int) -> setPadding
+    void setTextSpacing(int) -> a
+    void setBackgroundDrawable(android.graphics.drawable.Drawable) -> setBackgroundDrawable
+    void setBackgroundColor(int) -> setBackgroundColor
+    void setBackgroundResource(int) -> setBackgroundResource
+    int getMinHeight() -> a
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void updateTextPositions(int,float,boolean) -> a
+android.support.v4.view.PagerTabStrip$1 -> android.support.v4.view.w:
+    android.support.v4.view.PagerTabStrip this$0 -> a
+    void onClick(android.view.View) -> onClick
+android.support.v4.view.PagerTabStrip$2 -> android.support.v4.view.x:
+    android.support.v4.view.PagerTabStrip this$0 -> a
+    void onClick(android.view.View) -> onClick
+android.support.v4.view.PagerTitleStrip -> android.support.v4.view.PagerTitleStrip:
+    android.support.v4.view.ViewPager mPager -> a
+    android.widget.TextView mPrevText -> b
+    android.widget.TextView mCurrText -> c
+    android.widget.TextView mNextText -> d
+    int mLastKnownCurrentPage -> f
+    float mLastKnownPositionOffset -> g
+    int mScaledTextSpacing -> h
+    int mGravity -> i
+    boolean mUpdatingText -> j
+    boolean mUpdatingPositions -> k
+    android.support.v4.view.PagerTitleStrip$PageListener mPageListener -> l
+    java.lang.ref.WeakReference mWatchingAdapter -> m
+    int[] ATTRS -> n
+    int[] TEXT_ATTRS -> o
+    int mNonPrimaryAlpha -> p
+    int mTextColor -> e
+    android.support.v4.view.PagerTitleStrip$PagerTitleStripImpl IMPL -> q
+    void setSingleLineAllCaps(android.widget.TextView) -> a
+    void setTextSpacing(int) -> a
+    int getTextSpacing() -> b
+    void onAttachedToWindow() -> onAttachedToWindow
+    void onDetachedFromWindow() -> onDetachedFromWindow
+    void updateText(int,android.support.v4.view.PagerAdapter) -> a
+    void requestLayout() -> requestLayout
+    void updateAdapter(android.support.v4.view.PagerAdapter,android.support.v4.view.PagerAdapter) -> a
+    void updateTextPositions(int,float,boolean) -> a
+    void onMeasure(int,int) -> onMeasure
+    void onLayout(boolean,int,int,int,int) -> onLayout
+    int getMinHeight() -> a
+    float access$100(android.support.v4.view.PagerTitleStrip) -> a
+android.support.v4.view.PagerTitleStrip$PageListener -> android.support.v4.view.y:
+    int mScrollState -> b
+    android.support.v4.view.PagerTitleStrip this$0 -> a
+    void onPageScrolled$486775f1(int,float) -> a
+    void onPageSelected(int) -> a
+    void onPageScrollStateChanged(int) -> b
+    void onAdapterChanged(android.support.v4.view.PagerAdapter,android.support.v4.view.PagerAdapter) -> a
+    void onChanged() -> onChanged
+android.support.v4.view.PagerTitleStrip$PagerTitleStripImpl -> android.support.v4.view.z:
+    void setSingleLineAllCaps(android.widget.TextView) -> a
+android.support.v4.view.PagerTitleStrip$PagerTitleStripImplBase -> android.support.v4.view.aa:
+    void setSingleLineAllCaps(android.widget.TextView) -> a
+android.support.v4.view.PagerTitleStrip$PagerTitleStripImplIcs -> android.support.v4.view.ab:
+    void setSingleLineAllCaps(android.widget.TextView) -> a
+android.support.v4.view.PagerTitleStripIcs -> android.support.v4.view.ac:
+android.support.v4.view.PagerTitleStripIcs$SingleLineAllCapsTransform -> android.support.v4.view.ad:
+    java.util.Locale mLocale -> a
+    java.lang.CharSequence getTransformation(java.lang.CharSequence,android.view.View) -> getTransformation
+android.support.v4.view.VelocityTrackerCompat -> android.support.v4.view.ae:
+    android.support.v4.view.VelocityTrackerCompat$VelocityTrackerVersionImpl IMPL -> a
+    float getXVelocity(android.view.VelocityTracker,int) -> a
+android.support.v4.view.VelocityTrackerCompat$BaseVelocityTrackerVersionImpl -> android.support.v4.view.af:
+    float getXVelocity(android.view.VelocityTracker,int) -> a
+android.support.v4.view.VelocityTrackerCompat$HoneycombVelocityTrackerVersionImpl -> android.support.v4.view.ag:
+    float getXVelocity(android.view.VelocityTracker,int) -> a
+android.support.v4.view.VelocityTrackerCompat$VelocityTrackerVersionImpl -> android.support.v4.view.ah:
+    float getXVelocity(android.view.VelocityTracker,int) -> a
+android.support.v4.view.ViewCompat -> android.support.v4.view.ai:
+    android.support.v4.view.ViewCompat$ViewCompatImpl IMPL -> a
+    boolean canScrollHorizontally(android.view.View,int) -> a
+    int getOverScrollMode(android.view.View) -> a
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+    void postInvalidateOnAnimation(android.view.View) -> b
+    void postOnAnimation(android.view.View,java.lang.Runnable) -> a
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility$5359dc9a(android.view.View) -> d
+    void setLayerType$7672597b(android.view.View,int) -> b
+android.support.v4.view.ViewCompat$BaseViewCompatImpl -> android.support.v4.view.aj:
+    boolean canScrollHorizontally(android.view.View,int) -> a
+    int getOverScrollMode(android.view.View) -> a
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+    void postInvalidateOnAnimation(android.view.View) -> b
+    void postOnAnimation(android.view.View,java.lang.Runnable) -> a
+    long getFrameTime() -> a
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility$5359dc9a(android.view.View) -> d
+    void setLayerType$7672597b(android.view.View,int) -> b
+android.support.v4.view.ViewCompat$GBViewCompatImpl -> android.support.v4.view.ak:
+    int getOverScrollMode(android.view.View) -> a
+android.support.v4.view.ViewCompat$HCViewCompatImpl -> android.support.v4.view.al:
+    long getFrameTime() -> a
+    void setLayerType$7672597b(android.view.View,int) -> b
+android.support.v4.view.ViewCompat$ICSViewCompatImpl -> android.support.v4.view.am:
+    boolean canScrollHorizontally(android.view.View,int) -> a
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+android.support.v4.view.ViewCompat$JBViewCompatImpl -> android.support.v4.view.an:
+    void postInvalidateOnAnimation(android.view.View) -> b
+    void postOnAnimation(android.view.View,java.lang.Runnable) -> a
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility$5359dc9a(android.view.View) -> d
+android.support.v4.view.ViewCompat$JbMr1ViewCompatImpl -> android.support.v4.view.ao:
+android.support.v4.view.ViewCompat$ViewCompatImpl -> android.support.v4.view.ap:
+    boolean canScrollHorizontally(android.view.View,int) -> a
+    int getOverScrollMode(android.view.View) -> a
+    void setAccessibilityDelegate(android.view.View,android.support.v4.view.AccessibilityDelegateCompat) -> a
+    void postInvalidateOnAnimation(android.view.View) -> b
+    void postOnAnimation(android.view.View,java.lang.Runnable) -> a
+    int getImportantForAccessibility(android.view.View) -> c
+    void setImportantForAccessibility$5359dc9a(android.view.View) -> d
+    void setLayerType$7672597b(android.view.View,int) -> b
+android.support.v4.view.ViewConfigurationCompat -> android.support.v4.view.aq:
+    android.support.v4.view.ViewConfigurationCompat$ViewConfigurationVersionImpl IMPL -> a
+    int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
+android.support.v4.view.ViewConfigurationCompat$BaseViewConfigurationVersionImpl -> android.support.v4.view.ar:
+    int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
+android.support.v4.view.ViewConfigurationCompat$FroyoViewConfigurationVersionImpl -> android.support.v4.view.as:
+    int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
+android.support.v4.view.ViewConfigurationCompat$ViewConfigurationVersionImpl -> android.support.v4.view.at:
+    int getScaledPagingTouchSlop(android.view.ViewConfiguration) -> a
+android.support.v4.view.ViewPager -> android.support.v4.view.ViewPager:
+    int[] LAYOUT_ATTRS -> a
+    java.util.Comparator COMPARATOR -> b
+    android.view.animation.Interpolator sInterpolator -> c
+    java.util.ArrayList mItems -> d
+    android.support.v4.view.ViewPager$ItemInfo mTempItem -> e
+    android.graphics.Rect mTempRect -> f
+    android.support.v4.view.PagerAdapter mAdapter -> g
+    int mCurItem -> h
+    int mRestoredCurItem -> i
+    android.os.Parcelable mRestoredAdapterState -> j
+    java.lang.ClassLoader mRestoredClassLoader -> k
+    android.widget.Scroller mScroller -> l
+    android.support.v4.view.ViewPager$PagerObserver mObserver -> m
+    int mPageMargin -> n
+    android.graphics.drawable.Drawable mMarginDrawable -> o
+    int mTopPageBounds -> p
+    int mBottomPageBounds -> q
+    float mFirstOffset -> r
+    float mLastOffset -> s
+    int mChildWidthMeasureSpec -> t
+    int mChildHeightMeasureSpec -> u
+    boolean mInLayout -> v
+    boolean mScrollingCacheEnabled -> w
+    boolean mPopulatePending -> x
+    int mOffscreenPageLimit -> y
+    boolean mIsBeingDragged -> z
+    boolean mIsUnableToDrag -> A
+    int mDefaultGutterSize -> B
+    int mGutterSize -> C
+    int mTouchSlop -> D
+    float mLastMotionX -> E
+    float mLastMotionY -> F
+    float mInitialMotionX -> G
+    float mInitialMotionY -> H
+    int mActivePointerId -> I
+    android.view.VelocityTracker mVelocityTracker -> J
+    int mMinimumVelocity -> K
+    int mMaximumVelocity -> L
+    int mFlingDistance -> M
+    int mCloseEnough -> N
+    boolean mFakeDragging -> O
+    android.support.v4.widget.EdgeEffectCompat mLeftEdge -> P
+    android.support.v4.widget.EdgeEffectCompat mRightEdge -> Q
+    boolean mFirstLayout -> R
+    boolean mNeedCalculatePageOffsets -> S
+    boolean mCalledSuper -> T
+    int mDecorChildCount -> U
+    android.support.v4.view.ViewPager$OnPageChangeListener mOnPageChangeListener -> V
+    android.support.v4.view.ViewPager$OnPageChangeListener mInternalPageChangeListener -> W
+    android.support.v4.view.ViewPager$OnAdapterChangeListener mAdapterChangeListener -> Z
+    android.support.v4.view.ViewPager$PageTransformer mPageTransformer -> aa
+    int mDrawingOrder -> ab
+    java.util.ArrayList mDrawingOrderedChildren -> ac
+    android.support.v4.view.ViewPager$ViewPositionComparator sPositionComparator -> ad
+    java.lang.Runnable mEndScrollRunnable -> ae
+    int mScrollState -> af
+    void initViewPager() -> f
+    void onDetachedFromWindow() -> onDetachedFromWindow
+    void setScrollState(int) -> b
+    void setAdapter(android.support.v4.view.PagerAdapter) -> a
+    android.support.v4.view.PagerAdapter getAdapter() -> a
+    void setOnAdapterChangeListener(android.support.v4.view.ViewPager$OnAdapterChangeListener) -> a
+    void setCurrentItem(int) -> a
+    void setCurrentItem$2563266(int) -> c
+    int getCurrentItem() -> b
+    void setCurrentItemInternal(int,boolean,boolean) -> a
+    void setCurrentItemInternal(int,boolean,boolean,int) -> a
+    void scrollToItem(int,boolean,int,boolean) -> a
+    void setOnPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener) -> a
+    int getChildDrawingOrder(int,int) -> getChildDrawingOrder
+    android.support.v4.view.ViewPager$OnPageChangeListener setInternalPageChangeListener(android.support.v4.view.ViewPager$OnPageChangeListener) -> b
+    boolean verifyDrawable(android.graphics.drawable.Drawable) -> verifyDrawable
+    void drawableStateChanged() -> drawableStateChanged
+    android.support.v4.view.ViewPager$ItemInfo addNewItem(int,int) -> a
+    void dataSetChanged() -> c
+    void populate() -> d
+    void populate(int) -> d
+    android.os.Parcelable onSaveInstanceState() -> onSaveInstanceState
+    void onRestoreInstanceState(android.os.Parcelable) -> onRestoreInstanceState
+    void addView(android.view.View,int,android.view.ViewGroup$LayoutParams) -> addView
+    void removeView(android.view.View) -> removeView
+    android.support.v4.view.ViewPager$ItemInfo infoForChild(android.view.View) -> a
+    android.support.v4.view.ViewPager$ItemInfo infoForAnyChild(android.view.View) -> b
+    android.support.v4.view.ViewPager$ItemInfo infoForPosition(int) -> e
+    void onAttachedToWindow() -> onAttachedToWindow
+    void onMeasure(int,int) -> onMeasure
+    void onSizeChanged(int,int,int,int) -> onSizeChanged
+    void onLayout(boolean,int,int,int,int) -> onLayout
+    void computeScroll() -> computeScroll
+    boolean pageScrolled(int) -> f
+    void onPageScrolled$486775f1(int,float) -> a
+    void completeScroll(boolean) -> a
+    boolean onInterceptTouchEvent(android.view.MotionEvent) -> onInterceptTouchEvent
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    boolean performDrag(float) -> a
+    android.support.v4.view.ViewPager$ItemInfo infoForCurrentScrollPosition() -> g
+    void draw(android.graphics.Canvas) -> draw
+    void onDraw(android.graphics.Canvas) -> onDraw
+    void onSecondaryPointerUp(android.view.MotionEvent) -> a
+    void endDrag() -> h
+    void setScrollingCacheEnabled(boolean) -> b
+    boolean canScroll(android.view.View,boolean,int,int,int) -> a
+    boolean dispatchKeyEvent(android.view.KeyEvent) -> dispatchKeyEvent
+    boolean arrowScroll(int) -> g
+    android.graphics.Rect getChildRectInPagerCoordinates(android.graphics.Rect,android.view.View) -> a
+    boolean pageLeft() -> i
+    void addFocusables(java.util.ArrayList,int,int) -> addFocusables
+    void addTouchables(java.util.ArrayList) -> addTouchables
+    boolean onRequestFocusInDescendants(int,android.graphics.Rect) -> onRequestFocusInDescendants
+    boolean dispatchPopulateAccessibilityEvent(android.view.accessibility.AccessibilityEvent) -> dispatchPopulateAccessibilityEvent
+    android.view.ViewGroup$LayoutParams generateDefaultLayoutParams() -> generateDefaultLayoutParams
+    android.view.ViewGroup$LayoutParams generateLayoutParams(android.view.ViewGroup$LayoutParams) -> generateLayoutParams
+    boolean checkLayoutParams(android.view.ViewGroup$LayoutParams) -> checkLayoutParams
+    android.view.ViewGroup$LayoutParams generateLayoutParams(android.util.AttributeSet) -> generateLayoutParams
+    void access$000$b020504(android.support.v4.view.ViewPager) -> a
+    android.support.v4.view.PagerAdapter access$200(android.support.v4.view.ViewPager) -> b
+    int access$300(android.support.v4.view.ViewPager) -> c
+    int[] access$400() -> e
+android.support.v4.view.ViewPager$1 -> android.support.v4.view.au:
+    int compare(java.lang.Object,java.lang.Object) -> compare
+android.support.v4.view.ViewPager$2 -> android.support.v4.view.av:
+    float getInterpolation(float) -> getInterpolation
+android.support.v4.view.ViewPager$3 -> android.support.v4.view.aw:
+    android.support.v4.view.ViewPager this$0 -> a
+    void run() -> run
+android.support.v4.view.ViewPager$Decor -> android.support.v4.view.ax:
+android.support.v4.view.ViewPager$ItemInfo -> android.support.v4.view.ay:
+    java.lang.Object object -> a
+    int position -> b
+    boolean scrolling -> c
+    float widthFactor -> d
+    float offset -> e
+android.support.v4.view.ViewPager$LayoutParams -> android.support.v4.view.ViewPager$LayoutParams:
+    boolean isDecor -> a
+    int gravity -> b
+    float widthFactor -> c
+    boolean needsMeasure -> d
+    int position -> e
+    int childIndex -> f
+android.support.v4.view.ViewPager$MyAccessibilityDelegate -> android.support.v4.view.az:
+    android.support.v4.view.ViewPager this$0 -> b
+    void onInitializeAccessibilityEvent(android.view.View,android.view.accessibility.AccessibilityEvent) -> d
+    void onInitializeAccessibilityNodeInfo(android.view.View,android.support.v4.view.accessibility.AccessibilityNodeInfoCompat) -> a
+android.support.v4.view.ViewPager$OnAdapterChangeListener -> android.support.v4.view.ba:
+    void onAdapterChanged(android.support.v4.view.PagerAdapter,android.support.v4.view.PagerAdapter) -> a
+android.support.v4.view.ViewPager$OnPageChangeListener -> android.support.v4.view.bb:
+    void onPageScrolled$486775f1(int,float) -> a
+    void onPageSelected(int) -> a
+    void onPageScrollStateChanged(int) -> b
+android.support.v4.view.ViewPager$PageTransformer -> android.support.v4.view.bc:
+android.support.v4.view.ViewPager$PagerObserver -> android.support.v4.view.bd:
+    android.support.v4.view.ViewPager this$0 -> a
+    void onChanged() -> onChanged
+    void onInvalidated() -> onInvalidated
+android.support.v4.view.ViewPager$SavedState -> android.support.v4.view.ViewPager$SavedState:
+    int position -> a
+    android.os.Parcelable adapterState -> b
+    java.lang.ClassLoader loader -> c
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+    java.lang.String toString() -> toString
+android.support.v4.view.ViewPager$SavedState$1 -> android.support.v4.view.be:
+    java.lang.Object[] newArray(int) -> a
+    java.lang.Object createFromParcel(android.os.Parcel,java.lang.ClassLoader) -> a
+android.support.v4.view.ViewPager$ViewPositionComparator -> android.support.v4.view.bf:
+    int compare(java.lang.Object,java.lang.Object) -> compare
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat -> android.support.v4.view.a.a:
+    android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoImpl IMPL -> a
+    java.lang.Object mInfo -> b
+    java.lang.Object getInfo() -> a
+    void addAction(int) -> a
+    void setScrollable(boolean) -> a
+    void setClassName(java.lang.CharSequence) -> a
+    int hashCode() -> hashCode
+    boolean equals(java.lang.Object) -> equals
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoIcsImpl -> android.support.v4.view.a.b:
+    void addAction(java.lang.Object,int) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoImpl -> android.support.v4.view.a.c:
+    void addAction(java.lang.Object,int) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoJellybeanImpl -> android.support.v4.view.a.d:
+android.support.v4.view.accessibility.AccessibilityNodeInfoCompat$AccessibilityNodeInfoStubImpl -> android.support.v4.view.a.e:
+    void addAction(java.lang.Object,int) -> a
+    void setClassName(java.lang.Object,java.lang.CharSequence) -> a
+    void setScrollable(java.lang.Object,boolean) -> a
+android.support.v4.widget.EdgeEffectCompat -> android.support.v4.d.a:
+    java.lang.Object mEdgeEffect -> a
+    android.support.v4.widget.EdgeEffectCompat$EdgeEffectImpl IMPL -> b
+    void setSize(int,int) -> a
+    boolean isFinished() -> a
+    void finish() -> b
+    boolean onPull(float) -> a
+    boolean onRelease() -> c
+    boolean draw(android.graphics.Canvas) -> a
+android.support.v4.widget.EdgeEffectCompat$BaseEdgeEffectImpl -> android.support.v4.d.b:
+    java.lang.Object newEdgeEffect(android.content.Context) -> a
+    void setSize(java.lang.Object,int,int) -> a
+    boolean isFinished(java.lang.Object) -> a
+    void finish(java.lang.Object) -> b
+    boolean onPull(java.lang.Object,float) -> a
+    boolean onRelease(java.lang.Object) -> c
+    boolean draw(java.lang.Object,android.graphics.Canvas) -> a
+android.support.v4.widget.EdgeEffectCompat$EdgeEffectIcsImpl -> android.support.v4.d.c:
+    java.lang.Object newEdgeEffect(android.content.Context) -> a
+    void setSize(java.lang.Object,int,int) -> a
+    boolean isFinished(java.lang.Object) -> a
+    void finish(java.lang.Object) -> b
+    boolean onPull(java.lang.Object,float) -> a
+    boolean onRelease(java.lang.Object) -> c
+    boolean draw(java.lang.Object,android.graphics.Canvas) -> a
+android.support.v4.widget.EdgeEffectCompat$EdgeEffectImpl -> android.support.v4.d.d:
+    java.lang.Object newEdgeEffect(android.content.Context) -> a
+    void setSize(java.lang.Object,int,int) -> a
+    boolean isFinished(java.lang.Object) -> a
+    void finish(java.lang.Object) -> b
+    boolean onPull(java.lang.Object,float) -> a
+    boolean onRelease(java.lang.Object) -> c
+    boolean draw(java.lang.Object,android.graphics.Canvas) -> a
+com.shuangse.base.ShuangSeToolsSetApplication -> com.shuangse.base.ShuangSeToolsSetApplication:
+    java.lang.String TAG -> j
+    java.lang.String My_Selection_Red_String -> a
+    java.lang.String My_Selection_Red_Dan_Str -> b
+    java.lang.String My_Selection_Blue_String -> c
+    java.lang.String APKURL -> d
+    java.lang.String smsText -> k
+    java.util.ArrayList allHisData -> l
+    int picCachedSize -> m
+    android.support.v4.util.LruCache pictureCache -> n
+    android.database.sqlite.SQLiteDatabase hisDataSqliteDB -> o
+    java.lang.String DBPath -> p
+    java.lang.String DBName -> q
+    java.lang.String neverOutDB -> r
+    android.database.sqlite.SQLiteDatabase neverOutSqliteDB -> s
+    com.shuangse.db.DataBaseHelper dbHelper -> t
+    java.lang.String serverAddress -> u
+    org.apache.http.client.HttpClient httpClient -> v
+    int DEFAULT_MAX_CONNECTIONS -> w
+    int DEFAULT_SOCKET_TIMEOUT -> x
+    int DEFAULT_SOCKET_BUFFER_SIZE -> y
+    int DEFAULT_HOST_CONNECTIONS -> z
+    android.widget.TableRow$LayoutParams rowPara -> e
+    android.widget.TableRow$LayoutParams headLeftCellPara -> f
+    android.widget.TableRow$LayoutParams headRightCellPara -> g
+    android.widget.TableRow$LayoutParams leftCellPara -> h
+    android.widget.TableRow$LayoutParams rightCellPara -> i
+    com.shuangse.meta.SelectedItem currentSelection -> A
+    java.lang.String getVersion() -> a
+    java.lang.String getSmsText() -> b
+    void setSmsText(java.lang.String) -> a
+    java.util.ArrayList getAllHisData() -> c
+    android.support.v4.util.LruCache getPicCache() -> d
+    org.apache.http.client.HttpClient getHttpClient() -> e
+    java.lang.String getServerAddr() -> f
+    boolean checkHisDataDB() -> D
+    boolean checkNeverOutDB() -> E
+    void copyDataBase(java.lang.String) -> c
+    void onCreate() -> onCreate
+    java.util.ArrayList queryExtHisDataFromLocalDB$60dab9ef(int) -> a
+    void loadLocalHisDataIntoCache() -> g
+    int getIndexByItemIDInLocalCache(int) -> b
+    com.shuangse.meta.ValueObj[] getRedNumberOrderedByMissingTimes() -> h
+    int getRecommend17Cover6CodesCnt() -> i
+    java.util.HashSet getRecommend17Cover6Codes() -> j
+    int getRecommed6Cover456CodesCnt() -> k
+    java.util.HashSet getRecommend6Cover456Codes() -> l
+    int getRecommed11Cover56CodesCnt() -> m
+    java.util.HashSet getRecommend11Cover56Codes() -> n
+    int getHotRedNumbersCnt(int) -> k
+    int getWarmRedNumbersCnt(int) -> l
+    int getCoolRedNumbersCnt(int) -> m
+    int getOccursCntOfHot(int[]) -> a
+    int getOccursCntOfWarm(int[]) -> b
+    int getOccursCntOfCool(int[]) -> c
+    int[] getMissCntOfMissValue(int) -> c
+    int getMissCntOfMissValue(java.util.ArrayList,int) -> b
+    java.util.HashSet getRecommendRedNumber(int) -> d
+    int getRedNumMissTimesByIndex(int,int) -> g
+    int getRedNumMissTimes(int,int) -> a
+    int[] getMissCntOfItemByItemIndex(int) -> e
+    java.util.ArrayList statHotAndWarmSetOccursSummary() -> o
+    android.util.SparseArray getRedNumSummaryData() -> p
+    android.util.SparseArray getRedNumHotWarmCoolOccursSummaryData(int) -> f
+    android.util.SparseArray getBlueNumSummaryData() -> q
+    android.util.SparseArray getBlueAttrSummaryData(int) -> g
+    int getBlueNumAttrValue(int,int) -> b
+    int getBlueNumAttrMissTimes(int,int,int) -> a
+    int getRedNumHotOccurMissTimes(int,int) -> c
+    int getRedNumWarmOccurMissTimes(int,int) -> d
+    int getRedNumCoolOccurMissTimes(int,int) -> e
+    int getBlueNumMissTimes(int,int) -> f
+    com.shuangse.meta.ShuangseCodeItem getCodeItemByID(int) -> h
+    com.shuangse.meta.ShuangseCodeItem getCodeItemByIndex(int) -> n
+    boolean ifItemIsHistoryItem(int[]) -> d
+    int getLoalLatestItemIDFromCache() -> r
+    int getLatestItemIDFromLocalDB() -> s
+    void onTerminate() -> onTerminate
+    void parseAndStoreItemsData(java.lang.String) -> b
+    boolean storeItemData(com.shuangse.meta.ExtShuangseCodeItem) -> a
+    void createGlobalDatas() -> t
+    com.shuangse.meta.AndroidPhoneInfo getSystemInformation() -> u
+    com.shuangse.meta.SelectedItem getCurrentSelection() -> v
+    int combineCodes$5538ffd6(int,int[],boolean,boolean,int,int,java.util.ArrayList) -> a
+    void insertMyCombineRecord(int,java.util.List,java.util.List,int,int,java.util.ArrayList) -> a
+    void insertMyDanTuoCombineRecord(int,java.util.List,java.util.List,java.util.List,int,int,java.util.ArrayList) -> a
+    void insertMyCombineHisRecord(java.lang.StringBuffer,java.lang.StringBuffer,int,int,int,java.util.ArrayList) -> a
+    void deleteOneRecord(com.shuangse.meta.MyHisRecord) -> a
+    java.util.ArrayList selectAllMyCombineRecord() -> w
+    java.lang.String countHistoryOutDetailsForRedset(java.util.ArrayList,int) -> a
+    java.util.List countTwoRedNumberOccurs() -> x
+    java.util.List countThreeRedNumberOccurs() -> y
+    com.shuangse.meta.ValueObj[] countRedNumberOccuresCount(int) -> i
+    void statHistoryData() -> z
+    int combineCodes$2538785b$e34776f(int[],int,int[],int,int,int,java.util.ArrayList) -> a
+    java.util.HashSet getRecommendBlueNumbers(int) -> j
+    java.lang.String getAllRecommed6Cover456Codes() -> A
+    java.lang.String getAllRecommed11Cover56Codes() -> B
+    java.lang.String getAllRecommed17Cover6Codes() -> C
+    java.util.ArrayList selectMyCombineDetailRecord(com.shuangse.meta.MyHisRecord) -> b
+    java.util.ArrayList access$0(com.shuangse.base.ShuangSeToolsSetApplication) -> a
+    android.database.sqlite.SQLiteDatabase access$1(com.shuangse.base.ShuangSeToolsSetApplication) -> b
+com.shuangse.base.ShuangSeToolsSetApplication$1 -> com.shuangse.base.a:
+    com.shuangse.base.ShuangSeToolsSetApplication this$0 -> a
+    void run() -> run
+com.shuangse.base.ShuangSeToolsSetApplication$2 -> com.shuangse.base.b:
+    com.shuangse.base.ShuangSeToolsSetApplication this$0 -> a
+    int compare(java.lang.Object,java.lang.Object) -> compare
+com.shuangse.base.ShuangSeToolsSetApplication$3 -> com.shuangse.base.c:
+    com.shuangse.base.ShuangSeToolsSetApplication this$0 -> a
+    int compare(java.lang.Object,java.lang.Object) -> compare
+com.shuangse.base.ShuangSeToolsSetApplication$4 -> com.shuangse.base.d:
+    com.shuangse.base.ShuangSeToolsSetApplication this$0 -> a
+    int compare(java.lang.Object,java.lang.Object) -> compare
+com.shuangse.base.ShuangSeToolsSetApplication$5 -> com.shuangse.base.e:
+    com.shuangse.base.ShuangSeToolsSetApplication this$0 -> a
+    int compare(java.lang.Object,java.lang.Object) -> compare
+com.shuangse.db.DataBaseHelper -> com.shuangse.a.a:
+    int currentDBVersion -> a
+    java.util.ArrayList dbRecords -> b
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+com.shuangse.db.DataBaseHelper$CombineRecord -> com.shuangse.a.b:
+    int itemID -> a
+    java.lang.String selectRed -> b
+    java.lang.String selectBlue -> c
+    int model -> d
+    int getoutHisFlag -> e
+    int getItemID() -> a
+    void setItemID(int) -> a
+    java.lang.String getSelectRed() -> b
+    void setSelectRed(java.lang.String) -> a
+    java.lang.String getSelectBlue() -> c
+    void setSelectBlue(java.lang.String) -> b
+    int getModel() -> d
+    void setModel(int) -> b
+    int getGetoutHisFlag() -> e
+    void setGetoutHisFlag(int) -> c
+com.shuangse.meta.AndroidPhoneInfo -> com.shuangse.meta.a:
+    java.lang.String deviceId -> a
+    java.lang.String softVersion -> b
+    java.lang.String msisdnMdn -> c
+    java.lang.String networkOperator -> d
+    java.lang.String networkOperatorName -> e
+    int networkType -> f
+    int phoneType -> g
+    java.lang.String simOperator -> h
+    java.lang.String simOperatorName -> i
+    java.lang.String simSerialNumber -> j
+    java.lang.String subscriberId -> k
+    java.lang.String apkVersion -> l
+    java.lang.String toString() -> toString
+    java.lang.String getDeviceId() -> a
+    void setDeviceId(java.lang.String) -> a
+    java.lang.String getSoftVersion() -> b
+    void setSoftVersion(java.lang.String) -> b
+    java.lang.String getMsisdnMdn() -> c
+    void setMsisdnMdn(java.lang.String) -> c
+    java.lang.String getNetworkOperator() -> d
+    void setNetworkOperator(java.lang.String) -> d
+    java.lang.String getNetworkOperatorName() -> e
+    void setNetworkOperatorName(java.lang.String) -> e
+    int getNetworkType() -> f
+    void setNetworkType(int) -> a
+    int getPhoneType() -> g
+    void setPhoneType(int) -> b
+    java.lang.String getSimOperator() -> h
+    void setSimOperator(java.lang.String) -> f
+    java.lang.String getSimOperatorName() -> i
+    void setSimOperatorName(java.lang.String) -> g
+    java.lang.String getSimSerialNumber() -> j
+    void setSimSerialNumber(java.lang.String) -> h
+    java.lang.String getSubscriberId() -> k
+    void setSubscriberId(java.lang.String) -> i
+com.shuangse.meta.BaseCodeItem -> com.shuangse.meta.b:
+    int[] num -> a
+    int length -> b
+com.shuangse.meta.CellData -> com.shuangse.meta.c:
+    int cellFor -> a
+    int num -> b
+    int item_id -> c
+    int dispNum -> d
+    android.graphics.drawable.Drawable dispImg -> e
+    boolean ifAllowDoubleClickSel -> f
+    android.graphics.drawable.Drawable doubleclickDispImg -> g
+    int row -> h
+    int col -> i
+    int clicked -> j
+    int getNum() -> a
+    java.lang.String toString() -> toString
+    void setClicked(int) -> a
+    int isClicked() -> b
+    android.graphics.drawable.Drawable getDispImg() -> c
+    android.graphics.drawable.Drawable getDoubleclickDispImg() -> d
+    boolean isIfAllowDoubleClickSel() -> e
+    int getCellFor() -> f
+com.shuangse.meta.ControlMsg -> com.shuangse.meta.d:
+    int id -> a
+    java.lang.String infoType -> b
+    java.lang.String text -> c
+    java.lang.String url -> d
+    java.lang.String version -> e
+    int validFlag -> f
+    java.lang.String toString() -> toString
+    void setId(int) -> a
+    java.lang.String getVersion() -> a
+    void setVersion(java.lang.String) -> a
+    java.lang.String getUrl() -> b
+    void setUrl(java.lang.String) -> b
+    void setValidFlag(int) -> b
+    java.lang.String getInfoType() -> c
+    void setInfoType(java.lang.String) -> c
+    java.lang.String getText() -> d
+    void setText(java.lang.String) -> d
+com.shuangse.meta.ExperienceItem -> com.shuangse.meta.e:
+    int Id -> a
+    java.lang.String title -> b
+    java.lang.String htmlText -> c
+    java.lang.String author -> d
+    java.lang.String contact -> e
+    java.lang.String addTime -> f
+    int getId() -> a
+    void setId(int) -> a
+    java.lang.String getTitle() -> b
+    void setTitle(java.lang.String) -> a
+    java.lang.String getHtmlText() -> c
+    void setHtmlText(java.lang.String) -> b
+    java.lang.String getAuthor() -> d
+    void setAuthor(java.lang.String) -> c
+    java.lang.String getContact() -> e
+    void setContact(java.lang.String) -> d
+    java.lang.String getAddTime() -> f
+    void setAddTime(java.lang.String) -> e
+com.shuangse.meta.ExtShuangseCodeItem -> com.shuangse.meta.ExtShuangseCodeItem:
+    java.lang.String openDate -> a
+    int totalSale -> b
+    int poolTotal -> c
+    int firstPrizeCnt -> d
+    int firstPrizeValue -> e
+    int secondPrizeCnt -> f
+    int secondPrizeValue -> g
+com.shuangse.meta.ItemPair -> com.shuangse.meta.f:
+    java.lang.String dispText -> a
+    int itemVal -> b
+    java.lang.String toString() -> toString
+    java.lang.String getDispText() -> a
+    int getItemVal() -> b
+com.shuangse.meta.MyHisRecord -> com.shuangse.meta.g:
+    int recordIndex -> a
+    int itemId -> b
+    int getoutHisFlag -> c
+    int selectModel -> d
+    java.util.ArrayList redNumbers -> e
+    java.util.ArrayList redDanNumbers -> f
+    java.util.ArrayList redTuoNumbers -> g
+    java.util.ArrayList blueNumbers -> h
+    boolean equals(java.lang.Object) -> equals
+    int getItemId() -> a
+    void setItemId(int) -> a
+    java.util.ArrayList getRedNumbers() -> b
+    java.lang.String getRedNumberStr() -> c
+    java.lang.String getRedDanNumberStr() -> d
+    java.lang.String getRedTuoNumberStr() -> e
+    void setRedNumbers(java.util.ArrayList) -> a
+    java.util.ArrayList getBlueNumbers() -> f
+    java.lang.String getBlueNumberStr() -> g
+    void setBlueNumbers(java.util.ArrayList) -> b
+    int getGetoutHisFlag() -> h
+    void setGetoutHisFlag(int) -> b
+    int getSelectModel() -> i
+    void setSelectModel(int) -> c
+    java.util.ArrayList getRedDanNumbers() -> j
+    void setRedDanNumbers(java.util.ArrayList) -> c
+    java.util.ArrayList getRedTuoNumbers() -> k
+    void setRedTuoNumbers(java.util.ArrayList) -> d
+    int getRecordIndex() -> l
+    void setRecordIndex(int) -> d
+com.shuangse.meta.RecommandHisRecord -> com.shuangse.meta.h:
+    int itemId -> a
+    int occurRedCnt -> b
+    int occurBlueCnt -> c
+    java.util.ArrayList redNumbers -> d
+    java.util.ArrayList blueNumbers -> e
+    int getItemId() -> a
+    void setItemId(int) -> a
+    java.util.ArrayList getRedNumbers() -> b
+    java.lang.String getRedNumberStr() -> c
+    java.lang.String getBlueNumberStr() -> d
+    void setRedNumbers(java.util.ArrayList) -> a
+    int getOccurRedCnt() -> e
+    void setOccurRedCnt(int) -> b
+    java.util.ArrayList getBlueNumbers() -> f
+    void setBlueNumbers(java.util.ArrayList) -> b
+    int getOccurBlueCnt() -> g
+    void setOccurBlueCnt(int) -> c
+com.shuangse.meta.SelectedItem -> com.shuangse.meta.i:
+    int itemId -> a
+    int selectedModelId -> b
+    java.util.ArrayList selectedRedNumbers -> c
+    java.util.ArrayList selectedRedDanNumbers -> d
+    java.util.ArrayList selectedBlueNumbers -> e
+    java.util.ArrayList getSelectedRedNumbers() -> a
+    void setSelectedRedNumbers(java.util.ArrayList) -> a
+    java.util.ArrayList getSelectedBlueNumbers() -> b
+    void setSelectedBlueNumbers(java.util.ArrayList) -> b
+    int getItemId() -> c
+    void setItemId(int) -> a
+    int getSelectedModelId() -> d
+    void setSelectedModelId(int) -> b
+    java.util.ArrayList getSelectedRedDanNumbers() -> e
+    void setSelectedRedDanNumbers(java.util.ArrayList) -> c
+com.shuangse.meta.ShuangseCodeItem -> com.shuangse.meta.ShuangseCodeItem:
+    int[] red -> h
+    int blue -> i
+    int id -> j
+    android.os.Parcelable$Creator CREATOR -> CREATOR
+    com.shuangse.meta.ShuangseCodeItem instanceBy(int,int,int,int,int,int,int,int) -> a
+    boolean equals(java.lang.Object) -> equals
+    java.lang.String toRedString() -> a
+    java.lang.String toString() -> toString
+    java.lang.String toCNString() -> b
+    java.lang.String toLineUpString() -> c
+    java.lang.String getRedStr(int) -> b
+    java.lang.String[] getThreeCodesCombineArray() -> d
+    java.lang.String[] getTwoCodesCombineArray() -> e
+    boolean containsRedNum(int) -> a
+    java.util.HashSet getRedNumberSet() -> f
+    java.util.ArrayList getRedNumbersList() -> g
+    boolean containsRedNums(int[],int) -> a
+    int getHowManyRedSame(int[],int) -> b
+    int describeContents() -> describeContents
+    void writeToParcel(android.os.Parcel,int) -> writeToParcel
+com.shuangse.meta.ShuangseCodeItem$1 -> com.shuangse.meta.j:
+    java.lang.Object createFromParcel(android.os.Parcel) -> createFromParcel
+    java.lang.Object[] newArray(int) -> newArray
+com.shuangse.meta.SummaryData -> com.shuangse.meta.k:
+    int totalOccursCnt -> a
+    int maxContOccursCnt -> b
+    int curContOccursCnt -> c
+    int maxMissCnt -> d
+    int curMissCnt -> e
+com.shuangse.meta.UserCounterObj -> com.shuangse.meta.l:
+    int totalNumber -> a
+    int todayReg -> b
+    int todayAccess -> c
+    java.lang.String toString() -> toString
+    void setTotalNumber(int) -> a
+    void setTodayReg(int) -> b
+    void setTodayAccess(int) -> c
+com.shuangse.meta.ValueObj -> com.shuangse.meta.m:
+    int val -> a
+    int cnt -> b
+com.shuangse.ui.BackgroundCheckThread -> com.shuangse.ui.a:
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> a
+    com.shuangse.ui.MainViewActivity mainViewActivity -> b
+    void run() -> run
+com.shuangse.ui.BaseFragment -> com.shuangse.ui.b:
+    boolean isInit -> P
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> Q
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onAttach(android.app.Activity) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void onResume() -> m
+    void setUserVisibleHint(boolean) -> b
+    void showData() -> A
+com.shuangse.ui.BlueMissingDataActivity -> com.shuangse.ui.BlueMissingDataActivity:
+    java.lang.String TAG -> a
+    android.content.SharedPreferences sharedPreferences -> b
+    java.lang.String fromActivity -> c
+    android.app.ProgressDialog progDialog -> d
+    android.widget.TableLayout dataTable -> e
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> f
+    int howManyColumns -> g
+    int disp_his_num -> h
+    int latestId -> i
+    com.shuangse.ui.BlueMissingDataActivity$DataLoadCompletedListener loadCompletedLisneter -> j
+    android.widget.ZoomControls zoomControls -> k
+    android.view.View$OnClickListener cellClickListener -> l
+    android.app.ProgressDialog progressDialog -> m
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onPause() -> onPause
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void access$0(com.shuangse.ui.BlueMissingDataActivity,java.lang.String,java.lang.String) -> a
+    void access$1(com.shuangse.ui.BlueMissingDataActivity,java.lang.String,java.lang.String) -> b
+    java.lang.String access$2(com.shuangse.ui.BlueMissingDataActivity) -> a
+    com.shuangse.ui.BlueMissingDataActivity$DataLoadCompletedListener access$3(com.shuangse.ui.BlueMissingDataActivity) -> b
+    void access$4(com.shuangse.ui.BlueMissingDataActivity) -> c
+    android.app.ProgressDialog access$5(com.shuangse.ui.BlueMissingDataActivity) -> d
+    android.widget.TableLayout access$6(com.shuangse.ui.BlueMissingDataActivity) -> e
+com.shuangse.ui.BlueMissingDataActivity$1 -> com.shuangse.ui.c:
+    com.shuangse.ui.BlueMissingDataActivity this$0 -> a
+    void loadComplete() -> a
+com.shuangse.ui.BlueMissingDataActivity$2 -> com.shuangse.ui.d:
+    com.shuangse.ui.BlueMissingDataActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.BlueMissingDataActivity$3 -> com.shuangse.ui.e:
+    com.shuangse.ui.BlueMissingDataActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.BlueMissingDataActivity$4 -> com.shuangse.ui.f:
+    com.shuangse.ui.BlueMissingDataActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.BlueMissingDataActivity$BlueOPBtnListener -> com.shuangse.ui.g:
+    com.shuangse.ui.BlueMissingDataActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.BlueMissingDataActivity$CellOnClickListener -> com.shuangse.ui.h:
+    com.shuangse.ui.BlueMissingDataActivity theActivity -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.BlueMissingDataActivity$DataLoadCompletedListener -> com.shuangse.ui.i:
+    void loadComplete() -> a
+com.shuangse.ui.BlueMissingDataActivity$LoadDataAsyncTask -> com.shuangse.ui.j:
+    com.shuangse.ui.BlueMissingDataActivity this$0 -> a
+    void onPreExecute() -> onPreExecute
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    com.shuangse.ui.BlueMissingDataActivity access$3(com.shuangse.ui.BlueMissingDataActivity$LoadDataAsyncTask) -> a
+com.shuangse.ui.BlueMissingDataActivity$LoadDataAsyncTask$1 -> com.shuangse.ui.k:
+    com.shuangse.ui.BlueMissingDataActivity$LoadDataAsyncTask this$1 -> a
+    void run() -> run
+com.shuangse.ui.CommonDispActivity -> com.shuangse.ui.CommonDispActivity:
+    android.widget.TextView dispItemTitle -> a
+    android.widget.TextView dispItemBody -> b
+    android.app.ProgressDialog progressDialog -> c
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    void hideProgressBox() -> a
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+com.shuangse.ui.CommonDispActivity$1 -> com.shuangse.ui.l:
+    com.shuangse.ui.CommonDispActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.ConditionSearchActivity -> com.shuangse.ui.ConditionSearchActivity:
+    java.lang.String TAG -> c
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> d
+    android.widget.ArrayAdapter allConditionsAdaptor -> e
+    android.widget.LinearLayout bodyContainer -> f
+    android.widget.TextView resultTextView -> g
+    android.widget.TextView selConditionTitleTextView -> h
+    android.widget.Button search_condition_btn -> i
+    java.util.List valueList -> j
+    com.shuangse.meta.ValueObj[] redOccurs -> k
+    android.view.View selectRedView -> l
+    android.widget.ImageButton[] redButton -> m
+    android.app.Dialog custDialog -> n
+    java.util.ArrayList selectedRedNumbers -> o
+    int currentSelConditionTypeId -> p
+    java.util.List allSelectionConditions -> a
+    android.app.ProgressDialog progressDialog -> q
+    android.os.Handler msgHandler -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    android.app.Dialog customInfoMsgBox(java.lang.String) -> a
+    com.shuangse.meta.ValueObj[] sort_asc(com.shuangse.meta.ValueObj[]) -> a
+    void access$0(com.shuangse.ui.ConditionSearchActivity) -> a
+    android.widget.Button access$1(com.shuangse.ui.ConditionSearchActivity) -> b
+    java.util.List access$2(com.shuangse.ui.ConditionSearchActivity) -> c
+    java.lang.String access$3$73d630bd(java.util.List,boolean) -> a
+    com.shuangse.meta.ValueObj[] access$4(com.shuangse.ui.ConditionSearchActivity) -> d
+    java.lang.String access$5$5275f6b(com.shuangse.meta.ValueObj[],boolean) -> a
+    android.widget.TextView access$6(com.shuangse.ui.ConditionSearchActivity) -> e
+    android.widget.TextView access$7(com.shuangse.ui.ConditionSearchActivity) -> f
+    void access$8(com.shuangse.ui.ConditionSearchActivity,java.lang.String,java.lang.String) -> a
+    void access$9(com.shuangse.ui.ConditionSearchActivity,int) -> a
+    int access$10(com.shuangse.ui.ConditionSearchActivity) -> g
+    android.widget.LinearLayout access$11(com.shuangse.ui.ConditionSearchActivity) -> h
+    void access$12(com.shuangse.ui.ConditionSearchActivity,java.lang.String,java.lang.String) -> b
+    android.view.View access$13(com.shuangse.ui.ConditionSearchActivity) -> i
+    void access$14(com.shuangse.ui.ConditionSearchActivity,android.app.Dialog) -> a
+    android.app.Dialog access$15(com.shuangse.ui.ConditionSearchActivity) -> j
+    com.shuangse.base.ShuangSeToolsSetApplication access$16(com.shuangse.ui.ConditionSearchActivity) -> k
+    void access$17(com.shuangse.ui.ConditionSearchActivity,java.util.List) -> a
+    void access$18(com.shuangse.ui.ConditionSearchActivity,com.shuangse.meta.ValueObj[]) -> a
+    android.widget.ImageButton[] access$19(com.shuangse.ui.ConditionSearchActivity) -> l
+    java.util.ArrayList access$20(com.shuangse.ui.ConditionSearchActivity) -> m
+com.shuangse.ui.ConditionSearchActivity$1 -> com.shuangse.ui.m:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+    com.shuangse.ui.ConditionSearchActivity access$0(com.shuangse.ui.ConditionSearchActivity$1) -> a
+com.shuangse.ui.ConditionSearchActivity$1$1 -> com.shuangse.ui.n:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$1$2 -> com.shuangse.ui.o:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$1$3 -> com.shuangse.ui.p:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void run() -> run
+com.shuangse.ui.ConditionSearchActivity$1$4 -> com.shuangse.ui.q:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void run() -> run
+com.shuangse.ui.ConditionSearchActivity$1$5 -> com.shuangse.ui.r:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void run() -> run
+com.shuangse.ui.ConditionSearchActivity$1$6 -> com.shuangse.ui.s:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void run() -> run
+com.shuangse.ui.ConditionSearchActivity$1$7 -> com.shuangse.ui.t:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void run() -> run
+com.shuangse.ui.ConditionSearchActivity$1$8 -> com.shuangse.ui.u:
+    com.shuangse.ui.ConditionSearchActivity$1 this$1 -> a
+    void run() -> run
+com.shuangse.ui.ConditionSearchActivity$10 -> com.shuangse.ui.v:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$11 -> com.shuangse.ui.w:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$12 -> com.shuangse.ui.x:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$13 -> com.shuangse.ui.y:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$14 -> com.shuangse.ui.z:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$15 -> com.shuangse.ui.aa:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$16 -> com.shuangse.ui.ab:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$17 -> com.shuangse.ui.ac:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$18 -> com.shuangse.ui.ad:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$19 -> com.shuangse.ui.ae:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$2 -> com.shuangse.ui.af:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$20 -> com.shuangse.ui.ag:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$21 -> com.shuangse.ui.ah:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$22 -> com.shuangse.ui.ai:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$23 -> com.shuangse.ui.aj:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$24 -> com.shuangse.ui.ak:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$25 -> com.shuangse.ui.al:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$26 -> com.shuangse.ui.am:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$27 -> com.shuangse.ui.an:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$28 -> com.shuangse.ui.ao:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$29 -> com.shuangse.ui.ap:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$3 -> com.shuangse.ui.aq:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$30 -> com.shuangse.ui.ar:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$31 -> com.shuangse.ui.as:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$32 -> com.shuangse.ui.at:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$33 -> com.shuangse.ui.au:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$34 -> com.shuangse.ui.av:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$35 -> com.shuangse.ui.aw:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.ConditionSearchActivity$36 -> com.shuangse.ui.ax:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    android.widget.TextView val$text -> b
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.ConditionSearchActivity$37 -> com.shuangse.ui.ay:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.ConditionSearchActivity$4 -> com.shuangse.ui.az:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$5 -> com.shuangse.ui.ba:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$6 -> com.shuangse.ui.bb:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$7 -> com.shuangse.ui.bc:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$8 -> com.shuangse.ui.bd:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$9 -> com.shuangse.ui.be:
+    com.shuangse.ui.ConditionSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ConditionSearchActivity$ButtonState -> com.shuangse.ui.bf:
+    boolean ifClicked -> a
+com.shuangse.ui.ConditionSearchActivity$MHandler -> com.shuangse.ui.bg:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ConditionSearchActivity$MHandler$1 -> com.shuangse.ui.bh:
+    com.shuangse.ui.ConditionSearchActivity$MHandler this$1 -> a
+    com.shuangse.ui.ConditionSearchActivity val$theActivity -> b
+    int val$btnType -> c
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.CustomDefineAlertDialog -> com.shuangse.ui.bi:
+    android.content.Context context -> a
+    android.app.AlertDialog ad -> b
+    android.widget.TextView titleView -> c
+    android.widget.ListView listView -> d
+    android.widget.SimpleAdapter adapter -> f
+    java.util.ArrayList mlistItems -> e
+    void setTitle(java.lang.String) -> a
+com.shuangse.ui.CustomDefineAlertDialog$1 -> com.shuangse.ui.bj:
+    com.shuangse.ui.CustomDefineAlertDialog this$0 -> a
+    android.content.Context val$context -> b
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.DanTuoSearchFragment -> com.shuangse.ui.bk:
+    java.util.List itemIDs -> R
+    java.util.List allHisData -> S
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> T
+    android.widget.ArrayAdapter allitemIDAdaptor -> U
+    android.app.Activity activity -> V
+    int currentInWhichPagerFlag -> W
+    int dantuoSelItemId -> X
+    com.shuangse.meta.ShuangseCodeItem currentSelItemdantuo -> Y
+    android.widget.TextView resultCodeViewdantuo -> Z
+    android.widget.Button inputRedBtndantuo -> aa
+    android.widget.Button inputRed2Btndantuo -> ab
+    android.widget.Button inputBlueBtndantuo -> ac
+    android.widget.TextView result_titledantuo -> ad
+    android.widget.TextView red_title_dantuo -> ae
+    android.widget.TextView red2_title_dantuo -> af
+    android.widget.TextView blue_title_dantuo -> ag
+    int[] danTuoTotalRedNumbers -> ah
+    int[] redDanNum -> ai
+    int[] redTuoNum -> aj
+    int[] danTuoSelblueNum -> ak
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void showData() -> A
+    void InfoMessageBox(java.lang.String,java.lang.String) -> a
+    void sendSelectedBlueData(java.util.ArrayList) -> a
+    void sendSelectedRedData(java.util.ArrayList) -> b
+    void access$0(com.shuangse.ui.DanTuoSearchFragment,int) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$1(com.shuangse.ui.DanTuoSearchFragment) -> a
+    int access$2(com.shuangse.ui.DanTuoSearchFragment) -> b
+    void access$3(com.shuangse.ui.DanTuoSearchFragment,com.shuangse.meta.ShuangseCodeItem) -> a
+    android.widget.TextView access$4(com.shuangse.ui.DanTuoSearchFragment) -> c
+    com.shuangse.meta.ShuangseCodeItem access$5(com.shuangse.ui.DanTuoSearchFragment) -> d
+    android.app.Activity access$6(com.shuangse.ui.DanTuoSearchFragment) -> e
+    void access$7(com.shuangse.ui.DanTuoSearchFragment,int) -> b
+    int[] access$8(com.shuangse.ui.DanTuoSearchFragment) -> f
+    void access$9(com.shuangse.ui.DanTuoSearchFragment,java.lang.String,java.lang.String) -> a
+    int[] access$10(com.shuangse.ui.DanTuoSearchFragment) -> g
+    void access$11(com.shuangse.ui.DanTuoSearchFragment,int[]) -> a
+    int[] access$12(com.shuangse.ui.DanTuoSearchFragment) -> h
+    int[] access$13(com.shuangse.ui.DanTuoSearchFragment) -> i
+    android.widget.TextView access$14(com.shuangse.ui.DanTuoSearchFragment) -> j
+    java.lang.String access$15$11e7a3f7(int,int) -> a
+com.shuangse.ui.DanTuoSearchFragment$1 -> com.shuangse.ui.bl:
+    com.shuangse.ui.DanTuoSearchFragment this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.DanTuoSearchFragment$2 -> com.shuangse.ui.bm:
+    com.shuangse.ui.DanTuoSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DanTuoSearchFragment$3 -> com.shuangse.ui.bn:
+    com.shuangse.ui.DanTuoSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DanTuoSearchFragment$4 -> com.shuangse.ui.bo:
+    com.shuangse.ui.DanTuoSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DanTuoSearchFragment$5 -> com.shuangse.ui.bp:
+    com.shuangse.ui.DanTuoSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DanTuoSearchFragment$6 -> com.shuangse.ui.bq:
+    com.shuangse.ui.DanTuoSearchFragment this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.DantuoCombineActivity -> com.shuangse.ui.DantuoCombineActivity:
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> a
+    android.content.SharedPreferences sharedPreferences -> b
+    boolean ifGetOutOfHistoryitem -> c
+    int currentCombineItemId -> d
+    android.widget.Spinner item_id_spinner -> e
+    int currentSelItemId -> f
+    java.util.List itemIDs -> g
+    java.util.List allHisData -> h
+    boolean ifItemIDSpinnerInitilized -> i
+    android.widget.ArrayAdapter allitemIDAdaptor -> j
+    android.widget.TextView selRedDanTextView -> k
+    android.widget.TextView selRedTuoTextView -> l
+    java.util.ArrayList currentSelRedDanList -> m
+    java.util.ArrayList currentSelRedTuoList -> n
+    java.util.ArrayList currentSelTotalRedList -> o
+    android.widget.TextView selBlueTextView -> p
+    java.util.ArrayList currentSelBlueList -> q
+    android.widget.Button selRedButton -> r
+    android.widget.Button selBlueButton -> s
+    android.widget.Button startCombineButton -> t
+    android.widget.Button verifyRedButton -> u
+    android.app.Dialog custDialog -> v
+    android.app.ProgressDialog progressDialog -> w
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    android.app.Dialog customInfoMsgBox(java.lang.String) -> a
+    void onPause() -> onPause
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.DantuoCombineActivity,boolean) -> a
+    boolean access$1(com.shuangse.ui.DantuoCombineActivity) -> a
+    void access$2(com.shuangse.ui.DantuoCombineActivity,int) -> a
+    int access$3(com.shuangse.ui.DantuoCombineActivity) -> b
+    void access$4(com.shuangse.ui.DantuoCombineActivity,int) -> b
+    void access$5(com.shuangse.ui.DantuoCombineActivity,java.lang.String,java.lang.String) -> a
+    int access$6(com.shuangse.ui.DantuoCombineActivity) -> c
+    java.util.ArrayList access$7(com.shuangse.ui.DantuoCombineActivity) -> d
+    java.util.ArrayList access$8(com.shuangse.ui.DantuoCombineActivity) -> e
+    java.util.ArrayList access$9(com.shuangse.ui.DantuoCombineActivity) -> f
+    java.util.ArrayList access$10(com.shuangse.ui.DantuoCombineActivity) -> g
+    void access$11(com.shuangse.ui.DantuoCombineActivity,java.lang.String,java.lang.String) -> b
+    com.shuangse.base.ShuangSeToolsSetApplication access$12(com.shuangse.ui.DantuoCombineActivity) -> h
+    boolean access$13(com.shuangse.ui.DantuoCombineActivity) -> i
+    void access$14(com.shuangse.ui.DantuoCombineActivity,android.app.Dialog) -> a
+    android.app.Dialog access$15(com.shuangse.ui.DantuoCombineActivity) -> j
+com.shuangse.ui.DantuoCombineActivity$1 -> com.shuangse.ui.br:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DantuoCombineActivity$2 -> com.shuangse.ui.bs:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DantuoCombineActivity$3 -> com.shuangse.ui.bt:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DantuoCombineActivity$4 -> com.shuangse.ui.bu:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.DantuoCombineActivity$5 -> com.shuangse.ui.bv:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DantuoCombineActivity$6 -> com.shuangse.ui.bw:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    android.widget.TextView val$text -> b
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.DantuoCombineActivity$7 -> com.shuangse.ui.bx:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.DantuoCombineActivity$ItemIDSpinnerOnSelectedListener -> com.shuangse.ui.by:
+    com.shuangse.ui.DantuoCombineActivity this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.DantuoCombineResultActivity -> com.shuangse.ui.DantuoCombineResultActivity:
+    int itemId -> b
+    int getoutHisFlag -> c
+    java.util.ArrayList selectRedDan -> d
+    java.util.ArrayList selectRedTuo -> e
+    java.util.ArrayList selectBlue -> f
+    int selectModel -> g
+    android.content.SharedPreferences sharedPreferences -> h
+    boolean ifGetOutOfHistoryitem -> i
+    java.util.ArrayList resultCodes -> j
+    android.widget.ArrayAdapter adapter -> k
+    android.widget.ListView resultListView -> l
+    android.widget.TextView redDanStr -> m
+    android.widget.TextView redTuoStr -> n
+    android.widget.TextView blueStr -> o
+    android.widget.TextView resultTitleTextView -> p
+    android.widget.Button saveButton -> q
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> a
+    android.widget.Button copyButton -> r
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    java.util.ArrayList access$0(com.shuangse.ui.DantuoCombineResultActivity) -> a
+    void access$1(com.shuangse.ui.DantuoCombineResultActivity,java.lang.String,java.lang.String) -> a
+    android.widget.ArrayAdapter access$2(com.shuangse.ui.DantuoCombineResultActivity) -> b
+    int access$3(com.shuangse.ui.DantuoCombineResultActivity) -> c
+    java.util.ArrayList access$4(com.shuangse.ui.DantuoCombineResultActivity) -> d
+    java.util.ArrayList access$5(com.shuangse.ui.DantuoCombineResultActivity) -> e
+    java.util.ArrayList access$6(com.shuangse.ui.DantuoCombineResultActivity) -> f
+    int access$7(com.shuangse.ui.DantuoCombineResultActivity) -> g
+    int access$8(com.shuangse.ui.DantuoCombineResultActivity) -> h
+    void access$9(com.shuangse.ui.DantuoCombineResultActivity,java.lang.String,java.lang.String) -> b
+com.shuangse.ui.DantuoCombineResultActivity$1 -> com.shuangse.ui.bz:
+    com.shuangse.ui.DantuoCombineResultActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DantuoCombineResultActivity$2 -> com.shuangse.ui.ca:
+    com.shuangse.ui.DantuoCombineResultActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.DantuoCombineResultActivity$3 -> com.shuangse.ui.cb:
+    com.shuangse.ui.DantuoCombineResultActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.DantuoCombineResultActivity$4 -> com.shuangse.ui.cc:
+    com.shuangse.ui.DantuoCombineResultActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.DantuoCombineResultActivity$5 -> com.shuangse.ui.cd:
+    com.shuangse.ui.DantuoCombineResultActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.DantuoCombineResultActivity$ResultListViewArrayAdapter -> com.shuangse.ui.ce:
+    int itemViewResourceId -> b
+    java.util.ArrayList listItems -> c
+    com.shuangse.ui.DantuoCombineResultActivity this$0 -> a
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.shuangse.ui.DantuoCombineResultActivity$ViewHolder -> com.shuangse.ui.cf:
+    android.view.View itemView -> a
+    com.shuangse.meta.ShuangseCodeItem item -> b
+com.shuangse.ui.DispItemOpenDataDetailsActivity -> com.shuangse.ui.DispItemOpenDataDetailsActivity:
+    android.widget.TextView itemIDTextView -> a
+    android.widget.TextView itemDateTextView -> b
+    android.widget.ImageButton red1Btn -> c
+    android.widget.ImageButton red2Btn -> d
+    android.widget.ImageButton red3Btn -> e
+    android.widget.ImageButton red4Btn -> f
+    android.widget.ImageButton red5Btn -> g
+    android.widget.ImageButton red6Btn -> h
+    android.widget.ImageButton blueBtn -> i
+    android.widget.TextView itemFirstPrizeCntTextView -> j
+    android.widget.TextView itemFirstPrizeValueTextView -> k
+    android.widget.TextView itemFirstSecondCntTextView -> l
+    android.widget.TextView itemFirstSecondValueTextView -> m
+    android.app.ProgressDialog progressDialog -> n
+    com.shuangse.base.ShuangSeToolsSetApplication application -> o
+    android.os.Handler msgHandler -> p
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    void hideProgressBox() -> a
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.DispItemOpenDataDetailsActivity) -> a
+    void access$1(com.shuangse.ui.DispItemOpenDataDetailsActivity,com.shuangse.meta.ExtShuangseCodeItem) -> a
+    android.os.Handler access$2(com.shuangse.ui.DispItemOpenDataDetailsActivity) -> b
+com.shuangse.ui.DispItemOpenDataDetailsActivity$DownloadItemDataThread -> com.shuangse.ui.cg:
+    int itemid -> b
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> c
+    com.shuangse.ui.DispItemOpenDataDetailsActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.DispItemOpenDataDetailsActivity$MHandler -> com.shuangse.ui.ch:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.EntryActivity -> com.shuangse.ui.EntryActivity:
+    android.content.SharedPreferences sharedPreferences -> a
+    boolean ifAutoUpdateData -> b
+    android.widget.TextView titleTextView -> c
+    android.widget.TextView loadingTextView -> d
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> e
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void access$0(com.shuangse.ui.EntryActivity,java.lang.String,int) -> a
+    android.widget.TextView access$1(com.shuangse.ui.EntryActivity) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$2(com.shuangse.ui.EntryActivity) -> b
+    boolean access$3(com.shuangse.ui.EntryActivity) -> c
+com.shuangse.ui.EntryActivity$1 -> com.shuangse.ui.ci:
+    com.shuangse.ui.EntryActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.EntryActivity$2 -> com.shuangse.ui.cj:
+    com.shuangse.ui.EntryActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.EntryActivity$InitialLoadingTask -> com.shuangse.ui.ck:
+    android.app.ProgressDialog progDialog -> b
+    com.shuangse.ui.EntryActivity this$0 -> a
+    void onPreExecute() -> onPreExecute
+    boolean downloadHistoryData(int) -> a
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+com.shuangse.ui.ExperienceActivity -> com.shuangse.ui.ExperienceActivity:
+    android.widget.TextView expTextView -> b
+    android.widget.TextView expTitleView -> c
+    android.app.ProgressDialog progressDialog -> d
+    int expItemId -> e
+    com.shuangse.meta.ExperienceItem expRecord -> f
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> g
+    java.lang.Thread mThread -> h
+    android.os.Handler msgHandler -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    void onStart() -> onStart
+    void hideProgressBox() -> a
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.ExperienceActivity) -> a
+    void access$1(com.shuangse.ui.ExperienceActivity,java.lang.String) -> a
+    void access$2(com.shuangse.ui.ExperienceActivity,java.lang.String,java.lang.String) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$3(com.shuangse.ui.ExperienceActivity) -> b
+    int access$4(com.shuangse.ui.ExperienceActivity) -> c
+    void access$5(com.shuangse.ui.ExperienceActivity,com.shuangse.meta.ExperienceItem) -> a
+    com.shuangse.meta.ExperienceItem access$6(com.shuangse.ui.ExperienceActivity) -> d
+com.shuangse.ui.ExperienceActivity$1 -> com.shuangse.ui.cl:
+    com.shuangse.ui.ExperienceActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.ExperienceActivity$2 -> com.shuangse.ui.cm:
+    com.shuangse.ui.ExperienceActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.ExperienceActivity$MHandler -> com.shuangse.ui.cn:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ExperienceListActivity -> com.shuangse.ui.ExperienceListActivity:
+    android.app.ProgressDialog progressDialog -> b
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> c
+    int currentPageNumber -> d
+    boolean loadingMore -> e
+    boolean noMoreData -> f
+    java.util.ArrayList expListItems -> g
+    android.widget.ArrayAdapter adapter -> h
+    java.lang.Thread mThread -> i
+    android.view.View footerView -> j
+    android.widget.ProgressBar footerProgressBar -> k
+    android.widget.TextView footerTextView -> l
+    android.os.Handler msgHandler -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    void showProgressDialog(java.lang.String,java.lang.String) -> a
+    void hideProgressBox() -> a
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.ExperienceListActivity) -> a
+    void access$1(com.shuangse.ui.ExperienceListActivity,java.lang.String,java.lang.String) -> a
+    void access$2(com.shuangse.ui.ExperienceListActivity) -> b
+    void access$3(com.shuangse.ui.ExperienceListActivity) -> c
+    void access$4(com.shuangse.ui.ExperienceListActivity) -> d
+    void access$5$355e00ed(com.shuangse.ui.ExperienceListActivity) -> e
+    void access$6(com.shuangse.ui.ExperienceListActivity,java.util.ArrayList) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$7(com.shuangse.ui.ExperienceListActivity) -> f
+    int access$8(com.shuangse.ui.ExperienceListActivity) -> g
+    java.util.ArrayList access$9(com.shuangse.ui.ExperienceListActivity) -> h
+    void access$10(com.shuangse.ui.ExperienceListActivity,int) -> a
+    android.widget.ArrayAdapter access$11(com.shuangse.ui.ExperienceListActivity) -> i
+    void access$12(com.shuangse.ui.ExperienceListActivity,java.lang.String,java.lang.String) -> b
+    boolean access$13(com.shuangse.ui.ExperienceListActivity) -> j
+    boolean access$14(com.shuangse.ui.ExperienceListActivity) -> k
+    java.lang.Thread access$15(com.shuangse.ui.ExperienceListActivity) -> l
+    void access$16(com.shuangse.ui.ExperienceListActivity,java.lang.Thread) -> a
+com.shuangse.ui.ExperienceListActivity$1 -> com.shuangse.ui.co:
+    com.shuangse.ui.ExperienceListActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.ExperienceListActivity$2 -> com.shuangse.ui.cp:
+    com.shuangse.ui.ExperienceListActivity this$0 -> a
+    void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+    void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+com.shuangse.ui.ExperienceListActivity$3 -> com.shuangse.ui.cq:
+    com.shuangse.ui.ExperienceListActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.ExperienceListActivity$ListViewArrayAdapter -> com.shuangse.ui.cr:
+    int itemViewResourceId -> b
+    java.util.List listItems -> c
+    com.shuangse.ui.ExperienceListActivity this$0 -> a
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.shuangse.ui.ExperienceListActivity$LoadListItemsThread -> com.shuangse.ui.cs:
+    com.shuangse.ui.ExperienceListActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.ExperienceListActivity$MHandler -> com.shuangse.ui.ct:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ExperienceListActivity$ViewHolder -> com.shuangse.ui.cu:
+    android.view.View itemView -> a
+    com.shuangse.meta.ExperienceItem item -> b
+com.shuangse.ui.ExperienceShareActivity -> com.shuangse.ui.ExperienceShareActivity:
+    android.support.v4.view.ViewPager exprShareViewPager -> n
+    com.shuangse.ui.ExperienceShareActivity$ExprSharePagerAdapter exprSharePagerAdapter -> o
+    java.util.List mListViews -> p
+    android.support.v4.app.Fragment expShareLayout1 -> q
+    android.support.v4.app.Fragment expShareLayout2 -> r
+    android.support.v4.app.Fragment expShareLayout3 -> s
+    android.widget.Button expShareBtn1 -> t
+    android.widget.Button expShareBtn2 -> u
+    android.widget.Button expShareBtn3 -> v
+    android.os.Handler msgHandler -> w
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    android.widget.Button access$0(com.shuangse.ui.ExperienceShareActivity) -> a
+    android.widget.Button access$1(com.shuangse.ui.ExperienceShareActivity) -> b
+    android.widget.Button access$2(com.shuangse.ui.ExperienceShareActivity) -> c
+    android.support.v4.view.ViewPager access$3(com.shuangse.ui.ExperienceShareActivity) -> d
+    android.os.Handler access$4(com.shuangse.ui.ExperienceShareActivity) -> e
+com.shuangse.ui.ExperienceShareActivity$1 -> com.shuangse.ui.cv:
+    com.shuangse.ui.ExperienceShareActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ExperienceShareActivity$2 -> com.shuangse.ui.cw:
+    com.shuangse.ui.ExperienceShareActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ExperienceShareActivity$3 -> com.shuangse.ui.cx:
+    com.shuangse.ui.ExperienceShareActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ExperienceShareActivity$4 -> com.shuangse.ui.cy:
+    com.shuangse.ui.ExperienceShareActivity this$0 -> a
+    void onPageSelected(int) -> a
+    void onPageScrolled$486775f1(int,float) -> a
+    void onPageScrollStateChanged(int) -> b
+com.shuangse.ui.ExperienceShareActivity$ExprSharePagerAdapter -> com.shuangse.ui.cz:
+    java.util.List fragmentsList -> b
+    android.support.v4.app.FragmentManager fm -> c
+    com.shuangse.ui.ExperienceShareActivity this$0 -> a
+    int getCount() -> b
+    android.support.v4.app.Fragment getItem(int) -> a
+    int getItemPosition$5d527804() -> d
+    void setFragments(java.util.List) -> a
+    void destroyItem$7e55ba3e() -> c
+com.shuangse.ui.ExperienceShareActivity$MHandler -> com.shuangse.ui.da:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.FuShiSearchFragment -> com.shuangse.ui.db:
+    java.util.List itemIDs -> R
+    java.util.List allHisData -> S
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> T
+    android.widget.ArrayAdapter allitemIDAdaptor -> U
+    android.app.Activity activity -> V
+    int fushiSelItemId -> W
+    com.shuangse.meta.ShuangseCodeItem currentSelItemFuShi -> X
+    android.widget.TextView resultCodeViewFuShi -> Y
+    android.widget.Button inputRedBtnFuShi -> Z
+    android.widget.Button inputBlueBtnFuShi -> aa
+    android.widget.TextView result_titleFuShi -> ab
+    android.widget.TextView red_title_fushi -> ac
+    android.widget.TextView blue_title_fushi -> ad
+    int[] fuShiSelRedNum -> ae
+    int[] fuShiSelblueNum -> af
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void showData() -> A
+    void InfoMessageBox(java.lang.String,java.lang.String) -> a
+    void sendSelectedBlueData(java.util.ArrayList) -> a
+    void sendSelectedRedData(java.util.ArrayList) -> b
+    void access$0(com.shuangse.ui.FuShiSearchFragment,int) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$1(com.shuangse.ui.FuShiSearchFragment) -> a
+    int access$2(com.shuangse.ui.FuShiSearchFragment) -> b
+    void access$3(com.shuangse.ui.FuShiSearchFragment,com.shuangse.meta.ShuangseCodeItem) -> a
+    android.widget.TextView access$4(com.shuangse.ui.FuShiSearchFragment) -> c
+    com.shuangse.meta.ShuangseCodeItem access$5(com.shuangse.ui.FuShiSearchFragment) -> d
+    android.app.Activity access$6(com.shuangse.ui.FuShiSearchFragment) -> e
+    int[] access$7(com.shuangse.ui.FuShiSearchFragment) -> f
+    void access$8(com.shuangse.ui.FuShiSearchFragment,java.lang.String,java.lang.String) -> a
+    int[] access$9(com.shuangse.ui.FuShiSearchFragment) -> g
+    android.widget.TextView access$10(com.shuangse.ui.FuShiSearchFragment) -> h
+    java.lang.String access$11$6f91d6b5(int,int) -> a
+com.shuangse.ui.FuShiSearchFragment$1 -> com.shuangse.ui.dc:
+    com.shuangse.ui.FuShiSearchFragment this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.FuShiSearchFragment$2 -> com.shuangse.ui.dd:
+    com.shuangse.ui.FuShiSearchFragment this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.FuShiSearchFragment$3 -> com.shuangse.ui.de:
+    com.shuangse.ui.FuShiSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.FuShiSearchFragment$4 -> com.shuangse.ui.df:
+    com.shuangse.ui.FuShiSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.FuShiSearchFragment$5 -> com.shuangse.ui.dg:
+    com.shuangse.ui.FuShiSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.HisDataListFragment -> com.shuangse.ui.dh:
+    boolean isInit -> X
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> Y
+    android.app.Activity activity -> Z
+    android.app.ProgressDialog progDialog -> aa
+    java.util.ArrayList hisDataListItems -> ab
+    com.shuangse.ui.HisDataListFragment$ListViewAdapter adapter -> ac
+    android.widget.ListView hisDataListView -> ad
+    android.view.View footerView -> ae
+    android.widget.ProgressBar footerProgressBar -> af
+    android.widget.TextView footerTextView -> ag
+    boolean loadingMore -> ah
+    boolean noMoreData -> ai
+    java.lang.Thread mThread -> aj
+    int currentPageNumber -> ak
+    android.view.LayoutInflater mInflater -> al
+    android.os.Handler msgHandler -> am
+    void onCreate(android.os.Bundle) -> a
+    void onActivityCreated(android.os.Bundle) -> b
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void onResume() -> m
+    void setUserVisibleHint(boolean) -> b
+    void showData() -> C
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.HisDataListFragment) -> a
+    void access$1(com.shuangse.ui.HisDataListFragment,java.lang.String,java.lang.String) -> a
+    void access$2(com.shuangse.ui.HisDataListFragment,java.lang.Thread) -> a
+    void access$3(com.shuangse.ui.HisDataListFragment) -> b
+    void access$4(com.shuangse.ui.HisDataListFragment) -> c
+    void access$5(com.shuangse.ui.HisDataListFragment) -> d
+    java.util.ArrayList access$6(com.shuangse.ui.HisDataListFragment) -> e
+    android.view.LayoutInflater access$7(com.shuangse.ui.HisDataListFragment) -> f
+    void access$8$10003134(com.shuangse.ui.HisDataListFragment) -> g
+    android.os.Handler access$9(com.shuangse.ui.HisDataListFragment) -> h
+    int access$10(com.shuangse.ui.HisDataListFragment) -> i
+    void access$11(com.shuangse.ui.HisDataListFragment,int) -> a
+    boolean access$12(com.shuangse.ui.HisDataListFragment) -> j
+    boolean access$13(com.shuangse.ui.HisDataListFragment) -> k
+    java.lang.Thread access$14(com.shuangse.ui.HisDataListFragment) -> l
+com.shuangse.ui.HisDataListFragment$1 -> com.shuangse.ui.di:
+    com.shuangse.ui.HisDataListFragment this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.HisDataListFragment$2 -> com.shuangse.ui.dj:
+    com.shuangse.ui.HisDataListFragment this$0 -> a
+    void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+    void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+com.shuangse.ui.HisDataListFragment$HisDataListViewHolder -> com.shuangse.ui.dk:
+    android.view.View itemView -> a
+    com.shuangse.meta.ExtShuangseCodeItem item -> b
+com.shuangse.ui.HisDataListFragment$ListViewAdapter -> com.shuangse.ui.dl:
+    com.shuangse.ui.HisDataListFragment this$0 -> a
+    com.shuangse.meta.ExtShuangseCodeItem getItem(int) -> a
+    long getItemId(int) -> getItemId
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    java.lang.Object getItem(int) -> getItem
+com.shuangse.ui.HisDataListFragment$LoadHisDataListItemsThread -> com.shuangse.ui.dm:
+    com.shuangse.ui.HisDataListFragment this$0 -> a
+    void run() -> run
+com.shuangse.ui.HisDataListFragment$MHandler -> com.shuangse.ui.dn:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.LineBreakLayout -> com.shuangse.ui.LineBreakLayout:
+    void onMeasure(int,int) -> onMeasure
+    void onLayout(boolean,int,int,int,int) -> onLayout
+com.shuangse.ui.MainViewActivity -> com.shuangse.ui.MainViewActivity:
+    android.widget.TextView titleTextView -> b
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> c
+    android.content.SharedPreferences sharedPreferences -> d
+    boolean ifPhoneInfoRegistered -> e
+    android.app.ProgressDialog progressDialog -> f
+    java.lang.Thread backgroundThread -> g
+    java.lang.Thread checkSmsTextThread -> h
+    boolean ifRegOrUpdateDone -> i
+    boolean ifSMSTextReadDone -> j
+    boolean ifBackgroundCheckDone -> k
+    android.os.Handler msgHandler -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void hideProgressBox() -> d
+    void onPause() -> onPause
+    void onDestroy() -> onDestroy
+    void onStart() -> onStart
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
+    boolean onOptionsItemSelected(android.view.MenuItem) -> onOptionsItemSelected
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    android.app.ProgressDialog access$0(com.shuangse.ui.MainViewActivity) -> a
+    void access$1(com.shuangse.ui.MainViewActivity,java.lang.String,java.lang.String) -> a
+    android.content.SharedPreferences access$2(com.shuangse.ui.MainViewActivity) -> b
+    void access$3$74067643(com.shuangse.ui.MainViewActivity) -> c
+    void access$5$1385ff() -> a
+    void access$6$1385ff() -> b
+    void access$7(com.shuangse.ui.MainViewActivity,java.lang.String,java.lang.String) -> b
+    com.shuangse.base.ShuangSeToolsSetApplication access$8(com.shuangse.ui.MainViewActivity) -> d
+    void access$9(com.shuangse.ui.MainViewActivity) -> e
+    void access$10(com.shuangse.ui.MainViewActivity) -> f
+    void access$11(com.shuangse.ui.MainViewActivity) -> g
+    void access$12$1385ff() -> c
+    boolean access$13(com.shuangse.ui.MainViewActivity) -> h
+com.shuangse.ui.MainViewActivity$1 -> com.shuangse.ui.do:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.MainViewActivity$2 -> com.shuangse.ui.dp:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.MainViewActivity$3 -> com.shuangse.ui.dq:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.MainViewActivity$4 -> com.shuangse.ui.dr:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.MainViewActivity$5 -> com.shuangse.ui.ds:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.MainViewActivity$6 -> com.shuangse.ui.dt:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.MainViewActivity$7 -> com.shuangse.ui.du:
+    com.shuangse.ui.MainViewActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.MainViewActivity$MHandler -> com.shuangse.ui.dv:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.MyHisActivity -> com.shuangse.ui.MyHisActivity:
+    android.app.ProgressDialog progressDialog -> a
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> b
+    com.shuangse.ui.MyHisActivity$DataLoadCompletedListener loadCompletedLisneter -> c
+    java.util.ArrayList myHisListItems -> d
+    android.widget.ArrayAdapter adapter -> e
+    com.shuangse.meta.MyHisRecord currentSelItem -> f
+    void onCreate(android.os.Bundle) -> onCreate
+    void onCreateContextMenu(android.view.ContextMenu,android.view.View,android.view.ContextMenu$ContextMenuInfo) -> onCreateContextMenu
+    boolean onContextItemSelected(android.view.MenuItem) -> onContextItemSelected
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    com.shuangse.ui.MyHisActivity$DataLoadCompletedListener access$0(com.shuangse.ui.MyHisActivity) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$1(com.shuangse.ui.MyHisActivity) -> b
+    void access$2(com.shuangse.ui.MyHisActivity,java.util.ArrayList) -> a
+    java.util.ArrayList access$3(com.shuangse.ui.MyHisActivity) -> c
+    android.widget.ArrayAdapter access$4(com.shuangse.ui.MyHisActivity) -> d
+    android.app.ProgressDialog access$5(com.shuangse.ui.MyHisActivity) -> e
+    void access$6(com.shuangse.ui.MyHisActivity,com.shuangse.meta.MyHisRecord) -> a
+    com.shuangse.meta.MyHisRecord access$7(com.shuangse.ui.MyHisActivity) -> f
+com.shuangse.ui.MyHisActivity$1 -> com.shuangse.ui.dw:
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    void loadComplete() -> a
+com.shuangse.ui.MyHisActivity$2 -> com.shuangse.ui.dx:
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+com.shuangse.ui.MyHisActivity$3 -> com.shuangse.ui.dy:
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.MyHisActivity$4 -> com.shuangse.ui.dz:
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.MyHisActivity$5 -> com.shuangse.ui.ea:
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.MyHisActivity$DataLoadCompletedListener -> com.shuangse.ui.eb:
+    void loadComplete() -> a
+com.shuangse.ui.MyHisActivity$LoadDataAsyncTask -> com.shuangse.ui.ec:
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    void onPreExecute() -> onPreExecute
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    com.shuangse.ui.MyHisActivity access$3(com.shuangse.ui.MyHisActivity$LoadDataAsyncTask) -> a
+com.shuangse.ui.MyHisActivity$LoadDataAsyncTask$1 -> com.shuangse.ui.ed:
+    com.shuangse.ui.MyHisActivity$LoadDataAsyncTask this$1 -> a
+    void run() -> run
+com.shuangse.ui.MyHisActivity$MyHisListViewArrayAdapter -> com.shuangse.ui.ee:
+    int itemViewResourceId -> b
+    java.util.List listItems -> c
+    com.shuangse.ui.MyHisActivity this$0 -> a
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.shuangse.ui.MyHisActivity$ViewHolder -> com.shuangse.ui.ef:
+    android.view.View itemView -> a
+    com.shuangse.meta.MyHisRecord item -> b
+com.shuangse.ui.MyHisDetailActivity -> com.shuangse.ui.MyHisDetailActivity:
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> a
+    com.shuangse.meta.MyHisRecord itm -> b
+    android.widget.TextView itemidTextView -> c
+    android.widget.TextView redstrTextView -> d
+    android.widget.TextView bluestrTextView -> e
+    android.widget.TextView modelstrTextView -> f
+    android.widget.TextView occurTextView -> g
+    android.widget.TextView resultDetailTitleTextView -> h
+    java.util.ArrayList allCombinedCodes -> i
+    android.widget.ArrayAdapter adapter -> j
+    android.widget.ListView resultListView -> k
+    com.shuangse.meta.ShuangseCodeItem outItem -> l
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    com.shuangse.meta.ShuangseCodeItem access$0(com.shuangse.ui.MyHisDetailActivity) -> a
+com.shuangse.ui.MyHisDetailActivity$1 -> com.shuangse.ui.eg:
+    com.shuangse.ui.MyHisDetailActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.MyHisDetailActivity$HisResultListViewArrayAdapter -> com.shuangse.ui.eh:
+    int itemViewResourceId -> b
+    java.util.ArrayList listItems -> c
+    com.shuangse.ui.MyHisDetailActivity this$0 -> a
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.shuangse.ui.NetworkCommentFragment -> com.shuangse.ui.ei:
+    android.app.ProgressDialog progDialog -> R
+    android.os.Handler msgHandler -> S
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void showData() -> A
+    android.app.ProgressDialog access$0(com.shuangse.ui.NetworkCommentFragment) -> a
+    void access$1(com.shuangse.ui.NetworkCommentFragment,java.lang.String,java.lang.String) -> a
+    android.os.Handler access$2(com.shuangse.ui.NetworkCommentFragment) -> b
+    void access$3(com.shuangse.ui.NetworkCommentFragment,android.app.ProgressDialog) -> a
+com.shuangse.ui.NetworkCommentFragment$1 -> com.shuangse.ui.ej:
+    com.shuangse.ui.NetworkCommentFragment this$0 -> a
+    android.widget.EditText val$contactbackEdit -> b
+    android.widget.EditText val$mailEdit -> c
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.NetworkCommentFragment$2 -> com.shuangse.ui.ek:
+    com.shuangse.ui.NetworkCommentFragment this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.NetworkCommentFragment$MHandler -> com.shuangse.ui.el:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.NetworkCommentFragment$PostSuggestionThread -> com.shuangse.ui.em:
+    java.lang.String contact -> b
+    java.lang.String suggestion -> c
+    com.shuangse.ui.NetworkCommentFragment this$0 -> a
+    void run() -> run
+com.shuangse.ui.RecommandHisActivity -> com.shuangse.ui.RecommandHisActivity:
+    android.app.ProgressDialog progressDialog -> a
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> b
+    com.shuangse.ui.RecommandHisActivity$DataLoadCompletedListener loadCompletedLisneter -> c
+    java.util.ArrayList recommendHisListItems -> d
+    android.widget.ArrayAdapter adapter -> e
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    com.shuangse.ui.RecommandHisActivity$DataLoadCompletedListener access$0(com.shuangse.ui.RecommandHisActivity) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$1(com.shuangse.ui.RecommandHisActivity) -> b
+    void access$2(com.shuangse.ui.RecommandHisActivity,java.util.ArrayList) -> a
+    java.util.ArrayList access$3(com.shuangse.ui.RecommandHisActivity) -> c
+    android.widget.ArrayAdapter access$4(com.shuangse.ui.RecommandHisActivity) -> d
+    android.app.ProgressDialog access$5(com.shuangse.ui.RecommandHisActivity) -> e
+com.shuangse.ui.RecommandHisActivity$1 -> com.shuangse.ui.en:
+    com.shuangse.ui.RecommandHisActivity this$0 -> a
+    void loadComplete() -> a
+com.shuangse.ui.RecommandHisActivity$2 -> com.shuangse.ui.eo:
+    com.shuangse.ui.RecommandHisActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.RecommandHisActivity$DataLoadCompletedListener -> com.shuangse.ui.ep:
+    void loadComplete() -> a
+com.shuangse.ui.RecommandHisActivity$LoadDataAsyncTask -> com.shuangse.ui.eq:
+    com.shuangse.ui.RecommandHisActivity this$0 -> a
+    void onPreExecute() -> onPreExecute
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    com.shuangse.ui.RecommandHisActivity access$3(com.shuangse.ui.RecommandHisActivity$LoadDataAsyncTask) -> a
+com.shuangse.ui.RecommandHisActivity$LoadDataAsyncTask$1 -> com.shuangse.ui.er:
+    com.shuangse.ui.RecommandHisActivity$LoadDataAsyncTask this$1 -> a
+    void run() -> run
+com.shuangse.ui.RecommandHisActivity$RecommendHisListViewArrayAdapter -> com.shuangse.ui.es:
+    int itemViewResourceId -> b
+    java.util.List listItems -> c
+    com.shuangse.ui.RecommandHisActivity this$0 -> a
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.shuangse.ui.RecommandHisActivity$ViewHolder -> com.shuangse.ui.et:
+    android.view.View itemView -> a
+    com.shuangse.meta.RecommandHisRecord item -> b
+com.shuangse.ui.RedMissingDataActivity -> com.shuangse.ui.RedMissingDataActivity:
+    android.content.SharedPreferences sharedPreferences -> a
+    android.app.ProgressDialog progDialog -> b
+    java.lang.String fromActivity -> c
+    android.widget.TableLayout dataTable -> d
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> e
+    int disp_his_num -> f
+    int latestId -> g
+    android.widget.TextView operationTextView -> h
+    com.shuangse.ui.RedMissingDataActivity$DataLoadCompletedListener loadCompletedLisneter -> i
+    android.widget.ZoomControls zoomControls -> j
+    android.view.View$OnClickListener cellClickListener -> k
+    android.app.ProgressDialog progressDialog -> l
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onPause() -> onPause
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void access$0(com.shuangse.ui.RedMissingDataActivity,java.lang.String,java.lang.String) -> a
+    com.shuangse.ui.RedMissingDataActivity$DataLoadCompletedListener access$1(com.shuangse.ui.RedMissingDataActivity) -> a
+    void access$2(com.shuangse.ui.RedMissingDataActivity) -> b
+    android.app.ProgressDialog access$3(com.shuangse.ui.RedMissingDataActivity) -> c
+    android.widget.TableLayout access$4(com.shuangse.ui.RedMissingDataActivity) -> d
+com.shuangse.ui.RedMissingDataActivity$1 -> com.shuangse.ui.eu:
+    com.shuangse.ui.RedMissingDataActivity this$0 -> a
+    void loadComplete() -> a
+com.shuangse.ui.RedMissingDataActivity$2 -> com.shuangse.ui.ev:
+    com.shuangse.ui.RedMissingDataActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingDataActivity$3 -> com.shuangse.ui.ew:
+    com.shuangse.ui.RedMissingDataActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingDataActivity$4 -> com.shuangse.ui.ex:
+    com.shuangse.ui.RedMissingDataActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.RedMissingDataActivity$CellOnClickListener -> com.shuangse.ui.ey:
+    com.shuangse.ui.RedMissingDataActivity theActivity -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingDataActivity$DataLoadCompletedListener -> com.shuangse.ui.ez:
+    void loadComplete() -> a
+com.shuangse.ui.RedMissingDataActivity$LoadDataAsyncTask -> com.shuangse.ui.fa:
+    com.shuangse.ui.RedMissingDataActivity this$0 -> a
+    void onPreExecute() -> onPreExecute
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    com.shuangse.ui.RedMissingDataActivity access$3(com.shuangse.ui.RedMissingDataActivity$LoadDataAsyncTask) -> a
+com.shuangse.ui.RedMissingDataActivity$LoadDataAsyncTask$1 -> com.shuangse.ui.fb:
+    com.shuangse.ui.RedMissingDataActivity$LoadDataAsyncTask this$1 -> a
+    void run() -> run
+com.shuangse.ui.RedMissingDataActivity$RedOPChooseCombineBtnListener -> com.shuangse.ui.fc:
+    com.shuangse.ui.RedMissingDataActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingTrendActivity -> com.shuangse.ui.RedMissingTrendActivity:
+    android.content.SharedPreferences sharedPreferences -> a
+    android.app.ProgressDialog progDialog -> b
+    java.lang.String fromActivity -> c
+    android.widget.TableLayout dataTable -> d
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> e
+    int disp_his_num -> f
+    int latestId -> g
+    android.widget.TextView operationTextView -> h
+    com.shuangse.meta.ValueObj[] redListOrderedByMissingTimes -> i
+    android.widget.TextView[] title_top_red -> j
+    android.widget.TextView[] title_bottom_red -> k
+    com.shuangse.ui.RedMissingTrendActivity$DataLoadCompletedListener loadCompletedLisneter -> l
+    android.widget.ZoomControls zoomControls -> m
+    android.view.View$OnClickListener cellClickListener -> n
+    android.app.ProgressDialog progressDialog -> o
+    void onCreate(android.os.Bundle) -> onCreate
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    int getColorByMissValue(int) -> a
+    void onPause() -> onPause
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void access$0(com.shuangse.ui.RedMissingTrendActivity,java.lang.String,java.lang.String) -> a
+    com.shuangse.ui.RedMissingTrendActivity$DataLoadCompletedListener access$1(com.shuangse.ui.RedMissingTrendActivity) -> a
+    void access$2(com.shuangse.ui.RedMissingTrendActivity) -> b
+    android.app.ProgressDialog access$3(com.shuangse.ui.RedMissingTrendActivity) -> c
+    android.widget.TableLayout access$4(com.shuangse.ui.RedMissingTrendActivity) -> d
+com.shuangse.ui.RedMissingTrendActivity$1 -> com.shuangse.ui.fd:
+    com.shuangse.ui.RedMissingTrendActivity this$0 -> a
+    void loadComplete() -> a
+com.shuangse.ui.RedMissingTrendActivity$2 -> com.shuangse.ui.fe:
+    com.shuangse.ui.RedMissingTrendActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingTrendActivity$3 -> com.shuangse.ui.ff:
+    com.shuangse.ui.RedMissingTrendActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingTrendActivity$4 -> com.shuangse.ui.fg:
+    com.shuangse.ui.RedMissingTrendActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.RedMissingTrendActivity$CellOnClickListener -> com.shuangse.ui.fh:
+    com.shuangse.ui.RedMissingTrendActivity theActivity -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RedMissingTrendActivity$DataLoadCompletedListener -> com.shuangse.ui.fi:
+    void loadComplete() -> a
+com.shuangse.ui.RedMissingTrendActivity$LoadDataAsyncTask -> com.shuangse.ui.fj:
+    com.shuangse.ui.RedMissingTrendActivity this$0 -> a
+    void onPreExecute() -> onPreExecute
+    void onPostExecute(java.lang.Object) -> onPostExecute
+    java.lang.Object doInBackground(java.lang.Object[]) -> doInBackground
+    void onProgressUpdate(java.lang.Object[]) -> onProgressUpdate
+    com.shuangse.ui.RedMissingTrendActivity access$3(com.shuangse.ui.RedMissingTrendActivity$LoadDataAsyncTask) -> a
+com.shuangse.ui.RedMissingTrendActivity$LoadDataAsyncTask$1 -> com.shuangse.ui.fk:
+    com.shuangse.ui.RedMissingTrendActivity$LoadDataAsyncTask this$1 -> a
+    void run() -> run
+com.shuangse.ui.RedMissingTrendActivity$RedOPCommonCombineBtnListener -> com.shuangse.ui.fl:
+    com.shuangse.ui.RedMissingTrendActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.RulesContent1Fragment -> com.shuangse.ui.fm:
+    boolean isInit -> X
+    java.util.Date nextOpenEndTime -> Z
+    java.util.concurrent.ScheduledThreadPoolExecutor execUpdateDisTime -> aa
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> ab
+    android.widget.ListView expListView -> ac
+    android.widget.SimpleAdapter adapter -> ad
+    java.util.ArrayList mlistItems -> Y
+    android.widget.TextView time_info -> ae
+    android.os.Handler msgHandler -> af
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    java.util.Date getBuyEndTime() -> D
+    java.util.Date getSystemCurrentTime() -> E
+    void onResume() -> m
+    void onPause() -> n
+    void access$0(com.shuangse.ui.RulesContent1Fragment,java.lang.String) -> a
+    java.util.Date access$1$4b7fbabc() -> C
+    java.util.Date access$2(com.shuangse.ui.RulesContent1Fragment) -> a
+    android.os.Handler access$3(com.shuangse.ui.RulesContent1Fragment) -> b
+com.shuangse.ui.RulesContent1Fragment$1 -> com.shuangse.ui.fn:
+    com.shuangse.ui.RulesContent1Fragment this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.RulesContent1Fragment$MHandler -> com.shuangse.ui.fo:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.RulesContent1Fragment$UpdateDisplayTimeTask -> com.shuangse.ui.fp:
+    com.shuangse.ui.RulesContent1Fragment this$0 -> a
+    void run() -> run
+com.shuangse.ui.RulesContent2Fragment -> com.shuangse.ui.fq:
+    android.app.Activity activity -> X
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> aa
+    boolean isInit -> Y
+    android.widget.ListView expListView -> ab
+    android.widget.SimpleAdapter adapter -> ac
+    java.util.ArrayList mlistItems -> Z
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+com.shuangse.ui.RulesContent2Fragment$1 -> com.shuangse.ui.fr:
+    com.shuangse.ui.RulesContent2Fragment this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.RulesContent3Fragment -> com.shuangse.ui.fs:
+    android.app.Activity activity -> X
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> aa
+    boolean isInit -> Y
+    android.widget.ListView expListView -> ab
+    android.widget.SimpleAdapter adapter -> ac
+    java.util.ArrayList mlistItems -> Z
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+com.shuangse.ui.RulesContent3Fragment$1 -> com.shuangse.ui.ft:
+    com.shuangse.ui.RulesContent3Fragment this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.RulesContent4Fragment -> com.shuangse.ui.fu:
+    android.app.Activity activity -> R
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+com.shuangse.ui.SelectBlueDialog -> com.shuangse.ui.fv:
+    android.content.Context context -> a
+    android.widget.ImageButton[] blueButton -> b
+    android.view.View selectBlueView -> c
+    android.widget.Button returnButton -> d
+    java.util.ArrayList selectedBlueNumbers -> e
+    com.shuangse.ui.SelectBlueDialogCallback parentActivity -> f
+    void onCreate(android.os.Bundle) -> onCreate
+    com.shuangse.ui.SelectBlueDialogCallback access$0(com.shuangse.ui.SelectBlueDialog) -> a
+    java.util.ArrayList access$1(com.shuangse.ui.SelectBlueDialog) -> b
+    android.widget.ImageButton[] access$2(com.shuangse.ui.SelectBlueDialog) -> c
+com.shuangse.ui.SelectBlueDialog$1 -> com.shuangse.ui.fw:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$10 -> com.shuangse.ui.fx:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$11 -> com.shuangse.ui.fy:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$12 -> com.shuangse.ui.fz:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$13 -> com.shuangse.ui.ga:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$14 -> com.shuangse.ui.gb:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$15 -> com.shuangse.ui.gc:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$16 -> com.shuangse.ui.gd:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$17 -> com.shuangse.ui.ge:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$2 -> com.shuangse.ui.gf:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$3 -> com.shuangse.ui.gg:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$4 -> com.shuangse.ui.gh:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$5 -> com.shuangse.ui.gi:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$6 -> com.shuangse.ui.gj:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$7 -> com.shuangse.ui.gk:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$8 -> com.shuangse.ui.gl:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$9 -> com.shuangse.ui.gm:
+    com.shuangse.ui.SelectBlueDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectBlueDialog$ButtonState -> com.shuangse.ui.gn:
+    boolean ifClicked -> a
+com.shuangse.ui.SelectBlueDialogCallback -> com.shuangse.ui.go:
+    void sendSelectedBlueData(java.util.ArrayList) -> a
+com.shuangse.ui.SelectRedDialog -> com.shuangse.ui.gp:
+    android.content.Context context -> a
+    android.widget.ImageButton[] redButton -> b
+    android.view.View selectRedView -> c
+    android.widget.Button returnButton -> d
+    java.util.ArrayList selectedRedNumbers -> e
+    com.shuangse.ui.SelectRedDialogCallback parentActivity -> f
+    void onCreate(android.os.Bundle) -> onCreate
+    com.shuangse.ui.SelectRedDialogCallback access$0(com.shuangse.ui.SelectRedDialog) -> a
+    java.util.ArrayList access$1(com.shuangse.ui.SelectRedDialog) -> b
+    android.widget.ImageButton[] access$2(com.shuangse.ui.SelectRedDialog) -> c
+com.shuangse.ui.SelectRedDialog$1 -> com.shuangse.ui.gq:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$10 -> com.shuangse.ui.gr:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$11 -> com.shuangse.ui.gs:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$12 -> com.shuangse.ui.gt:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$13 -> com.shuangse.ui.gu:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$14 -> com.shuangse.ui.gv:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$15 -> com.shuangse.ui.gw:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$16 -> com.shuangse.ui.gx:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$17 -> com.shuangse.ui.gy:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$18 -> com.shuangse.ui.gz:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$19 -> com.shuangse.ui.ha:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$2 -> com.shuangse.ui.hb:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$20 -> com.shuangse.ui.hc:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$21 -> com.shuangse.ui.hd:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$22 -> com.shuangse.ui.he:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$23 -> com.shuangse.ui.hf:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$24 -> com.shuangse.ui.hg:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$25 -> com.shuangse.ui.hh:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$26 -> com.shuangse.ui.hi:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$27 -> com.shuangse.ui.hj:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$28 -> com.shuangse.ui.hk:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$29 -> com.shuangse.ui.hl:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$3 -> com.shuangse.ui.hm:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$30 -> com.shuangse.ui.hn:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$31 -> com.shuangse.ui.ho:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$32 -> com.shuangse.ui.hp:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$33 -> com.shuangse.ui.hq:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$34 -> com.shuangse.ui.hr:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$4 -> com.shuangse.ui.hs:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$5 -> com.shuangse.ui.ht:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$6 -> com.shuangse.ui.hu:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$7 -> com.shuangse.ui.hv:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$8 -> com.shuangse.ui.hw:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$9 -> com.shuangse.ui.hx:
+    com.shuangse.ui.SelectRedDialog this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SelectRedDialog$ButtonState -> com.shuangse.ui.hy:
+    boolean ifClicked -> a
+com.shuangse.ui.SelectRedDialogCallback -> com.shuangse.ui.hz:
+    void sendSelectedRedData(java.util.ArrayList) -> b
+com.shuangse.ui.SettingActivity -> com.shuangse.ui.SettingActivity:
+    android.preference.Preference keepRedPreference -> b
+    android.preference.Preference userConterPreference -> c
+    android.content.SharedPreferences sharedPreferences -> d
+    java.lang.String myKeepRedStr -> e
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    boolean onPreferenceTreeClick(android.preference.PreferenceScreen,android.preference.Preference) -> onPreferenceTreeClick
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onPause() -> onPause
+    void sendSelectedRedData(java.util.ArrayList) -> b
+    android.preference.Preference access$0(com.shuangse.ui.SettingActivity) -> a
+com.shuangse.ui.SettingActivity$QueryUserCounterThread -> com.shuangse.ui.ia:
+    com.shuangse.ui.SettingActivity this$0 -> a
+    void run() -> run
+    com.shuangse.ui.SettingActivity access$0(com.shuangse.ui.SettingActivity$QueryUserCounterThread) -> a
+com.shuangse.ui.SettingActivity$QueryUserCounterThread$1 -> com.shuangse.ui.ib:
+    com.shuangse.ui.SettingActivity$QueryUserCounterThread this$1 -> a
+    com.shuangse.meta.UserCounterObj val$userCounterObj -> b
+    void run() -> run
+com.shuangse.ui.SettingActivity$QueryUserCounterThread$2 -> com.shuangse.ui.ic:
+    com.shuangse.ui.SettingActivity$QueryUserCounterThread this$1 -> a
+    void run() -> run
+com.shuangse.ui.SettingActivity$QueryUserCounterThread$3 -> com.shuangse.ui.id:
+    com.shuangse.ui.SettingActivity$QueryUserCounterThread this$1 -> a
+    void run() -> run
+com.shuangse.ui.ShareExpFragment -> com.shuangse.ui.ie:
+    boolean isInit -> X
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> Y
+    android.app.Activity activity -> Z
+    android.app.ProgressDialog progDialog -> aa
+    java.util.ArrayList expListItems -> ab
+    com.shuangse.ui.ShareExpFragment$ListViewAdapter adapter -> ac
+    android.widget.ListView expListView -> ad
+    android.view.View footerView -> ae
+    android.widget.ProgressBar footerProgressBar -> af
+    android.widget.TextView footerTextView -> ag
+    boolean loadingMore -> ah
+    boolean noMoreData -> ai
+    java.lang.Thread mThread -> aj
+    int currentPageNumber -> ak
+    android.view.LayoutInflater mInflater -> al
+    android.os.Handler msgHandler -> am
+    void onCreate(android.os.Bundle) -> a
+    void onActivityCreated(android.os.Bundle) -> b
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void onResume() -> m
+    void setUserVisibleHint(boolean) -> b
+    void showData() -> C
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.ShareExpFragment) -> a
+    void access$1(com.shuangse.ui.ShareExpFragment,java.lang.String,java.lang.String) -> a
+    void access$2(com.shuangse.ui.ShareExpFragment,java.lang.Thread) -> a
+    void access$3(com.shuangse.ui.ShareExpFragment) -> b
+    void access$4(com.shuangse.ui.ShareExpFragment) -> c
+    void access$5(com.shuangse.ui.ShareExpFragment) -> d
+    java.util.ArrayList access$6(com.shuangse.ui.ShareExpFragment) -> e
+    android.view.LayoutInflater access$7(com.shuangse.ui.ShareExpFragment) -> f
+    void access$8$7d00313c(com.shuangse.ui.ShareExpFragment) -> g
+    android.os.Handler access$9(com.shuangse.ui.ShareExpFragment) -> h
+    int access$10(com.shuangse.ui.ShareExpFragment) -> i
+    void access$11(com.shuangse.ui.ShareExpFragment,int) -> a
+    boolean access$12(com.shuangse.ui.ShareExpFragment) -> j
+    boolean access$13(com.shuangse.ui.ShareExpFragment) -> k
+    java.lang.Thread access$14(com.shuangse.ui.ShareExpFragment) -> l
+com.shuangse.ui.ShareExpFragment$1 -> com.shuangse.ui.if:
+    com.shuangse.ui.ShareExpFragment this$0 -> a
+    void onScroll(android.widget.AbsListView,int,int,int) -> onScroll
+    void onScrollStateChanged(android.widget.AbsListView,int) -> onScrollStateChanged
+com.shuangse.ui.ShareExpFragment$2 -> com.shuangse.ui.ig:
+    com.shuangse.ui.ShareExpFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShareExpFragment$ExprShareViewHolder -> com.shuangse.ui.ih:
+    android.view.View itemView -> a
+    com.shuangse.meta.ExperienceItem item -> b
+com.shuangse.ui.ShareExpFragment$ListViewAdapter -> com.shuangse.ui.ii:
+    com.shuangse.ui.ShareExpFragment this$0 -> a
+    com.shuangse.meta.ExperienceItem getItem(int) -> a
+    long getItemId(int) -> getItemId
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+    java.lang.Object getItem(int) -> getItem
+    com.shuangse.ui.ShareExpFragment access$1(com.shuangse.ui.ShareExpFragment$ListViewAdapter) -> a
+com.shuangse.ui.ShareExpFragment$ListViewAdapter$1 -> com.shuangse.ui.ij:
+    com.shuangse.ui.ShareExpFragment$ListViewAdapter this$1 -> a
+    int val$position -> b
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShareExpFragment$LoadListItemsThread -> com.shuangse.ui.ik:
+    com.shuangse.ui.ShareExpFragment this$0 -> a
+    void run() -> run
+com.shuangse.ui.ShareExpFragment$MHandler -> com.shuangse.ui.il:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ShareMyExperienceActivity -> com.shuangse.ui.ShareMyExperienceActivity:
+    android.widget.TextView exprTitle -> b
+    android.widget.TextView exprText -> c
+    android.widget.TextView exprAuthor -> d
+    android.widget.TextView exprContact -> e
+    android.widget.Button exprSaveBtn -> f
+    android.app.ProgressDialog progressDialog -> g
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> h
+    java.lang.Thread mThread -> i
+    android.os.Handler msgHandler -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onPause() -> onPause
+    void onStart() -> onStart
+    void hideProgressBox() -> a
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.ShareMyExperienceActivity) -> a
+    void access$1(com.shuangse.ui.ShareMyExperienceActivity,java.lang.String,java.lang.String) -> a
+    android.widget.TextView access$2(com.shuangse.ui.ShareMyExperienceActivity) -> b
+    android.widget.TextView access$3(com.shuangse.ui.ShareMyExperienceActivity) -> c
+    android.widget.TextView access$4(com.shuangse.ui.ShareMyExperienceActivity) -> d
+    android.widget.TextView access$5(com.shuangse.ui.ShareMyExperienceActivity) -> e
+    void access$6(com.shuangse.ui.ShareMyExperienceActivity,java.lang.String,java.lang.String) -> b
+    com.shuangse.base.ShuangSeToolsSetApplication access$7(com.shuangse.ui.ShareMyExperienceActivity) -> f
+    void access$8(com.shuangse.ui.ShareMyExperienceActivity,java.lang.Thread) -> a
+    java.lang.Thread access$9(com.shuangse.ui.ShareMyExperienceActivity) -> g
+com.shuangse.ui.ShareMyExperienceActivity$1 -> com.shuangse.ui.im:
+    com.shuangse.ui.ShareMyExperienceActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShareMyExperienceActivity$2 -> com.shuangse.ui.in:
+    com.shuangse.ui.ShareMyExperienceActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.ShareMyExperienceActivity$MHandler -> com.shuangse.ui.io:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ShareMyExperienceActivity$PostExperienceThread -> com.shuangse.ui.ip:
+    java.lang.String exprTitleStr -> b
+    java.lang.String exprTextStr -> c
+    java.lang.String exprAuthorStr -> d
+    java.lang.String exprContactStr -> e
+    com.shuangse.base.ShuangSeToolsSetApplication mContext -> f
+    com.shuangse.ui.ShareMyExperienceActivity this$0 -> a
+    void run() -> run
+com.shuangse.ui.ShuangseHitSearchActivity -> com.shuangse.ui.ShuangseHitSearchActivity:
+    android.support.v4.view.ViewPager localViewPager -> n
+    com.shuangse.ui.ShuangseHitSearchActivity$HitSearchPagerAdapter localAdapter -> o
+    java.util.List mListViews -> p
+    android.support.v4.app.Fragment contentLayout0 -> q
+    android.support.v4.app.Fragment contentLayout1 -> r
+    android.support.v4.app.Fragment contentLayout2 -> s
+    android.support.v4.app.Fragment contentLayout3 -> t
+    android.widget.Button btn0 -> u
+    android.widget.Button btn1 -> v
+    android.widget.Button btn2 -> w
+    android.widget.Button btn3 -> x
+    android.os.Handler msgHandler -> y
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onCreate(android.os.Bundle) -> onCreate
+    android.widget.Button access$0(com.shuangse.ui.ShuangseHitSearchActivity) -> a
+    android.widget.Button access$1(com.shuangse.ui.ShuangseHitSearchActivity) -> b
+    android.widget.Button access$2(com.shuangse.ui.ShuangseHitSearchActivity) -> c
+    android.widget.Button access$3(com.shuangse.ui.ShuangseHitSearchActivity) -> d
+    android.support.v4.view.ViewPager access$4(com.shuangse.ui.ShuangseHitSearchActivity) -> e
+    android.os.Handler access$5(com.shuangse.ui.ShuangseHitSearchActivity) -> f
+com.shuangse.ui.ShuangseHitSearchActivity$1 -> com.shuangse.ui.iq:
+    com.shuangse.ui.ShuangseHitSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseHitSearchActivity$2 -> com.shuangse.ui.ir:
+    com.shuangse.ui.ShuangseHitSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseHitSearchActivity$3 -> com.shuangse.ui.is:
+    com.shuangse.ui.ShuangseHitSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseHitSearchActivity$4 -> com.shuangse.ui.it:
+    com.shuangse.ui.ShuangseHitSearchActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseHitSearchActivity$5 -> com.shuangse.ui.iu:
+    com.shuangse.ui.ShuangseHitSearchActivity this$0 -> a
+    void onPageSelected(int) -> a
+    void onPageScrolled$486775f1(int,float) -> a
+    void onPageScrollStateChanged(int) -> b
+com.shuangse.ui.ShuangseHitSearchActivity$HitSearchPagerAdapter -> com.shuangse.ui.iv:
+    java.util.List fragmentsList -> b
+    android.support.v4.app.FragmentManager fm -> c
+    com.shuangse.ui.ShuangseHitSearchActivity this$0 -> a
+    int getCount() -> b
+    android.support.v4.app.Fragment getItem(int) -> a
+    int getItemPosition$5d527804() -> d
+    void setFragments(java.util.List) -> a
+    void destroyItem$7e55ba3e() -> c
+com.shuangse.ui.ShuangseHitSearchActivity$MHandler -> com.shuangse.ui.iw:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ShuangseRulesActivity -> com.shuangse.ui.ShuangseRulesActivity:
+    android.support.v4.view.ViewPager localViewPager -> n
+    com.shuangse.ui.ShuangseRulesActivity$PrivatePagerAdapter localAdapter -> o
+    java.util.List mListViews -> p
+    android.support.v4.app.Fragment contentLayout1 -> q
+    android.support.v4.app.Fragment contentLayout2 -> r
+    android.support.v4.app.Fragment contentLayout3 -> s
+    android.support.v4.app.Fragment contentLayout4 -> t
+    android.widget.Button btn1 -> u
+    android.widget.Button btn2 -> v
+    android.widget.Button btn3 -> w
+    android.widget.Button btn4 -> x
+    android.os.Handler msgHandler -> y
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void onCreate(android.os.Bundle) -> onCreate
+    void onDestroy() -> onDestroy
+    android.widget.Button access$0(com.shuangse.ui.ShuangseRulesActivity) -> a
+    android.widget.Button access$1(com.shuangse.ui.ShuangseRulesActivity) -> b
+    android.widget.Button access$2(com.shuangse.ui.ShuangseRulesActivity) -> c
+    android.widget.Button access$3(com.shuangse.ui.ShuangseRulesActivity) -> d
+    android.support.v4.view.ViewPager access$4(com.shuangse.ui.ShuangseRulesActivity) -> e
+    android.os.Handler access$5(com.shuangse.ui.ShuangseRulesActivity) -> f
+com.shuangse.ui.ShuangseRulesActivity$1 -> com.shuangse.ui.ix:
+    com.shuangse.ui.ShuangseRulesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseRulesActivity$2 -> com.shuangse.ui.iy:
+    com.shuangse.ui.ShuangseRulesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseRulesActivity$3 -> com.shuangse.ui.iz:
+    com.shuangse.ui.ShuangseRulesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseRulesActivity$4 -> com.shuangse.ui.ja:
+    com.shuangse.ui.ShuangseRulesActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.ShuangseRulesActivity$5 -> com.shuangse.ui.jb:
+    com.shuangse.ui.ShuangseRulesActivity this$0 -> a
+    void onPageSelected(int) -> a
+    void onPageScrolled$486775f1(int,float) -> a
+    void onPageScrollStateChanged(int) -> b
+com.shuangse.ui.ShuangseRulesActivity$MHandler -> com.shuangse.ui.jc:
+    java.lang.ref.WeakReference mActivity -> a
+    void handleMessage(android.os.Message) -> handleMessage
+com.shuangse.ui.ShuangseRulesActivity$PrivatePagerAdapter -> com.shuangse.ui.jd:
+    java.util.List fragmentsList -> b
+    android.support.v4.app.FragmentManager fm -> c
+    com.shuangse.ui.ShuangseRulesActivity this$0 -> a
+    int getCount() -> b
+    android.support.v4.app.Fragment getItem(int) -> a
+    int getItemPosition$5d527804() -> d
+    void setFragments(java.util.List) -> a
+    void destroyItem$7e55ba3e() -> c
+com.shuangse.ui.SingleSearchFragment -> com.shuangse.ui.je:
+    java.util.List itemIDs -> R
+    java.util.List allHisData -> S
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> T
+    android.widget.ArrayAdapter allitemIDAdaptor -> U
+    android.widget.ArrayAdapter blueValAdapter -> V
+    android.app.Activity activity -> W
+    int singleSelItemId -> X
+    com.shuangse.meta.ShuangseCodeItem currentSelItem -> Y
+    int singleSelBlue -> Z
+    com.shuangse.meta.ShuangseCodeItem inputItem -> aa
+    android.widget.Button inputRedBtn -> ab
+    android.widget.TextView resultCodeView -> ac
+    android.widget.TextView result_title -> ad
+    android.widget.TextView red_title -> ae
+    void onCreate(android.os.Bundle) -> a
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void showData() -> A
+    void InfoMessageBox(java.lang.String,java.lang.String) -> a
+    void sendSelectedRedData(java.util.ArrayList) -> b
+    android.app.Activity access$0(com.shuangse.ui.SingleSearchFragment) -> a
+    void access$1(com.shuangse.ui.SingleSearchFragment,int) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$2(com.shuangse.ui.SingleSearchFragment) -> b
+    int access$3(com.shuangse.ui.SingleSearchFragment) -> c
+    void access$4(com.shuangse.ui.SingleSearchFragment,com.shuangse.meta.ShuangseCodeItem) -> a
+    android.widget.TextView access$5(com.shuangse.ui.SingleSearchFragment) -> d
+    com.shuangse.meta.ShuangseCodeItem access$6(com.shuangse.ui.SingleSearchFragment) -> e
+    void access$7(com.shuangse.ui.SingleSearchFragment,int) -> b
+    com.shuangse.meta.ShuangseCodeItem access$8(com.shuangse.ui.SingleSearchFragment) -> f
+    int access$9(com.shuangse.ui.SingleSearchFragment) -> g
+    void access$10(com.shuangse.ui.SingleSearchFragment,java.lang.String,java.lang.String) -> a
+    android.widget.TextView access$11(com.shuangse.ui.SingleSearchFragment) -> h
+com.shuangse.ui.SingleSearchFragment$1 -> com.shuangse.ui.jf:
+    com.shuangse.ui.SingleSearchFragment this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.SingleSearchFragment$2 -> com.shuangse.ui.jg:
+    com.shuangse.ui.SingleSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SingleSearchFragment$3 -> com.shuangse.ui.jh:
+    com.shuangse.ui.SingleSearchFragment this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.SingleSearchFragment$4 -> com.shuangse.ui.ji:
+    com.shuangse.ui.SingleSearchFragment this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.SingleSearchFragment$5 -> com.shuangse.ui.jj:
+    com.shuangse.ui.SingleSearchFragment this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity -> com.shuangse.ui.SmartCombineActivity:
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> d
+    android.content.SharedPreferences sharedPreferences -> e
+    boolean ifGetOutOfHistoryitem -> f
+    boolean ifCheckRedSum -> g
+    java.util.List allModels -> a
+    java.util.List allRecommendRedModels -> b
+    java.util.List allRecommendBlueItems -> c
+    android.widget.ArrayAdapter allModelsAdaptor -> h
+    android.widget.ArrayAdapter recommendRedModelAdaptor -> i
+    android.widget.ArrayAdapter recommendBlueAdaptor -> j
+    android.widget.ArrayAdapter allitemIDAdaptor -> k
+    android.widget.Spinner spinner_combine_model -> l
+    android.widget.Spinner spinner_recommend_red_model -> m
+    android.widget.Spinner recommend_blue_spinner -> n
+    android.widget.Spinner item_id_spinner -> o
+    java.util.List itemIDs -> p
+    java.util.List allHisData -> q
+    int currentSelItemId -> r
+    boolean ifItemIDSpinnerInitilized -> s
+    boolean ifSelectRedSpinnerInitilized -> t
+    boolean ifSelectBlueSpinnerInitilized -> u
+    boolean ifSelectModelSpinnerInitilized -> v
+    int currentCombineItemId -> w
+    int currentSelModelId -> x
+    int currentSelRecommendRedModelId -> y
+    int currentSelBlueRecommendId -> z
+    android.widget.TextView selRedTextView -> A
+    java.util.ArrayList currentSelRedList -> B
+    android.widget.TextView selBlueTextView -> C
+    java.util.ArrayList currentSelBlueList -> D
+    android.widget.Button startCombineButton -> E
+    android.widget.Button verifyRedButton -> F
+    android.app.Dialog custDialog -> G
+    android.app.ProgressDialog progressDialog -> H
+    int getPosIndexByModelID(int) -> b
+    java.lang.String getModelStrByModelID(int) -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    android.app.Dialog customInfoMsgBox(java.lang.String) -> a
+    void onPause() -> onPause
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    void access$0(com.shuangse.ui.SmartCombineActivity,boolean) -> a
+    boolean access$1(com.shuangse.ui.SmartCombineActivity) -> a
+    void access$2(com.shuangse.ui.SmartCombineActivity,int) -> a
+    int access$3(com.shuangse.ui.SmartCombineActivity) -> b
+    void access$4(com.shuangse.ui.SmartCombineActivity,int) -> b
+    void access$5(com.shuangse.ui.SmartCombineActivity,boolean) -> b
+    boolean access$6(com.shuangse.ui.SmartCombineActivity) -> c
+    void access$7(com.shuangse.ui.SmartCombineActivity,int) -> c
+    int access$8(com.shuangse.ui.SmartCombineActivity) -> d
+    java.util.ArrayList access$9(com.shuangse.ui.SmartCombineActivity) -> e
+    android.widget.TextView access$10(com.shuangse.ui.SmartCombineActivity) -> f
+    void access$11(com.shuangse.ui.SmartCombineActivity,java.lang.String,java.lang.String) -> a
+    com.shuangse.base.ShuangSeToolsSetApplication access$12(com.shuangse.ui.SmartCombineActivity) -> g
+    void access$13(com.shuangse.ui.SmartCombineActivity,java.util.ArrayList) -> a
+    void access$14(com.shuangse.ui.SmartCombineActivity,boolean) -> c
+    boolean access$15(com.shuangse.ui.SmartCombineActivity) -> h
+    void access$16(com.shuangse.ui.SmartCombineActivity,int) -> d
+    int access$17(com.shuangse.ui.SmartCombineActivity) -> i
+    java.util.ArrayList access$18(com.shuangse.ui.SmartCombineActivity) -> j
+    android.widget.TextView access$19(com.shuangse.ui.SmartCombineActivity) -> k
+    android.widget.Button access$20(com.shuangse.ui.SmartCombineActivity) -> l
+    void access$21(com.shuangse.ui.SmartCombineActivity,java.util.ArrayList) -> b
+    void access$22(com.shuangse.ui.SmartCombineActivity,android.app.Dialog) -> a
+    android.app.Dialog access$23(com.shuangse.ui.SmartCombineActivity) -> m
+    android.content.SharedPreferences access$24(com.shuangse.ui.SmartCombineActivity) -> n
+    void access$25(com.shuangse.ui.SmartCombineActivity,java.lang.String,java.lang.String) -> b
+    void access$26(com.shuangse.ui.SmartCombineActivity,boolean) -> d
+    boolean access$27(com.shuangse.ui.SmartCombineActivity) -> o
+    void access$28(com.shuangse.ui.SmartCombineActivity,int) -> e
+    int access$29(com.shuangse.ui.SmartCombineActivity) -> p
+    int access$30(com.shuangse.ui.SmartCombineActivity) -> q
+    boolean access$31(com.shuangse.ui.SmartCombineActivity) -> r
+    boolean access$32(com.shuangse.ui.SmartCombineActivity) -> s
+com.shuangse.ui.SmartCombineActivity$1 -> com.shuangse.ui.jk:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity$2 -> com.shuangse.ui.jl:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.SmartCombineActivity$3 -> com.shuangse.ui.jm:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity$4 -> com.shuangse.ui.jn:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    android.widget.TextView val$text -> b
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.SmartCombineActivity$5 -> com.shuangse.ui.jo:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.SmartCombineActivity$BlueSpinnerOnItemSelectedListener -> com.shuangse.ui.jp:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.SmartCombineActivity$CombineModelSpinner -> com.shuangse.ui.jq:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.SmartCombineActivity$ItemIDSpinnerOnSelectedListener -> com.shuangse.ui.jr:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener -> com.shuangse.ui.js:
+    com.shuangse.ui.SmartCombineActivity this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+    com.shuangse.ui.SmartCombineActivity access$0(com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener) -> a
+com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener$1 -> com.shuangse.ui.jt:
+    com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener$2 -> com.shuangse.ui.ju:
+    com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener$3 -> com.shuangse.ui.jv:
+    com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener$4 -> com.shuangse.ui.jw:
+    com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener$5 -> com.shuangse.ui.jx:
+    com.shuangse.ui.SmartCombineActivity$RedSpinnerOnItemSelectedListener this$1 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineResultActivity -> com.shuangse.ui.SmartCombineResultActivity:
+    int itemId -> b
+    int getoutHisFlag -> c
+    java.util.ArrayList selectRed -> d
+    java.util.ArrayList selectBlue -> e
+    int selectModel -> f
+    android.content.SharedPreferences sharedPreferences -> g
+    boolean ifGetOutOfHistoryitem -> h
+    java.util.ArrayList resultCodes -> i
+    android.widget.ArrayAdapter adapter -> j
+    android.widget.ListView resultListView -> k
+    android.widget.TextView resultTitleTextView -> l
+    android.widget.Button saveButton -> m
+    android.widget.Button copyButton -> n
+    com.shuangse.base.ShuangSeToolsSetApplication appContext -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    void onResume() -> onResume
+    boolean onKeyDown(int,android.view.KeyEvent) -> onKeyDown
+    void onConfigurationChanged(android.content.res.Configuration) -> onConfigurationChanged
+    java.util.ArrayList access$0(com.shuangse.ui.SmartCombineResultActivity) -> a
+    void access$1(com.shuangse.ui.SmartCombineResultActivity,java.lang.String,java.lang.String) -> a
+    android.widget.ArrayAdapter access$2(com.shuangse.ui.SmartCombineResultActivity) -> b
+    int access$3(com.shuangse.ui.SmartCombineResultActivity) -> c
+    java.util.ArrayList access$4(com.shuangse.ui.SmartCombineResultActivity) -> d
+    java.util.ArrayList access$5(com.shuangse.ui.SmartCombineResultActivity) -> e
+    int access$6(com.shuangse.ui.SmartCombineResultActivity) -> f
+    int access$7(com.shuangse.ui.SmartCombineResultActivity) -> g
+    void access$8(com.shuangse.ui.SmartCombineResultActivity,java.lang.String,java.lang.String) -> b
+com.shuangse.ui.SmartCombineResultActivity$1 -> com.shuangse.ui.jy:
+    com.shuangse.ui.SmartCombineResultActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineResultActivity$2 -> com.shuangse.ui.jz:
+    com.shuangse.ui.SmartCombineResultActivity this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.shuangse.ui.SmartCombineResultActivity$3 -> com.shuangse.ui.ka:
+    com.shuangse.ui.SmartCombineResultActivity this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmartCombineResultActivity$4 -> com.shuangse.ui.kb:
+    com.shuangse.ui.SmartCombineResultActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.SmartCombineResultActivity$5 -> com.shuangse.ui.kc:
+    com.shuangse.ui.SmartCombineResultActivity this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.SmartCombineResultActivity$ResultListViewArrayAdapter -> com.shuangse.ui.kd:
+    int itemViewResourceId -> b
+    java.util.ArrayList listItems -> c
+    com.shuangse.ui.SmartCombineResultActivity this$0 -> a
+    int getCount() -> getCount
+    android.view.View getView(int,android.view.View,android.view.ViewGroup) -> getView
+com.shuangse.ui.SmartCombineResultActivity$ViewHolder -> com.shuangse.ui.ke:
+    android.view.View itemView -> a
+    com.shuangse.meta.ShuangseCodeItem item -> b
+com.shuangse.ui.SmsFragment -> com.shuangse.ui.kf:
+    android.view.View onCreateView(android.view.LayoutInflater,android.view.ViewGroup,android.os.Bundle) -> a
+    void onViewCreated(android.view.View,android.os.Bundle) -> a
+    void showData() -> A
+    void access$0(com.shuangse.ui.SmsFragment,java.lang.String,java.lang.String) -> a
+    void access$1(com.shuangse.ui.SmsFragment,java.lang.String,java.lang.String) -> b
+com.shuangse.ui.SmsFragment$1 -> com.shuangse.ui.kg:
+    com.shuangse.ui.SmsFragment this$0 -> a
+    android.widget.EditText val$smsEdit -> b
+    void onClick(android.view.View) -> onClick
+com.shuangse.ui.SmsFragment$2 -> com.shuangse.ui.kh:
+    com.shuangse.ui.SmsFragment this$0 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.shuangse.ui.TwoDScrollView -> com.shuangse.ui.TwoDScrollView:
+    long mLastScroll -> a
+    android.graphics.Rect mTempRect -> b
+    android.widget.Scroller mScroller -> c
+    boolean mTwoDScrollViewMovedFocus -> d
+    float mLastMotionY -> e
+    float mLastMotionX -> f
+    boolean mIsLayoutDirty -> g
+    android.view.View mChildToScrollTo -> h
+    boolean mIsBeingDragged -> i
+    android.view.VelocityTracker mVelocityTracker -> j
+    int mTouchSlop -> k
+    int mMinimumVelocity -> l
+    int mMaximumVelocity -> m
+    float getTopFadingEdgeStrength() -> getTopFadingEdgeStrength
+    float getBottomFadingEdgeStrength() -> getBottomFadingEdgeStrength
+    float getLeftFadingEdgeStrength() -> getLeftFadingEdgeStrength
+    float getRightFadingEdgeStrength() -> getRightFadingEdgeStrength
+    void initTwoDScrollView() -> a
+    void addView(android.view.View) -> addView
+    void addView(android.view.View,int) -> addView
+    void addView(android.view.View,android.view.ViewGroup$LayoutParams) -> addView
+    void addView(android.view.View,int,android.view.ViewGroup$LayoutParams) -> addView
+    boolean canScroll() -> b
+    boolean dispatchKeyEvent(android.view.KeyEvent) -> dispatchKeyEvent
+    boolean onInterceptTouchEvent(android.view.MotionEvent) -> onInterceptTouchEvent
+    boolean onTouchEvent(android.view.MotionEvent) -> onTouchEvent
+    android.view.View findFocusableViewInBounds(boolean,int,int,boolean,int,int) -> a
+    boolean fullScroll(int,boolean) -> a
+    boolean scrollAndFocus(int,int,int,int,int,int) -> a
+    boolean arrowScroll(int,boolean) -> b
+    void doScroll(int,int) -> a
+    void smoothScrollBy(int,int) -> b
+    int computeVerticalScrollRange() -> computeVerticalScrollRange
+    int computeHorizontalScrollRange() -> computeHorizontalScrollRange
+    void measureChild(android.view.View,int,int) -> measureChild
+    void measureChildWithMargins(android.view.View,int,int,int,int) -> measureChildWithMargins
+    void computeScroll() -> computeScroll
+    void scrollToChild(android.view.View) -> a
+    int computeScrollDeltaToGetChildRectOnScreen(android.graphics.Rect) -> a
+    void requestChildFocus(android.view.View,android.view.View) -> requestChildFocus
+    boolean onRequestFocusInDescendants(int,android.graphics.Rect) -> onRequestFocusInDescendants
+    boolean requestChildRectangleOnScreen(android.view.View,android.graphics.Rect,boolean) -> requestChildRectangleOnScreen
+    void requestLayout() -> requestLayout
+    void onLayout(boolean,int,int,int,int) -> onLayout
+    void onSizeChanged(int,int,int,int) -> onSizeChanged
+    boolean isViewDescendantOf(android.view.View,android.view.View) -> a
+    void scrollTo(int,int) -> scrollTo
+    int clamp(int,int,int) -> a
+com.shuangse.ui.UIFactory -> com.shuangse.ui.ki:
+    android.widget.ImageView makeImageCell(android.graphics.drawable.Drawable,android.content.Context) -> a
+    android.widget.ImageView makeImageCellWithBackground(android.graphics.drawable.Drawable,android.content.Context,int) -> a
+    android.widget.TextView makeTextCell(java.lang.String,int,android.content.Context) -> a
+    android.widget.TextView makeTextCellWithBackground(java.lang.String,int,android.content.Context,int) -> a
+    android.widget.ImageView makeBlankCell(android.content.Context) -> a
+    android.view.View makeButton(android.graphics.drawable.Drawable,android.view.View$OnClickListener,android.content.Context) -> a
+    android.widget.ImageView makeClickableBlankCell$2943ec54(com.shuangse.meta.CellData,android.view.View$OnClickListener,android.content.Context) -> a
+    android.widget.TextView makeSeperator(android.content.Context) -> b
+com.shuangse.util.MagicTool -> com.shuangse.b.a:
+    char[] invalidchars -> a
+    android.app.Dialog customInfoMsgBox(java.lang.String,java.lang.String,android.app.Activity) -> a
+    int getResIDbyBluenum(int) -> a
+    int getResIDbyRednum(int) -> b
+    int getDanResIDbyRednum(int) -> c
+    int getHitResult(com.shuangse.meta.ShuangseCodeItem,com.shuangse.meta.ShuangseCodeItem) -> a
+    long combine$11678283(int[],int,java.util.Vector) -> a
+    long combine$6ddc92be$114ad705(int[],int,int,int,java.util.ArrayList) -> a
+    long combine$65dc91e6(int[],int,com.shuangse.meta.ShuangseCodeItem,int[],int,android.util.SparseIntArray) -> a
+    long combine$4dce99c5(int[],int,int[],int,com.shuangse.meta.ShuangseCodeItem,int[],int,android.util.SparseIntArray) -> a
+    int[] join(int[],int[]) -> a
+    java.util.ArrayList join(java.util.ArrayList,java.util.ArrayList) -> a
+    java.lang.String replaceInvalidChars(java.lang.String) -> a
+    int getHowManyNumSame(java.util.ArrayList,java.util.ArrayList) -> b
+    java.lang.String getDispArrangedStr(java.util.ArrayList) -> a
+    java.util.HashSet parsetRedSetByString(java.lang.String) -> b
+    java.util.ArrayList parsetRedArrayListByString(java.lang.String) -> c
+    java.lang.String getFormatResultString(java.util.ArrayList) -> b
+    boolean ifArrayContainsValue(int[],int) -> a
+    boolean ifArrayContainsValueBiggerThanVal$49667a24(int[]) -> a
+com.shuangse.util.MagicTool$1 -> com.shuangse.b.b:
+    void onClick(android.content.DialogInterface,int) -> onClick

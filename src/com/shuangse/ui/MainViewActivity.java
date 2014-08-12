@@ -432,7 +432,7 @@ public class MainViewActivity extends Activity {
           }
         } catch (Exception e) {
 
-          Log.e(TAG, "download data failed since the exception.");
+          Log.e(TAG, "download data failed since the exception." + e.toString());
           e.printStackTrace();
           msgHandler.obtainMessage(DATAUPDATEFAILMSG).sendToTarget();
           return;

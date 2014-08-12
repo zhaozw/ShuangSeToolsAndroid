@@ -645,7 +645,7 @@ public class RedMissingTrendActivity extends Activity {
         }
 
         public void onClick(View v) {
-            final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(RedMissingTrendActivity.this);
+            final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(RedMissingTrendActivity.this, "ForChooseCombineMethod");
             dialog.setTitle("«Î—°‘Ò:");
         }
     };
