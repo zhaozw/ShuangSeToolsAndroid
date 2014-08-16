@@ -1,17 +1,11 @@
 package com.shuangse.ui;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.util.MagicTool;
-
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,13 +13,16 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.AdapterView.OnItemClickListener;
+
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.util.MagicTool;
 
 public class CustomDefineAlertDialog {
-    private Activity activity;
+    private ExtendedActivity activity;
     private ShuangSeToolsSetApplication appContext;
     private android.app.AlertDialog ad;
     private TextView titleView;
@@ -113,7 +110,7 @@ public class CustomDefineAlertDialog {
     }
     
 
-    public CustomDefineAlertDialog(final Activity activity, String forWhat) {
+    public CustomDefineAlertDialog(final ExtendedActivity activity, String forWhat) {
         this.activity = activity;
         this.appContext = (ShuangSeToolsSetApplication)activity.getApplicationContext();
         this.forWhat = forWhat;
@@ -145,123 +142,121 @@ public class CustomDefineAlertDialog {
               TextView ItemIDTextView = (TextView)arg1.findViewById(R.id.ItemID);
               String itemID = ItemIDTextView.getText().toString();
               if(itemID != null && itemID.equalsIgnoreCase("XuanZhuanCombine")) {
-                  showProgressDialog("提示", "请稍等...");
+                  activity.showProgressDialog("提示", "请稍等...");
+                  
                   Intent intent = new Intent(activity, SmartCombineActivity.class);
-                  activity.startActivity(intent);
-              } else if(itemID != null && itemID.equalsIgnoreCase("DanTuoCombine")) {
-                  showProgressDialog("提示", "请稍等...");
-                  Intent intent = new Intent(activity, DantuoCombineActivity.class);
-                  activity.startActivity(intent);
-              } else if(itemID != null && itemID.equalsIgnoreCase("ConditionsCombine")) {
-                  //Intent intent = new Intent(context, ConditionsCombineActivity.class);
-                  //context.startActivity(intent);
                   ad.dismiss();
+                  activity.startActivity(intent);
+                  
+              } else if(itemID != null && itemID.equalsIgnoreCase("DanTuoCombine")) {
+                  activity.showProgressDialog("提示", "请稍等...");
+                  Intent intent = new Intent(activity, DantuoCombineActivity.class);
+                  
+                  ad.dismiss();
+                  activity.startActivity(intent);
+                  
+              } else if(itemID != null && itemID.equalsIgnoreCase("ConditionsCombine")) {
+                  activity.showProgressDialog("提示", "请稍等...");
+                  Intent intent = new Intent(activity, ConditionsCombineActivity.class);
+                  
+                  ad.dismiss();
+                  activity.startActivity(intent);
+                  
               } else if(itemID != null && itemID.equalsIgnoreCase("SELFSELECTIONBLUE")) {
-                  showProgressDialog("提示", "请稍等...");
+                  activity.showProgressDialog("提示", "请稍等...");
+                  
                   Intent intent = new Intent(activity, BlueMissingDataActivity.class);
                   intent.putExtra("FROM", "SmartCombineActivity");
+                  ad.dismiss();
                   activity.startActivity(intent);
+                  
               } else if(itemID != null && itemID.equalsIgnoreCase("RECOMMENDBLUEOP")) {
+                  
                   HashSet<Integer> blueSet = appContext.getRecommendBlueNumbers(appContext.getAllHisData().size());
-                  blueSet.addAll(blueSet);
                   
                   ArrayList<Integer> currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
                   currentSelBlueList.clear();
                   currentSelBlueList.addAll(blueSet);
-                  StringBuffer blueSb = new StringBuffer();
-                  for(Integer item : currentSelBlueList) {
-                      if(item < 10) {
-                        blueSb.append("0");
-                      }
-                      blueSb.append(item);
-                      blueSb.append(" ");
-                  }
+                 
+                  activity.refleshRedAndBlueSeleciton();
                   
-                  blueSb.append("共" + currentSelBlueList.size() + "码");
-                  ((SmartCombineActivity)activity).SetSelBlueTextViewText(blueSb.toString());
                   ad.dismiss();
+                  
               } else if(itemID != null && itemID.equalsIgnoreCase("SELFSELECTIONRED1")) {
-                  showProgressDialog("提示", "请稍等...");
+                  activity.showProgressDialog("提示","请稍等...");
+                  
                   Intent intent = new Intent(appContext,
                           RedMissingDataActivity.class);
                   intent.putExtra("FROM", "SmartCombineActivity");
+                  ad.dismiss();
+                  
                   activity.startActivity(intent);
               } else if(itemID != null && itemID.equalsIgnoreCase("SELFSELECTIONRED2")) {
-                  showProgressDialog("提示", "请稍等...");
+                  activity.showProgressDialog("提示","请稍等...");
+                  
                   Intent intent = new Intent(appContext, RedMissingTrendActivity.class);
                   intent.putExtra("FROM", "SmartCombineActivity");
+                  ad.dismiss();
+                  
                   activity.startActivity(intent);
+                  
               } else if(itemID != null && itemID.equalsIgnoreCase("RECOMMENDREDMODELHOTWARM")) {
                   HashSet<Integer> redSet = appContext.getRecommendRedNumber(appContext.getAllHisData().size() - 1);
                   
-                  ArrayList<Integer> currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-                  currentSelRedList.clear();
-                  currentSelRedList.addAll(redSet);
-                  StringBuffer redSb = new StringBuffer();
-                  redSb.append(MagicTool.getDispArrangedStr(currentSelRedList));
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                  getSelectedRedNumbers().clear();
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                  getSelectedRedNumbers().addAll(redSet);
                   
-                  redSb.append("共" + currentSelRedList.size() + "码");
-                  ((SmartCombineActivity)activity).SetSelRedGUIAction(redSb.toString());
+                  activity.refleshRedAndBlueSeleciton();
                   ad.dismiss();
               } else if(itemID != null && itemID.equalsIgnoreCase("RECOMMEND6FOR456")) {
                   HashSet<Integer> redSet = appContext.getRecommend6Cover456Codes();
-                  ArrayList<Integer> currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-                  currentSelRedList.clear();
-                  currentSelRedList.addAll(redSet);
+                   
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                          getSelectedRedNumbers().clear();
+                   
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                          getSelectedRedNumbers().addAll(redSet);
                   //排序
-                  Collections.sort(currentSelRedList);
+                  //Collections.sort(currentSelRedList);
                   
-                  StringBuffer redSb = new StringBuffer();
-                  redSb.append(MagicTool.getDispArrangedStr(currentSelRedList));
-                  
-                  redSb.append("共" + currentSelRedList.size() + "码 (1/" + appContext.getRecommed6Cover456CodesCnt() + ")");
-                  ((SmartCombineActivity)activity).SetSelRedGUIAction(redSb.toString());
+                  activity.refleshRedAndBlueSeleciton();
                   ad.dismiss();
+                  
               } else if(itemID != null && itemID.equalsIgnoreCase("RECOMMEND17FOR6")) {
                   HashSet<Integer> redSet = appContext.getRecommend17Cover6Codes();
-                  ArrayList<Integer> currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-                  currentSelRedList.clear();
-                  currentSelRedList.addAll(redSet);
-                  //排序
-                  Collections.sort(currentSelRedList);
                   
-                  StringBuffer redSb = new StringBuffer();
-                  redSb.append(MagicTool.getDispArrangedStr(currentSelRedList));
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                  getSelectedRedNumbers().clear();
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                  getSelectedRedNumbers().addAll(redSet);
                   
-                  redSb.append("共" + currentSelRedList.size() + "码 (1/" + appContext.getRecommend17Cover6CodesCnt() + ")");
-                  ((SmartCombineActivity)activity).SetSelRedGUIAction(redSb.toString());
+                  activity.refleshRedAndBlueSeleciton();
                   ad.dismiss();
+                  
               } else if(itemID != null && itemID.equalsIgnoreCase("RECOMMEND11FOR56")) {
                   HashSet<Integer> redSet = appContext.getRecommend11Cover56Codes();
-                  ArrayList<Integer> currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-                  currentSelRedList.clear();
-                  currentSelRedList.addAll(redSet);
-                  //排序
-                  Collections.sort(currentSelRedList);
                   
-                  StringBuffer redSb = new StringBuffer();
-                  redSb.append(MagicTool.getDispArrangedStr(currentSelRedList));
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                  getSelectedRedNumbers().clear();
+                  ShuangSeToolsSetApplication.getCurrentSelection().
+                  getSelectedRedNumbers().addAll(redSet);
                   
-                  redSb.append("共" + currentSelRedList.size() + "码 (1/" + appContext.getRecommed11Cover56CodesCnt() + ")");
-                  ((SmartCombineActivity)activity).SetSelRedGUIAction(redSb.toString());
+                  activity.refleshRedAndBlueSeleciton();
                   ad.dismiss();
               } else if(itemID != null && itemID.equalsIgnoreCase("USEMYKEEPRED")) {
                   SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(activity);
                   String myKeepRedStr = sharedPreferences.getString("My_Keep_Red_Str", "");
                   if(myKeepRedStr != null && myKeepRedStr.length() > 0) {
                     HashSet<Integer> redSet = MagicTool.parsetRedSetByString(myKeepRedStr);
-                    ArrayList<Integer> currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-                    currentSelRedList.clear();
-                    currentSelRedList.addAll(redSet);
-                    //排序
-                    Collections.sort(currentSelRedList);
                     
-                    StringBuffer redSb = new StringBuffer();
-                    redSb.append(MagicTool.getDispArrangedStr(currentSelRedList));
+                    ShuangSeToolsSetApplication.getCurrentSelection().
+                    getSelectedRedNumbers().clear();
+                    ShuangSeToolsSetApplication.getCurrentSelection().
+                    getSelectedRedNumbers().addAll(redSet);
                     
-                    redSb.append("共" + currentSelRedList.size() + "码");
-                    
-                    ((SmartCombineActivity)activity).SetSelRedGUIAction(redSb.toString());
+                    activity.refleshRedAndBlueSeleciton();
                     
                   } else {
                     InfoMessageBox("提示", "请先在 软件设置 》 里设置你的长期守的红号号码！");
@@ -284,28 +279,13 @@ public class CustomDefineAlertDialog {
         notifyDialog.show();
    }
     
+
     public void setTitle(int resId) {
         titleView.setText(resId);
     }
 
     public void setTitle(String title) {
         titleView.setText(title);
-    }
-    
-    /**
-     * 关闭对话框
-     */
-    public void dismiss() {
-        ad.dismiss();
-    }
-    
-    private ProgressDialog progressDialog;
-    private void showProgressDialog(String title, String msg) {
-      progressDialog = new ProgressDialog(activity);
-      progressDialog.setTitle(title);
-      progressDialog.setMessage(msg);
-      progressDialog.setCancelable(false);
-      progressDialog.show();
     }
 
 }

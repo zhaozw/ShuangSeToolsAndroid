@@ -2,12 +2,6 @@ package com.shuangse.ui;
 
 import java.util.List;
 
-import com.shuangse.base.ShuangSeToolsSetApplication;
-import com.shuangse.meta.CellData;
-import com.shuangse.meta.ShuangseCodeItem;
-import com.shuangse.meta.SummaryData;
-
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -22,19 +16,23 @@ import android.util.Log;
 import android.util.SparseArray;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.ZoomControls;
 
-public class RedMissingDataActivity extends Activity {
-    private final static String TAG = "RedMissingDataActivity";
+import com.shuangse.base.ShuangSeToolsSetApplication;
+import com.shuangse.meta.CellData;
+import com.shuangse.meta.ShuangseCodeItem;
+import com.shuangse.meta.SummaryData;
 
+public class RedMissingDataActivity extends ExtendedActivity {
+    private final static String TAG = "RedMissingDataActivity";
     private SharedPreferences sharedPreferences;
-    
+        
     private ProgressDialog progDialog;
     private String fromActivity;
     
@@ -68,34 +66,11 @@ public class RedMissingDataActivity extends Activity {
         final TextView titleTextView = (TextView) findViewById(R.id.title_text);
         titleTextView.setText(R.string.custom_title_right_redmissing);
         
-//        Button returnBtn = (Button)findViewById(R.id.returnbtn);
-//        returnBtn.setVisibility(View.VISIBLE);
-//        Button helpBtn = (Button)findViewById(R.id.helpbtn);
-//        helpBtn.setVisibility(View.VISIBLE);
-//        helpBtn.setOnClickListener(new View.OnClickListener() {
-//          @Override
-//          public void onClick(View v) {
-//            String htmlMsg = "本页操作提示：<br>\t 一、本页可上下左右拖动，拖动到右边下方有操作按钮；" + 
-//                                          "<br>\t 二、从上往下看为红球近期出号历史，最左边一列表示期号，" + 
-//                                          "从第二列开始往后列依次为红球1，2...到33的出号和遗漏情况：" + 
-//                                          "其中用红色球状图形表示当期该红球中出，用灰色数字表示该红球遗漏多" + 
-//                                          "少期未中出,也即：遗漏值.<br>\t 三、该图默认显示期数20期，您可在《软件设置->红球走势显示期数》" + 
-//                                          "里设置更多的显示期数以方便您查看更多期;" + "<br>\t四、遗漏数据下方空白行方格是选择红球的操作区域，根据走势" + 
-//                                          "看好某个红球后，在该方格中轻轻点击，该方格会出现一个球状号码，表示选中该红球，再次点击去掉选择；<br>" + 
-//                                          "注意：在第二行 或 胆拖组号 对应行的空白方格中，点击一次表示选中，点击二次表示选中为胆码，点击三次去掉选择;" + 
-//                                          "<br>\t 五、选择完后，拖动到最右侧，点击《旋转组号》或《胆拖组号》按钮即可用对应的旋转矩阵组合 或 胆拖组合所选红球;" + 
-//                                          "<br>\t 六、最下方标题行上出现次数，最大遗漏和最大连续出号行分别为对应红球在所有双色球开奖历史数据中统计的历史数据，共选号参考;" + 
-//                                          "<br>\t 七、选号时，可根据历史遗漏走势，多选上期中出号码的相邻码，斜连图形码，二连码等等，可根据经验选出7-20码进行组号" + 
-//                                          "(先别担心选太多红无法购买，旋转矩阵能帮您大大节省资金)。";
-//            MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, RedMissingDataActivity.this).show();
-//          }
-//        }); 
-//        returnBtn.setOnClickListener(new View.OnClickListener() {
-//          @Override
-//          public void onClick(View v) {
-//            onBackPressed();
-//          }
-//        });
+        progDialog = new ProgressDialog(RedMissingDataActivity.this);
+        progDialog.setTitle("提示");
+        progDialog.setMessage("请稍等，正在加载...");
+        progDialog.setCancelable(false);
+        progDialog.show();
         
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(RedMissingDataActivity.this);
         disp_his_num = Integer.parseInt(sharedPreferences.getString("shuangse_display_red_history_cnt", "20"));
@@ -109,13 +84,7 @@ public class RedMissingDataActivity extends Activity {
         } else if(this.fromActivity != null && this.fromActivity.equalsIgnoreCase("MainViewActivity")) {
           operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】");
         }
-        
-        progDialog = new ProgressDialog(RedMissingDataActivity.this);
-        progDialog.setTitle("提示");
-        progDialog.setMessage("请稍等，正在加载...");
-        progDialog.setCancelable(false);
-        progDialog.show();
-        
+                
         dataTable = (TableLayout) findViewById(R.id.datatable);        
         new LoadDataAsyncTask().execute("");
         
@@ -481,15 +450,17 @@ public class RedMissingDataActivity extends Activity {
     }
 
     private ProgressDialog progressDialog;
-//    private void showProgressDialog(String title, String msg) {
-//      progressDialog = new ProgressDialog(RedMissingDataActivity.this);
-//      progressDialog.setTitle(title);
-//      progressDialog.setMessage(msg);
-//      progressDialog.setCancelable(false);
-//      progressDialog.show();
-//    }
+    @Override
+    public void showProgressDialog(String title, String msg) {
+      progressDialog = new ProgressDialog(RedMissingDataActivity.this);
+      progressDialog.setTitle(title);
+      progressDialog.setMessage(msg);
+      progressDialog.setCancelable(false);
+      progressDialog.show();
+    }
 
-    private void hideProgressBox() {
+    @Override
+    public void hideProgressBox() {
       if (progressDialog != null) {
         progressDialog.dismiss();
         progressDialog = null;

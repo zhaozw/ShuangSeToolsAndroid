@@ -195,6 +195,21 @@
             android:configChanges="orientation|keyboardHidden"
             android:theme="@style/CustomWindowTitleStyle" >
         </activity>
+        
+        <activity
+            android:name="com.shuangse.ui.ConditionsCombineActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
+         <activity
+            android:name="com.shuangse.ui.ConditionsMissingDataActivity"
+            android:launchMode="singleTask"
+            android:configChanges="orientation|keyboardHidden"
+            android:theme="@style/CustomWindowTitleStyle" >
+        </activity>
+        
     </application>
 
 </manifest>

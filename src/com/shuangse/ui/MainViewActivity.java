@@ -251,8 +251,14 @@ public class MainViewActivity extends Activity {
           break;
         case 6:
             //条件走势
-            hideProgressBox();
-            InfoMessageBox("信息","火速开发中,敬请期待，谢谢支持!");
+            if(appContext == null || appContext.getAllHisData().size() < 1) {
+                hideProgressBox();
+                InfoMessageBox("警告","无历史数据信息，请先点击<数据更新>更新历史数据.");
+            } else {
+                Intent intent = new Intent(MainViewActivity.this, ConditionsMissingDataActivity.class);
+                intent.putExtra("FROM", "MainViewActivity");
+                startActivity(intent);
+           }
             break;
 //        case 7:
 //            //行列走势
@@ -269,7 +275,8 @@ public class MainViewActivity extends Activity {
         case 8:
             //条件选号
             hideProgressBox();
-            InfoMessageBox("信息","火速开发中,敬请期待，谢谢支持!");
+            Intent intent8 = new Intent(MainViewActivity.this, ConditionsCombineActivity.class);
+            startActivity(intent8);
             break;
         case 9:
           //胆拖及复式组号
@@ -452,6 +459,7 @@ public class MainViewActivity extends Activity {
     notifyDialog.show();
   }
 
+  
   private void showProgressDialog(String title, String msg) {
     progressDialog = new ProgressDialog(MainViewActivity.this);
     progressDialog.setTitle(title);

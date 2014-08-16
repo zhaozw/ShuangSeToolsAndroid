@@ -29,7 +29,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class DantuoCombineActivity extends ExtendedActivity {
+public class ConditionsCombineActivity extends ExtendedActivity {
   private final static String TAG = "DantuoCombineActivity";
   
   private ShuangSeToolsSetApplication appContext;
@@ -97,7 +97,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
     selRedButton = (Button)findViewById(R.id.combine_sel_red_btn);
     verifyRedButton = (Button)findViewById(R.id.combine_verify_red_btn);
     
-    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(DantuoCombineActivity.this);
+    sharedPreferences = PreferenceManager.getDefaultSharedPreferences(ConditionsCombineActivity.this);
     ifGetOutOfHistoryitem = sharedPreferences.getBoolean("getout_his_item", true);
     
   //选择哪一期 (下一期）
@@ -130,7 +130,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
       @Override
       public void onClick(View v) {
         showProgressDialog("提示", "请稍等...");
-        Intent intent = new Intent(DantuoCombineActivity.this,
+        Intent intent = new Intent(ConditionsCombineActivity.this,
             RedMissingDataActivity.class);
         intent.putExtra("FROM", "DantuoCombineActivity");
         startActivity(intent);
@@ -142,7 +142,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
       @Override
       public void onClick(View v) {
         showProgressDialog("提示", "请稍等...");
-        Intent intent = new Intent(DantuoCombineActivity.this,
+        Intent intent = new Intent(ConditionsCombineActivity.this,
             BlueMissingDataActivity.class);
         intent.putExtra("FROM", "DantuoCombineActivity");
         startActivity(intent);
@@ -205,7 +205,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
         
         //转入显示结果页面
         showProgressDialog("提示", "请稍等...");
-        Intent intent =  new Intent(DantuoCombineActivity.this, DantuoCombineResultActivity.class);
+        Intent intent =  new Intent(ConditionsCombineActivity.this, DantuoCombineResultActivity.class);
         
         Bundle bundle = new Bundle();
         
@@ -230,7 +230,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
   }
     
   private void InfoMessageBox(String title, String msg) {
-    AlertDialog notifyDialog = new AlertDialog.Builder(DantuoCombineActivity.this)
+    AlertDialog notifyDialog = new AlertDialog.Builder(ConditionsCombineActivity.this)
         .setTitle(title).setMessage(msg)
         .setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
           @Override
@@ -241,76 +241,74 @@ public class DantuoCombineActivity extends ExtendedActivity {
   }
   
   @Override
-  public void refleshRedAndBlueSeleciton() {
-      StringBuffer redSb = new StringBuffer("红号胆：");
-      currentSelRedDanList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers();
-      currentSelRedTuoList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-      currentSelTotalRedList = MagicTool.join(currentSelRedDanList, currentSelRedTuoList);
-      ShuangSeToolsSetApplication.getCurrentSelection().setSelectedModelId(SmartCombineActivity.M_DAN_TUO_COMBINE);
-      
-      for(Integer item : currentSelRedDanList) {
-        if(item < 10) {
-          redSb.append("0");
-        }
-        redSb.append(item);
-        redSb.append(" ");
-      }
-      redSb.append("共" + currentSelRedDanList.size() + "个胆码");
-      selRedDanTextView.setText(redSb.toString());
-
-      redSb = new StringBuffer("红号托码：");
-      for(Integer item : currentSelRedTuoList) {
-        if(item < 10) {
-          redSb.append("0");
-        }
-        redSb.append(item);
-        redSb.append(" ");
-      }
-      redSb.append("共" + currentSelRedTuoList.size() + "个托码");
-      selRedTuoTextView.setText(redSb.toString());
-
-      //显示查询所有红球（胆码+托码）历史出号情况按钮
-      if(currentSelRedDanList.size() > 0) {
-        verifyRedButton.setVisibility(View.VISIBLE);
-        verifyRedButton.setOnClickListener(new View.OnClickListener() {
-          @Override
-          public void onClick(View v) {
-           // String resultText = appContext.countHistoryOutDetailsForRedset(currentSelRedList);          
-            custDialog = customInfoMsgBox("胆码+托码红号组历史出号情况统计如下：");
-            custDialog.show();
-          }
-        });
-      } else {
-        verifyRedButton.setVisibility(View.INVISIBLE);
-      }
-
-      StringBuffer blueSb = new StringBuffer();
-      currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
-      
-      for(Integer item : currentSelBlueList) {
-        if(item < 10) {
-          blueSb.append("0");
-        }
-        blueSb.append(item);
-        blueSb.append(" ");
-      }
-      
-      blueSb.append("共" + currentSelBlueList.size() + "个篮号");
-      selBlueTextView.setText(blueSb.toString());
-  }
-  
-  
-  @Override
   protected void onResume() {
     super.onResume();
     Log.i(TAG, "onResume()");
-    this.refleshRedAndBlueSeleciton();
+    StringBuffer redSb = new StringBuffer("红号胆码：");
+    currentSelRedDanList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers();
+    currentSelRedTuoList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
+    currentSelTotalRedList = MagicTool.join(currentSelRedDanList, currentSelRedTuoList);
+    ShuangSeToolsSetApplication.getCurrentSelection().setSelectedModelId(SmartCombineActivity.M_DAN_TUO_COMBINE);
+    
+    //Collections.sort(currentSelRedDanList);
+    for(Integer item : currentSelRedDanList) {
+      if(item < 10) {
+        redSb.append("0");
+      }
+      redSb.append(item);
+      redSb.append(" ");
+    }
+    redSb.append("共" + currentSelRedDanList.size() + "个胆码");
+    selRedDanTextView.setText(redSb.toString());
+
+    redSb = new StringBuffer("红号托码：");
+    //Collections.sort(currentSelRedTuoList);
+    for(Integer item : currentSelRedTuoList) {
+      if(item < 10) {
+        redSb.append("0");
+      }
+      redSb.append(item);
+      redSb.append(" ");
+    }
+    redSb.append("共" + currentSelRedTuoList.size() + "个托码");
+    selRedTuoTextView.setText(redSb.toString());
+
+    //显示查询所有红球（胆码+托码）历史出号情况按钮
+    if(currentSelRedDanList.size() > 0) {
+      verifyRedButton.setVisibility(View.VISIBLE);
+      verifyRedButton.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+         // String resultText = appContext.countHistoryOutDetailsForRedset(currentSelRedList);          
+          custDialog = customInfoMsgBox("胆码+托码红号组历史出号情况统计如下：");
+          custDialog.show();
+        }
+      });
+    } else {
+      verifyRedButton.setVisibility(View.INVISIBLE);
+    }
+
+    StringBuffer blueSb = new StringBuffer();
+    currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
+    //Collections.sort(currentSelBlueList);
+    for(Integer item : currentSelBlueList) {
+      if(item < 10) {
+        blueSb.append("0");
+      }
+      blueSb.append(item);
+      blueSb.append(" ");
+    }
+    
+    blueSb.append("共" + currentSelBlueList.size() + "个篮号");
+    selBlueTextView.setText(blueSb.toString());
+    
+    hideProgressBox();
   }
 
   private Dialog custDialog = null;
   public Dialog customInfoMsgBox(String title) {
-    AlertDialog.Builder builder = new AlertDialog.Builder(DantuoCombineActivity.this);
-    LayoutInflater inflater = DantuoCombineActivity.this.getLayoutInflater();
+    AlertDialog.Builder builder = new AlertDialog.Builder(ConditionsCombineActivity.this);
+    LayoutInflater inflater = ConditionsCombineActivity.this.getLayoutInflater();
     
     View dialogView = inflater.inflate(R.layout.custscrollspinnerdialog, null);
     final TextView text = (TextView) dialogView.findViewById(R.id.dispText);
@@ -363,7 +361,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
   private ProgressDialog progressDialog;
   @Override
   public void showProgressDialog(String title, String msg) {
-    progressDialog = new ProgressDialog(DantuoCombineActivity.this);
+    progressDialog = new ProgressDialog(ConditionsCombineActivity.this);
     progressDialog.setTitle(title);
     progressDialog.setMessage(msg);
     progressDialog.setCancelable(false);
@@ -386,7 +384,7 @@ public class DantuoCombineActivity extends ExtendedActivity {
   public boolean onKeyDown(int keyCode, KeyEvent event) {
     // 是否触发按键为back键
     if (keyCode == KeyEvent.KEYCODE_BACK) {
-      Intent intent = new Intent(DantuoCombineActivity.this,
+      Intent intent = new Intent(ConditionsCombineActivity.this,
           MainViewActivity.class);
       startActivity(intent);
       return true;

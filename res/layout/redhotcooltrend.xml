@@ -581,7 +581,7 @@
                     android:layout_span="8"
                     android:background="#000000"
                     android:gravity="center"
-                    android:text="遗漏值0-7遗漏"
+                    android:text="是否含有遗漏值(0-7)"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                                 
@@ -1225,7 +1225,7 @@
                     android:layout_span="8"
                     android:background="#000000"
                     android:gravity="center"
-                    android:text="遗漏值0-7遗漏"
+                    android:text="是否含有遗漏值(0-7)"
                     android:textSize="20sp"
                     android:textStyle="bold" />
                                 

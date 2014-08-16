@@ -49,13 +49,14 @@
         </TextView>
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ItemContent"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:layout_below="@id/ItemTitle"
         android:background="#000000"
         android:clickable="false"
+        android:paddingLeft="8dp"
         android:gravity="center_horizontal"
         android:orientation="horizontal" >
 
@@ -74,6 +75,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:padding="3dp"
+            android:layout_toRightOf="@id/blankrbtn1"
             android:clickable="false"
             android:src="@drawable/blankr2" />
 
@@ -83,6 +85,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:padding="3dp"
+            android:layout_toRightOf="@id/blankrbtn2"
             android:src="@drawable/blankr3" />
 
         <ImageButton
@@ -91,6 +94,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:padding="3dp"
+            android:layout_toRightOf="@id/blankrbtn3"
             android:clickable="false"
             android:src="@drawable/blankr4" />
 
@@ -100,6 +104,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:padding="3dp"
+            android:layout_toRightOf="@id/blankrbtn4"
             android:clickable="false"
             android:src="@drawable/blankr5" />
 
@@ -109,6 +114,7 @@
             android:layout_height="wrap_content"
             android:background="#000000"
             android:padding="3dp"
+            android:layout_toRightOf="@id/blankrbtn5"
             android:clickable="false"
             android:src="@drawable/blankr6" />
         
@@ -119,6 +125,7 @@
             android:gravity="center_vertical"
             android:textColor="#FFFFFF"
             android:textStyle="bold"
+            android:layout_toRightOf="@id/blankrbtn6"
             android:background="#000000"
             android:text=" + "
             android:clickable="false"
@@ -130,9 +137,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#000000"
+            android:layout_toRightOf="@id/ItemIDSeparator"
             android:padding="3dp"
             android:clickable="false"
             android:src="@drawable/blankblue" />
-    </LinearLayout>
+        
+        <ImageView
+        android:id="@+id/rightArrow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/bg_arrow_right" />
+    </RelativeLayout>
 
 </RelativeLayout>

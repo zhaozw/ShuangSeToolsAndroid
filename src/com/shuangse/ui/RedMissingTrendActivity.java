@@ -8,7 +8,6 @@ import com.shuangse.meta.ShuangseCodeItem;
 import com.shuangse.meta.SummaryData;
 import com.shuangse.meta.ValueObj;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -31,7 +30,7 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.ZoomControls;
 
-public class RedMissingTrendActivity extends Activity {
+public class RedMissingTrendActivity extends ExtendedActivity {
     private final static String TAG = "RedMissingTrendActivity";
 
     private SharedPreferences sharedPreferences;
@@ -71,7 +70,13 @@ public class RedMissingTrendActivity extends Activity {
         
         final TextView titleTextView = (TextView) findViewById(R.id.title_text);
         titleTextView.setText(R.string.custom_title_hot_cool_trend);
-        
+
+        progDialog = new ProgressDialog(RedMissingTrendActivity.this);
+        progDialog.setTitle("提示");
+        progDialog.setMessage("请稍等，正在加载...");
+        progDialog.setCancelable(false);
+        progDialog.show();
+
 //        Button returnBtn = (Button)findViewById(R.id.returnbtn);
 //        returnBtn.setVisibility(View.VISIBLE);
 //        Button helpBtn = (Button)findViewById(R.id.helpbtn);
@@ -113,11 +118,6 @@ public class RedMissingTrendActivity extends Activity {
           operationTextView.setText("点击空白方格选【红号】,点击两次选为【红胆号】.");
         }
         
-        progDialog = new ProgressDialog(RedMissingTrendActivity.this);
-        progDialog.setTitle("提示");
-        progDialog.setMessage("请稍等，正在加载...");
-        progDialog.setCancelable(false);
-        progDialog.show();
         
         //33个红球按遗漏递增排好序了
         redListOrderedByMissingTimes = appContext.getRedNumberOrderedByMissingTimes();
@@ -318,10 +318,20 @@ public class RedMissingTrendActivity extends Activity {
                         break;
                     case 59: case 60: case 61: case 62: case 63: case 64: case 65: case 66:
                       //遗漏0，1，2，3，4，5，6，>=7 的遗漏值 missCntOfMissValues[0-7]
-                      row.addView(UIFactory.makeTextCellWithBackground(
-                          Integer.toString(missCntOfMissValues[m-59]), Color.WHITE,
-                          RedMissingTrendActivity.this, Color.BLACK),
-                          appContext.rightCellPara);
+                        int missCntOfMissValue = missCntOfMissValues[m-59];
+                        if(missCntOfMissValue != 0) {
+                            row.addView(UIFactory.makeTextCellWithBackground(
+                                    Integer.toString(missCntOfMissValue), Color.WHITE,
+                                    RedMissingTrendActivity.this, Color.BLACK),
+                                    appContext.rightCellPara);
+                        } else {
+                            row.addView(UIFactory.makeImageCellWithBackground(
+                                    appContext.getPicCache().get("have"),
+                                    RedMissingTrendActivity.this, 
+                                    Color.rgb(0, 0, 0)),
+                                    appContext.rightCellPara);
+                        }
+                      
                       continue;
                       
                     case 34: case 42:case 50:case 58:case 67:
@@ -692,15 +702,17 @@ public class RedMissingTrendActivity extends Activity {
     }
 
     private ProgressDialog progressDialog;
-//    private void showProgressDialog(String title, String msg) {
-//      progressDialog = new ProgressDialog(RedMissingTrendActivity.this);
-//      progressDialog.setTitle(title);
-//      progressDialog.setMessage(msg);
-//      progressDialog.setCancelable(false);
-//      progressDialog.show();
-//    }
+    @Override
+    public void showProgressDialog(String title, String msg) {
+      progressDialog = new ProgressDialog(RedMissingTrendActivity.this);
+      progressDialog.setTitle(title);
+      progressDialog.setMessage(msg);
+      progressDialog.setCancelable(false);
+      progressDialog.show();
+    }
 
-    private void hideProgressBox() {
+    @Override
+    public void hideProgressBox() {
       if (progressDialog != null) {
         progressDialog.dismiss();
         progressDialog = null;

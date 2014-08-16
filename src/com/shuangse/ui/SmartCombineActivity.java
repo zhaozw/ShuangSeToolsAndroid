@@ -9,7 +9,6 @@ import com.shuangse.meta.ShuangseCodeItem;
 
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
@@ -30,11 +29,11 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class SmartCombineActivity extends Activity {
+public class SmartCombineActivity extends ExtendedActivity {
   private final static String TAG = "SmartCombineActivity";
   
   public final static int INVALID_MODEL_ID = 0;
-  public final static int MIN_SEL_RED_NUMBERS = 8;
+  public final static int MIN_SEL_RED_NUMBERS = 7;
   
   public final static int M_8_S_6_G_5_4_ITEM = 1;
   public final static int M_9_S_6_G_5_7_ITEM = 2;
@@ -159,9 +158,9 @@ public class SmartCombineActivity extends Activity {
   private int currentSelModelId;
   
   private TextView selRedTextView;
-  private ArrayList<Integer> currentSelRedList;
+  private ArrayList<Integer> currentSelRedList = new ArrayList<Integer>();
   private TextView selBlueTextView;
-  private ArrayList<Integer> currentSelBlueList;
+  private ArrayList<Integer> currentSelBlueList = new ArrayList<Integer>();
   
   private Button startCombineButton;
   private Button verifyRedButton;
@@ -177,33 +176,6 @@ public class SmartCombineActivity extends Activity {
     
     final TextView titleTextView = (TextView) findViewById(R.id.title_text);
     titleTextView.setText(R.string.title_activity_smart_combine);
-    
-//    Button returnBtn = (Button)findViewById(R.id.returnbtn);
-//    returnBtn.setVisibility(View.VISIBLE);
-//    Button helpBtn = (Button)findViewById(R.id.helpbtn);
-//    helpBtn.setVisibility(View.VISIBLE);
-//    helpBtn.setOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        String htmlMsg = "本页操作提示：<br>\t 一、旋转矩阵组号是目前世界上基于可靠数学理论最优化组号方法，" +
-//                                      " 相比其他组号方法（复式、胆拖等），它可以实现 购买/操作 同样多个 红球号码的情况下，" +
-//                                      "大大节省投资资金（购买/操作红球个数越多，中奖概率越大，但投资也大），且有中奖保证；" + 
-//                                      "<br>\t 二、红球可以在遗漏走势图中选择，也可以在冷热走势图中选择好，此处会自动保存；" +
-//                                      "<br>\t 三、红球也可以采用软件推荐按钮生成，其中软件推荐按钮点击后，会有对应的选项，会把" +
-//                                      "对应的红球显示在这里，同时也会在遗漏走势图 或 冷热走势图中 显示；" +
-//                                      "<br>\t 四、例如典型的操作如下：点击 软件荐红-> 智能推荐 或 使用守号，生成红球后，再点" +
-//                                      "击选择红球按钮将 智能推荐 号码 结合遗漏走势图 或 冷热走势图进行二次 选号，最后返回此处进行组号；" +
-//                                      "<br>\t 五、 选择模式时请根据您选择的 红球个数 选择对应的模式，最多可支持8-27个红球 (定期更新中);";
-//        
-//        MagicTool.customInfoMsgBox("本页帮助信息", htmlMsg, SmartCombineActivity.this).show();
-//      }
-//    });
-//    returnBtn.setOnClickListener(new View.OnClickListener() {
-//      @Override
-//      public void onClick(View v) {
-//        onBackPressed();
-//      }
-//    });
     
     //选择哪一期 (下一期）
     this.currentCombineItemId = ShuangSeToolsSetApplication.getCurrentSelection().getItemId();
@@ -241,15 +213,9 @@ public class SmartCombineActivity extends Activity {
     ifCheckRedSum = sharedPreferences.getBoolean("check_sum_combine", true);
         
     select_blue_model_btn = (Button) findViewById(R.id.recommend_blue_spin);
-//    recommendBlueAdaptor = new ArrayAdapter<ItemPair>(this, R.layout.spinnerformat, allRecommendBlueItems);
-//    recommendBlueAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-//    select_blue_model_btn.setAdapter(recommendBlueAdaptor);
     select_blue_model_btn.setOnClickListener(new BlueButtonOnClickListener());
     
     select_red_model_btn = (Button) findViewById(R.id.recommend_red_model);
-//    recommendRedModelAdaptor = new ArrayAdapter<ItemPair>(this, R.layout.spinnerformat, allRecommendRedModels);
-//    recommendRedModelAdaptor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item); 
-//    select_red_model_btn.setAdapter(recommendRedModelAdaptor);
     select_red_model_btn.setOnClickListener(new RedButtonOnClickListener());
     
     spinner_combine_model = (Spinner) findViewById(R.id.combine_model);
@@ -259,7 +225,11 @@ public class SmartCombineActivity extends Activity {
     spinner_combine_model.setOnItemSelectedListener(new CombineModelSpinner());
     
     startCombineButton = (Button)findViewById(R.id.combine_start_btn);
-    startCombineButton.setOnClickListener(new View.OnClickListener () {
+    startCombineButton.setOnClickListener(new CombineButtonListener());
+  }
+    
+  
+  private class CombineButtonListener implements View.OnClickListener {
       @Override
       public void onClick(View v) {
         Log.i(TAG, "currentCombineItemId:" + currentCombineItemId);
@@ -284,8 +254,11 @@ public class SmartCombineActivity extends Activity {
         switch (currentSelModelId) {
         case M_TOTAL_COMBINE: //全复式
           if(redCnt < MIN_SEL_RED_NUMBERS || redCnt > 20) {
-            InfoMessageBox("错误", "复式组号只能选择8 - 20个红号进行组号.");
+            InfoMessageBox("错误", "复式组号只能选择7 - 20个红号进行组号.");
             return;
+          }
+          if(redCnt > 15) {
+             InfoMessageBoxWithCancel("警告", "对大于15个红号进行全复式组号，结果会超过5000注号码，请确保你的手机配置能满足要求！");
           }
           break;
         case M_7_S_4_G_4_5_ITEM:
@@ -375,7 +348,7 @@ public class SmartCombineActivity extends Activity {
 //          break;
         }
         
-        /*组号并显示结果, 所有数据都已经经过检查*/
+        /* 组号并显示结果, 所有数据都已经经过检查 */
         int[] selRedNumbers = new int[currentSelRedList.size()];
         int x=0;
         for(Integer itm:currentSelRedList) {
@@ -423,9 +396,7 @@ public class SmartCombineActivity extends Activity {
         intent.putExtras(bundle);
         startActivity(intent);
       }
-    });
-    
-  }
+  };
     
   private void InfoMessageBox(String title, String msg) {
     AlertDialog notifyDialog = new AlertDialog.Builder(SmartCombineActivity.this)
@@ -438,50 +409,90 @@ public class SmartCombineActivity extends Activity {
     notifyDialog.show();
   }
   
+  private void InfoMessageBoxWithCancel(String title, String msg) {
+      AlertDialog notifyDialog = new AlertDialog.Builder(SmartCombineActivity.this)
+          .setTitle(title).setMessage(msg)
+          .setNegativeButton(R.string.cancle, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                
+            }
+          }).setPositiveButton(R.string.OK, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+          }).create();
+      notifyDialog.show();
+    }
+  
+  @Override
+  public void refleshRedAndBlueSeleciton() {
+      StringBuffer redSb = new StringBuffer();
+      
+      //加上红号 和 红胆 到本地Cache
+      currentSelRedList.clear();
+      //胆号放在前面
+      currentSelRedList.addAll(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedDanNumbers());
+      if(currentSelRedList.size() > 0) {
+          redSb.append("红胆号:");
+          for(Integer item : currentSelRedList) {
+              if(item < 10) {
+                redSb.append("0");
+              }
+              redSb.append(item);
+              redSb.append(" ");
+          }
+      }
+      ArrayList<Integer> tmpRedNum = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
+      if(tmpRedNum.size() > 0) {
+          redSb.append("红号:");
+          for(Integer item : tmpRedNum) {
+              if(item < 10) {
+                redSb.append("0");
+              }
+              redSb.append(item);
+              redSb.append(" ");
+          }
+      }
+      currentSelRedList.addAll(tmpRedNum);
+
+      redSb.append("共" + currentSelRedList.size() + "码");
+      selRedTextView.setText(redSb.toString());
+      //显示查询红球历史出号情况按钮
+      if(currentSelRedList.size() > 0) {
+        verifyRedButton.setVisibility(View.VISIBLE);
+        verifyRedButton.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+           // String resultText = appContext.countHistoryOutDetailsForRedset(currentSelRedList);          
+            custDialog = customInfoMsgBox("该组红号历史出号情况统计如下：");
+            custDialog.show();
+          }
+        });
+      } else {
+        verifyRedButton.setVisibility(View.INVISIBLE);
+      }
+
+      StringBuffer blueSb = new StringBuffer();
+      currentSelBlueList.clear();
+      currentSelBlueList.addAll(ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers());
+      //Collections.sort(currentSelBlueList);
+      for(Integer item : currentSelBlueList) {
+        if(item < 10) {
+          blueSb.append("0");
+        }
+        blueSb.append(item);
+        blueSb.append(" ");
+      }
+      
+      blueSb.append("共" + currentSelBlueList.size() + "码");
+      selBlueTextView.setText(blueSb.toString());
+  }
+  
   @Override
   protected void onResume() {
     super.onResume();
     Log.i(TAG, "onResume()");
-    StringBuffer redSb = new StringBuffer();
-    currentSelRedList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedRedNumbers();
-    //Collections.sort(currentSelRedList);
-    for(Integer item : currentSelRedList) {
-      if(item < 10) {
-        redSb.append("0");
-      }
-      redSb.append(item);
-      redSb.append(" ");
-    }
-    redSb.append("共" + currentSelRedList.size() + "码");
-    selRedTextView.setText(redSb.toString());
-    //显示查询红球历史出号情况按钮
-    if(currentSelRedList.size() > 0) {
-      verifyRedButton.setVisibility(View.VISIBLE);
-      verifyRedButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-         // String resultText = appContext.countHistoryOutDetailsForRedset(currentSelRedList);          
-          custDialog = customInfoMsgBox("该组红号历史出号情况统计如下：");
-          custDialog.show();
-        }
-      });
-    } else {
-      verifyRedButton.setVisibility(View.INVISIBLE);
-    }
-
-    StringBuffer blueSb = new StringBuffer();
-    currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
-    //Collections.sort(currentSelBlueList);
-    for(Integer item : currentSelBlueList) {
-      if(item < 10) {
-        blueSb.append("0");
-      }
-      blueSb.append(item);
-      blueSb.append(" ");
-    }
-    
-    blueSb.append("共" + currentSelBlueList.size() + "码");
-    selBlueTextView.setText(blueSb.toString());
     
     currentSelModelId =ShuangSeToolsSetApplication.getCurrentSelection().getSelectedModelId();  
     spinner_combine_model.setSelection(SmartCombineActivity.getPosIndexByModelID(currentSelModelId));
@@ -540,7 +551,8 @@ public class SmartCombineActivity extends Activity {
   }
   
   private ProgressDialog progressDialog;
-  private void showProgressDialog(String title, String msg) {
+  @Override
+  public void showProgressDialog(String title, String msg) {
     progressDialog = new ProgressDialog(SmartCombineActivity.this);
     progressDialog.setTitle(title);
     progressDialog.setMessage(msg);
@@ -548,7 +560,8 @@ public class SmartCombineActivity extends Activity {
     progressDialog.show();
   }
 
-  private void hideProgressBox() {
+  @Override
+  public void hideProgressBox() {
     if (progressDialog != null) {
       progressDialog.dismiss();
       progressDialog = null;
@@ -607,53 +620,10 @@ public class SmartCombineActivity extends Activity {
   };
   
   private class BlueButtonOnClickListener implements OnClickListener {
-      public BlueButtonOnClickListener(){
-          super();
-      }
+    public BlueButtonOnClickListener(){
+        super();
+    }
       
-//      @Override
-//      public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//        
-//        if(!ifSelectBlueSpinnerInitilized) {
-//          //this is triggered by onCreate;
-//          ifSelectBlueSpinnerInitilized = true;
-//        } else {//User click
-//          Log.i(TAG, "OnItemSelectedListener user clicked");
-//          currentSelBlueRecommendId = ((ItemPair)parent.getItemAtPosition(pos)).getItemVal();
-//          Log.i(TAG, "Selected Recommend Blue Model:" + currentSelBlueRecommendId);
-//          
-//         if(currentSelBlueRecommendId == INVALID_MODEL_ID) {
-//                currentSelBlueList.clear();
-//                selBlueTextView.setText("");
-//         } else if(currentSelBlueRecommendId == SELFSELECTIONBLUE) {
-//             showProgressDialog("提示", "请稍等...");
-//             Intent intent = new Intent(SmartCombineActivity.this,
-//                 BlueMissingDataActivity.class);
-//             intent.putExtra("FROM", "SmartCombineActivity");
-//             startActivity(intent);
-//         } else if(currentSelBlueRecommendId == RECOMMENDBLUEOP) {
-//                HashSet<Integer> blueSet = appContext.getRecommendBlueNumbers(appContext.getAllHisData().size());
-//                blueSet.addAll(blueSet);
-//                
-//                currentSelBlueList = ShuangSeToolsSetApplication.getCurrentSelection().getSelectedBlueNumbers();
-//                currentSelBlueList.clear();
-//                currentSelBlueList.addAll(blueSet);
-//                StringBuffer blueSb = new StringBuffer();
-//                for(Integer item : currentSelBlueList) {
-//                    if(item < 10) {
-//                      blueSb.append("0");
-//                    }
-//                    blueSb.append(item);
-//                    blueSb.append(" ");
-//                }
-//                
-//                blueSb.append("共" + currentSelBlueList.size() + "码");
-//                selBlueTextView.setText(blueSb.toString());
-//         }
-//        }
-//        
-//      }
-//    
     @Override
     public void onClick(View arg0) {
         final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(SmartCombineActivity.this, "ForChooseSmartCombineBlueMethod");
@@ -661,68 +631,11 @@ public class SmartCombineActivity extends Activity {
     } 
   };
   
-  public void SetSelBlueTextViewText(String text) {
-      selBlueTextView.setText(text);
-  }
-  
-  public void SetSelRedGUIAction(String text) {
-      selRedTextView.setText(text);
-      verifyRedButton.setVisibility(View.VISIBLE);
-      verifyRedButton.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-         // String resultText = appContext.countHistoryOutDetailsForRedset(currentSelRedList);          
-          custDialog = customInfoMsgBox("该组红号历史出号情况如下");
-          custDialog.show();
-        }
-      });
-  }
   private class RedButtonOnClickListener implements OnClickListener {
-      public RedButtonOnClickListener() {
-          super();
-      }
-//      @Override
-//      public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
-//          Log.i(TAG, "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString());
-//          Log.i(TAG, "OnItemSelectedListener + ifSelectRedSpinnerInitilized: " + ifSelectRedSpinnerInitilized);
-//          if(!ifSelectRedSpinnerInitilized) {
-//            //this is triggered by onCreate;
-//              ifSelectRedSpinnerInitilized = true;
-//          } else {//User click            
-//            Log.i(TAG, "OnItemSelectedListener user clicked");
-//            currentSelRecommendRedModelId = ((ItemPair)parent.getItemAtPosition(pos)).getItemVal();
-//            Log.i(TAG, "Selected Recommend Red Model:" + currentSelRecommendRedModelId);
-//            
-//           if(currentSelRecommendRedModelId == INVALID_MODEL_ID) {
-//                  currentSelRedList.clear();
-//                  selRedTextView.setText("");
-//                  verifyRedButton.setVisibility(View.INVISIBLE);
-//           } else if(currentSelRecommendRedModelId == ) {
-//               showProgressDialog("提示", "请稍等...");
-//               
-//           } else if(currentSelRecommendRedModelId == ) {
-//               showProgressDialog("提示", "请稍等...");
-//               
-//           } else if(currentSelRecommendRedModelId == ) { 
-//             
-//                  
-//           } else if(currentSelRecommendRedModelId == ) {
-//             
-//             
-//           } else if(currentSelRecommendRedModelId == ) {
-//             
-//           } else if(currentSelRecommendRedModelId == ) {
-//             
-//           } else if(currentSelRecommendRedModelId == ) { //使用我的守号
-//                     
-//           } 
-//          }
-//      }
-//
-//      @Override
-//      public void onNothingSelected(AdapterView<?> arg0) {
-//          Log.i(TAG, "spinner_itemid_single:: onNothingSelected()");
-//      }
+    public RedButtonOnClickListener() {
+        super();
+    }
+    
     @Override
     public void onClick(View v) {
         final CustomDefineAlertDialog dialog = new CustomDefineAlertDialog(SmartCombineActivity.this, "ForChooseSmartCombineRedMethod");

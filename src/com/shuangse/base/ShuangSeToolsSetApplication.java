@@ -362,6 +362,7 @@ public class ShuangSeToolsSetApplication extends Application {
     for(int red=1;red<=33;red++) {
         pictureCache.put("danRed"+red, getResources().getDrawable(MagicTool.getDanResIDbyRednum(red)));
     }
+    pictureCache.put("have", getResources().getDrawable(R.drawable.red_yes));
   }
 
   /*读本地数据库的数据 - 分页读入*/
@@ -580,21 +581,21 @@ public class ShuangSeToolsSetApplication extends Application {
     if(totalCnt > 0) {
         Random rand = new Random();
         int randLoc = rand.nextInt(totalCnt + 1);
-        boolean hasCodesThere = false;
         
-        while(!hasCodesThere) {
-          String query2SQL = "select * from neverout6of17 where loc = ?";
-          Cursor cursor2 = neverOutSqliteDB.rawQuery(query2SQL, new String[] {String.valueOf(randLoc)});  
-          if (cursor2.moveToNext()) {
+        String query2SQL = "select * from neverout6of17 where loc >= ?";
+        Cursor cursor2 = neverOutSqliteDB.rawQuery(query2SQL, new String[] {String.valueOf(0)});
+        int cntIndex = 0;
+        while (cursor2.moveToNext()) {
+          if(cntIndex == randLoc) {
             for(int loc = 1; loc < 18; loc++) {
               redSet.add(cursor2.getInt(loc));
             }
-            hasCodesThere = true;
+            break;
           } else {
-            hasCodesThere = false;
+            cntIndex++;
           }
-          cursor2.close();
         }
+        cursor2.close();
     } //end while
     
     return redSet;
@@ -620,21 +621,21 @@ public class ShuangSeToolsSetApplication extends Application {
     if(totalCnt > 0) {
         Random rand = new Random();
         int randLoc = rand.nextInt(totalCnt + 1);
-        boolean hasCodesThere = false;
         
-        while(!hasCodesThere) {
-          String query2SQL = "select red1,red2,red3,red4,red5,red6 from neverout456ofsix where loc = ?";
-          Cursor cursor2 = neverOutSqliteDB.rawQuery(query2SQL, new String[] {String.valueOf(randLoc)});  
-          if (cursor2.moveToNext()) {
+        String query2SQL = "select red1,red2,red3,red4,red5,red6 from neverout456ofsix where loc >= ?";
+        Cursor cursor2 = neverOutSqliteDB.rawQuery(query2SQL, new String[] {String.valueOf(0)});
+        int cntIndex = 0;
+        while (cursor2.moveToNext()) {
+          if(cntIndex == randLoc) {
             for(int loc = 0; loc < 6; loc++) {
               redSet.add(cursor2.getInt(loc));
             }
-            hasCodesThere = true;
+            break;
           } else {
-            hasCodesThere = false;
+              cntIndex++;
           }
-          cursor2.close();
         }
+        cursor2.close();
     }//end while
     
    
@@ -661,23 +662,22 @@ public class ShuangSeToolsSetApplication extends Application {
     if(totalCnt > 0) {
         Random rand = new Random();
         int randLoc = rand.nextInt(totalCnt + 1);
-        boolean hasCodesThere = false;
         
-        while(!hasCodesThere) {
-          String query2SQL = "select red1,red2,red3,red4,red5,red6,red7,red8,red9,red10,red11 from neverout56of11 where loc = ?";
-          Cursor cursor2 = neverOutSqliteDB.rawQuery(query2SQL, new String[] {String.valueOf(randLoc)});  
-          if (cursor2.moveToNext()) {
-            for(int loc = 0; loc < 11; loc++) {
-              redSet.add(cursor2.getInt(loc));
+        String query2SQL = "select red1,red2,red3,red4,red5,red6,red7,red8,red9,red10,red11 from neverout56of11 where loc >= ?";
+        Cursor cursor2 = neverOutSqliteDB.rawQuery(query2SQL, new String[] {String.valueOf(0)});
+        int cntIndex = 0;
+        while(cursor2.moveToNext()) {
+            if(cntIndex == randLoc) {
+                for(int loc = 0; loc < 11; loc++) {
+                    redSet.add(cursor2.getInt(loc));
+                }
+                break;
+            } else {
+                cntIndex++;
             }
-            hasCodesThere = true;
-          } else {
-            hasCodesThere = false;
-          }
-          cursor2.close();
-        }
-    }//end while
-    
+        }//end while
+        cursor2.close();
+    }
    
     return redSet;
   }
